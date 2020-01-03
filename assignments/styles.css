@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 0;
+}
+
+section>div {
+    height: calc(100vh / 9);
+}
+
+section#pink-section {
+    background-color: #F5C6D6;
+}
+
+section#dark-pink>div {
+    background-color: #EE2E84;
+    border-top: 2px solid white;
+}
+
+section#light-blue>div {
+    background-color: #85CFD8;
+    border-top: 2px solid white;
+}
+
+section#mixed>div:first-child {
+    border-top: 2px solid white;
+    background-color: #8DC63F;
+}
+
+section#mixed>div:last-child {
+    background-color: #E76E34;
+    border-top: 2px solid white;
+}
+
+@media only screen and (min-width: 768px) {
+    section#pink-section {
+        height: 25vh;
+        margin-bottom: 5px;
+    }
+
+    section.pink {
+        height: 100%;
+        width: 100%;
+    }
+
+    section#dark-pink {
+        height: 25vh;
+    }
+
+    section#dark-pink>div {
+        display: inline-block;
+        height: 100%;
+        width: 25%;
+        border: 5px solid white;
+    }
+
+    section#dark-pink>div:first-child {
+        border-left: none;
+    }
+
+    section#dark-pink>div:last-child {
+        border-right: none;
+    }
+
+    section#light-blue {
+        height: 25vh;
+        background-color: inherit;
+
+    }
+
+    section#light-blue>div {
+        display: inline-block;
+        height: 100%;
+        width: 50%;
+        border: 5px solid white;
+    }
+
+    section#light-blue>div:first-child {
+        border-left: none;
+    }
+
+    section#light-blue>div:last-child {
+        border-right: none;
+    }
+
+    section#mixed {
+        height: 25vh;
+    }
+
+    section#mixed>div {
+        display: inline-block;
+        border: 5px solid white;
+    }
+
+    section#mixed>div:first-child,
+    section#mixed>div:last-child {
+        border-bottom: none;
+    }
+
+    section#mixed>div:first-child {
+        height: 100%;
+        width: 75%;
+        border-left: none;
+    }
+
+    section#mixed>div:last-child {
+        height: 100%;
+        width: 25%;
+        border-right: none;
+    }
+}

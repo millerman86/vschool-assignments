@@ -57,8 +57,6 @@ h3.intro-subheading {
     text-align: center;
 }
 
-
-
 .links-to-about-pages {
     display: flex;
     justify-content: center;
@@ -67,12 +65,27 @@ h3.intro-subheading {
 .links-to-about-pages>button {
     margin-left: 30px;
 }
+
 .links-to-about-pages button:first-of-type {
     margin-left: 0;
+}
+
+aside nav.site-navigation-secondary {
+    position: absolute;
+    right: -100%;
+    transition: all .3s ease-in-out;
 }
 
 @media only screen and (min-width: 768px) {
     nav div.site-navigation-group span {
         font-size: 10px;
     }
+}
+
+body.nav-open .site-navigation-mobile {
+    right: 0;
+    top: 0;
+    background-color: white;
+    width: calc(100vw - 40px);
+    transition: all .3s ease-in-out;
 }

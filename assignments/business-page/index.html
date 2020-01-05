@@ -54,6 +54,7 @@ a business homepage is like a storefront -->
     https://www.greenvillescrealestate.net/ -->
     <link rel="stylesheet" href="styles.css">
     <script src="app.js"></script>
+    <script src="js/scripts.js"></script>
 </head>
 
 <body>
@@ -81,7 +82,23 @@ a business homepage is like a storefront -->
                     <span><i></i></span>
                 </div> -->
 
+                <!-- THE HAMBURGER IS USED TO REPLACE THE GLOBAL SEARCH BAR MENU  -->
                 <div class="hamburger">
+                    <aside>
+                        <nav class="site-navigation-mobile js-hamburger">
+                            <div>HOME</div>
+                            <div>Custom Market Report</div>
+                            <div>Featured</div>
+                            <div>Downtown</div>
+                            <div>Luxury</div>
+                            <div>Condos</div>
+                            <div>Lake</div>
+                            <div>About</div>
+                            <div>Blog</div>
+                            <div>SEARCH</div>
+                        </nav>
+
+                    </aside>
                     <span></span>
                     <span></span>
                     <span></span>
@@ -114,5 +131,10 @@ a business homepage is like a storefront -->
     </div>
 
 </body>
+<script>
+    document.querySelector('.hamburger').addEventListener('click', function () {
+
+    })
+</script>
 
 </html>

@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+nav.global-site-nav {
+    padding: 25px;
+}
+
+nav div.site-navigation-group {
+    display: flex;
+    align-items: center;
+}
+
+nav div.site-navigation-group span {
+    font-size: 0;
+}
+
+nav.global-site-nav span {
+    margin-left: 20px;
+}
+
+nav.global-site-nav span:first-child {
+    margin-left: auto;
+}
+
+nav.global-site-nav div.hamburger {
+    margin-left: 30px;
+    min-height: 15px;
+    display: flex;
+    width: 21px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+nav.global-site-nav div.hamburger span {
+    background-color: black;
+    border-radius: 10px;
+    margin-left: 0;
+    height: 3px;
+    width: 100%;
+}
+
+section#quicksearch-section {
+    height: 720px;
+    padding-top: 95px;
+    padding-bottom: 40px;
+    background: url('https://t3.realgeeks.media/thumbnail/VPIUDBbK62w8m3t-udqA66m3feQ=/fit-in/0x720/https://u.realgeeks.media/greenvillescrealestate/_rgg/landscape_images/BeautifulHomeExterior.jpg') no-repeat 50% 50%;
+    background-size: cover;
+}
+
+h1.intro-heading {
+    text-align: center;
+}
+
+h3.intro-subheading {
+    text-align: center;
+}
+
+
+
+.links-to-about-pages {
+    display: flex;
+    justify-content: center;
+}
+
+.links-to-about-pages>button {
+    margin-left: 30px;
+}
+.links-to-about-pages button:first-of-type {
+    margin-left: 0;
+}
+
+@media only screen and (min-width: 768px) {
+    nav div.site-navigation-group span {
+        font-size: 10px;
+    }
+}

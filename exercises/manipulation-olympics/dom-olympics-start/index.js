@@ -16,6 +16,4 @@ header.appendChild(h3)
 
 
 
-
-
 // h3.insertAdjacentHTML('afterend',`<div>blah</div>`)

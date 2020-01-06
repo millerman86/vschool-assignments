@@ -1,6 +1,3 @@
-div.container {
-}
-
 #header-banner {
     height: 400px;
     width: 100vw;
@@ -9,17 +6,17 @@ div.container {
 
 .container.grid-container {
     display: grid;
-	grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(12, 1fr);
 }
 
 .employee-profile {
-	grid-column: 1 / 4;
-	background-color: lightcyan;
+    grid-column: 1 / 4;
+    background-color: lightcyan;
 }
 
 .recommendations {
     background-color: lightgoldenrodyellow;
-   grid-column: 4 / 10;
+    grid-column: 4 / 10;
 }
 
 .partner-network {

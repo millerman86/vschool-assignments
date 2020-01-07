@@ -14,8 +14,9 @@ Part 1
 Extra Credit
 * A user will be able to click the 'edit' button and see an input box appear
 * When the user clicks the 'edit' button, a 'save' button will replace the 'edit' button
-* The input box will automatically have the value of the input item
-
+* The input box will automatically have the value of the list item
+* The user can edit and "save" the input box's value
+* On save, the input box will disappear, and the new value will appear
 
 Node Methods
 Node.hasChildNodes - Returns a boolean if the node has child nodes, and false otherwise

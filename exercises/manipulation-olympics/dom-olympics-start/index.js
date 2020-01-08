@@ -41,6 +41,7 @@ function changeTheme(event) {
 function sendMessage(event) {
     event.preventDefault();
     let text = document.getElementById('input').value;
+    if (!text.length) return;
     document.querySelector('.messages').insertAdjacentHTML('beforeend',
         `<div class="message left ${leftHandValue}">
         ${text}
@@ -64,3 +65,4 @@ document.getElementById('clear-button').addEventListener('click', function (e) {
         e.remove();
     });
 })
+

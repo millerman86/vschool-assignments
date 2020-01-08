@@ -10,23 +10,29 @@
 <body>
     <header id="header"></header>
     <label>Theme</label>
-    <select id="theme-drop-down" defaultvalue="blue/brown" onchange="changeTheme(event)">
-        <option value="theme-one">blue/brown</option>
-        <option value="theme-two">red/black</option>
+
+
+
+    <select id="theme-drop-down" onchange="changeTheme(event)">
+        <option selected value="brown blue">brown/blue</option>
+        <option value="red black">red/black</option>
     </select>
+
+
+
     <div id="main">
         <button id='clear-button'>clear</button>
         <div class="messages">
-            <div class="message left">
+            <div class="message brown left">
                 I have something serious to talk about
             </div>
-            <div class="message right">
+            <div class="message blue right">
                 I don't want to talk
             </div>
-            <div class="message left">
+            <div class="message brown left">
                 You have to, you're the police
             </div>
-            <div class="message right">
+            <div class="message blue right">
                 I'm just a simple farmer
             </div>
         </div>

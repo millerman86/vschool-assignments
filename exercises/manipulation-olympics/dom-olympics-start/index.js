@@ -1,18 +1,48 @@
-function changeTheme(event) {
-    if (event.target.value === 'theme-two') {
-        document.querySelector('.messages').classList.add('theme-two');
 
-    } else {
-        document.querySelector('.messages').classList.remove('theme-two');
+
+let selectedOption = document.getElementById('theme-drop-down').value;
+let leftHandValue = document.getElementById('theme-drop-down').value.split(' ')[0];
+function changeTheme(event) {
+    let previousValues = selectedOption;
+    selectedOption = event.target.value; // retain state for future execution of function 
+    previousValues = previousValues.split(' ');
+
+    let nextValues = event.target.value;
+    nextValues = nextValues.split(' ');
+
+    replaceColors(previousValues, nextValues);
+
+    function replaceColors(previous, nextValues) {
+        let previousObject = {};
+        let nextObject = {};
+
+        for (const [index, element] of previous.entries()) {
+            previousObject[index] = element;
+        }
+        for (const [index, element] of nextValues.entries()) {
+            nextObject[index] = element;
+        }
+
+        leftHandValue = nextObject[0];
+
+        document.querySelectorAll('.message.left').forEach(function(i) {
+            i.classList.remove(previousObject[0])
+            i.classList.add(nextObject[0])
+        });
+
+        document.querySelectorAll('.message.right').forEach(function(i) {
+            i.classList.remove(previousObject[1])
+            i.classList.add(nextObject[1])
+        });
     }
-    console.log(event.target.value)
 }
+
 
 function sendMessage(event) {
     event.preventDefault();
     let text = document.getElementById('input').value;
-    document.querySelector('.messages').insertAdjacentHTML('beforeend', 
-    `<div class="message left">
+    document.querySelector('.messages').insertAdjacentHTML('beforeend',
+        `<div class="message left ${leftHandValue}">
         ${text}
     </div>`);
     document.getElementById('input').value = '';

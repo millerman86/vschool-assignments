@@ -33,15 +33,21 @@
 
 .left {
     align-self: flex-start;
-    background-color: burlywood;
 }
 
-.messages.theme-two .left {
-    background: lightgrey;
+.messages .blue {
+    background: lightblue;
 }
 
-.messages.theme-two .right {
+.messages .brown {
+    background: burlywood;
+}
+
+.messages .black {
+    background: grey;
+}
+
+.messages .red {
     background: red;
 }
 
-ß

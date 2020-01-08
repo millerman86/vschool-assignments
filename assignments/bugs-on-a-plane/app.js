@@ -49,7 +49,7 @@ function formAlert() {
     alert("First Name: " + firstName + "\nLast Name: " + lastName + 
     "\nAge: " + age + "\nGender: " + gender + 
     "\nTravel Location: " + location + 
-    "\nDiet: " + JSON.stringify(diet).replace(/{/g, '').replace(/}/g, '').replace(/"/g, '')+
+    (Object.keys(diet).length ? "\nHere is your diet: " : "\nYou are going to get fat") + JSON.stringify(diet).replace(/{/g, '').replace(/}/g, '').replace(/"/g, '')+
     "\nAwesome, now if you die, it won't be an accident..");
 }
 

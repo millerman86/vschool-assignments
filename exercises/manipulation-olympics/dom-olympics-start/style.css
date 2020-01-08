@@ -35,3 +35,13 @@
     align-self: flex-start;
     background-color: burlywood;
 }
+
+.messages.theme-two .left {
+    background: lightgrey;
+}
+
+.messages.theme-two .right {
+    background: red;
+}
+
+ß

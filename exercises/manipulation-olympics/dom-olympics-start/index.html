@@ -10,7 +10,7 @@
 <body>
     <header id="header"></header>
     <label>Theme</label>
-    <select id="theme-drop-down">
+    <select id="theme-drop-down" defaultvalue="blue/brown" onchange="changeTheme(event)">
         <option value="theme-one">blue/brown</option>
         <option value="theme-two">red/black</option>
     </select>
@@ -30,9 +30,9 @@
                 I'm just a simple farmer
             </div>
         </div>
-        <form name="message">
+        <form name="message" onsubmit="sendMessage(event)">
             <input id="input" value="Thanks! Goodbye"/>
-            <button>Send</button>
+            <button type="submit">Send</button>
         </form>
     </div>
    

@@ -36,7 +36,6 @@ const enumerated = {};
 for (const [a, b] of alphabet.entries()) {
     enumerated[a] = b;
 }
-// console.log(enumerated);
 
 
 var input = readline.question('What phrase would you like to encrypt? ').toLowerCase();
@@ -60,7 +59,7 @@ input = input.map((item) => {
     if (alphabet.indexOf(item) != -1) {
         startingIndex = alphabet.indexOf(item)
     }
-
+    
     let currentIndex = startingIndex;
     let endIndex;
     for (let i = shift; i > 0; i--) {
@@ -71,7 +70,7 @@ input = input.map((item) => {
 
     if (alphabet.indexOf(item) === -1) return item;
     endIndex = currentIndex;
-    return enumerated[currentIndex];
+    return enumerated[endIndex];
 
 })
 

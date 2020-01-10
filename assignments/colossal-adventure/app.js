@@ -18,25 +18,30 @@ let loot = [
 let animals = [{
         'name': 'a bear',
         'value': '   :\"\'._..---.._.\'\";\r\n    `.             .\'\r\n    .\'    ^   ^    `.\r\n   :      a   a      :                 __....._\r\n   :     _.-0-._     :---\'\"\"\'\"-....--\'\"        \'.\r\n    :  .\'   :   `.  :                          `,`.\r\n     `.: \'--\'--\' :.\'                             ; ;\r\n      : `._`-\'_.\'                                ;.\'\r\n      `.   \'\"\'                                   ;\r\n       `.               \'                        ;\r\n        `.     `        :           `            ;\r\n         .`.    ;       ;           :           ;\r\n       .\'    `-.\'      ;            :          ;`.\r\n   __.\'      .\'      .\'              :        ;   `.\r\n .\'      __.\'      .\'`--..__      _._.\'      ;      ;\r\n `......\'        .\'         `\'\"\"\'`.\'        ;......-\'\r\njgs    `.......-\'                 `........\'',
-        'health': 100
+        'health': 100, 
+        'isDead': false,
     },
     {
         'name': 'a beetle',
         'value': '     _   _\r\n     /(   )\\\r\n     \\(   )/\r\n   |/ \\\\_//  \\|\r\n  /  (#) (#)  \\\r\n  \\  /     \\  /\r\n   \\ \\_____/ /\r\n    \\/  |  \\/  \r\n  _ | o | o | _\r\n | \\|o  |  o|/ |\r\n |  |  o|o  |  |\r\n/|\\ |o  |  o| /|\\\r\n    \\  o|o  /\r\n    /\\__|__/\\\r\n   /         \\\r\n   \\         /\r\n   |\\       /|',
-        'health': 50
+        'health': 50, 
+        'isDead': false
     },
     {
         'name': 'a BIG beetle',
         'value': "          .--.         .--.\r\n              \\       /        \r\n       |\\      `\\___/'       /|\r\n        \\\\    .-'@ @`-.     //  \r\n        ||  .'_________`.  ||\r\n         \\\\.'^    Y    ^`.//\r\n         .'       |       `.\r\n        :         |         :\r\n       :          |          :\r\n       :          |          :\r\n       :     _    |    _     :\r\n       :.   (_)   |   (_)    :\r\n     __::.        |          :__\r\n    /.--::.       |         :--.\\\r\n __//'   `::.     |       .'   `\\\\___\r\n`--'     //`::.   |     .'\\\\     `--'\r\n         ||  `-.__|__.-'   || \r\njgs      ||                ||\r\n         //                \\\\\r\n        |/                  \\|",
-        'health': 70
+        'health': 70, 
+        'isDead': false
     }
 ];
 
 let command = '';
+
+BeginGame:
 while (command != 'q') {
     command = readline.question('Press w to walk, otherwise press q to quit');
     let attackOrNot = Math.random() * 10;
-    if (Math.ceil(attackOrNot) * 10 <= ((1 / 4) * 100)) {
+    if (Math.ceil(attackOrNot) * 10 <= ((4 / 4) * 100)) {
         // EXTRA CREDIT: FIND OUT HOW TO REVERSE THE BEAR STRING WHILE STILL PRESERVING WHITE SPACE, THEN I CAN USE IT IN MY GAME, USE A REGEX
         // https://www.asciiart.eu/animals/bears
         // let deadBear = "'........`                 '-.......`    sgj\r\n'-......;        '.`'\"\"'`         '.        '......` \r\n;      ;      '._._      __..--`'.      '.__      '. \r\n.`   ;        :              '.      '.      '.__   \r\n.`;          :            ;      '.-`    '.       \r\n;           :           ;       ;    .`.         \r\n;            `           :        `     .`        \r\n;                        '               .`       \r\n;                                   '\"'   .`      \r\n'.;                                '._'-`_.` :      \r\n; ;                             '.: '--'--' :.`     \r\n.`,`                          :  .`   :   '.  :    \r\n.'        \"'--....-\"'\"\"'---:     _.-0-._     :   \r\n_.....__                 :      a   a      :   \r\n.`    ^   ^    '.    \r\n'.             .`    \r\n;\"'._..---.._.'\":";
@@ -60,41 +65,59 @@ while (command != 'q') {
         }
 
         let ask = true;
-        let run;
+        Ask:
         while (ask) {
+            let killed;
             let run = readline.question('Will you run? y/n?').toLowerCase();
-            if (run === 'y' || run === 'n') {
-                ask = false;
-            }
-        }
-        if (run === 'n') {
-            animalAttack(animals, loot);
-        } else {
-            let escapeOrNot = Math.floor(Math.random() * 2);
-            switch (escapeOrNot) {
-                case 0:
-                    console.log('You have escaped');
-                    break;
-                case 1:
-                    console.log(`You have not escaped. Now you must fight ${attackerName}`);
-                    animalAttack(animals[attacker], loot);
-                    break;
-                default:
-                    break;
+            
+            if (run === 'n') {
+                console.log('You have chosen to stay and attack the animal')
+                killed = animalAttack(animals[attacker], loot);
+                if (!killed) {
+                    continue Ask;
+                }
+            } else {
+                let escapeOrNot = Math.floor(Math.random() * 2);
+                switch (escapeOrNot) {
+                    case 0:
+                        console.log('You have escaped');
+                        continue BeginGame;
+                    case 1:
+                        console.log(`You have not escaped. Now you must fight ${attackerName}`);
+                        if (!animals[attacker]['isDead']) {
+                            killed = animalAttack(animals[attacker], loot);
+                            if (killed) {
+                                continue BeginGame;
+                            }
+                            if (!killed) {
+                                continue Ask;
+                            }
+                        }
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
         function animalAttack(attacker, loot) {
-
-            if (attacker.health < 1) {
+            let animalKilled;
+            if (attacker['health'] < 1) {
+                attacker['isDead'] = true;
+                animalKilled = true;
                 console.log('you have killed the enemy');
-
                 playerInventory['hp'] += 10;
-
-                let newItem = loot[Math.floor(Math.random()) * 3];
-                playerInventory['inventoryItems'].push(newItem);
-                console.log('Here is your inventory: ', playerInventory['inventoryItems'])
+            } else if (attacker['health'] > 1) {
+                animalKilled = false;
+                console.log('You take your best swing at the wild beast! AND>>>>>>>');
+                attacker['health'] -= 30;
             }
+
+            let newItem = loot[Math.floor(Math.random()) * 3];
+            playerInventory['inventoryItems'].push(newItem);
+            console.log('Here is your inventory: ', playerInventory['inventoryItems'])
+
+            return animalKilled
         }
     }
 }

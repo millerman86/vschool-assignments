@@ -22,7 +22,7 @@ Project Requirements:
 * If the enemy kills the player the console prints an cool death message and the game ends
 
 
-5. Inventory
+1. Inventory
 * When the player kills enemies, they are awarded with items
 * If the user enters 'Print' in the console, the console will print the players name,*  HP, and each item in their inventory
 * Passing Criteria: Demo to the Instructor/TA & Code Review

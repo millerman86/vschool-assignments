@@ -42,7 +42,7 @@ var input = readline.question('What phrase would you like to encrypt? ').toLower
 
 while (true) {
     shift = parseInt(readline.question('How many letters would you like to shift? '));
-    if (Number.isNaN(shift)) continue;
+    if (isNaN(shift)) continue;
     if (shift > 26) { 
         console.log('Please choose a number 26 or below');
         continue;
@@ -50,7 +50,7 @@ while (true) {
     break;
 }
 
-shift -= 1;
+// shift -= 1;
 
 input = input.split('');
 

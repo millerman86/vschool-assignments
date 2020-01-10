@@ -9,7 +9,7 @@ Project Requirements:
 
 3. Walking:
 * The console will ask the user to enter a "w" to walk
-* Every time the player walks, a random algorithm will be run that determines if a * wild enemy has appeared (A 1/3 or 1/4 chance of being attacked)
+* Every time the player walks, a random algorithm will be run that determines if a wild enemy has appeared (A 1/3 or 1/4 chance of being attacked)
 
 
 4. If a wild enemy appears:

@@ -19,7 +19,7 @@ Project Requirements:
 * If running, there will be a 50% chance of escaping
 * After the player attacks or runs the enemy attacks back for a random damage amount
 * If the player kills the enemy you can give the Player some HP and a special item that is stored in the inventory
-* If the enemy kills the player the console prints an cool death message and the * game ends
+* If the enemy kills the player the console prints an cool death message and the game ends
 
 
 5. Inventory

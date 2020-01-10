@@ -1,8 +1,24 @@
 let readline = require('readline-sync');
 
+
 console.log('Let\'s play a game!! You will fight an animal.');
 let name = readline.question('Please tell me your name, \nPlease type here: ');
 console.log(`Hello, ${name}, are you ready to begin your journey?`);
+
+// THE DOCUMENTATION FOR BOTH OF THE NUMBER FUNCTIONS BELOW CAN BE FOUND AT THE GIVEN LINK
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max)); // input is zero-based
+}
+
+// This example returns a random integer between the specified values. 
+// The value is no lower than min (or the next integer greater than min if min isn't an integer), 
+// and is less than (but not equal to) max.
+function getRandomIntMinMax(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
 
 let playerInventory = {
     inventoryItems: [],
@@ -18,33 +34,42 @@ let loot = [
 let animals = [{
         'name': 'a bear',
         'value': '   :\"\'._..---.._.\'\";\r\n    `.             .\'\r\n    .\'    ^   ^    `.\r\n   :      a   a      :                 __....._\r\n   :     _.-0-._     :---\'\"\"\'\"-....--\'\"        \'.\r\n    :  .\'   :   `.  :                          `,`.\r\n     `.: \'--\'--\' :.\'                             ; ;\r\n      : `._`-\'_.\'                                ;.\'\r\n      `.   \'\"\'                                   ;\r\n       `.               \'                        ;\r\n        `.     `        :           `            ;\r\n         .`.    ;       ;           :           ;\r\n       .\'    `-.\'      ;            :          ;`.\r\n   __.\'      .\'      .\'              :        ;   `.\r\n .\'      __.\'      .\'`--..__      _._.\'      ;      ;\r\n `......\'        .\'         `\'\"\"\'`.\'        ;......-\'\r\njgs    `.......-\'                 `........\'',
-        'health': 100, 
+        'health': 100,
         'isDead': false,
     },
     {
         'name': 'a beetle',
         'value': '     _   _\r\n     /(   )\\\r\n     \\(   )/\r\n   |/ \\\\_//  \\|\r\n  /  (#) (#)  \\\r\n  \\  /     \\  /\r\n   \\ \\_____/ /\r\n    \\/  |  \\/  \r\n  _ | o | o | _\r\n | \\|o  |  o|/ |\r\n |  |  o|o  |  |\r\n/|\\ |o  |  o| /|\\\r\n    \\  o|o  /\r\n    /\\__|__/\\\r\n   /         \\\r\n   \\         /\r\n   |\\       /|',
-        'health': 50, 
+        'health': 50,
         'isDead': false
     },
     {
         'name': 'a BIG beetle',
         'value': "          .--.         .--.\r\n              \\       /        \r\n       |\\      `\\___/'       /|\r\n        \\\\    .-'@ @`-.     //  \r\n        ||  .'_________`.  ||\r\n         \\\\.'^    Y    ^`.//\r\n         .'       |       `.\r\n        :         |         :\r\n       :          |          :\r\n       :          |          :\r\n       :     _    |    _     :\r\n       :.   (_)   |   (_)    :\r\n     __::.        |          :__\r\n    /.--::.       |         :--.\\\r\n __//'   `::.     |       .'   `\\\\___\r\n`--'     //`::.   |     .'\\\\     `--'\r\n         ||  `-.__|__.-'   || \r\njgs      ||                ||\r\n         //                \\\\\r\n        |/                  \\|",
-        'health': 70, 
+        'health': 70,
         'isDead': false
     }
 ];
 
 let command = '';
 
-BeginGame:
-while (command != 'q') {
-    command = readline.question('Press w to walk, otherwise press q to quit');
+
+BeginGame: while (command != 'q') {
+    console.clear();
+    console.log('You are trying to make it to grandma\'s house in the woods to save her from being eaten. \nPress w to walk, otherwise press q to quit');
+    
+    let progress = 0;
+    let innerCommand, progression = showProgressBar(progress);
+
+    if (progression === 30) endGame();
+
+    if (innerCommand === 'q') break;
+
     let attackOrNot = Math.random() * 10;
     if (Math.ceil(attackOrNot) * 10 <= ((4 / 4) * 100)) {
         // EXTRA CREDIT: FIND OUT HOW TO REVERSE THE BEAR STRING WHILE STILL PRESERVING WHITE SPACE, THEN I CAN USE IT IN MY GAME, USE A REGEX
         // https://www.asciiart.eu/animals/bears
-        // let deadBear = "'........`                 '-.......`    sgj\r\n'-......;        '.`'\"\"'`         '.        '......` \r\n;      ;      '._._      __..--`'.      '.__      '. \r\n.`   ;        :              '.      '.      '.__   \r\n.`;          :            ;      '.-`    '.       \r\n;           :           ;       ;    .`.         \r\n;            `           :        `     .`        \r\n;                        '               .`       \r\n;                                   '\"'   .`      \r\n'.;                                '._'-`_.` :      \r\n; ;                             '.: '--'--' :.`     \r\n.`,`                          :  .`   :   '.  :    \r\n.'        \"'--....-\"'\"\"'---:     _.-0-._     :   \r\n_.....__                 :      a   a      :   \r\n.`    ^   ^    '.    \r\n'.             .`    \r\n;\"'._..---.._.'\":";
+        // let deadBear = "'........`                 '-.......` n   sgj\r\n'-......;        '.`'\"\"'`         '.        '......` \r\n;      ;      '._._      __..--`'.      '.__      '. \r\n.`   ;        :              '.      '.      '.__   \r\n.`;          :            ;      '.-`    '.       \r\n;           :           ;       ;    .`.         \r\n;            `           :        `     .`        \r\n;                        '               .`       \r\n;                                   '\"'   .`      \r\n'.;                                '._'-`_.` :      \r\n; ;                             '.: '--'--' :.`     \r\n.`,`                          :  .`   :   '.  :    \r\n.'        \"'--....-\"'\"\"'---:     _.-0-._     :   \r\n_.....__                 :      a   a      :   \r\n.`    ^   ^    '.    \r\n'.             .`    \r\n;\"'._..---.._.'\":";
 
         let attacker = Math.floor((Math.random()) * 3)
         let attackerName = animals[attacker]['name'];
@@ -65,15 +90,17 @@ while (command != 'q') {
         }
 
         let ask = true;
-        Ask:
-        while (ask) {
+
+        Ask: while (ask) {
             let killed;
             let run = readline.question('Will you run? y/n?').toLowerCase();
-            
+
             if (run === 'n') {
+                console.clear();
                 console.log('You have chosen to stay and attack the animal')
                 killed = animalAttack(animals[attacker], loot);
                 if (!killed) {
+                    console.log('But the animal is not yet dead, the battle rages on!')
                     continue Ask;
                 }
             } else {
@@ -90,6 +117,7 @@ while (command != 'q') {
                                 continue BeginGame;
                             }
                             if (!killed) {
+                                console.log('But the animal is not yet dead, the battle rages on!')
                                 continue Ask;
                             }
                         }
@@ -102,22 +130,62 @@ while (command != 'q') {
 
         function animalAttack(attacker, loot) {
             let animalKilled;
+            let minDamage = 20;
+            let maxDamage = 40;
+            let damageDealt = getRandomIntMinMax(minDamage, maxDamage);
             if (attacker['health'] < 1) {
+                console.log(`You have dealt ${damageDealt} damage to the enemy`);
+
                 attacker['isDead'] = true;
                 animalKilled = true;
-                console.log('you have killed the enemy');
+                console.log('You have killed the enemy');
+
                 playerInventory['hp'] += 10;
+                let newItem = Math.floor(Math.random() * 3);
+                playerInventory['inventoryItems'].push(loot[newItem]);
+
+                console.log('It dropped something.....you pick it up and put it in your inventory');
+                console.log('Here is your inventory: ', playerInventory['inventoryItems']);
+                // continue BeginGame;
             } else if (attacker['health'] > 1) {
                 animalKilled = false;
-                console.log('You take your best swing at the wild beast! AND>>>>>>>');
-                attacker['health'] -= 30;
+                console.log('You take your best swing at the wild beast! \nThe result?');
+                console.log(`You have dealt the wild beast ${damageDealt} damage points`)
+                attacker['health'] -= damageDealt;
             }
-
-            let newItem = loot[Math.floor(Math.random()) * 3];
-            playerInventory['inventoryItems'].push(newItem);
-            console.log('Here is your inventory: ', playerInventory['inventoryItems'])
-
             return animalKilled
         }
     }
 }
+
+function showProgressBar(progress) {
+    let MAX = 30, MIN = 0, value = progress, key;
+    console.log('\n\n' + (new Array(20)).join(' ') +
+        'Walk: [W]  QUIT: [Q]\n');
+    while (true) {
+        console.log('\x1B[1A\x1B[K|' +
+            (new Array(value + 1)).join('-') + 'O' +
+            (new Array(MAX - value + 1)).join('-') + '| ' + value);
+        key = readline.keyIn('', {
+            hideEchoBack: true,
+            mask: '',
+            limit: 'wq '
+        });
+        if (value === 30) return ['', value];
+
+        if (key === 'w') {
+            if (value < MAX) {
+                value++;
+            }
+        } else if (key === 'q') {
+            return ['q', value]
+        }
+    }
+    console.log('\nA value the user requested: ' + value);
+}
+
+function endGame() {
+    console.log('You have saved your grandma!! Congratulations')
+}
+
+console.log('You have decided to quit, your grandma was eaten by a pack of wild animals')

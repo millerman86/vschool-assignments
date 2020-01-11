@@ -3,11 +3,21 @@
     padding: 0;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 nav.global-site-nav {
     padding: 25px;
 }
 
 nav div.site-navigation-group {
+    display: flex;
+    align-items: center;
+}
+
+nav#mobile__desktop-nav {
     display: flex;
     align-items: center;
 }

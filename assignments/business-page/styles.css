@@ -8,48 +8,130 @@ a {
     color: inherit;
 }
 
-nav.global-site-nav {
-    padding: 25px;
+section#navigation-header {
+    padding: 7px;
 }
 
-nav div.site-navigation-group {
+nav.navigation-bar {
     display: flex;
     align-items: center;
+    padding: 5px;
 }
 
-nav#mobile__desktop-nav {
+nav.navigation-bar ul {
     display: flex;
-    align-items: center;
+    flex: 1;
+    padding: 5px;
 }
 
-nav div.site-navigation-group span {
-    font-size: 0;
-}
-
-nav.global-site-nav span {
-    margin-left: 20px;
-}
-
-nav.global-site-nav span:first-child {
-    margin-left: auto;
-}
-
-nav.global-site-nav div.hamburger {
-    margin-left: 30px;
-    min-height: 15px;
+nav.navigation-bar li {
+    list-style-type: none;
+    margin-left: 10px;
     display: flex;
-    width: 21px;
     flex-direction: column;
     justify-content: space-between;
 }
 
-nav.global-site-nav div.hamburger span {
-    background-color: black;
-    border-radius: 10px;
-    margin-left: 0;
-    height: 3px;
-    width: 100%;
+nav.navigation-bar a {
+    font-size: 14px;
 }
+
+nav.navigation-bar .hamburger-icon {
+    width: 15px;
+    height: 10px;
+}
+
+
+nav.navigation-bar ul li:first-child {
+    margin-left: auto;
+}
+
+nav li span {
+    border-radius: 15px;
+    height: 2px;
+    background: black;
+
+}
+
+section#quicksearch-section {
+    height: 720px;
+    padding-top: 95px;
+    padding-bottom: 40px;
+    background: url('https://t3.realgeeks.media/thumbnail/VPIUDBbK62w8m3t-udqA66m3feQ=/fit-in/0x720/https://u.realgeeks.media/greenvillescrealestate/_rgg/landscape_images/BeautifulHomeExterior.jpg') no-repeat 50% 50%;
+    background-size: cover;
+}
+
+
+
+
+/* 
+
+nav.navigation-bar li:last-child {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+nav.navigation-bar .hamburger-icon {
+    display: flex;
+    justify-content: space-between;
+}
+nav.navigation-bar .hamburger-icon span {
+    height: 2px;
+    border-radius: 20px;
+    background-color: black;    
+}
+
+nav.navigation-bar {
+    display: flex;
+    align-items: center;
+}
+
+nav.navigation-bar li {
+   margin-left: 20px;
+}
+nav.navigation-bar .hamburger-icon li {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+nav.navigation-bar .hamburger-icon li span {
+   width: 100%;
+   height: 2px;
+   background: black;
+}
+
+nav.navigation-bar ul {
+    display: flex;
+    align-items: center;
+}
+
+nav.navigation-bar ul {
+    display: flex;
+}
+
+nav.navigation-bar ul li:first-of-type {
+    margin-left: auto;
+}
+
+
+nav.navigation-bar div {
+    display: flex;
+    padding: 5px;
+}
+
+nav.navigation-bar span {
+    margin-left: 20px;
+}
+
+nav.navigation-bar div a:first-child {
+    margin-left: auto;
+}
+
+nav.navigation-bar a {
+    margin-left: 20px;
+} 
 
 section#quicksearch-section {
     height: 720px;
@@ -98,4 +180,4 @@ body.nav-open .site-navigation-mobile {
     background-color: white;
     width: calc(100vw - 40px);
     transition: all .3s ease-in-out;
-}
+} */

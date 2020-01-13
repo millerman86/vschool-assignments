@@ -62,6 +62,81 @@ section#quicksearch-section {
 }
 
 
+aside.hamburger-popout {
+    position: absolute;
+    right: -100%;
+    transition: all .3s ease-in-out;
+}
+
+body.nav-open aside.hamburger-popout {
+    right: 0;
+    top: 0;
+    width: calc(100vw - 40px);
+    transition: all .3s ease-in-out;
+    background: white;
+}
+
+.x-icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 4px;
+    margin: auto;
+    height: 20px;
+    width: 20px;
+    transform: rotate(45deg);
+}
+
+
+.x-icon span {
+    position: absolute;
+    background: black;
+    height: 2px;
+    left: 0;
+    right: 0;
+}
+
+
+.x-icon span:first-child {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.x-icon span:last-child {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: black;
+    height: 2px;
+    transform: rotate(90deg);
+    margin: auto;
+}
+
+.site-navigation-mobile {
+    position: relative;
+}
+
+.site-navigation-mobile .home {
+    position: relative;
+}
+
+.hamburger-popout div:not(.x-icon) {
+    padding: 10px;
+    border-bottom: 1px solid lightgrey;
+}
+
+
+
+
+
+
+
 
 
 /* 

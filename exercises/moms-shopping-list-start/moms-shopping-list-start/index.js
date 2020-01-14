@@ -1,3 +1,35 @@
+// THIS FUNCTION CAN BE RUN AT ANY POINT IN ORDER TO GIVE AN INDEX POSITION TO THE ITEMS IN THE LIST 
+function listIndexingFunction() {
+    var g = document.getElementById('list');
+    for (var i = 0, len = g.children.length; i < len; i++) {
+
+        (function (index) {
+            g.querySelectorAll('li')[i].querySelector('.edit').onclick = function (event) {
+                // event.parentElement.remove();
+                showEdit(event, index);
+            }
+        })(i);
+
+    }
+}
+
+
+
+function submitNewListItem(event) {
+    event.preventDefault();
+
+    let text = document.getElementById('title').value;
+    document.getElementById('list').insertAdjacentHTML('beforeend', `
+    <li>
+        <p class="todo">${text}</p>
+        <button class="edit">Edit</button>
+        <button onclick="deleteListItem(event)">X</button>
+    </li>`);
+
+    listIndexingFunction();
+}
+
+
 function deleteListItem(event) {
     let parentElement = event.target.parentElement;
     parentElement.remove();
@@ -9,39 +41,30 @@ function deleteListItem(event) {
             document.querySelector('#list-header').innerHTML = 'You have no items'
         }
     }
+
+    listIndexingFunction();
 }
 
-function submitNewListItem(event) {
-    event.preventDefault();
-}
-
-function submitNewListItem(event) {
-    event.preventDefault();
-
-    let text = document.getElementById('title').value;
-    document.getElementById('list').insertAdjacentHTML('beforeend', `
-    <li>
-        <p>${text}</p>
-        <button onclick="showEdit()">edit</button>
-        <button onclick="deleteListItem(event)">X</button>
-    </li>`);
-}
-
-function editListItem(event) {
-    event.preventDefault();
-}
-
-function showEdit(event) {
+let editItemIndex = undefined;
+function showEdit(event, index) {
     document.querySelector('#edit-todo').classList.remove('hidden');
     document.querySelector('#edit-todo').classList.add('show');
-    
-    console.log(event.target.parentElement.querySelector('.todo'))
-    document.querySelector('#edit-text').value = event.target.parentElement.querySelector('.todo').textContent;
+
+    document.querySelector('#edit-text').value = event.target.parentElement.querySelector('.todo').textContent + index;
+
+    editItemIndex = index;
+
+    console.log('here is your index', index)
+}
+
+function editListItem(event, itemToEdit) {
+    event.preventDefault();
+
+    alert(itemToEdit)
 }
 
 
 function cancelEdit() {
-    console.log('you are here')
     document.querySelector('#edit-text').textContent = '';
     document.querySelector('#edit-todo').classList.add('hidden');
 
@@ -96,10 +119,10 @@ function cancelEdit() {
 
 
 
- // let newElement = document.createElement(`li`);
-    // newElement.innerHTML = `
-    //     <div>${text}</div>
-    //     <button>edit</button>
-    //     <button>X</button>
-    // `;
-    // document.getElementById('list').appendChild(newElement);
+// let newElement = document.createElement(`li`);
+// newElement.innerHTML = `
+//     <div>${text}</div>
+//     <button>edit</button>
+//     <button>X</button>
+// `;
+// document.getElementById('list').appendChild(newElement);

@@ -54,10 +54,7 @@ section#mixed>div.orange {
         display: inline-block;
         height: 100%;
         width: 25%;
-        border-left: 5px solid white;
-        border-right: 5px solid white;
-        border-top: 5px solid white;
-        border-bottom: 5px solid white;
+        border: 5px solid white;
     }
 
     section#dark-pink>div:first-child {
@@ -72,10 +69,7 @@ section#mixed>div.orange {
         display: inline-block;
         height: 100%;
         width: 50%;
-        border-top: 5px solid white;
-        border-left: 5px solid white;
-        border-right: 5px solid white;
-        border-bottom: 5px solid white;
+        border: 5px solid white;
     }
 
     section#light-blue>div:first-child {
@@ -88,9 +82,8 @@ section#mixed>div.orange {
 
     section#mixed>div {
         display: inline-block;
-        border-top: 5px solid white;
-        border-left: 5px solid white;
-        border-right: 5px solid white;
+        border: 5px solid white;
+        border-bottom: none;
     }
 
     section#mixed>div:first-child,

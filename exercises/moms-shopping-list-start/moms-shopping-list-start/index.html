@@ -19,19 +19,17 @@
         </div>
 
 
-
-
         <form name="addItem" id="add-todo" onsubmit="submitNewListItem(event)" autocomplete="off">
-            <label class="label" for="title">Item name</label>
+            <label class="label" for="title">Item Name</label>
             <input class="input" name="title" id="title" />
 
             <div class="submit-container">
-                <button type="submit">submit</button>
+                <button type="submit">Submit</button>
             </div>
 
         </form>
 
-        <form name="addItem" id="edit-todo" class="edit-todo hidden" onsubmit="editListItem(event)" autocomplete="off">
+        <form name="addItem" id="edit-todo" class="edit-todo hidden" onsubmit="editListItem(event, editItemIndex)" autocomplete="off">
 
             <label class="label" for="edit">Edit item</label>
             <input id="edit-text" type="text" class="input" name="edit">
@@ -45,17 +43,13 @@
 
         <div class="todos">
             <div class="title-bar">
-                <h3 class="title" id='list-header'>list of items</h3>
+                <h3 class="title" id='list-header'>List of Items</h3>
             </div>
             <hr>
 
             <!-- RUN A FUNCTION EVERY TIME A CHILD IS DELETED THAT DETERMINES WHETHER TO DISPLAY THAT YOU HAVE NO ITEMS -->
             <ul id="list">
-                <li>
-                    <p class="todo">milk</p>
-                    <button onclick="showEdit(event)">edit</button>
-                    <button onclick="deleteListItem(event)">X</button onclick="delete()">
-                </li>
+               
             </ul>
 
             <hr>

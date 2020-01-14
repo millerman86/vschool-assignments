@@ -5,7 +5,6 @@ function listIndexingFunction() {
 
         (function (index) {
             g.querySelectorAll('li')[i].querySelector('.edit').onclick = function (event) {
-                // event.parentElement.remove();
                 showEdit(event, index);
             }
         })(i);
@@ -50,17 +49,18 @@ function showEdit(event, index) {
     document.querySelector('#edit-todo').classList.remove('hidden');
     document.querySelector('#edit-todo').classList.add('show');
 
-    document.querySelector('#edit-text').value = event.target.parentElement.querySelector('.todo').textContent + index;
+    document.querySelector('#edit-text').value = event.target.parentElement.querySelector('.todo').textContent;
 
     editItemIndex = index;
-
-    console.log('here is your index', index)
 }
 
 function editListItem(event, itemToEdit) {
     event.preventDefault();
 
-    alert(itemToEdit)
+    let replacementText = document.forms['editItem'].querySelector('#edit-text').value;
+
+    var list = document.getElementById('list');
+    list.querySelectorAll('li')[itemToEdit].querySelector('.todo').textContent = replacementText;
 }
 
 

@@ -31,7 +31,6 @@ var alphabet = [
     'z',
 ];
 
-// console.log(alphabet[25]);
 const enumerated = {};
 for (const [a, b] of alphabet.entries()) {
     enumerated[a] = b;
@@ -44,13 +43,13 @@ while (true) {
     shift = parseInt(readline.question('How many letters would you like to shift? '));
     if (isNaN(shift)) continue;
     if (shift > 26) { 
+        console.clear();
         console.log('Please choose a number 26 or below');
         continue;
     }
     break;
 }
 
-// shift -= 1;
 
 input = input.split('');
 
@@ -75,6 +74,23 @@ input = input.map((item) => {
 })
 
 console.log(input.join(''))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

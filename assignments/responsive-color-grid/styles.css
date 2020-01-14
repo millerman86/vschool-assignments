@@ -9,50 +9,55 @@ section>div {
     height: calc(100vh / 9);
 }
 
-section#pink-section {
+section#pink-section>div {
     background-color: #F5C6D6;
 }
 
 section#dark-pink>div {
-    background-color: #EE2E84;
     border-top: 2px solid white;
+    background-color: #EE2E84;
 }
 
 section#light-blue>div {
-    background-color: #85CFD8;
     border-top: 2px solid white;
+    background-color: #85CFD8;
 }
 
-section#mixed>div:first-child {
+section#mixed>div.light-blue {
     border-top: 2px solid white;
     background-color: #8DC63F;
 }
 
-section#mixed>div:last-child {
-    background-color: #E76E34;
+section#mixed>div.orange {
     border-top: 2px solid white;
+    background-color: #E76E34;
 }
 
 @media only screen and (min-width: 768px) {
-    section#pink-section {
+
+    section#pink-section,
+    section#dark-pink,
+    section#light-blue,
+    section#mixed {
         height: 25vh;
-        margin-bottom: 5px;
     }
 
-    section.pink {
+    section#pink-section>div {
         height: 100%;
-        width: 100%;
     }
 
-    section#dark-pink {
-        height: 25vh;
+    section#pink-section>div {
+        border-bottom: 5px solid white;
     }
 
     section#dark-pink>div {
         display: inline-block;
         height: 100%;
         width: 25%;
-        border: 5px solid white;
+        border-left: 5px solid white;
+        border-right: 5px solid white;
+        border-top: 5px solid white;
+        border-bottom: 5px solid white;
     }
 
     section#dark-pink>div:first-child {
@@ -63,17 +68,14 @@ section#mixed>div:last-child {
         border-right: none;
     }
 
-    section#light-blue {
-        height: 25vh;
-        background-color: inherit;
-
-    }
-
     section#light-blue>div {
         display: inline-block;
         height: 100%;
         width: 50%;
-        border: 5px solid white;
+        border-top: 5px solid white;
+        border-left: 5px solid white;
+        border-right: 5px solid white;
+        border-bottom: 5px solid white;
     }
 
     section#light-blue>div:first-child {
@@ -84,13 +86,11 @@ section#mixed>div:last-child {
         border-right: none;
     }
 
-    section#mixed {
-        height: 25vh;
-    }
-
     section#mixed>div {
         display: inline-block;
-        border: 5px solid white;
+        border-top: 5px solid white;
+        border-left: 5px solid white;
+        border-right: 5px solid white;
     }
 
     section#mixed>div:first-child,
@@ -109,5 +109,15 @@ section#mixed>div:last-child {
         width: 25%;
         border-right: none;
     }
-}
 
+
+    section#mixed>div.light-blue {
+        border-top: 5px solid white;
+        background-color: #8DC63F;
+    }
+
+    section#mixed>div.orange {
+        border-top: 5px solid white;
+        background-color: #E76E34;
+    }
+}

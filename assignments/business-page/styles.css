@@ -71,7 +71,7 @@ aside.hamburger-popout {
 body.nav-open aside.hamburger-popout {
     right: 0;
     top: 0;
-    width: calc(100vw - 40px);
+    width: calc(100vw - 80px);
     transition: all .3s ease-in-out;
     background: white;
 }

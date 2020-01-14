@@ -12,7 +12,13 @@ function listIndexingFunction() {
     }
 }
 
+determineIfDisplayNoItems();
 
+function determineIfDisplayNoItems() {
+    if (document.getElementById('list').querySelectorAll('li').length === 0) {
+        document.querySelector('#list-header').innerHTML = 'You have no items'
+    }
+}
 
 function submitNewListItem(event) {
     event.preventDefault();
@@ -34,12 +40,6 @@ function deleteListItem(event) {
     parentElement.remove();
 
     determineIfDisplayNoItems();
-
-    function determineIfDisplayNoItems() {
-        if (document.getElementById('list').querySelectorAll('li').length === 0) {
-            document.querySelector('#list-header').innerHTML = 'You have no items'
-        }
-    }
 
     listIndexingFunction();
 }
@@ -67,7 +67,6 @@ function editListItem(event, itemToEdit) {
 function cancelEdit() {
     document.querySelector('#edit-text').textContent = '';
     document.querySelector('#edit-todo').classList.add('hidden');
-
 }
 
 

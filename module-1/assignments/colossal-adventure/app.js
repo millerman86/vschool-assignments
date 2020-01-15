@@ -3,7 +3,17 @@ let readline = require('readline-sync');
 
 console.log('Let\'s play a game!! You will fight an animal.');
 let name = readline.question('Please tell me your name, \nPlease type here: ');
+console.clear();
 console.log(`Hello, ${name}, are you ready to begin your journey?`);
+
+pause(2000);
+
+function pause(milliseconds) {
+    var dt = new Date();
+    while ((new Date()) - dt <= milliseconds) {
+        /* Do nothing */
+    }
+}
 
 // THE DOCUMENTATION FOR BOTH OF THE NUMBER FUNCTIONS BELOW CAN BE FOUND AT THE GIVEN LINK
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
@@ -58,14 +68,19 @@ let player = {
 let command = '';
 
 
+
+let progression = 0;
 BeginGame: while (command != 'q') {
     console.clear();
     console.log('You are trying to make it to grandma\'s house in the woods to save her from being eaten. \nPress w to walk, otherwise press q to quit');
 
-    let progress = 0;
-    let innerCommand, progression = showProgressBar(progress);
+    let innerCommand;
+
+    [innerCommand, progression] = showProgressBar(progression);
 
     if (progression === 30) endGame();
+    progression += 1;
+
 
     if (innerCommand === 'q') break;
 
@@ -107,7 +122,7 @@ BeginGame: while (command != 'q') {
                 let playerIsDead;
                 killed, playerIsDead = animalAttack(animals[attacker], loot);
 
-                if (playerIsDead) endGame();
+                if (playerIsDead) gameOver();
 
                 if (!killed) {
                     console.log('But the animal is not yet dead. The battle rages on!')
@@ -138,7 +153,7 @@ oOOO()
                                 `)
                                 console.log(`\n\n\n\n
         ()OOOo   
-        (_   \ 
+        (_   \\ 
          )   |   
          (__/                             
                                 `)
@@ -148,7 +163,8 @@ oOOO()
                         function pause(milliseconds) {
                             var dt = new Date();
                             while ((new Date()) - dt <= milliseconds) {
-                                /* Do nothing */ }
+                                /* Do nothing */
+                            }
                         }
                         case 1:
 
@@ -162,7 +178,7 @@ oOOO()
                                 let playerIsDead;
                                 killed, playerIsDead = animalAttack(animals[attacker], loot);
 
-                                if (playerIsDead) endGame();
+                                if (playerIsDead) gameOver();
                                 if (killed) {
                                     continue BeginGame;
                                 }
@@ -185,7 +201,7 @@ oOOO()
                                     `)
                                     console.log(`\n\n\n\n
             ()OOOo   
-            (_   \ 
+            (_   \\ 
              )   |   
              (__/                             
                                     `)
@@ -195,7 +211,8 @@ oOOO()
                             function pause(milliseconds) {
                                 var dt = new Date();
                                 while ((new Date()) - dt <= milliseconds) {
-                                    /* Do nothing */ }
+                                    /* Do nothing */
+                                }
                             }
                             break;
                         default:
@@ -244,18 +261,21 @@ oOOO()
                 console.log('The wild beast takes his turn');
                 console.log(`It deals ${damageDealt} damage!`);
 
-                
+
                 if (player['health'] < 0) {
                     let playerIsDead = true;
-                    return [killed, playerIsDead];
+                    return [animalKilled, playerIsDead];
                 }
             }
 
             let playerIsDead = false;
-            return [killed, playerIsDead];
+            return [animalKilled, playerIsDead];
         }
     }
 }
+
+
+
 
 function showProgressBar(progress) {
     let MAX = 30,
@@ -273,7 +293,10 @@ function showProgressBar(progress) {
             mask: '',
             limit: 'wq '
         });
-        if (value === 30) return ['', value];
+
+        if (value === 10) return ['', value]
+        if (value === 20) return ['', value]
+        if (value === 30) return ['', value]
 
         if (key === 'w') {
             if (value < MAX) {
@@ -283,11 +306,11 @@ function showProgressBar(progress) {
             return ['q', value]
         }
     }
-    console.log('\nA value the user requested: ' + value);
 }
 
 function endGame() {
-    console.log('You have saved your grandma!! Congratulations')
+    console.log('You have saved your grandma!! Congratulations!!')
+    process.exit(0)
 }
 
 console.log('You have decided to quit, your grandma was eaten by a pack of wild animals')

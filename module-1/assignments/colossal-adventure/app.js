@@ -51,6 +51,10 @@ let animals = [{
     }
 ];
 
+let player = {
+    health: 100
+};
+
 let command = '';
 
 
@@ -98,25 +102,31 @@ BeginGame: while (command != 'q') {
             console.clear();
             if (run === 'n') {
                 // console.clear();
-                console.log('You have chosen to stay and attack the animal')
-                killed = animalAttack(animals[attacker], loot);
+                console.log('You have chosen to stay and attack the animal');
+
+                let playerIsDead;
+                killed, playerIsDead = animalAttack(animals[attacker], loot);
+
+                if (playerIsDead) endGame();
+
                 if (!killed) {
-                    console.log('But the animal is not yet dead, the battle rages on!')
+                    console.log('But the animal is not yet dead. The battle rages on!')
                     continue Ask;
                 }
             } else {
                 let escapeOrNot = Math.floor(Math.random() * 2);
                 switch (escapeOrNot) {
                     case 0:
-                        console.log('You have escaped!');
 
                         runSequence(2000);
-                        
+
+                        console.log('You have escaped!');
+
                         pause(700)
 
                         continue BeginGame
 
-                       
+
                         function runSequence(milliseconds) {
                             var dt = new Date();
                             while ((new Date()) - dt <= milliseconds) {
@@ -137,27 +147,33 @@ oOOO()
 
                         function pause(milliseconds) {
                             var dt = new Date();
-                            while ((new Date()) - dt <= milliseconds) { /* Do nothing */ }
+                            while ((new Date()) - dt <= milliseconds) {
+                                /* Do nothing */ }
                         }
                         case 1:
-                            
+
                             runSequence(2000);
+
                             console.log(`You have not escaped. Now you must fight ${attackerName}`);
-                            
+
                             pause(700)
-                                if (!animals[attacker]['isDead']) {
-                                    killed = animalAttack(animals[attacker], loot);
-                                    if (killed) {
-                                        continue BeginGame;
-                                    }
-                                    if (!killed) {
-                                        console.log('But the animal is not yet dead, the battle rages on!')
-                                        continue Ask;
-                                    }
+                            if (!animals[attacker]['isDead']) {
+
+                                let playerIsDead;
+                                killed, playerIsDead = animalAttack(animals[attacker], loot);
+
+                                if (playerIsDead) endGame();
+                                if (killed) {
+                                    continue BeginGame;
                                 }
-    
-    
-                           
+                                if (!killed) {
+                                    console.log('But the animal is not yet dead, the battle rages on!')
+                                    continue Ask;
+                                }
+                            }
+
+
+
                             function runSequence(milliseconds) {
                                 var dt = new Date();
                                 while ((new Date()) - dt <= milliseconds) {
@@ -175,10 +191,11 @@ oOOO()
                                     `)
                                 }
                             }
-    
+
                             function pause(milliseconds) {
                                 var dt = new Date();
-                                while ((new Date()) - dt <= milliseconds) { /* Do nothing */ }
+                                while ((new Date()) - dt <= milliseconds) {
+                                    /* Do nothing */ }
                             }
                             break;
                         default:
@@ -192,9 +209,13 @@ oOOO()
             let minDamage = 20;
             let maxDamage = 40;
             let damageDealt = getRandomIntMinMax(minDamage, maxDamage);
-            if (attacker['health'] < 1) {
-                console.log(`You have dealt ${damageDealt} damage to the enemy`);
 
+            attacker['health'] -= damageDealt;
+
+            console.log('You take your best swing at the wild beast! \n\nThe result?\n');
+            console.log(`You have dealt the wild beast ${damageDealt} damage points`)
+
+            if (attacker['health'] < 1) {
                 attacker['isDead'] = true;
                 animalKilled = true;
                 console.log('You have killed the enemy');
@@ -208,11 +229,30 @@ oOOO()
                 // continue BeginGame;
             } else if (attacker['health'] > 1) {
                 animalKilled = false;
-                console.log('You take your best swing at the wild beast! \n\nThe result?\n');
-                console.log(`You have dealt the wild beast ${damageDealt} damage points`)
-                attacker['health'] -= damageDealt;
+
+
+                animalAttacksBack();
             }
-            return animalKilled
+
+            function animalAttacksBack() {
+                let minDamage = 20;
+                let maxDamage = 40;
+                let damageDealt = getRandomIntMinMax(minDamage, maxDamage);
+
+                player['health'] -= damageDealt;
+
+                console.log('The wild beast takes his turn');
+                console.log(`It deals ${damageDealt} damage!`);
+
+                
+                if (player['health'] < 0) {
+                    let playerIsDead = true;
+                    return [killed, playerIsDead];
+                }
+            }
+
+            let playerIsDead = false;
+            return [killed, playerIsDead];
         }
     }
 }
@@ -251,3 +291,7 @@ function endGame() {
 }
 
 console.log('You have decided to quit, your grandma was eaten by a pack of wild animals')
+
+function gameOver() {
+    console.log('The game is OVER!!!! You lost!!')
+}

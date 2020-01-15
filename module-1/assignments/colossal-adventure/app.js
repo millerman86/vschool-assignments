@@ -111,24 +111,40 @@ BeginGame: while (command != 'q') {
         let ask = true;
 
         Ask: while (ask) {
-            let killed;
             let run = readline.question('Will you run? y/n?').toLowerCase();
 
             console.clear();
+
+
+
+
             if (run === 'n') {
                 // console.clear();
                 console.log('You have chosen to stay and attack the animal');
 
-                let playerIsDead;
-                [killed, playerIsDead] = animalAttack(animals[attacker], loot);
+                let playerIsDead, animalKilled;
+                [animalKilled, playerIsDead] = animalAttack(animals[attacker], loot);
 
                 if (playerIsDead) gameOver();
 
-                if (!killed) {
+                if (!animalKilled) {
                     console.log('You are still alive........')
-                    console.log('but the animal is not yet dead, so the battle rages on!')
+                    console.log('but the animal is not yet dead, so the battle rages on!');
+                    pause(3000);
+                    console.clear();
+                    
                     continue Ask;
+                } else {
+                    for (let animal of animals) {
+                        animal['health'] = 100;
+                        animal['isDead'] = false; // RESET ALL ANIMAL HEALTH
+                    }
+                    continue BeginGame;
                 }
+
+
+               
+
             } else {
                 let escapeOrNot = Math.floor(Math.random() * 2);
                 switch (escapeOrNot) {
@@ -139,6 +155,11 @@ BeginGame: while (command != 'q') {
                         console.log('You have escaped!');
 
                         pause(700)
+
+                        animals.forEach((animal) => {
+                            animal['health'] = 0;
+                            animal['isDead'] = false;
+                        })
 
                         continue BeginGame
 
@@ -173,17 +194,21 @@ oOOO()
 
                             console.log(`You have not escaped. Now you must fight ${attackerName}`);
 
-                            pause(700)
+                            pause(700);
+
+
+
+
                             if (!animals[attacker]['isDead']) {
 
                                 let playerIsDead;
-                                killed, playerIsDead = animalAttack(animals[attacker], loot);
+                                [animalKilled, playerIsDead] = animalAttack(animals[attacker], loot);
 
                                 if (playerIsDead) gameOver();
-                                if (killed) {
+                                if (animalKilled) {
                                     continue BeginGame;
                                 }
-                                if (!killed) {
+                                if (!animalKilled) {
                                     console.log('But the animal is not yet dead, the battle rages on!')
                                     continue Ask;
                                 }
@@ -245,7 +270,12 @@ oOOO()
 
                 console.log('It dropped something.....you pick it up and put it in your inventory');
                 console.log('Here is your inventory: ', playerInventory['inventoryItems']);
-                // continue BeginGame;
+
+                pause(3000);
+                // for (let animal of animals) {
+                //     animal['health'] = 100;
+                //     animal['isDead'] = false; // RESET ALL ANIMAL HEALTH
+                // }
             } else if (attacker['health'] > 1) {
                 animalKilled = false;
 

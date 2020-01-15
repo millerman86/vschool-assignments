@@ -120,12 +120,13 @@ BeginGame: while (command != 'q') {
                 console.log('You have chosen to stay and attack the animal');
 
                 let playerIsDead;
-                killed, playerIsDead = animalAttack(animals[attacker], loot);
+                [killed, playerIsDead] = animalAttack(animals[attacker], loot);
 
                 if (playerIsDead) gameOver();
 
                 if (!killed) {
-                    console.log('But the animal is not yet dead. The battle rages on!')
+                    console.log('You are still alive........')
+                    console.log('but the animal is not yet dead, so the battle rages on!')
                     continue Ask;
                 }
             } else {
@@ -226,6 +227,7 @@ oOOO()
             let minDamage = 20;
             let maxDamage = 40;
             let damageDealt = getRandomIntMinMax(minDamage, maxDamage);
+            let playerIsDead;
 
             attacker['health'] -= damageDealt;
 
@@ -258,6 +260,10 @@ oOOO()
 
                 player['health'] -= damageDealt;
 
+
+                pause(2000);
+                console.clear();
+
                 console.log('The wild beast takes his turn');
                 console.log(`It deals ${damageDealt} damage!`);
 
@@ -265,10 +271,13 @@ oOOO()
                 if (player['health'] < 0) {
                     let playerIsDead = true;
                     return [animalKilled, playerIsDead];
+                } else {
+                    animalKilled = false;
+                    playerIsDead = true;
                 }
             }
 
-            let playerIsDead = false;
+            playerIsDead = false;
             return [animalKilled, playerIsDead];
         }
     }

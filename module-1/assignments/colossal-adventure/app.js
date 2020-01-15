@@ -62,7 +62,7 @@ let animals = [{
 ];
 
 let player = {
-    health: 100
+    health: 50
 };
 
 let command = '';
@@ -287,20 +287,22 @@ oOOO()
                 let minDamage = 20;
                 let maxDamage = 40;
                 let damageDealt = getRandomIntMinMax(minDamage, maxDamage);
-
-                player['health'] -= damageDealt;
-
-
-                pause(2000);
-                console.clear();
-
+                
                 console.log('The wild beast takes his turn');
                 console.log(`It deals ${damageDealt} damage!`);
 
+                player['health'] -= damageDealt;
+
+                console.log(player['health'])
+                pause(2000);
+                console.clear();
+
+
 
                 if (player['health'] < 0) {
-                    let playerIsDead = true;
-                    return [animalKilled, playerIsDead];
+                    // let playerIsDead = true;
+                    return gameOver();
+                    // return [animalKilled, playerIsDead];
                 } else {
                     animalKilled = false;
                     playerIsDead = true;
@@ -356,4 +358,5 @@ console.log('You have decided to quit, your grandma was eaten by a pack of wild 
 
 function gameOver() {
     console.log('The game is OVER!!!! You lost!!')
+    process.exit(0);
 }

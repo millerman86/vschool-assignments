@@ -1,0 +1,35 @@
+body {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    color: black;
+    font-size: 20px;
+    font-family: sans-serif;
+}
+
+
+
+h1, .navbar {
+    color: black;
+
+}
+
+.navbar li {
+    display: inline-block;
+}
+
+.welcome {
+    text-decoration: underline;
+}
+
+.code-photo {
+    max-width: 700px;
+    float: left;
+}
+
+.list {
+    clear: both;
+}
+
+.fake-link {
+    text-decoration: underline;
+    cursor: pointer;
+}

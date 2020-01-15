@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <title>Travel Form</title>
 </head>
-<script src="app.js"></script>
 <body>
     <h1>Welcome to Blah Blah Airlines!</h1>
     <p>Please fill out the folowing form so we don't accidentaly kill you, Yay...</p>
-    <form id="airline-form" onsubmit="formAlert()">
-        <input type="text" name="first-name">
+    <form id="airline-form" name="airline-form" onsubmit="formAlert()">
+        <input type="text" name="first-name" autocomplete="off">
         <label for="">First Name</label>
         <br>
-        <input type="text" name="last-name">
+        <input type="text" name="last-name" autocomplete="off">
         <label for="">Last Name</label>
         <br>
         <input type="digit" name="age">
@@ -36,21 +35,20 @@
         <br>
 
 
-        <input class="diet" type="checkbox" id="vegan" name="vegan">
+        <input class="diet" type="checkbox" id="vegan" name="vegan" value="vegan">
         <label for="vegan-input">Vegan</label>
-        <input type="text" name="vegan-input" id="vegan-input">
 
         <br>
         <br>
-        <input class="diet" type="checkbox" id="gluten" name="gluten">
+        <input class="diet" type="checkbox" id="gluten" name="gluten" value="gluten">
         <label for="gluten">Gluten-free</label>
-        <input class="diet" type="text" name="gluten-input" id="gluten-input">
         <br>
-        <input class="diet" type="checkbox" name="paleo" id="paleo">
-        <input type="text" name="paleo-input" id="paleo-input">
+        <input class="diet" type="checkbox" name="paleo" id="paleo" value="paleo">
         <label for="paleo">Paleo, jk you eat what we give you!</label>
         <br>
         <button type="button" type="submit" id="submit">Submit</button>
     </form>
+    <script src="app.js"></script>
 </body>
+
 </html>

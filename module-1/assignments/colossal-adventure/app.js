@@ -85,7 +85,7 @@ BeginGame: while (command != 'q') {
     if (innerCommand === 'q') break;
 
     let attackOrNot = Math.random() * 10;
-    if (Math.ceil(attackOrNot) * 10 <= ((4 / 4) * 100)) {
+    if (Math.ceil(attackOrNot) * 10 <= ((1 / 4) * 100)) {
         // EXTRA CREDIT: FIND OUT HOW TO REVERSE THE BEAR STRING WHILE STILL PRESERVING WHITE SPACE, THEN I CAN USE IT IN MY GAME, USE A REGEX
         // https://www.asciiart.eu/animals/bears
         // let deadBear = "'........`                 '-.......` n   sgj\r\n'-......;        '.`'\"\"'`         '.        '......` \r\n;      ;      '._._      __..--`'.      '.__      '. \r\n.`   ;        :              '.      '.      '.__   \r\n.`;          :            ;      '.-`    '.       \r\n;           :           ;       ;    .`.         \r\n;            `           :        `     .`        \r\n;                        '               .`       \r\n;                                   '\"'   .`      \r\n'.;                                '._'-`_.` :      \r\n; ;                             '.: '--'--' :.`     \r\n.`,`                          :  .`   :   '.  :    \r\n.'        \"'--....-\"'\"\"'---:     _.-0-._     :   \r\n_.....__                 :      a   a      :   \r\n.`    ^   ^    '.    \r\n'.             .`    \r\n;\"'._..---.._.'\":";
@@ -312,6 +312,8 @@ oOOO()
             playerIsDead = false;
             return [animalKilled, playerIsDead];
         }
+    } else {
+        continue BeginGame;
     }
 }
 

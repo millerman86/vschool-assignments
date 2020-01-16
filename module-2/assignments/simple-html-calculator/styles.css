@@ -1,0 +1,35 @@
+.calculator-body {
+    display: inline-block;
+    border: 1px solid black;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex button {
+    flex: 1;
+}
+
+.add-number-one, 
+.add-number-two {
+    color: blue;
+}
+
+#add-output, 
+#subtract-output, 
+#multiply-output {
+    text-align: center;
+}
+
+#add {
+    color: blue;
+}
+
+#subtract {
+    color: green;
+}
+
+#multiply {
+    color: red;
+}

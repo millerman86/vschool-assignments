@@ -1,27 +1,36 @@
 <html>
 
 <head>
-    
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <div>
-        <div id="add-output"></div>
-        <input type="number" id="add-number-one">
-        <input type="number" id="add-number-two">
-        <button id="add"></button>
-    </div>
-    <div>
-        <div id="subtract-output"></div>
-        <input type="number" id="subtract-number-one">
-        <input type="number" id="subtract-number-two">
-        <button id="subtract"></button>
-    </div>
-    <div>
-        <div id="multiply-output"></div>
-        <input type="number" id="multiply-number-one">
-        <input type="number" id="multiply-number-two">
-        <button id="multiply"></button>
+
+
+    <div class="calculator-body">
+
+        <div id="add-output">&nbsp;</div>
+        <div class="flex">
+            <input placeholder="Add Num 1" type="number" id="add-number-one">
+            <input placeholder="Add Num 2" type="number" id="add-number-two">
+            <button id="add">ADD</button>
+        </div>
+
+
+        <div id="subtract-output">&nbsp;</div>
+        <div class="flex">
+            <input placeholder="Subtract Num 1" type="number" id="subtract-number-one">
+            <input placeholder="Subtract Num 2" type="number" id="subtract-number-two">
+            <button id="subtract">SUBTRACT</button>
+        </div>
+
+
+        <div id="multiply-output">&nbsp;</div>
+        <div class="flex">
+            <input placeholder="Multiply Num 1" type="number" id="multiply-number-one">
+            <input placeholder="Multiply Num 2" type="number" id="multiply-number-two">
+            <button id="multiply">MULTIPLY</button>
+        </div>
     </div>
     <script src="app.js"></script>
 </body>

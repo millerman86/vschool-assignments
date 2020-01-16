@@ -44,3 +44,10 @@ Student demonstrated a solid understanding with the following levels of the skil
   * Opening an HTML document in browser
 Extra Credit
 Build Mario Pest Control website to be responsive, meaning it looks great when shrunk down to the screen size of a smart phone.
+
+
+
+Things Learned
+
+- stepUp - Increment the value of the input field by one (or a specified increment count)
+- stepDown - Decrement the value of the input field by one (or a specified decrement count)

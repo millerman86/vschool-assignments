@@ -1,0 +1,55 @@
+input[name="pest"] {
+    outline: none;
+    font-size: 20px;
+    border: none;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    margin-left: 5px;
+    justify-content: center;
+}
+
+.pest-counter {
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    height: 100px;
+    width: 100px;
+    border: 1px solid black;
+    
+}
+
+.pest-container {
+    border: 1px solid black;
+    padding-top: 50px;
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+}
+
+#goomba {
+    position: absolute;
+    right: -5px;
+    top: 30px;
+    height: 25px;
+    z-index: 1;
+}
+
+#bob-ombs {
+    position: absolute;
+    right: 0;
+    top: 30px;
+    height: 20px;
+    z-index: 1;
+}
+
+#cheep-cheeps {
+    position: absolute;
+    right: -2px;
+    top: 30px;
+    height: 20px;
+    z-index: 1;
+}
+
+

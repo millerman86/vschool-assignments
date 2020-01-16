@@ -5,7 +5,7 @@ input[name="pest"] {
     width: 100%;
     text-align: center;
     position: absolute;
-    margin-left: 5px;
+    /* margin-left: 5px; */
     justify-content: center;
 }
 
@@ -50,6 +50,12 @@ input[name="pest"] {
     top: 30px;
     height: 20px;
     z-index: 1;
+}
+
+#goomba-input, 
+#bob-ombs-input, 
+#cheep-cheeps-input {
+    width: calc(100% + 16px);
 }
 
 

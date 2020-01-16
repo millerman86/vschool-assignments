@@ -5,9 +5,15 @@ input[name="pest"] {
     width: 100%;
     text-align: center;
     position: absolute;
-    /* margin-left: 5px; */
     justify-content: center;
 }
+
+input[name="pest"]:focus {
+    outline: none;
+    color: transparent;
+    text-shadow: 0 0 0 black;
+}
+
 
 .pest-counter {
     padding: 1px solid black;
@@ -32,6 +38,7 @@ input[name="pest"] {
     height: 100vh;
     display: flex;
     justify-content: space-around;
+    transition: .3s ease-in-out;
 }
 
 #goomba {
@@ -42,12 +49,20 @@ input[name="pest"] {
     z-index: 1;
 }
 
+#goomba:hover, 
+#bob-ombs:hover, 
+#cheep-cheeps:hover {
+    transform: scale(1.1);
+}
+
 #bob-ombs {
     position: absolute;
     right: 0;
     top: 30px;
     height: 20px;
     z-index: 1;
+    transition: all .1s ease-in-out;
+
 }
 
 #cheep-cheeps {
@@ -56,6 +71,8 @@ input[name="pest"] {
     top: 30px;
     height: 20px;
     z-index: 1;
+    transition: all .1s ease-in-out;
+
 }
 
 #goomba-input, 

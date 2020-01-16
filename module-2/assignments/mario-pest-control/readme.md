@@ -19,7 +19,7 @@ This will be dynamicly depending on how many baddies were caught.
 The website must contain the following:
 
 * A list displaying each baddie by type. Each list item * must:
-* Have baddie image
+* Have baddie image <input type="checkbox" checked>
 * Have baddie name
 * Show price of that baddie
 * Have an input box to enter the total caught of that * type

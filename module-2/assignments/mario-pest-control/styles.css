@@ -6,6 +6,7 @@ input[name="pest"] {
     text-align: center;
     position: absolute;
     justify-content: center;
+    align-self: center;
 }
 
 input[name="pest"]:focus {
@@ -14,6 +15,18 @@ input[name="pest"]:focus {
     text-shadow: 0 0 0 black;
 }
 
+h3.title {
+    width: 100%;
+    text-align: center;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+
+.pest-input {
+    display: flex;
+}
 
 .pest-counter {
     padding: 1px solid black;
@@ -21,8 +34,8 @@ input[name="pest"]:focus {
     align-items: center;
     position: relative;
     overflow: hidden;
-    height: 100px;
-    width: 100px;
+    height: 120px;
+    width: 120px;
     border: 1px solid black;
 }
 
@@ -30,6 +43,7 @@ input[name="pest"]:focus {
     right: 0px;
     bottom: 32px;
     position: absolute;
+    height: 27px;
 }
 
 .pest-container {
@@ -41,24 +55,25 @@ input[name="pest"]:focus {
     transition: .3s ease-in-out;
 }
 
-#goomba {
-    position: absolute;
-    right: -5px;
-    top: 30px;
-    height: 25px;
-    z-index: 1;
-}
-
 #goomba:hover, 
 #bob-ombs:hover, 
 #cheep-cheeps:hover {
     transform: scale(1.1);
 }
 
+
+#goomba {
+    position: absolute;
+    right: -5px;
+    top: 38px;
+    height: 25px;
+    z-index: 1;
+}
+
 #bob-ombs {
     position: absolute;
     right: 0;
-    top: 30px;
+    top: 41px;
     height: 20px;
     z-index: 1;
     transition: all .1s ease-in-out;
@@ -68,7 +83,7 @@ input[name="pest"]:focus {
 #cheep-cheeps {
     position: absolute;
     right: -2px;
-    top: 30px;
+    top: 41px;
     height: 20px;
     z-index: 1;
     transition: all .1s ease-in-out;

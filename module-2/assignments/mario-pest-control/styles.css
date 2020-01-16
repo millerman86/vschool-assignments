@@ -10,6 +10,7 @@ input[name="pest"] {
 }
 
 .pest-counter {
+    padding: 1px solid black;
     display: flex;
     align-items: center;
     position: relative;
@@ -17,7 +18,12 @@ input[name="pest"] {
     height: 100px;
     width: 100px;
     border: 1px solid black;
-    
+}
+
+.pest-counter i {
+    right: 0px;
+    bottom: 32px;
+    position: absolute;
 }
 
 .pest-container {

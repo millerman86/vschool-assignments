@@ -1,5 +1,3 @@
-
-
 let goomba = document.getElementById('goomba');
 let goombaInput = document.getElementById('goomba-input');
 
@@ -8,25 +6,20 @@ goomba.addEventListener('click', () => {
 });
 
 
-
-
-
 let bobOmbs = document.getElementById('bob-ombs');
 let bobOmbsInput = document.getElementById('bob-ombs-input')
 
 bobOmbs.addEventListener('click', () => {
     bobOmbsInput.stepUp();
-})
+});
 
-document.getElementById('bob-ombs').addEventListener('click', () => {
 
-})
+let cheepCheeps = document.getElementById('cheep-cheeps');
+let cheepCheepsInput = document.getElementById('cheep-cheeps-input');
 
-document.getElementById('cheep-cheeps').addEventListener('click', () => {
-    document.getElementById('cheep-cheeps-input').stepUp();
-
-})
-
+cheepCheeps.addEventListener('click', () => {
+    cheepCheepsInput.stepUp();
+});
 
 
 
@@ -46,10 +39,18 @@ document.getElementById('cheep-cheeps').nextElementSibling.addEventListener('cli
 
 })
 
-let calculate = document.getElementById('calculate');
-calculate.addEventListener('click', () => {
 
+
+let totalCost = document.getElementById('total-cost');
+let calculate = document.getElementById('calculate');
+
+calculate.addEventListener('click', () => {
+    let gi = parseInt(goombaInput.value);
+    let bi = parseInt(bobOmbsInput.value);
+    let ci = parseInt(cheepCheepsInput.value);
+
+    let totalOutput = gi + bi + ci;
+    totalCost.textContent = totalOutput;
 })
 
-let totalCost = document.getElementById('totalCost');
 

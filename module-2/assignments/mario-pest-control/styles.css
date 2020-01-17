@@ -66,7 +66,6 @@ h3.title {
 .pest-container {
     border: 1px solid black;
     padding-top: 50px;
-    height: 100vh;
     display: flex;
     justify-content: space-around;
     transition: .3s ease-in-out;
@@ -113,4 +112,27 @@ h3.title {
     width: calc(100% + 16px);
 }
 
+#total-cost {
+    display: inline;
+    margin: auto;
+}
 
+.mario-footer p {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+section#total-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#calculate {
+    outline: none;
+}
+
+.mario-title {
+    text-align: center;
+}

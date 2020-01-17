@@ -1,9 +1,24 @@
-document.getElementById('goomba').addEventListener('click', () => {
-    document.getElementById('goomba-input').stepUp();
+
+
+let goomba = document.getElementById('goomba');
+let goombaInput = document.getElementById('goomba-input');
+
+goomba.addEventListener('click', () => {
+    goombaInput.stepUp();
+});
+
+
+
+
+
+let bobOmbs = document.getElementById('bob-ombs');
+let bobOmbsInput = document.getElementById('bob-ombs-input')
+
+bobOmbs.addEventListener('click', () => {
+    bobOmbsInput.stepUp();
 })
 
 document.getElementById('bob-ombs').addEventListener('click', () => {
-    document.getElementById('bob-ombs-input').stepUp();
 
 })
 
@@ -30,4 +45,11 @@ document.getElementById('cheep-cheeps').nextElementSibling.addEventListener('cli
     document.getElementById('cheep-cheeps-input').stepDown();
 
 })
+
+let calculate = document.getElementById('calculate');
+calculate.addEventListener('click', () => {
+
+})
+
+let totalCost = document.getElementById('totalCost');
 

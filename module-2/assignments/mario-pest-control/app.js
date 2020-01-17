@@ -16,6 +16,7 @@ document.getElementById('cheep-cheeps').addEventListener('click', () => {
 
 
 
+
 document.getElementById('goomba').nextElementSibling.addEventListener('click', () => {
     document.getElementById('goomba-input').stepDown();
 })
@@ -29,3 +30,4 @@ document.getElementById('cheep-cheeps').nextElementSibling.addEventListener('cli
     document.getElementById('cheep-cheeps-input').stepDown();
 
 })
+

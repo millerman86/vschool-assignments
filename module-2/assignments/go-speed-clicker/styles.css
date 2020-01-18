@@ -2,7 +2,7 @@ body {
     display: flex;
 }
 
-.countdown {
+#countdown {
     margin: auto;
     display: inline;
 }

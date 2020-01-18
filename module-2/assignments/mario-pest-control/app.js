@@ -1,44 +1,41 @@
 let goomba = document.getElementById('goomba');
 let goombaInput = document.getElementById('goomba-input');
 
+let bobOmbs = document.getElementById('bob-ombs');
+let bobOmbsInput = document.getElementById('bob-ombs-input');
+
+let cheepCheeps = document.getElementById('cheep-cheeps');
+let cheepCheepsInput = document.getElementById('cheep-cheeps-input');
+
+
+let goombaChevron = document.getElementById('goomba-chevron');
+let bobombsChevron = document.getElementById('bob-ombs-chevron');
+let cheepcheepsChevron = document.getElementById('cheep-cheeps-chevron');
+
+
+
 goomba.addEventListener('click', () => {
     goombaInput.stepUp();
 });
+goombaChevron.addEventListener('click', () => {
+    goombaInput.stepDown();
+});
 
 
-let bobOmbs = document.getElementById('bob-ombs');
-let bobOmbsInput = document.getElementById('bob-ombs-input')
-
+bobombsChevron.addEventListener('click', () => {
+    bobOmbsInput.stepDown();
+});
 bobOmbs.addEventListener('click', () => {
     bobOmbsInput.stepUp();
 });
 
 
-let cheepCheeps = document.getElementById('cheep-cheeps');
-let cheepCheepsInput = document.getElementById('cheep-cheeps-input');
-
 cheepCheeps.addEventListener('click', () => {
     cheepCheepsInput.stepUp();
 });
-
-
-
-
-
-document.getElementById('goomba').nextElementSibling.addEventListener('click', () => {
-    document.getElementById('goomba-input').stepDown();
-})
-
-document.getElementById('bob-ombs').nextElementSibling.addEventListener('click', () => {
-    document.getElementById('bob-ombs-input').stepDown();
-
-})
-
-document.getElementById('cheep-cheeps').nextElementSibling.addEventListener('click', () => {
-    document.getElementById('cheep-cheeps-input').stepDown();
-
-})
-
+cheepcheepsChevron.addEventListener('click', () => {
+    cheepCheepsInput.stepDown();
+});
 
 
 let totalCost = document.getElementById('total-cost');

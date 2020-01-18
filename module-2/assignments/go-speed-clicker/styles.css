@@ -1,0 +1,8 @@
+body {
+    display: flex;
+}
+
+.countdown {
+    margin: auto;
+    display: inline;
+}

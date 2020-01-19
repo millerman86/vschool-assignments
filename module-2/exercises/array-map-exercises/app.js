@@ -133,11 +133,9 @@ function namesOnly(arr){
 
   function readyToPutInTheDOM(arr){
     // your code here
-
-
-
-
-    
+    return arr.map((i) => {
+        return `<h1>${i['name']}</h1><h2>${i['age']}</h2>`;
+    });    
   }
 
 

@@ -275,3 +275,10 @@ console.log(voterResults(voters)); // Returned value shown below:
 */
 
 // https://api.github.com/users/<YOUR GITHUB USERNAME HERE>/repos
+
+// Extra credit
+// Using AJAX, do a GET request to your own Github repositories endpoint. The URL will be https://api.github.com/users/<YOUR GITHUB USERNAME HERE>/repos.
+
+// Once you get the data, use .reduce() to figure out how many watchers you have across all of your repositories. Don't be too disappointed if the number is 0. You're still new at this :)
+
+// Note: If you've learned how to use the axios library, you can do this in node. Otherwise, you'll want to run this code in the browser's JavaScript context and either use XMLHttpRequest or jQuery's AJAX methods, meaning you'll need an HTML page and an associated script tag for your JavaScript.

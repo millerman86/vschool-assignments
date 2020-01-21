@@ -71,3 +71,12 @@ var peopleArray = [
 ]
 
 console.log(sortedOfAge(peopleArray));
+
+
+
+
+// Extra Credit
+// Create another array of one or more individuals and add it to the original array.
+// Create a function that filters out all people who's last names end with "y" or "a" and save those people in another array.
+// Remove the second individual from the array.
+// Return the array in reverse order.

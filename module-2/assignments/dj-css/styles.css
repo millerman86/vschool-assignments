@@ -1,30 +1,70 @@
+* {
+    box-sizing: border-box;
+}
+
 .box {
     height: 200px;
     width: 200px;
 }
 
 .box-1 {
-    background-color: blue;
+    background: blue;
+    border: 5px solid black;
 }
 
 .box-2 {
-    
+    height: 400px;
+    width: 400px;
+    transition: all .3s ease-in;
+}
+
+.box-2:hover {
+    width: 450px;
+    transition: all .3s ease-in;
+}
+
+.box-2 {
+    background: green;
+    border: 10px dotted yellow;
+    border-radius: 100px 0 100px 0;
 }
 
 .box-3 {
-
+    position: fixed;
+    z-index: -100;
+    top: 0;
+    left: 300px;
+    background: red;
+    border: 20px dashed yellow;
+    transition: all .3s ease-in;
 }
 
-.box-4 {
 
+.box-4 {
+    background: yellow;
+    position: absolute;
+    border-top: 20px solid green;
 }
 
 .box-5 {
-
+    padding: 100px;
+    opacity: .5;
+    background: purple;  
+    box-shadow: 60px -16px 5px 100px teal;
 }
 
 .box-6 {
+    position: relative;
+    left: 100px;
+    opacity: .3;
+    background: cyan;
+    margin: 50px;
+    transition: all .3s ease-in-out;
+}
 
+.box-6:hover {
+    opacity: 1;
+    transition: all .3s ease-in-out;
 }
 
 /* Background color

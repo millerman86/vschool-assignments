@@ -318,7 +318,6 @@ oOOO()
 
 
 
-
 function showProgressBar(progress) {
     let MAX = 30,
         MIN = 0,

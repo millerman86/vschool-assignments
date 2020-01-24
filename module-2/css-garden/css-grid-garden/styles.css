@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'verdemoderna';
-    src: url('verdemoderna.woff');
+    src: url('assets/verdemoderna.woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -11,7 +11,7 @@ body {
 
 header {
     padding: 20px 0px 60px;
-    background: url('huntington.jpg') no-repeat;
+    background: url('assets/images/huntington.jpg') no-repeat;
     background-size: cover;
 }
 

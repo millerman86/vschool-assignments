@@ -1,36 +1,105 @@
+@font-face {
+    font-family: 'verdemoderna';
+    src: url('verdemoderna.woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    padding: 20px 0px 60px;
+    background: url('huntington.jpg') no-repeat;
+    background-size: cover;
+}
+
+header ul { 
+    height: 60px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: 0 40px;
+    color: white;
+    margin: 0;
+    list-style-type: none;
+}
+
+header ul li a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+header h1,
+header h2 {
+    color: white;
+    text-align: center;
+}
+
+
+header h1 {
+    margin: 0;
+    padding: 0px 61px 5px;
+}
+
+header h1::before {
+    width: 80px; 
+    height: 80px;
+    display: inline-block;
+    content: "";
+    position: relative;
+    background: url(enso.svg);
+    background-size: 100%;
+    margin: -20px 20px 0 0;
+    opacity: 0.6;
+}
+
+header h2 {
+    color: white;
+    margin: 0;
+    padding: 5px 30px 25px;
+}
+
+header h2::before {
+    content: " ";
+    padding: 50px;
+}
+
 .container {
     /* give the container display grid */
     /* with six rows, 50px high */
     /* default all cells/children on the left be 2/3 the screen width, and all on the left 1/3 */
 }
-.container > div {
+
+.container>div {
     border: solid black 2px;
 }
 
 .authors {
     background-color: lightcoral;
 }
+
 .links {
     background-color: lightpink;
 }
 
 .footer {
+
     /* make these span the width of the page */
     background-color: aquamarine;
 }
 
-@media (max-width: 900px){
-    /* use this media query to help these two cells drop to the bottom when screens are smaller */
-    .authors {
-         
-    }
-    .links {
+@media (max-width: 900px) {
 
-    }
+    /* use this media query to help these two cells drop to the bottom when screens are smaller */
+    .authors {}
+
+    .links {}
+
     /* container could use some help so that it's children are full screen width */
-    .container {
-        
-    }
+    .container {}
 }
 
 /* FLEX */
@@ -43,9 +112,61 @@
     padding: 10px;
 }
 
-.icons > div {
+.icons>div {
     width: 30px;
     height: 30px;
     background-color: black;
     border-radius: 50%;
+}
+
+.footer a {
+    cursor: pointer;
+    font-size: 48px;
+    font-family: "verdemoderna";
+}
+
+
+a.zen-validate-html::before {
+    content: "5";
+}
+
+a.zen-validate-html:hover::before,
+a.zen-validate-html:focus::before {
+    content: "%";
+}
+
+a.zen-validate-css::before {
+    content: "3";
+}
+
+a.zen-validate-css:hover::before,
+a.zen-validate-css:focus::before {
+    content: "#";
+}
+
+a.zen-license::before {
+    content: "c";
+}
+
+a.zen-license:hover::before,
+a.zen-license:focus::before {
+    content: "C";
+}
+
+a.zen-accessibility::before {
+    content: "a";
+}
+
+a.zen-accessibility:hover::before,
+a.zen-accessibility:focus::before {
+    content: "A";
+}
+
+a.zen-github::before {
+    content: "g";
+}
+
+a.zen-github:hover::before,
+footer a.zen-github:focus::before {
+    content: "G";
 }

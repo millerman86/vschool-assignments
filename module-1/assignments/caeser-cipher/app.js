@@ -1,7 +1,5 @@
 var readline = require('readline-sync');
 
-
-
 var alphabet = [
     'a',
     'b',
@@ -35,6 +33,7 @@ const enumerated = {};
 for (const [a, b] of alphabet.entries()) {
     enumerated[a] = b;
 }
+console.log(enumerated);
 
 
 var input = readline.question('What phrase would you like to encrypt? ').toLowerCase();
@@ -105,3 +104,7 @@ console.log(input.join(''))
 //     a[index] = char;
 //     return a.join("");
 // }
+
+
+
+let newIndex = ((index + shift) - 1)

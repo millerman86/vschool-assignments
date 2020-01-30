@@ -6,7 +6,7 @@ let name = readline.question('Please tell me your name, \nPlease type here: ');
 console.clear();
 console.log(`Hello, ${name}, are you ready to begin your journey?`);
 
-pause(2000);
+pause(3000);
 
 function pause(milliseconds) {
     var dt = new Date();
@@ -131,7 +131,7 @@ BeginGame: while (command != 'q') {
                 if (!animalKilled) {
                     console.log('You are still alive........')
                     console.log('but the animal is not yet dead, so the battle rages on!');
-                    pause(3000);
+                    pause(5000);
                     console.clear();
                     
                     continue Ask;
@@ -152,7 +152,7 @@ BeginGame: while (command != 'q') {
 
                         console.log('You have escaped!');
 
-                        pause(700)
+                        pause(1300);
 
                         animals.forEach((animal) => {
                             animal['health'] = 0;
@@ -269,7 +269,7 @@ oOOO()
                 console.log('It dropped something.....you pick it up and put it in your inventory');
                 console.log('Here is your inventory: ', playerInventory['inventoryItems']);
 
-                pause(3000);
+                pause(5000);
                 // for (let animal of animals) {
                 //     animal['health'] = 100;
                 //     animal['isDead'] = false; // RESET ALL ANIMAL HEALTH

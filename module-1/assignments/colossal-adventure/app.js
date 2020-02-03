@@ -133,7 +133,7 @@ BeginGame: while (command != 'q') {
                     console.log('but the animal is not yet dead, so the battle rages on!');
                     pause(5000);
                     console.clear();
-                    
+
                     continue Ask;
                 } else {
                     for (let animal of animals) {
@@ -285,7 +285,7 @@ oOOO()
                 let minDamage = 20;
                 let maxDamage = 40;
                 let damageDealt = getRandomIntMinMax(minDamage, maxDamage);
-                
+
                 console.log('The wild beast takes his turn');
                 console.log(`It deals ${damageDealt} damage!`);
 

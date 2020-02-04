@@ -17,6 +17,8 @@ const formAlert = () => {
         }
     }
 
+    console.log(checkedInputs);
+
     alert(`
         First Name: ${form.firstName.value}
         Last Name: ${form.lastName.value} 

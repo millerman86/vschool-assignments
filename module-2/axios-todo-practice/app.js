@@ -42,8 +42,10 @@ let postTodo = 'https://api.vschool.io/amren/todo';
 
 
 // Get all the todos from the database and assign them to the variable "todoList"
-axios.get("https://api.vschool.io/jonsmith/todo/").then(function(response) {
+axios.get("https://api.vschool.io/amren/todo/").then(function(response) {
     var todoList = response.data;
+
+    console.log(todoList);
 });
 
 // Let's assume I've also added a delete button next to each todo item in my view 

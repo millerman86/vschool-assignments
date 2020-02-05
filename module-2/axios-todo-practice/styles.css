@@ -1,0 +1,41 @@
+.header {
+    background: lightgrey;
+}
+
+.my-todo-list {
+    text-align: center;
+}
+
+.new-todo-title, 
+.new-todo-description {
+    flex: 1;
+    outline: none;
+}
+
+.create-new-todo {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.new-todo-title-container, 
+.new-todo-description-container {
+    display: flex;
+}
+
+button {
+    outline: none;
+}
+
+#todos {
+    background: lightgrey;
+    padding: 0;
+}
+
+#todos .list-container {
+    list-style-type: none;
+}
+
+#todos div {
+    list-style-type: none;
+}

@@ -1,12 +1,28 @@
 <html>
     <head></head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+    <link rel="stylesheet" href="styles.css">
     <body>
-        <h1>Todo API</h1>
+        <div class="header">
+            <h1 class="my-todo-list">My Todo List</h1>
+            <div class="create-new-todo">
+                
+                <div class="new-todo-title-container">
+                    <input placeholder="Please enter title" type="text" id="newTodoTitle" class="new-todo-title"><button id="add-todo">Add Todo</button>
+                </div>
+
+                <div class="new-todo-description-container">
+                    <input type="text" placeholder="Description (Optional)" class="new-todo-description" id="newTodoDescription">
+                </div>
+                <button id="deleteAllTodos">Delete All Todos</button>
+
+            </div>
+        </div>
 
         <ol id="todos">
 
         </ol>
+        
         <script src="app.js"></script>
     </body>
 </html>

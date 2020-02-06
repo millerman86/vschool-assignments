@@ -1,54 +1,58 @@
 let todos = document.getElementById('todos');
 
-document.getElementById('deleteAllTodos').addEventListener('click', () => {
+
+let deleteTodos = document.getElementById('deleteTodos');
+deleteTodos.addEventListener('click', () => {
     deleteAllTodos();
 })
 
-document.getElementById('add-todo').addEventListener('click', () => {
+
+let addTodo = document.getElementById('add-todo');
+addTodo.addEventListener('click', () => {
     postTodoFunction();
 });
 
+let getUrl = 'https://api.vschool.io/amren/todo/';
+let postUrl = 'https://api.vschool.io/amren/todo/';
+let putUrl = 'https://api.vschool.io/amren/todo/';
+let deleteUrl = 'https://api.vschool.io/amren/todo/';
 
 
+fetchTodos();
 
-window.onload = function () {
-    this.fetchTodos();
-}
-
-
-let todoList = [];
-var fetchTodos = function () {
-    while (todos.firstChild) {
-        todos.removeChild(todos.firstChild);
-    }
-
-    axios.get("https://api.vschool.io/amren/todo/").then(function (response) {
+let todoList = []; // RAW DATA
+function fetchTodos() {
+    axios.get(getUrl).then((response) => {
         todoList = response.data;
+
+        while (todos.firstChild) {
+            todos.removeChild(todos.firstChild);
+        }
 
         renderTodoList(todoList);
     }).catch((err) => {
         console.log(err)
     });
-
 }
 
 
 
-var renderTodoList = function (todoList) {
+function renderTodoList(todoList) {
     todoList.forEach((i) => {
         let listContainer = document.createElement('li');
         listContainer.className = 'list-container';
 
 
         listContainer.addEventListener('click', () => {
+            let id = i._id; // I WOULD NEED THIS IF THERE WAS A PROBLEM WITH THE PAGE BLINKING
+
             axios.put(`https://api.vschool.io/amren/todo/${i._id}`, {
                 ...i,
                 completed: !i.completed
             }).then((response) => {
                 fetchTodos();
-            }).then(() => {})
+            })
         })
-
 
 
         let listItem = document.createElement('div');
@@ -85,7 +89,7 @@ var renderTodoList = function (todoList) {
 
 
 
-var postTodoFunction = function () {
+function postTodoFunction() {
     let title = document.getElementById('newTodoTitle').value;
     let description = document.getElementById('newTodoDescription').value;
 

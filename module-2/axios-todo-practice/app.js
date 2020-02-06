@@ -9,39 +9,77 @@ document.getElementById('add-todo').addEventListener('click', () => {
 });
 
 
-fetchTodos();
 
 
-let todoList = [];
-let fetchTodos = function () {
-    while (todos.firstChild) {
-        todos.removeChild(todos.firstChild);
-    }
-    
-    axios.get("https://api.vschool.io/amren/todo/").then(function (response) {
-        todoList = response.data;
-        
-        renderTodoList(todoList);
-    }).catch((err) => {
-        console.log(err)
-    })
+window.onload = function () {
+    this.fetchTodos();
 }
 
 
-let renderTodoList = function (todoList) {
+let todoList = [];
+var fetchTodos = function () {
+    while (todos.firstChild) {
+        todos.removeChild(todos.firstChild);
+    }
+
+    axios.get("https://api.vschool.io/amren/todo/").then(function (response) {
+        todoList = response.data;
+
+        renderTodoList(todoList);
+    }).catch((err) => {
+        console.log(err)
+    });
+
+}
+
+
+
+var renderTodoList = function (todoList) {
     todoList.forEach((i) => {
         let listContainer = document.createElement('li');
         listContainer.className = 'list-container';
 
+
+        listContainer.addEventListener('click', () => {
+            axios.put(`https://api.vschool.io/amren/todo/${i._id}`, {
+                ...i,
+                completed: !i.completed
+            }).then((response) => {
+                fetchTodos();
+            }).then(() => {})
+        })
+
+
+
         let listItem = document.createElement('div');
+        listItem.className = 'todoTitle';
         listItem.innerText = i['title'];
 
+        let xButton = document.createElement('span');
+        xButton.classList.add('xButton');
+        listItem.appendChild(xButton);
+        let xIcon = document.createTextNode('\u00D7')
+        xButton.appendChild(xIcon);
+
+
+        if (i.completed) listItem.classList.add('completed')
+
+
         let listItem2 = document.createElement('div');
+        listItem2.className = 'todoDescription';
         listItem2.innerText = i['description'];
 
-        listContainer.appendChild(listItem).appendChild(listItem2);
+
+
+        listContainer.appendChild(listItem);
+        listContainer.appendChild(listItem2);
 
         todos.appendChild(listContainer);
+
+        xButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            deleteTodo(i);
+        })
     });
 }
 
@@ -50,16 +88,15 @@ let renderTodoList = function (todoList) {
 var postTodoFunction = function () {
     let title = document.getElementById('newTodoTitle').value;
     let description = document.getElementById('newTodoDescription').value;
-    
+
     if (!title) return
-    
+
     let newTodo = {
         description,
         title,
-        imgUrl: ""
     }
-    
-    axios.post(postTodo, newTodo).then(res => {
+
+    axios.post('https://api.vschool.io/amren/todo', newTodo).then(res => {
         fetchTodos();
     }).catch(err => {
         console.log(err)
@@ -67,30 +104,33 @@ var postTodoFunction = function () {
 }
 
 
-let deleteTodo = function (singleTodoObject) {
-    axios.delete("https://api.vschool.io/amren/todo/" + singleTodoObject._id).then((response) => {
-        alert("Your todo was successfully deleted!");
-        fetchTodos();
-    }), () => {
-        alert("There was a problem deleting your todo :(");
-    }
+var deleteTodo = function (singleTodoObject) {
+    axios.delete("https://api.vschool.io/amren/todo/" + singleTodoObject._id)
+        .then((response) => {
+            alert("Your todo was successfully deleted!");
+        })
+        .then(() => {
+            fetchTodos();
+        }), () => {
+            alert("There was a problem deleting your todo :(");
+        }
 };
 
 
 let deleteAllTodos = function () {
     todoList.forEach((i) => {
         axios.delete('https://api.vschool.io/amren/todo/' + i['_id']).then((response) => {
-            alert('All of your todos were successfully deleted!');
             fetchTodos();
-        }), () => {
+        }).then(() => {}), () => {
             alert('There was a problem deleting all of your todos!')
         }
     });
+    alert('You have chosen to delete all of your todos!');
 }
 
 
-
-
+// GRAB BAG ITEMS
+// Here is a nice little x that can be used for 
 
 
 

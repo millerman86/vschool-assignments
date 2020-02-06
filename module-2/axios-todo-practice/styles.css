@@ -39,3 +39,50 @@ button {
 #todos div {
     list-style-type: none;
 }
+
+.todoTitle {
+    position: relative;
+    padding-left: 40px;
+    min-height: 30px;
+}
+
+.todoTitle, 
+.todoDescription {
+    cursor: pointer;
+}
+
+.todoTitle {
+    position: relative;
+}
+
+
+.todoTitle.completed::before {
+    content: '';
+    position: absolute;
+    border-color: black;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    top: 5px;
+    left: 16px;
+    transform: rotate(45deg);
+    height: 15px;
+    width: 7px;
+}
+
+.todoTitle.completed {
+    text-decoration: line-through;
+}
+
+.todoDescription {
+
+}
+
+.xButton {
+    position: absolute;
+    right: 0;
+    padding: 5px 10px 5px 10px;
+}
+
+.xButton:hover {
+    background: red;
+}

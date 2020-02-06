@@ -12,17 +12,13 @@ addTodo.addEventListener('click', () => {
     postTodoFunction();
 });
 
-let getUrl = 'https://api.vschool.io/amren/todo/';
-let postUrl = 'https://api.vschool.io/amren/todo/';
-let putUrl = 'https://api.vschool.io/amren/todo/';
-let deleteUrl = 'https://api.vschool.io/amren/todo/';
-
+let todoUrl = 'https://api.vschool.io/amren/todo/';
 
 fetchTodos();
 
 let todoList = []; // RAW DATA
 function fetchTodos() {
-    axios.get(getUrl).then((response) => {
+    axios.get(todoUrl).then((response) => {
         todoList = response.data;
 
         while (todos.firstChild) {
@@ -46,7 +42,7 @@ function renderTodoList(todoList) {
         listContainer.addEventListener('click', () => {
             let id = i._id; // I WOULD NEED THIS IF THERE WAS A PROBLEM WITH THE PAGE BLINKING
 
-            axios.put(`https://api.vschool.io/amren/todo/${i._id}`, {
+            axios.put(`${todoUrl}${i._id}`, {
                 ...i,
                 completed: !i.completed
             }).then((response) => {
@@ -100,16 +96,15 @@ function postTodoFunction() {
         title,
     }
 
-    axios.post('https://api.vschool.io/amren/todo', newTodo).then(res => {
+    axios.post(todoUrl, newTodo).then(res => {
         fetchTodos();
     }).catch(err => {
         console.log(err)
     });
 }
 
-
-var deleteTodo = function (singleTodoObject) {
-    axios.delete("https://api.vschool.io/amren/todo/" + singleTodoObject._id)
+function deleteTodo(singleTodoObject) {
+    axios.delete(todoUrl + singleTodoObject._id)
         .then((response) => {
             alert("Your todo was successfully deleted!");
         })
@@ -121,9 +116,9 @@ var deleteTodo = function (singleTodoObject) {
 };
 
 
-let deleteAllTodos = function () {
+function deleteAllTodos() {
     todoList.forEach((i) => {
-        axios.delete('https://api.vschool.io/amren/todo/' + i['_id']).then((response) => {
+        axios.delete(todoUrl + i['_id']).then((response) => {
             fetchTodos();
         }).then(() => {}), () => {
             alert('There was a problem deleting all of your todos!')
@@ -131,15 +126,6 @@ let deleteAllTodos = function () {
     });
     alert('You have chosen to delete all of your todos!');
 }
-
-
-// GRAB BAG ITEMS
-// Here is a nice little x that can be used for 
-
-
-
-
-
 
 
 
@@ -208,5 +194,22 @@ let deleteAllTodos = function () {
 //     sessionId: {
 //         type: String,
 //         required: true
+//     }
+// }
+
+// GRAB BAG CODE
+// var list = document.querySelector('ul');
+// list.addEventListener('click', function (ev) {
+//     if (ev.target.tagName === 'LI') {
+//         ev.target.classList.toggle('checked');
+//     }
+// }, false);
+
+
+// document.querySelectorAll('.close');
+// for (i = 0; i < close.length; i++) {
+//     close[i].onclick = function () {
+//         var div = this.parentElement;
+//         div.style.display = "none";
 //     }
 // }

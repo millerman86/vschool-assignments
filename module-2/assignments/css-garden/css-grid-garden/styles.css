@@ -1,9 +1,14 @@
-body {
-    margin: 0;
-}
-
 * {
     box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    color: #325050;
+    background: #fff;
+    /* font-size: 70%; */
+    font-family: 'Libre Baskerville', sans-serif;
 }
 
 
@@ -51,7 +56,7 @@ body {
     font-family: "verdemoderna";
     content: ">";
     position: absolute;
-    width: 65px;
+    width: 70px;
     height: 70px;
     left: 0;
     text-align: center;
@@ -61,6 +66,7 @@ body {
     font-variant: normal;
     text-transform: none;
     line-height: 70px;
+    background: rgba(255,255,255,0.1);
 }
 
 .design-archives ul li.viewall {
@@ -71,25 +77,130 @@ body {
     left: 0;
     line-height: 50px;
     text-align: center;
+    background: rgba(255,255,255,0.1);
 }
 
 .design-archives ul li.viewall a {
     z-index: 2;
+    margin-right: 2px;
     line-height: 50px;
     width: 100%;
-    padding: 8px 0 0 0;
+    padding: 10px 0 0 0;
     display: inline-block;
     text-align: center;
     margin-bottom: 5px;
 }
 
 
+
+
+.contentinfo {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+}
+
+ul li {
+    display: flex;
+}
+
+ul li a {
+    color: inherit;   
+    text-decoration: none;
+}
+
+.wrapper ul {
+    background: #e5ede8; 
+}
+
+
+/* THIS BREAKPOINT WILL ONLY WORK IF THE SIZE OF THE SCREEN IS AT 100% */
 @media only screen and (min-width: 1132px) {
-    .design-archives ul {
+    /* .design-archives ul {
         margin: auto;
         top: 0;
         bottom: 0;
+    } */
+
+    .wrapper ul{
+        position: absolute;
+        right: 0;
+        top: 195px;
+        width: calc(33vw);
+        display: flex;
+        flex-wrap: wrap;
     }
+
+    .grid-body {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+    }
+
+    .body-left-hand {
+        grid-column: 1/9;
+    }
+
+    .intro-paragraphs {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+    }
+
+    .intro-paragraphs div:first-child {
+        grid-column: 1/9;
+    }
+
+    .grid-desktop {
+        display: grid;
+    }
+
+    .design-archives ul li.viewall {
+        position: static; 
+        padding: unset;
+        width: unset;
+        text-align: center;
+        background: unset;
+    }
+
+    header#zen-header ul {
+        position: relative;
+        top: 50px;
+        width: unset;
+        display: flex;
+    }
+
+    header#zen-header ul li.viewall {
+        flex: 1;
+        padding-right: 70px;
+    }
+
+    header#zen-header ul li.viewall a {
+        flex: 1;
+        padding: 0;
+        line-height: 4.5;
+        /* padding-right: 70px; */
+        height: 70px;
+        margin-bottom: 0;
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    header#zen-header {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+    }
+    
+    header#zen-header div:first-child {
+        grid-column: 1/9;
+    }
+
+    header#zen-header div:last-child {
+        grid-column: 10/13;
+    }
+    
+    
 }
 
 

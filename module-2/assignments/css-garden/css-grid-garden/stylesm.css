@@ -85,7 +85,7 @@ body {
   color: #325050;
   background: #fff;
   font-family: 'Libre Baskerville', sans-serif;
-  font-size: 70%;
+  font-size: 70%; /* will change to 100%, I think */
 }
 
 a {
@@ -114,6 +114,8 @@ abbr {
 }
 
 header {
+
+  /* if you are going to position everything absolutely positioned relative to the header, it is necessary to hard code a height */
   height: 230px;
   padding: 20px 0 70px 0;
 

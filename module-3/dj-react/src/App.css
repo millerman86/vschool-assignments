@@ -1,0 +1,50 @@
+.button-container {
+    background-color: whtie;
+    height: 100px;
+    width: 300px;
+    padding: 50px;
+    border: 1px solid black;
+}
+
+.square-container {
+    border: 1px solid black;
+}
+
+.flex.dj-component {
+    min-height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.flex.dj-component>div {
+    display: flex;
+    flex-basis: 50%;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.dj-component {
+    border: 1px solid black;
+    background: white;
+}
+
+.dj-component>div {
+    display: flex;
+}
+
+.default.white {
+    background: white;
+}
+
+.default.black {
+    background: black;
+}
+
+.purple {
+    background: purple;
+}

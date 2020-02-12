@@ -136,11 +136,9 @@ function flatten(arr) {
     // your code here    
     let output = [];
 
-    arr.forEach((element, index, array) => {
+    arr.forEach((element) => {
         console.log(element);
         output = output.concat(element);
-
-
     });
     return output;
 }
@@ -152,6 +150,30 @@ var arrays = [
 ];
 
 console.log(flatten(arrays)); // ["1", "2", "3", true, 4, 5, 6];
+
+
+function flattenSecondFunction(array) {
+    return array.reduce((accumulator, currentValue) => {
+        return accumulator.concat(currentValue);
+    })
+}
+
+function flattenThirdFunction(array) {
+    return array.reduce((accumulator, currentValue) => {
+        return [...accumulator, ...currentValue]
+    })
+}
+
+
+console.log(flattenSecondFunction([["1", "2", "3"], [true], [4, 5, 6]]));
+
+
+
+
+
+
+
+
 
 
 //  6) Given an array of potential voters, return an object representing the results of the vote
@@ -227,7 +249,7 @@ function voterResults(arr) {
 
         if (voter['age'] >= 18 && voter['age'] <= 25) {
             results['youth']++;
-            
+
             if (voter['voted']) {
                 results['youthVotes']++;
             }
@@ -238,27 +260,23 @@ function voterResults(arr) {
 
             if (voter['voted']) {
                 results['midVotes']++;
-            } 
+            }
         }
 
         if (voter['age'] >= 36 && voter['age'] <= 55) {
-            results['olds'] ++
+            results['olds']++
 
             if (voter['voted']) {
                 results['oldVotes']++;
             }
         }
-
-
-
-
         return results
     }, {
         'youthVotes': 0,
         'youth': 0,
-        'midVotes': 0, 
-        'mids': 0, 
-        'oldVotes': 0, 
+        'midVotes': 0,
+        'mids': 0,
+        'oldVotes': 0,
         'olds': 0
     })
 }

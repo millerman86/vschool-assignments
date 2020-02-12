@@ -52,9 +52,9 @@ function getRandomInt(min, max) {
 }
 
 
-let interval = setInterval(() => {
+let clearId = setInterval(() => {
     if (gameActive === false) {
-        clearInterval(interval)
+        clearInterval(clearId)
     }
 
     let random = getRandomInt(0, 2);

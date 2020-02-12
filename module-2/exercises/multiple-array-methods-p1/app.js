@@ -11,11 +11,14 @@ function sortedOfAge(arr){
     return arr.filter((i) => {
         return i['age'] >= 18
     })
-    .sort()
+    .sort(function(a, b) {
+        var textA = a.firstName;
+        var textB = b.firstName;
+        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+    })
     .map((i) => {
         return `<li>${i['firstName']} ${i['lastName']} is ${i['age']}</li>`
     });
-
  }
  
  

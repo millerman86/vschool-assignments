@@ -1,7 +1,7 @@
-let count = 0;
 
 let countdown = document.getElementById('countdown');
 
+let count = 0;
 window.onload = function() {
     window.addEventListener('click', () => {
         count++;

@@ -1,0 +1,135 @@
+/* @font-face {
+    font-family: "FontAwesome";
+    src: url(assets/fonts/fontawesome-free-5.12.1-web/css/fontawesome.css)
+} */
+
+.flex {
+    display: flex;
+}
+ß
+.container {
+    width: 500pt;
+    margin: auto;
+}
+
+::selection {
+    background: #0085a1;
+    color: #fff;
+}
+
+a:hover {
+    color: #0085a1;
+    cursor: pointer;
+}
+
+.intro-titles h1 {
+    margin: 0;
+    font-size: 80pt;
+}
+
+h2 {
+    margin: 0;
+}
+
+section#header-section {
+    background: url(img/home-bg.jpg);
+    background-size: cover;
+}
+
+section#header-section h1,
+section#header-section h3 {
+    text-align: center;
+}
+
+.intro-titles {
+    color: white;
+    padding: 180pt 0;
+}
+
+.header-banner-wrap {
+    background: white;
+    padding: 5pt 12pt;
+
+}
+
+.header {
+    display: flex;
+}
+
+.header-banner {
+    justify-content: space-between;
+}
+
+.header button {
+    padding: 13pt;
+    display: inline-flex;
+    align-items: center;
+    background-color: transparent;
+    outline: none;
+    border-radius: 2pt;
+}
+
+button.older-posts {
+    color: white;
+    background: #0085a1;
+    font-weight: 800;
+    padding: 15pt 25pt;
+    margin-left: auto;
+}
+
+.menu-hamburger {
+    display: flex;
+    flex-direction: column;
+    width: 14pt;
+    height: 9pt;
+}
+
+.menu-hamburger span {
+    content: "";
+    width: 75%;
+    margin: auto;
+    background: black;
+    height: 2pt;
+}
+
+.start-bootstrap {
+    display: flex;
+    align-items: center;
+}
+
+button .menu {
+    font-weight: 900;
+}
+
+
+
+.social-link {
+    /* border-radius: 500px; */
+    height: 50pt;
+    width: 50pt;
+    background: black;
+
+}
+
+.social-link::before {
+    font-family: "FontAwesome";
+    font-weight: 900;
+    color: white;
+    content: "\f002";
+    z-index: 500;
+    position: relative;
+    height: 50px;
+    width: 50px;
+}
+
+@media only screen and (min-width: 576pt) {
+    .container {
+        max-width: 520pt;
+    }
+}
+
+@media only screen and (min-width: 768pt) {
+    .container {
+        max-width: 720pt;
+    }
+}

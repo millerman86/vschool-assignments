@@ -1,68 +1,44 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+You are a DJ, and are learning to code. All DJ's love buttons that turn squares different colors.
 
-## Available Scripts
+Requirements:
+Your DJ color board will use smaller buttons to make your grid of four squares change colors.
 
-In the project directory, you can run:
+This is a great time to practice CSS Grids. Create four squares in a two by two grid that will change color depending on where you are as a DJ. A master DJ will use 8 buttons.
 
-### `yarn start`
+Every level of advancement will use previous levels of requirements, and add to them.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+You will have a parent component that will contain the four squares. This parent component's state will maintain a array of colors.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+["white", "white", "white", "white"];
+You can then render your squares like this:
 
-### `yarn test`
+<Square color={this.state.colors[0]}/>
+<Square color={this.state.colors[1]}/>
+<Square color={this.state.colors[2]}/>
+<Square color={this.state.colors[3]}/>
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Or better yet, write a .map() to render these.
 
-### `yarn build`
+Small time DJ:
+You will have one button that will change all four squares either black or white. White if the first one is not white. Black if the first square is white.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Party DJ:
+Add a second button. The second will turn the top half (both squares) of the grid purple.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Professional DJ:
+Add two more buttons, for a total of four. These next two will change the colors of the bottom squares blue, but individually. One will be linked to the bottom left, and the other to the bottom right.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Big Time DJ:
+Your next four buttons will each be linked to one of the squares. These buttons can have any affect on those squares that you wish.
 
-### `yarn eject`
+One of the Greats:
+Your buttons will play sounds.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+THE G.O.A.T.
+You will be able to use drop downs/inputs/radio buttons to submit a pattern for your grid to follow over time.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Notes for students and instructors:
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+This assignment is designed for practice of state and props in React. It would make sense to require a couple of the requirements and have the rest be optional.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+The more modularized this exercise is, the better practice it will be. The more components the better, even if it feels contrived.

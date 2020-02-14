@@ -6,10 +6,12 @@ class App extends React.Component {
     super()
 
     this.state = {
-      name: "amren"
+      name: "", 
+      enteredNames: []
     }
 
     this.nameChange = this.nameChange.bind(this)
+    this.submitName = this.submitName.bind(this)
   }
 
   nameChange(event) {
@@ -19,14 +21,29 @@ class App extends React.Component {
     })
   }
 
+  submitName(event) {
+    event.preventDefault()
+    if (!this.state.name) return 
+    this.setState((previousState) => {
+      return {
+        name: '',
+        enteredNames: [...previousState.enteredNames, this.state.name]
+      }
+
+    })
+  }
+
   render() {
+    const names = this.state.enteredNames.map((name, index) => {
+      return <li key={index}>{name}</li>
+    })
     return (
-      <div>
-        <h1>{this.state.name}</h1>
+      <form onSubmit={this.submitName}>
         <input name="name" value={this.state.name} onChange={this.nameChange}/>
-        <ol></ol>
+        {(this.state.name ? (<h1>{this.state.name}</h1>) : <h1>&nbsp;</h1>)}
+        <ol>{names}</ol>
         <button></button>
-      </div>
+      </form>
     );
   }
 }

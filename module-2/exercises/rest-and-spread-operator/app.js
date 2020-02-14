@@ -70,41 +70,55 @@ console.log(returnFavorites(favoriteActivities));
 
 
 function combineAnimals(...args) {
-    return args.reduce((acc, val) => [...acc, ...val]);
+    return [...args]
+    // return args.reduce((acc, val) => [...acc, ...val]);
 }
 
 const realAnimals = ["dog", "cat", "mouse"];
 const magicalAnimals = ["jackolope"];
 const mysteriousAnimals = ["platypus"];
 
-console.log(combineAnimals(realAnimals, magicalAnimals, mysteriousAnimals));
+console.log(combineAnimals(...realAnimals, ...magicalAnimals, ...mysteriousAnimals));
 // ["dog", "cat", "mouse", "jackolope", "platypus"]
 
-function product(a, b, c, d, e) {
-    var numbers = [a, b, c, d, e];
 
+
+const numbers = [1, 2, 3, 4, 5]
+
+const product = (...numbers) => {
     return numbers.reduce(function (acc, number) {
         return acc * number;
     }, 1)
 }
 
+console.log(product(...numbers))
+
+
+// make the following more es6, use both rest and spread 
+const unshift = (array, ...abcde) => {
+    return [...array, ...abcde];
+}
+
+console.log(unshift(['amren', 'miller'], 'a', 'b', 'c', 'd', 'e'))
+
+
 // Write some destructuring code to help this function out. Use object literals to simplify it:
-function populatePeople(names) {
-    return names.map(function (name) {
+const populatePeople = (names) => {
+    return names.map((name) => {
         name = name.split(" ");
         // your code
         const [firstName, lastName] = name;
 
         return {
-            firstName: firstName,
-            lastName: lastName
+            firstName,
+            lastName
         }
     });
 }
 
 
 
-console.log('blah', populatePeople(["Frank Peterson", "Suzy Degual", "Liza Jones"]));
+console.log(populatePeople(["Frank Peterson", "Suzy Degual", "Liza Jones"]));
 
 // [
 //   {firstName: "Frank", lastName: "Peterson"},

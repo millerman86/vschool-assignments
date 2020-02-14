@@ -1,32 +1,39 @@
-let gameActive = true;
 
-class Amren {
-    constructor() {
-        this.name = "";
-        this.totalCoins = 0;
-        this.status = "";
-        this.hasStar = false;
-        this.gameActive = true;
+class Player {
+    totalCoins = 0
+    status = "Small"
+    hasStar = false
+    gameActive = true
+    
+    
+    constructor(name) {
+        this.setName(name)
     }
 
-    setName(namePicked = 'amren') {
+    setName(namePicked) {
         this.name = namePicked;
     }
 
     gotHit() {
-        if (this.status === '') this.status = 'Powered Up'
         if (this.status === 'Powered Up') this.status = 'Big';
-        if (this.status === 'Big') this.status = 'Small';
-        if (this.status === 'Small') {
-            this.status = 'Dead';
-            gameActive = false;
+        else if (this.status === 'Big') this.status = 'Small';
+        else if (this.status === 'Small') {
+            this.status = 'Dead'
+            gameActive = false
+            console.log('You died!');
+            this.print()
         }
     }
 
+    // gotPowerup of type function - called when a powerup is received and sets the status accordingly. 
+    // (Statuses go from "Small" to "Big" to "Powered Up". If you are Powered Up and it hits this function, you get a star)
     gotPowerup() {
-        if (this.status === '') this.status = 'Small';
         if (this.status === 'Small') this.status = 'Big';
-        if (this.status === 'Big') this.status = 'Powered Up';
+        else if (this.status === 'Big') this.status = 'Powered Up';
+        else if (this.status === 'Powered Up') {
+            if (!this.hasStar) console.log('you get a star!')
+            this.hasStar = true
+        };
     }
 
     addCoin() {
@@ -36,14 +43,12 @@ class Amren {
     print() {
         console.log('Name: ', this.name);
         console.log('Status: ', this.status);
-        console.log('Total: ', this.totalCoins);
+        console.log('Total Coins: ', this.totalCoins);
+        console.log();
     }
 }
 
-
-const amren = new Amren();
-amren.setName();
-
+const player = new Player("Luigi");
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -52,17 +57,30 @@ function getRandomInt(min, max) {
 }
 
 
+let gameActive = true;
 let clearId = setInterval(() => {
-    if (gameActive === false) {
-        clearInterval(clearId)
+    let random = getRandomInt(1, 3)
+    
+    player.print()
+    if (random === 1) {
+        if (!player.hasStar) {
+            player.gotHit()
+        } else if (player.hasStar) {
+            console.log('You were protected by your star!');
+            player.hasStar = false
+        }
+    }
+        
+    if (random === 2) {
+        player.gotPowerup()
     }
 
-    let random = getRandomInt(0, 2);
+    if (random === 3) {
+        player.addCoin()
+    }
 
-    if (random === 0) amren.gotHit();
-    if (random === 1) amren.gotPowerup();
-    if (random === 2) amren.addCoin();
-
-    amren.print();
-}, 1000);
+    if (!gameActive) {
+        clearInterval(clearId)
+    }
+}, 800)
 

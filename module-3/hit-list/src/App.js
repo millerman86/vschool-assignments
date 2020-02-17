@@ -1,6 +1,6 @@
 import React from 'react';
-import './App.css';
 import axios from 'axios';
+import './App.css'
 
 
 class App extends React.Component {
@@ -8,20 +8,30 @@ class App extends React.Component {
     super()
 
     this.state = {
-
+      targets: []
     }
   }
 
   componentDidMount() {
     axios.get('https://raw.githubusercontent.com/VSchool/vschool-api/master/static/hitlist.json').then(response => {
-      console.log(response)
+      console.log(response);
+      this.setState({
+        targets: response.data
+      })
     })
   }
 
   render() {
+    const targets = this.state.targets.map((target, index) => {
+      return (<div key={index}>
+                {target.name}
+                <img src={target.image} />
+              </div>)
+    })
     return (
       <div>
-       amren
+        <h1>Don Corleone's Hit List</h1>
+       {targets}
       </div>
     );
   }

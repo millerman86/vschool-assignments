@@ -1,9 +1,7 @@
-
 class Player {
     totalCoins = 0
     status = "Small"
     hasStar = false
-    gameActive = true
     
     
     constructor(name) {

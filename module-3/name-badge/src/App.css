@@ -47,6 +47,7 @@ textarea.describe-work-and-skills {
 
 textarea.describe-work-and-skills {
     /* width: 100%; */
+    height: 150px;
     flex: 1;
     border: none;
 }
@@ -115,6 +116,7 @@ form {
 
 .hello, 
 .my-name-is {
+    color: white;
     text-align: center;
 
 }
@@ -143,6 +145,8 @@ form {
 .badge-wrapper {
     border-radius: 10px;
     background: blue;
+    max-width: 560px;
+    margin: auto;
 }
 
 .output-grid-text-container {
@@ -151,4 +155,8 @@ form {
 
 .output-grid {
     padding: 0 7px;
+}
+
+.badge-wrapper {
+    padding-top: 3px;
 }

@@ -70,7 +70,6 @@ class App extends Component {
     return (
       <div className="page-wrapper">
         
-        
         <form onSubmit={this.handleFormSubmit}>
           <div>
             <input name="firstName" placeholder="First Name" value={this.state.input.firstName} onChange={this.handleAllChanges} />
@@ -103,19 +102,29 @@ class App extends Component {
           <button onClick={this.handleFormSubmit} className="submit">Submit</button>
         </div>
 
-        <div className="output-grid">
-          <div className="output-grid-text-container">Name:&nbsp;{(this.state.output.firstName || this.state.output.lastName) ? (<div>{this.state.output.firstName + " " + this.state.output.lastName}</div>) : <div>&nbsp;</div>}</div>
-          <div className="output-grid-text-container">Phone: {this.state.output.phoneNumber ? (<div>{this.state.output.phoneNumber}</div>) : <div>&nbsp;</div>}</div>
-          <div className="output-grid-text-container">Place of Birth:&nbsp;{this.state.output.placeOfBirth ? (<div>{this.state.output.placeOfBirth}</div>) : <div>&nbsp;</div>}</div>
-          <div className="output-grid-text-container">Favorite Food:&nbsp;{this.state.output.favoriteFood ? (<div>{this.state.output.favoriteFood}</div>) : <div>&nbsp;</div>}</div>
-          <div className="output-grid-text-container">Email:&nbsp;{this.state.output.email ? (<div>{this.state.output.email}</div>) : <div>&nbsp;</div>}</div>
 
-          <div className="output-grid-text-container"></div>
+        <div className="badge-wrapper">
+          <header className="hello-wrapper">
+            <h1 className="hello">Hello</h1>
+            <p className="my-name-is">my name is</p>
+
+          </header>
+
+          <div className="output-grid">
+            <div className="output-grid-text-container">Name:&nbsp;{(this.state.output.firstName || this.state.output.lastName) ? (<div>{this.state.output.firstName + " " + this.state.output.lastName}</div>) : <div>&nbsp;</div>}</div>
+            <div className="output-grid-text-container">Phone:&nbsp;{this.state.output.phoneNumber ? (<div>{this.state.output.phoneNumber}</div>) : <div>&nbsp;</div>}</div>
+            <div className="output-grid-text-container">Place of Birth:&nbsp;{this.state.output.placeOfBirth ? (<div>{this.state.output.placeOfBirth}</div>) : <div>&nbsp;</div>}</div>
+            <div className="output-grid-text-container">Favorite Food:&nbsp;{this.state.output.favoriteFood ? (<div>{this.state.output.favoriteFood}</div>) : <div>&nbsp;</div>}</div>
+            <div className="output-grid-text-container">Email:&nbsp;{this.state.output.email ? (<div>{this.state.output.email}</div>) : <div>&nbsp;</div>}</div>
+            <div className="output-grid-text-container"></div>
+          </div>
+
+          <div className="describe-work-and-skills-container">
+            <textarea className="describe-work-and-skills" value={this.state.output.bio} onChange={this.handleAllChanges} />
+          </div>
+
         </div>
 
-        <div class="describe-work-and-skills-container">
-          <textarea className="describe-work-and-skills" value={this.state.output.bio} onChange={this.handleAllChanges} />
-        </div>
 
         
         

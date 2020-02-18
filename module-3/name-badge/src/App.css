@@ -1,38 +1,34 @@
-.output-grid, form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-.page-wrapper {
-    padding: 20px;
-}
 
 input, 
 textarea {
     font-size: 13px;
 }
 
-.output-grid {
-    grid-template-rows: 50px 50px 50px; /* Find a way to simplify  */
-}
-
-
 input {
-    width: 45%;
     border: 2px solid black;
+    width: 90%;
 }
 
+.page-wrapper {
+    padding: 20px;
+}
 
+form, .output-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.output-grid {
+    grid-template-rows: 60px 60px 60px; 
+}
 
 form > div {
     display: flex;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 20px 0;
 }
 
-input {
-    width: 90%;
-    outline: 0;
+form input {
+    height: 20px; 
 }
 
 .bio {
@@ -51,13 +47,16 @@ textarea.describe-work-and-skills {
 
 textarea.describe-work-and-skills {
     /* width: 100%; */
-    height: 200px;
     flex: 1;
+    border: none;
 }
 
 
 .describe-work-and-skills-container {
+    padding-bottom: 20px;
     font-size: 20px;
+    padding-left: 7px;
+    padding-right: 7px;
     display: flex;
 }
 
@@ -72,7 +71,6 @@ input:focus {
     outline-width: 0;
     outline: none;
 }
-
 
 
 .submit-container {
@@ -113,4 +111,44 @@ form {
 
 .output-grid {
     margin-bottom: 20px;
+}
+
+.hello, 
+.my-name-is {
+    text-align: center;
+
+}
+
+.hello {
+    font-size: 40px;
+}
+
+.my-name-is {
+    font-weight: 600;
+}
+
+.bio {
+    height: 150px;
+}
+
+.hello-wrapper {
+    border-radius: 10px 10px 0 0 ;
+    background: blue;
+}
+
+.hello-wrapper p {
+    padding-bottom: 30px;
+}
+
+.badge-wrapper {
+    border-radius: 10px;
+    background: blue;
+}
+
+.output-grid-text-container {
+    background: white;
+}
+
+.output-grid {
+    padding: 0 7px;
 }

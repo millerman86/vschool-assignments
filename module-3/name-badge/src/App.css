@@ -1,0 +1,116 @@
+.output-grid, form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.page-wrapper {
+    padding: 20px;
+}
+
+input, 
+textarea {
+    font-size: 13px;
+}
+
+.output-grid {
+    grid-template-rows: 50px 50px 50px; /* Find a way to simplify  */
+}
+
+
+input {
+    width: 45%;
+    border: 2px solid black;
+}
+
+
+
+form > div {
+    display: flex;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+input {
+    width: 90%;
+    outline: 0;
+}
+
+.bio {
+    height: 75px;
+    grid-column: 1 / 3;
+}
+
+textarea {
+    width: 100%;
+}
+
+textarea.bio, 
+textarea.describe-work-and-skills {
+    border: 2px solid black;
+}
+
+textarea.describe-work-and-skills {
+    /* width: 100%; */
+    height: 200px;
+    flex: 1;
+}
+
+
+.describe-work-and-skills-container {
+    font-size: 20px;
+    display: flex;
+}
+
+.output-grid-text-container {
+    display: flex;
+    font-size: 20px;
+    align-items: center;
+}
+
+
+input:focus {
+    outline-width: 0;
+    outline: none;
+}
+
+
+
+.submit-container {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    padding-bottom: 50px;
+}
+
+.submit {
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 15px
+}
+
+input[name="placeOfBirth"], 
+input[name="favoriteFood"], 
+input[name="lastName"]
+{
+    margin-left: auto;
+}
+
+.bio {
+    margin-bottom: 50px;
+}
+
+form {
+    padding-bottom: 40px;
+}
+
+.bio-container {
+    display: flex;
+}
+
+.bio {
+    flex: 1;
+}
+
+.output-grid {
+    margin-bottom: 20px;
+}

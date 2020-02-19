@@ -1,14 +1,12 @@
 import React from 'react';
-
+import './styles.css';
 
 function Navbar() {
     return (
         <nav id="navbar">
             <div class="header-banner-wrap">
                 <header class="flex container header-banner">
-                    <div class="start-bootstrap">
-                        <h2>Start Bootstrap</h2>
-                    </div>
+                    <a className="start-bootstrap">Start Bootstrap</a>
 
                     <button class="menu-button">
                         <div class="menu">MENU</div>

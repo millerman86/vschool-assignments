@@ -8,12 +8,6 @@ import Header from './components/Header/Header';
 
 import blogs from './data/blogs';
 
-// import { FontAwesomeIcon } from '@fortawsome/react-fontawesome'
-// import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-// import '@fortawesome/react-fontawesome';
-
-// const element = <FontAwesomeIcon icon={faCoffee} />
-
 
 function App() {
   const renderedBlogPosts = blogs.map((blog) => {
@@ -45,3 +39,16 @@ function App() {
 
 export default App; 
 
+
+
+
+
+
+
+
+
+// import { FontAwesomeIcon } from '@fortawsome/react-fontawesome'
+// import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+// import '@fortawesome/react-fontawesome';
+
+// const element = <FontAwesomeIcon icon={faCoffee} />

@@ -1,3 +1,25 @@
+/*
+fonts   
+*/
+
+body {
+    font-size: 20px;
+    color: #212529;
+}
+
+h1,
+h2, 
+h3, 
+h4, 
+h5, 
+h6 {
+    font-size: 1em;
+    font-weight: 800;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif
+
+}
+
+
 body {
     margin: 0;
 }
@@ -16,7 +38,6 @@ a {
 }
 
 .container {
-    /* width: 500pt; */
     margin: auto;
 }
 
@@ -32,7 +53,6 @@ a:hover {
 
 .intro-titles h1 {
     margin: 0;
-    font-size: 80pt;
 }
 
 h2 { 
@@ -50,7 +70,6 @@ h2 {
 button.older-posts {
     color: white;
     background: #0085a1;
-    font-weight: 800;
     padding: 15pt 25pt;
     margin-left: auto;
 }
@@ -75,11 +94,6 @@ button.older-posts {
     align-items: center;
 }
 
-button .menu {
-    font-weight: 900;
-}
-
-
 
 .social-link {
     height: 50pt;
@@ -90,7 +104,6 @@ button .menu {
 
 .social-link::before {
     font-family: "FontAwesome";
-    font-weight: 900;
     color: white;
     content: "\f002";
     z-index: 500;
@@ -99,14 +112,14 @@ button .menu {
     width: 50px;
 }
 
-@media only screen and (min-width: 576pt) {
-    /* .container {
-        max-width: 520pt;
-    } */
+@media only screen and (min-width: 576px) {
+    .container {
+        max-width: 520px;
+    }
 }
 
-@media only screen and (min-width: 768pt) {
+@media only screen and (min-width: 768px) {
     .container {
-        max-width: 960px;
+        max-width: 720px;
     }
 }

@@ -14,7 +14,6 @@ header {
 }
 
 header button {
-    padding: 13pt;
     display: inline-flex;
     align-items: center;
     background-color: transparent;
@@ -28,7 +27,7 @@ header button {
 
 .header-banner-wrap {
     background: white;
-    padding: 5pt 12pt;
+    padding: 10px 10px;
 }
 
 nav#navbar {
@@ -42,12 +41,23 @@ nav .desktop-navbar {
     display: none;
 }
 
-button .menu-button {
+button.menu-button {
     max-height: 50px;
+    padding: 11px;
+    border-radius: 4px;
+    border-color: rgba(0,0,0,.1);
 }
 
-@media only screen and (min-width: 768px) {
+button.menu-button .menu {
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+}
 
+
+
+
+@media only screen and (min-width: 768px) {
     nav {
         color: white;
         font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
@@ -75,8 +85,7 @@ button .menu-button {
     }
 
     ul li a {
-        font-size: 12px;
-        font-weight: 800;
+        /* font-size: 12px; */
         letter-spacing: 1px;
     }
 

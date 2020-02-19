@@ -1,11 +1,10 @@
 import React from 'react';
 import './App.css';
 
-import BlogList from './components/BlogList';
-import BlogPost from './components/BlogPost';
-import Footer from './components/Footer';
-import Header from './components/Header';
-import Navbar from './components/Navbar';
+import BlogList from './components/BlogList/BlogList';
+import BlogPost from './components/BlogPost/BlogPost';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
 
 import blogs from './data/blogs';
 
@@ -24,7 +23,6 @@ function App() {
   return (
     <div>
       <Header />
-        <Navbar />
       <BlogList />
         <div class="container">
           {renderedBlogPosts}

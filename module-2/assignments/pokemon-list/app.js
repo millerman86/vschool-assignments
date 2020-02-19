@@ -6,6 +6,7 @@ function requestListener() {
 
     
     response.objects[0].pokemon.forEach((i) => {
+        console.log(i);
         let newNode = document.createElement('li');
 
         newNode.innerText = i['name'];

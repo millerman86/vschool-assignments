@@ -36,7 +36,6 @@ class App extends Component {
   
   handleAllChanges(event) {
     const {name, value} = event.target
-    console.log(name, value)
     this.setState(previousState => {
         return {input: {
           ...previousState.input,
@@ -49,18 +48,11 @@ class App extends Component {
 
   handleFormSubmit(e) {
     e.preventDefault()
-    console.log("input", this.state.input)
-    console.log("output", this.state.output)
-    // console.log(this.state.output);
-
+    
     this.setState((previousState) => {
-      // console.log('output', previousState.output)
       return {
-
         output: {...previousState.input}
-        
       }
-
     })
 
   }

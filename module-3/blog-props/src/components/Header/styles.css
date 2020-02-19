@@ -1,0 +1,90 @@
+section#header-section {
+    background: url(../../img/home-bg.jpg);
+    background-size: cover;
+    height: 700px;
+}
+
+section#header-section h1,
+section#header-section h3 {
+    text-align: center;
+}
+
+header {
+    display: flex;
+}
+
+header button {
+    padding: 13pt;
+    display: inline-flex;
+    align-items: center;
+    background-color: transparent;
+    outline: none;
+    border-radius: 2pt;
+}
+
+.header-banner {
+    justify-content: space-between;
+}
+
+.header-banner-wrap {
+    background: white;
+    padding: 5pt 12pt;
+}
+
+nav#navbar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+nav .desktop-navbar {
+    display: none;
+}
+
+button .menu-button {
+    max-height: 50px;
+}
+
+@media only screen and (min-width: 768px) {
+
+    nav {
+        color: white;
+        font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    }
+
+    nav .desktop-navbar {
+        display: block;
+    }
+    
+    .header-banner-wrap {
+        background: transparent;
+    }
+
+    button.menu-button {
+        display: none;
+    }
+
+    ul {
+        list-style-type: none;
+    }
+
+    ul li{
+        display: inline;
+        margin-left: 50px;
+    }
+
+    ul li a {
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 1px;
+    }
+
+    ul li a:hover {
+        color: lightgrey;
+    }
+
+    ul li:first-child {
+
+    }
+}

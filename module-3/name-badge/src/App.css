@@ -65,6 +65,11 @@ textarea.describe-work-and-skills {
     display: flex;
     font-size: 20px;
     align-items: center;
+    padding-left: 10px;
+}
+
+textarea {
+    font-size: 19px;
 }
 
 

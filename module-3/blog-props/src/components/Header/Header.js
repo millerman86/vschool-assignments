@@ -7,9 +7,9 @@ function Header() {
         <section id="header-section">
             <Navbar />
 
-            <div class="intro-titles">
+            <div className="intro-titles">
                 <h1>Clean Blog</h1>
-                <h3>A Theme by Start Bootstrap</h3>
+                <span className="sub-heading">A Theme by Start Bootstrap</span>
             </div>
             
         </section>

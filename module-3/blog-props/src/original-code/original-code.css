@@ -20,7 +20,6 @@ h4,
 h5,
 h6 {
     font-weight: 800;
-    /*You need to install open sans on computer or link to it. But also select the 800 font weight*/
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -37,13 +36,13 @@ a:hover {
 
 blockquote {
     font-style: italic;
-    color: #868e96
+    color: #868e96;
 }
 
 .section-heading {
     font-size: 36px;
     font-weight: 700;
-    margin-top: 60px
+    margin-top: 60px;
 }
 
 .caption {
@@ -54,46 +53,46 @@ blockquote {
     padding: 10px;
     text-align: center;
     border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px
+    border-bottom-left-radius: 5px;
 }
 
 ::-moz-selection {
     color: #fff;
     background: #0085a1;
-    text-shadow: none
+    text-shadow: none;
 }
 
 ::selection {
     color: #fff;
     background: #0085a1;
-    text-shadow: none
+    text-shadow: none;
 }
 
 img::-moz-selection {
     color: #fff;
-    background: 0 0
+    background: 0 0;
 }
 
 img::selection {
     color: #fff;
-    background: 0 0
+    background: 0 0;
 }
 
 img::-moz-selection {
     color: #fff;
-    background: 0 0
+    background: 0 0;
 }
 
 #mainNav {
     position: absolute;
-    border-bottom: 1px solid #e9ecef;
+    border-bottom: 1px solid black;
     background-color: #fff;
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 #mainNav .navbar-brand {
     font-weight: 800;
-    color: #343a40
+    color: #343a40;
 }
 
 #mainNav .navbar-toggler {
@@ -101,36 +100,36 @@ img::-moz-selection {
     font-weight: 800;
     padding: 13px;
     text-transform: uppercase;
-    color: #343a40
+    color: #343a40;
 }
 
 #mainNav .navbar-nav>li.nav-item>a {
     font-size: 12px;
     font-weight: 800;
     letter-spacing: 1px;
-    text-transform: uppercase
+    text-transform: uppercase;
 }
 
 @media only screen and (min-width:992px) {
     #mainNav {
         border-bottom: 1px solid transparent;
-        background: 0 0
+        background: 0 0;
     }
     #mainNav .navbar-brand {
         padding: 10px 20px;
-        color: #fff
+        color: #fff;
     }
     #mainNav .navbar-brand:focus,
     #mainNav .navbar-brand:hover {
-        color: rgba(255, 255, 255, .8)
+        color: rgba(255, 255, 255, .8);
     }
     #mainNav .navbar-nav>li.nav-item>a {
         padding: 10px 20px;
-        color: #fff
+        color: #fff;
     }
     #mainNav .navbar-nav>li.nav-item>a:focus,
     #mainNav .navbar-nav>li.nav-item>a:hover {
-        color: rgba(255, 255, 255, .8)
+        color: rgba(255, 255, 255, .8);
     }
 }
 
@@ -138,21 +137,21 @@ img::-moz-selection {
     #mainNav {
         transition: background-color .2s;
         transform: translate3d(0, 0, 0);
-        -webkit-backface-visibility: hidden
+        -webkit-backface-visibility: hidden;
     }
     #mainNav.is-fixed {
         position: fixed;
         top: -67px;
         transition: transform .2s;
         border-bottom: 1px solid #fff;
-        background-color: rgba(255, 255, 255, .9)
+        background-color: rgba(255, 255, 255, .9);
     }
     #mainNav.is-fixed .navbar-brand {
-        color: #212529
+        color: #212529;
     }
     #mainNav.is-fixed .navbar-brand:focus,
     #mainNav.is-fixed .navbar-brand:hover {
-        color: #0085a1
+        color: #0085a1;
     }
     #mainNav.is-fixed .navbar-nav>li.nav-item>a {
         color: #212529

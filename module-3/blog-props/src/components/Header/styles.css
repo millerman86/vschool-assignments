@@ -4,6 +4,15 @@ section#header-section {
     height: 700px;
 }
 
+section#header-section span.sub-heading {
+    font-size: 24px;
+    text-align: center;
+    display: block;
+}
+section#header-section h1 {
+    font-size: 80px;
+}
+
 section#header-section h1,
 section#header-section h3 {
     text-align: center;

@@ -18,19 +18,28 @@ function App() {
     <div>
       <Header />
       <BlogList />
-        <div class="container">
+        <div className="container">
           {renderedBlogPosts}
-          <div class="flex">
-            <button class="older-posts">OLDER POSTS →</button>
+          <div className="flex">
+            <button className="older-posts">OLDER POSTS →</button>
+          </div>
+
+          <div className="flex">
+            <div className="social-links">
+              <div className="social-link">
+                {/* <i class="fas fa-badge"></i> */}
+                {/* <i className="fas fa-circle fa-stack-2x"></i> */}
+              </div>
+              <div className="social-link">
+              </div>
+              <div className="social-link">
+                <i className=""></i>
+              </div>
+            </div>
           </div>
 
 
-          <div class="flex social-links">
-            <div class="social-link"></div>
-            <div class="social-link"></div>
-            <div class="social-link"></div>
 
-          </div>
         </div>
       <Footer />
     </div>

@@ -20,6 +20,9 @@ You will organize it into these components:
 Indented components are suppose to be nested.
 
 
+Here is the link:
+* https://blackrockdigital.github.io/startbootstrap-clean-blog/#
+
 <Header />
     <Navbar />
 <BlogList />

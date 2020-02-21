@@ -6,7 +6,6 @@ function requestListener() {
 
     
     response.objects[0].pokemon.forEach((i) => {
-        console.log(i);
         let newNode = document.createElement('li');
 
         newNode.innerText = i['name'];
@@ -16,6 +15,21 @@ function requestListener() {
 }
 
 var request = new XMLHttpRequest();
+
+
+function test() {
+    console.log('blahblahblah');
+}
+
+request.onreadystatechange = function() {
+    test()
+    if (this.readyState == 4 && this.status == 200) {
+        console.log('blah')
+        test()
+        
+    }
+}
+
 
 request.addEventListener("load", requestListener);
 request.open('GET', 'https://api.vschool.io/pokemon');

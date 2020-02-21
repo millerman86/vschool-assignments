@@ -1,6 +1,16 @@
 import React, {Component} from 'react';
 import './App.css';
 
+const newBadge = {
+  firstName: "", 
+  lastName: "",
+  phoneNumber: "", 
+  placeOfBirth: "", 
+  favoriteFood: "",
+  email: "",
+  bio: "",   
+}
+
 class App extends Component {
   constructor() {
     super()
@@ -16,6 +26,10 @@ class App extends Component {
         email: "",
         bio: "",   
       },
+
+      badges: [
+        
+      ], 
 
       output: {
         firstName: "", 
@@ -51,14 +65,42 @@ class App extends Component {
     
     this.setState((previousState) => {
       return {
-        output: {...previousState.input}
+        badges: [...previousState.badges, previousState.input],
+        input: newBadge
       }
+
+      
     })
+
 
   }
 
   render() {
+    const renderedBadges = this.state.badges.map((badge) => {
+      return  (
+      <div>
+         <div className="badge-wrapper">
+          <header className="hello-wrapper">
+            <h1 className="hello">Hello</h1>
+            <p className="my-name-is">my name is</p>
 
+          </header>
+        </div>
+
+      <div className="output-grid">
+      <div className="output-grid-text-container">Name:&nbsp;{(badge.firstName || badge.lastName) ? (<div>{badge.firstName + " " + badge.lastName}</div>) : <div>&nbsp;</div>}</div>
+      <div className="output-grid-text-container">Phone:&nbsp;{badge.phoneNumber ? (<div>{badge.phoneNumber}</div>) : <div>&nbsp;</div>}</div>
+      <div className="output-grid-text-container">Place of Birth:&nbsp;{badge.placeOfBirth ? (<div>{badge.placeOfBirth}</div>) : <div>&nbsp;</div>}</div>
+      <div className="output-grid-text-container">Favorite Food:&nbsp;{badge.favoriteFood ? (<div>{badge.favoriteFood}</div>) : <div>&nbsp;</div>}</div>
+      <div className="output-grid-text-container">Email:&nbsp;{badge.email ? (<div>{badge.email}</div>) : <div>&nbsp;</div>}</div>
+      <div className="output-grid-text-container"></div>
+    </div>
+    <div className="describe-work-and-skills-container">
+            <textarea className="describe-work-and-skills" value={this.state.output.bio} onChange={this.handleAllChanges} />
+          </div>
+          
+    </div>)
+    })
     return (
       <div className="page-wrapper">
         
@@ -94,29 +136,9 @@ class App extends Component {
           <button onClick={this.handleFormSubmit} className="submit">Submit</button>
         </div>
 
+          {renderedBadges}
 
-        <div className="badge-wrapper">
-          <header className="hello-wrapper">
-            <h1 className="hello">Hello</h1>
-            <p className="my-name-is">my name is</p>
-
-          </header>
-
-          <div className="output-grid">
-            <div className="output-grid-text-container">Name:&nbsp;{(this.state.output.firstName || this.state.output.lastName) ? (<div>{this.state.output.firstName + " " + this.state.output.lastName}</div>) : <div>&nbsp;</div>}</div>
-            <div className="output-grid-text-container">Phone:&nbsp;{this.state.output.phoneNumber ? (<div>{this.state.output.phoneNumber}</div>) : <div>&nbsp;</div>}</div>
-            <div className="output-grid-text-container">Place of Birth:&nbsp;{this.state.output.placeOfBirth ? (<div>{this.state.output.placeOfBirth}</div>) : <div>&nbsp;</div>}</div>
-            <div className="output-grid-text-container">Favorite Food:&nbsp;{this.state.output.favoriteFood ? (<div>{this.state.output.favoriteFood}</div>) : <div>&nbsp;</div>}</div>
-            <div className="output-grid-text-container">Email:&nbsp;{this.state.output.email ? (<div>{this.state.output.email}</div>) : <div>&nbsp;</div>}</div>
-            <div className="output-grid-text-container"></div>
-          </div>
-
-          <div className="describe-work-and-skills-container">
-            <textarea className="describe-work-and-skills" value={this.state.output.bio} onChange={this.handleAllChanges} />
-          </div>
-
-        </div>
-
+       
 
         
         

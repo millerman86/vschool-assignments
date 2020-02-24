@@ -35,7 +35,9 @@ async function getAllDatas(){
     let characters, locations, episodes
     try {
         characters = await axios.get("https://rickandmortyapi.com/api/character")
+
         locations = await axios.get("https://rickandmortyapi.com/api/location")
+
         episodes = await axios.get("https://rickandmortyapi.com/api/episode")
     }
     catch(err){
@@ -48,9 +50,13 @@ async function getAllDatas(){
     }
 }
 
+// const wait = get('https://rickandmortyapi.com/api/location').then(response => console.log('response', response))
 
-const result = getAllDatas().then(res => console.log(res))
-console.log(result)
+const result = getAllDatas().then(resp => {
+    console.log('object', resp);
+    console.log('locations',resp.locations.data.results);
+    listData(resp.characters.data.results)
+})
 
 function listData(arr){
     arr.forEach(makeElements)

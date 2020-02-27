@@ -36,10 +36,10 @@ class App extends React.Component {
         {context => {
           const RenderedPosts = context.uglyThings.map((item, index) => {
             return (
-              <div key={index}>
+              <div key={item['uuid']}>
                 <div>{item.title}</div>
                 <div>{item.description}</div>
-                <img src={item.url} alt="" />
+                <img src={item.url} alt="" className="ugly-thing-image"/>
               </div>)
           })
           return (

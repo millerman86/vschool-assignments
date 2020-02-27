@@ -10,7 +10,8 @@ class UglyThingsProvider extends React.Component {
             {
                 description: "what happened to this monkey?", 
                 title: "really ugly monkey", 
-                url: "https://coursework.vschool.io/content/images/size/w2000/2015/05/ugly-1.jpg"
+                url: "https://coursework.vschool.io/content/images/size/w2000/2015/05/ugly-1.jpg", 
+                id: "123"
             }, 
             
         ]

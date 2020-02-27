@@ -13,11 +13,6 @@ class App extends React.Component {
     RenderedPosts: []
   }
 
-
-  componentDidMount() {
-    // fetch()
-  }
-
   render() {
     const RenderedPosts = this.state.RenderedPosts.map((item) => {
       return (

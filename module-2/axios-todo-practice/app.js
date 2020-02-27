@@ -118,9 +118,11 @@ function deleteTodo(singleTodoObject) {
 
 function deleteAllTodos() {
     todoList.forEach((i) => {
-        axios.delete(todoUrl + i['_id']).then((response) => {
+        axios.delete(todoUrl + i['_id'])
+        .then((response) => {
             fetchTodos();
-        }).then(() => {}), () => {
+        })
+        .then(() => {}), () => {
             alert('There was a problem deleting all of your todos!')
         }
     });

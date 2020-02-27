@@ -9,8 +9,8 @@ You are going to build an React app that allows a user to post things that they 
 * Description field (why the user thinks it is ugly) <input type="checkbox" checked />
 * Must have Submit button that submits the data <input type="checkbox" checked />
 * Must display a list of posted images with their associated titles and descriptions <input type="checkbox" checked />
-* Must store the array of ugly thing objects in the Context store
-* Must be able to delete an ugly thing
+* Must store the array of ugly thing objects in the Context store <input type="checkbox" checked />
+* Must be able to delete an ugly thing 
 * Must be able to edit an ugly thing
 
 

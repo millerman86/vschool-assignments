@@ -1,3 +1,59 @@
+.ugly-thing-image {
+    width: 100%;
+    transition: transform .2s ease-in-out
+}
+
 .ugly-thing-image:hover {
     /* transform: scale(1.1); */
+}
+
+.image-wrapper {
+    margin: auto;
+    width: 90%;
+    position: relative;
+}
+
+.delete-circle {
+    padding-top: 10%;
+    width: 10%;
+    /* height: auto; */
+    position: absolute;
+    z-index: 100;
+    right: 10%;
+    top: 10%;
+   
+    border-radius: 100px;
+    border: 2px solid black;
+}
+
+.red-box {
+    position: relative;
+    top: 3%;
+    right: 3%;
+    width: 94%;
+    height: 94%;
+    background: red;
+    border-radius: 50%;
+}
+
+input[name="describetheugly"] {
+    width: 50%;
+}
+
+input[name="url"] {
+}
+
+input[name="title"] {
+}
+
+
+.page-background {
+    height: 100vh;
+    width: 100vw;
+    background-image: url("https://bloximages.chicago2.vip.townnews.com/thecourierexpress.com/content/tncms/assets/v3/editorial/b/7f/b7f7e5c6-fc0b-5548-8358-ed19a8acbf01/5d9e7b515fc76.image.jpg?resize=1200%2C900");
+}
+
+#ugly-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }

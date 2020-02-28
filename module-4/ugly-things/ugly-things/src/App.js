@@ -9,7 +9,8 @@ import { v4 as uuidv4 } from 'uuid';
 class App extends React.Component {
 
   state = {
-    RenderedPosts: []
+    RenderedPosts: [], 
+    deleteActivated: true 
   }
 
 
@@ -29,21 +30,40 @@ class App extends React.Component {
     }
   }
 
+
   render() {
 
     return (
       <UglyThingsContext.UglyThingsConsumer>
         {context => {
           const RenderedPosts = context.uglyThings.map((item, index) => {
+            let deleteCircle;
+            if (this.state.deleteActivated) deleteCircle = 'delete-circle'
+            
+            
             return (
               <div key={item['uuid']}>
                 <div>{item.title}</div>
                 <div>{item.description}</div>
-                <img src={item.url} alt="" className="ugly-thing-image"/>
+                
+                <div className="image-wrapper"> 
+                  <div onClick={() => {
+
+                      context.removeUglyThing(item['uuid'])
+                    }} className={deleteCircle ? deleteCircle : ""}><div className="red-box"></div></div>
+
+                  <img src={item.url} alt="" className="ugly-thing-image"/>
+
+
+                  <input name="describetheugly" placeholder="Why is it ugly?" />
+                </div>
+
+              
+
               </div>)
           })
           return (
-            <div>
+            <div className="page-background">
               <form onSubmit={(e) => {
                   context.addUglyThing(this.handleSubmit(e))
                 }} name="new-ugly">
@@ -52,7 +72,7 @@ class App extends React.Component {
                 <br />
                 <input name="title" placeholder="Choose Title" />
                 <br />
-                <input name="describetheugly" placeholder="Why is it ugly?" />
+               
         
               
                 <input type="submit" onClick={context.removeUglyThing}/>

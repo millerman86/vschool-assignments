@@ -46,7 +46,8 @@ header > p {
 
 .meme > h2 {
     position: absolute;
-    width: 80%;
+    max-width: 80%;
+    word-wrap: break-word;
     text-align: center;
     left: 50%;
     transform: translateX(-50%);

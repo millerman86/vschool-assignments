@@ -35,10 +35,7 @@ const mapVegetables = (arr) => {
     })
 }
 
-
 console.log(mapVegetables(carrots));
-
-
 
 
 

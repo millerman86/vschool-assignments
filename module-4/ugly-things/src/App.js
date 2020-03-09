@@ -4,9 +4,7 @@ import {UglyThingsContext} from './contextproviders'
 import { v4 as uuidv4 } from 'uuid';
 
 
-
 function UglyThing(props) {
- 
   return (
     <div key={props.item['uuid']}>
     <div>{props.item['title']}</div>
@@ -16,23 +14,17 @@ function UglyThing(props) {
 
     <img src={props.item.url} alt="" className="ugly-thing-image"/>
 
-    <div className="delete-box-aspect-ratio">
+    <div className="delete-box-container">
       <div className="delete-child" onClick={() => {
         props.removeUglyThing(props.item['uuid'])
       }}>
-        <div className="inner-two container test">
-          <div className="inner-two red">
-          </div>
+        <div className="svg-container" >
+            <svg focusable="false" viewBox="0 0 24 24" ariaHidden="true" role="presentation"><path color="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>
         </div>
       </div>
     </div>
 
-      {/* <div onClick={() => {
-
-          props.removeUglyThing(props.item['uuid'])
-        }} className={props.deleteCircle}><div className="red-box"></div></div> */}
-
-      <input name="describetheugly" placeholder="Why is it ugly?" />
+    <input name="describetheugly" placeholder="Why is it ugly?" />
     </div>
   </div>
   )
@@ -45,7 +37,8 @@ class App extends React.Component {
 
   state = {
     RenderedPosts: [], 
-    deleteActivated: false 
+    deleteActivated: false, 
+    itemsToDelete: []
   }
 
 

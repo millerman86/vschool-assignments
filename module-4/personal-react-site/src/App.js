@@ -4,6 +4,7 @@ import axios from 'axios';
 import Chart from 'react-google-charts'
 
 
+
 const options = {
   width: 400,
   height: 120,
@@ -13,7 +14,6 @@ const options = {
   yellowTo: 90,
   minorTicks: 10
 };
-
 
 
 class GaugeChart extends React.Component {
@@ -31,10 +31,11 @@ class GaugeChart extends React.Component {
       ["Metacritic", this.state.RottenTomatoes]
     ];
   };
-  
+
   componentDidMount() {
     
   }
+
   render() {
     return (
       <div className="App">
@@ -49,8 +50,6 @@ class GaugeChart extends React.Component {
     );
   }
 }
-
-
 
 
 

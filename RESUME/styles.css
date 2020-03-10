@@ -1,0 +1,45 @@
+body h1 {
+    text-align: center;
+}
+
+body {
+    padding: 30px;
+}
+h1, p {
+    margin: 0;
+}
+
+.header-relative {
+    position: relative;
+}
+
+.my-background-picture {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 100px;
+    flex-direction: column;
+    background-size: cover;
+    background: url(https://scontent-daen4-1.xx.fbcdn.net/v/t31.0-1/c192.448.1152.1152a/s160x160/28516013_10215101407749543_3991019467857432634_o.jpg?_nc_cat=107&_nc_sid=dbb9e7&_nc_oc=AQlB1JocHSe2eZtMLsZ8vonQvzYM5wccXaYB1et3sZooo_3m0MTjYnB_r-5xt7Ka6ww&_nc_ht=scontent-den4-1.xx&oh=0035ef0bbb41e559d588edecd600b4c5&oe=5E9225AD) no-repeat;
+    margin-left: 50px;
+}
+
+
+
+.here-why-hire {
+   
+}
+
+.github-account-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.linked-in-account-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.linked-in-and-email {
+    width: 50%;
+}

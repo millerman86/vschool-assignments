@@ -3,6 +3,10 @@ import './App.css';
 import {UglyThingsContext} from './contextproviders'
 import { v4 as uuidv4 } from 'uuid';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faComment } from '@fortawesome/free-solid-svg-icons'
+
+const element = <FontAwesomeIcon icon={faComment} />
 
 function UglyThing(props) {
   return (
@@ -24,6 +28,7 @@ function UglyThing(props) {
       </div>
     </div>
 
+    {element}
     <input name="describetheugly" placeholder="Why is it ugly?" />
     </div>
   </div>

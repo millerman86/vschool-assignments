@@ -27,8 +27,8 @@ function App() {
           <div className="flex">
             <div className="social-links">
               <div className="social-link">
-                {/* <i class="fas fa-badge"></i> */}
-                {/* <i className="fas fa-circle fa-stack-2x"></i> */}
+                <i class="fas fa-badge"></i>
+                <i className="fas fa-circle fa-stack-2x"></i>
               </div>
               <div className="social-link">
               </div>

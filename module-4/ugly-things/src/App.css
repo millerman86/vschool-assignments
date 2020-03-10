@@ -38,8 +38,10 @@
 }
 
 .svg-container svg {
+    cursor: pointer;
     display: block;
 }
+
 
 input[name="describetheugly"] {
     width: 50%;

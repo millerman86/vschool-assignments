@@ -1,0 +1,13 @@
+h1 {
+    font-size: 50px;
+}
+
+.bring-me-the-ratings {
+    padding: 20px 50px;
+    margin-left: 50px;
+    margin-right: 100px;
+    border-left: 5px solid orange;
+    border-top: 5px solid blue;
+}
+
+

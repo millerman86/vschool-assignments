@@ -39,6 +39,8 @@ class GaugeChart extends React.Component {
   render() {
     return (
       <div className="App">
+
+        <h1 className="bring-me-the-ratings">Bring me to the ratings!</h1>
         <Chart
           chartType="Gauge"
           width="100%"
@@ -46,6 +48,10 @@ class GaugeChart extends React.Component {
           data={this.getData()}
           options={options}
         />
+        <h3>There are 3 ratings you can view</h3>
+        Please enter the NAME of your requested movie
+        <input />
+        <h3>Miller</h3>
       </div>
     );
   }

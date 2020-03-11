@@ -32,7 +32,6 @@
     width: 100%;
 	border-radius: 50%;
     box-sizing: border-box;
-    border: 1px solid white;
     fill: rgba(255, 255, 255, 0.7);
     transition: fill .2s ease-in;
 }
@@ -42,15 +41,19 @@
     display: block;
 }
 
+.delete-ugly-things-button {
+    border-radius: 20px;
+}
+
 
 input[name="describetheugly"] {
     width: 50%;
 }
 
-input[name="url"] {
+/* input[name="url"] {
 
 }
 
 input[name="title"] {
 
-}
+} */

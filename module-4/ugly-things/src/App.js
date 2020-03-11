@@ -101,6 +101,13 @@ class App extends React.Component {
               <div id="ugly-list">
                 {RenderedPosts}
               </div>
+
+
+              <select className="ui dropdown">
+  <option value="">Gender</option>
+  <option value="1">Male</option>
+  <option value="0">Female</option>
+</select>
             </div>
           )
         }}

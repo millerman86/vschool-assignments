@@ -2,15 +2,50 @@ import React from 'react';
 import './App.css';
 import {UglyThingsContext} from './contextproviders'
 import { v4 as uuidv4 } from 'uuid';
+// import { faCoffee } from 'react-icons/fa'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faComment } from '@fortawesome/free-solid-svg-icons'
 
-const element = <FontAwesomeIcon icon={faComment} />
+// import { Button } from 'semantic-ui-react'
+// const ButtonExampleButton = () => <Button>Click Here</Button>
+
+
+import { Button, Icon, Label } from 'semantic-ui-react'
+
+const ButtonExampleLabeledBasic = () => (
+  <div>
+    <Button as='div' labelPosition='right'>
+      <Button color='red'>
+        <Icon name='heart' />
+        Like
+      </Button>
+      <Label as='a' basic color='red' pointing='left'>
+        2,048
+      </Label>
+    </Button>
+    <Button as='div' labelPosition='right'>
+      <Button basic color='blue'>
+        <Icon name='fork' />
+        Fork
+      </Button>
+      <Label as='a' basic color='blue' pointing='left'>
+        2,048
+      </Label>
+    </Button>
+  </div>
+)
+
+
+
+
+
+
+// const element = <FontAwesomeIcon icon={faComment} />
 
 function UglyThing(props) {
   return (
     <div key={props.item['uuid']}>
+      <ButtonExampleLabeledBasic />
+      {/* {faCoffee} */}
     <div>{props.item['title']}</div>
     <div>{props.item['description']}</div>
     
@@ -28,7 +63,6 @@ function UglyThing(props) {
       </div>
     </div>
 
-    {element}
     <input name="describetheugly" placeholder="Why is it ugly?" />
     </div>
   </div>
@@ -104,6 +138,7 @@ class App extends React.Component {
             </div>
           )
         }}
+        
       </UglyThingsContext.UglyThingsConsumer>
     );
   }

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import './App.css';
 import {UglyThingsContext} from './contextproviders'
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faComment } from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faComment } from '@fortawesome/free-solid-svg-icons'
 
-const comment = <FontAwesomeIcon icon={faComment} />
+// const comment = <FontAwesomeIcon icon={faComment} />
 
 function UglyThing(props) {
 
@@ -29,7 +29,7 @@ function UglyThing(props) {
       </div>
     </div>
     <div className="option-container">
-      <span>{comment}</span>
+      {/* <span>{comment}</span> */}
     </div>
     
     <input name="describetheugly" placeholder="Why is it ugly?" />
@@ -52,7 +52,7 @@ class App extends React.Component {
 
   handleSubmit = (e, context) => {
     e.preventDefault()
-    const uuid = uuidv4()
+    // const uuid = uuidv4()
 
     const url = document['new-ugly'].url.value
     const title = document['new-ugly'].title.value 
@@ -62,7 +62,7 @@ class App extends React.Component {
       url, 
       description, 
       title, 
-      uuid
+      // uuid
     })
   }
 
@@ -85,7 +85,6 @@ class App extends React.Component {
                 <input name="title" placeholder="Choose Title" />
                 <br />
                
-        
               
                 <input type="submit" onClick={context.removeUglyThing}/>
               </form>

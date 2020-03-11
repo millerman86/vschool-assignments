@@ -1,4 +1,75 @@
-body h1 {
+section#header-section {
+    position: relative;
+    height: 300px;
+}
+
+section#header-section2 {
+    position: relative;
+    height: 300px;
+}
+
+.full-name {
+    position: absolute; 
+    display: inline;
+    transform: translateY(-50%);
+    top: 50%;
+}
+
+section#portfolio-body {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* body h1 {
     text-align: center;
 }
 
@@ -41,4 +112,4 @@ h1, p {
 
 .linked-in-and-email {
     width: 50%;
-}
+} */

@@ -3,7 +3,7 @@ import './App.css';
 import NavBar from './components/NavBar';
 import Main from './components/Main';
 import Footer from './components/Footer';
-
+import {FaSearch} from 'react-icons/fa'
 
 
 // const ThemeProvider = React.createContext(); // Should probably put this into its own file
@@ -21,6 +21,7 @@ class App extends React.Component {
   render() {
     return (
       <div id="app">
+        <FaSearch />
         <NavBar />
         <Main />
         <Footer />

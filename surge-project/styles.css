@@ -67,10 +67,8 @@ section#portfolio-showcase {
 
 .first-column .download-nuskin-example {
     position: absolute;
-    bottom: 0;
-    
+    bottom: 0;    
 }
-
 
 #portfolio-body .left-hand-column {
     grid-column: 1 / span 3;
@@ -81,15 +79,15 @@ section#portfolio-showcase {
     display: flex;
 }
 
-.flex.experience-layout {
-
+.project-image-container {
+    display: flex;
+    justify-content: center;
 }
 
-
-.mdc-button_label {
-    color: green;
+.project-image-container .project-image {
+    max-width: 100%;
+    height: auto;
 }
-
 
 @media only screen and (min-width: 768px) {
     section#header-section h4 {
@@ -113,96 +111,4 @@ section#portfolio-showcase {
     section#header-section h2 {
         font-size: 5.9vw;
     }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* body h1 {
-    text-align: center;
-}
-
-body {
-    padding: 30px;
-}
-h1, p {
-    margin: 0;
-}
-
-.header-relative {
-    position: relative;
-}
-
-.my-background-picture {
-    display: flexs;
-    justify-content: center;
-    text-align: center;
-    padding: 100px 100px;
-    flex-direction: column;
-    background-size: cover;
-    margin-left: 50px;
-}
-
-.here-why-hire {
-   
-}
-
-.github-account-link {
-    text-decoration: none;
-    color: inherit;
-}
-
-.linked-in-account-link {
-    text-decoration: none;
-    color: inherit;
-}
-
-.linked-in-and-email {
-    width: 50%;
-} */
-
-.project-image-container {
-    display: flex;
-    justify-content: center;
-}
-
-.project-image-container .project-image {
-    max-width: 100%;
-    height: auto;
-}
-
-.project-image .colossal-adventure {
-
 }

@@ -11,8 +11,7 @@ section#header-section {
     height: 300px;
 }
 
-section#header-section h1, 
-section#header-section h2 {
+section#header-section h1 {
     font-size: 8vw;
 }
 

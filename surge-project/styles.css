@@ -41,6 +41,12 @@ section#portfolio-body .portfolio-main {
    grid-column: 4 / 13;
 }
 
+section#portfolio-showcase {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+} 
+
 .portfolio-main {
     display: flex;
 }
@@ -144,12 +150,6 @@ section#portfolio-body .portfolio-main {
 
 
 
-
-
-
-
-
-
 /* body h1 {
     text-align: center;
 }
@@ -166,7 +166,7 @@ h1, p {
 }
 
 .my-background-picture {
-    display: flex;
+    display: flexs;
     justify-content: center;
     text-align: center;
     padding: 100px 100px;
@@ -174,8 +174,6 @@ h1, p {
     background-size: cover;
     margin-left: 50px;
 }
-
-
 
 .here-why-hire {
    
@@ -194,3 +192,17 @@ h1, p {
 .linked-in-and-email {
     width: 50%;
 } */
+
+.project-image-container {
+    display: flex;
+    justify-content: center;
+}
+
+.project-image-container .project-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.project-image .colossal-adventure {
+
+}

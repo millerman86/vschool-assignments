@@ -48,9 +48,37 @@ section#portfolio-body .portfolio-main {
 
 section#portfolio-showcase {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     grid-gap: 10px;
+    padding: 30px;
 } 
+
+.project-grid-item {
+    display: flex;
+    align-items: center;
+}
+
+.project-grid-item div {
+    flex: 1;
+}
+
+
+.project-info-container  {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.showcase-header {
+    font-weight: 800;
+}
+
+
+.showcase-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
 
 .portfolio-main {
     display: flex;
@@ -95,6 +123,16 @@ section#portfolio-showcase {
 }
 
 @media only screen and (min-width: 768px) {
+    section#portfolio-showcase {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 900px;
+    }
+
+    .project-grid-item {
+        flex-direction: column-reverse;
+    }
+
+
     section#header-section h4 {
         display: flex;
         justify-content: flex-start;

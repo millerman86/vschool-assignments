@@ -13,7 +13,6 @@ class DiceBox extends React.Component {
         'num3': 0, 
         'num4': 0, 
         'num5': 0, 
-        'num6': 0
       }
     }
 
@@ -21,40 +20,35 @@ class DiceBox extends React.Component {
 
   }
 
-  diceFaceNames = [
-    'num1', 
-    'num2', 
-    'num3', 
-    'num4', 
-    'num5', 
-    'num6'
-]
-
   fiveRandomNumbers() {
-    let newState = {}
+    let newDiceState = {}
 
-    for (let i = 0; i < 6; i++) {
-      let randomNumber = getRandomInt(1, 7)
-      newState[this.diceFaceNames[i]] = randomNumber
+    for (let diceProperty in this.state.diceNumbers) {
+      newDiceState[diceProperty] = getRandomInt(1, 7)
     }
 
     this.setState(() => {
       return {
-        diceNumbers: {...newState}
+        diceNumbers: {...newDiceState}
       }
     })
   }
 
   render() {
-    console.log(this.diceFaceNames)
-    let dice = this.diceFaceNames.map((die, i) => {
-      return (<div key={i}>{this.state.diceNumbers[die]}</div>)
-    })
+    let renderedDice = []; 
+
+    for (let dice in this.state.diceNumbers) {
+    let individualDie = (
+      <div>
+        {this.state.diceNumbers[dice]}
+      </div>)
+      renderedDice.push(individualDie)
+    }
 
     return (
       <div>
         <div onClick={this.fiveRandomNumbers}><button>roll the dice</button></div>
-        {dice}
+        {renderedDice}
       </div>
     )
   }
@@ -75,6 +69,3 @@ function getRandomInt(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
-
-
-// Math.floor(Math.random() * 6

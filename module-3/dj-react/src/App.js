@@ -4,6 +4,21 @@ import './App.css';
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function Square(props) {
   return (
     <div className="square-container" style={{backgroundColor: props.color}}>

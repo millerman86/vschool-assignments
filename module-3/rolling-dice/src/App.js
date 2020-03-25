@@ -1,14 +1,10 @@
 import React from 'react';
 import './App.css';
 
-
-
-
 class DiceBox extends React.Component { 
   
   constructor() {
     super()
-
 
     this.state = {
       diceNumbers: {
@@ -25,24 +21,22 @@ class DiceBox extends React.Component {
 
   }
 
-  fiveRandomNumbers() {
-    let diceFaceNames = [
-        'num1', 
-        'num2', 
-        'num3', 
-        'num4', 
-        'num5', 
-        'num6'
-    ]
+  diceFaceNames = [
+    'num1', 
+    'num2', 
+    'num3', 
+    'num4', 
+    'num5', 
+    'num6'
+]
 
+  fiveRandomNumbers() {
     let newState = {}
 
     for (let i = 0; i < 6; i++) {
       let randomNumber = getRandomInt(1, 7)
-      newState[diceFaceNames[i]] = randomNumber
+      newState[this.diceFaceNames[i]] = randomNumber
     }
-
-    
 
     this.setState(() => {
       return {
@@ -52,18 +46,15 @@ class DiceBox extends React.Component {
   }
 
   render() {
-
+    console.log(this.diceFaceNames)
+    let dice = this.diceFaceNames.map((die, i) => {
+      return (<div key={i}>{this.state.diceNumbers[die]}</div>)
+    })
 
     return (
       <div>
-
         <div onClick={this.fiveRandomNumbers}><button>roll the dice</button></div>
-        <div>{this.state.diceNumbers['num1']}</div>
-        <div>{this.state.diceNumbers['num2']}</div>
-        <div>{this.state.diceNumbers['num3']}</div>
-        <div>{this.state.diceNumbers['num4']}</div>
-        <div>{this.state.diceNumbers['num5']}</div>
-        <div>{this.state.diceNumbers['num6']}</div>
+        {dice}
       </div>
     )
   }
@@ -78,8 +69,6 @@ function App() {
 }
 
 export default App;
-
-
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);

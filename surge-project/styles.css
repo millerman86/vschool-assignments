@@ -1,13 +1,34 @@
 body {
   padding: 0;
   margin: 0;
-  font-size: 16px;
+  font-size: 14pt;
   font-family: sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6, p {
   margin: 0;
   padding: 0;
+}
+
+.masthead {
+  padding: 20pt 10pt;
+  display: flex;
+}
+
+ul {
+  margin-left: auto;
+  display: flex;
+  list-style-type: none;
+}
+
+ul li a {
+  padding: 12px;
+  color: inherit;
+  text-decoration: none;
+}
+
+ul li:first-child {
+  
 }
 
 .container {
@@ -34,7 +55,6 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 section#header-section {
-  padding: 100px 0;
   position: relative;
   height: 300px;
   display: flex;
@@ -170,7 +190,6 @@ footer a {
   }
   section#header-section {
     display: block;
-    padding-left: 100px;
   }
   section#header-section .full-name {
     position: absolute;

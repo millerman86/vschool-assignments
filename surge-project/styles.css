@@ -5,30 +5,84 @@ body {
   font-family: sans-serif;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 h1, h2, h3, h4, h5, h6, p {
   margin: 0;
   padding: 0;
 }
 
+p, span {
+  line-height: 1.2em;
+}
+
+.project-info-container h3 {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+}
+
+.project-info-container a, 
+.project-info-container h3 {
+  margin-bottom: 4px;
+}
+
 .masthead {
-  padding: 20pt 10pt;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 0 10pt;
   display: flex;
+  justify-content: center;
+}
+
+.masthead a {
+  color: white;
+}
+
+.full-name {
+  margin-top: 20px;
+}
+
+.masthead .home {
+  border: 1px solid white;
+  margin-left: none;
+}
+
+.home {
+  border: 1px solid white;
+  border-radius: 2px;
 }
 
 ul {
-  margin-left: auto;
+  flex-wrap: wrap;
+  justify-content: center;
   display: flex;
+  padding: 0;
   list-style-type: none;
+  margin: 10px;
+}
+
+ul li {
+  display: flex;
+  align-items: center;
+  margin: 4px;
+  margin-left: 10px;
+}
+
+ul li:first-child {
+  padding: 10px;
 }
 
 ul li a {
-  padding: 12px;
+  padding-left: 12px;
   color: inherit;
   text-decoration: none;
 }
 
-ul li:first-child {
-  
+ul li a:first-child {
+  padding-left: unset;
 }
 
 .container {
@@ -36,33 +90,35 @@ ul li:first-child {
 }
 
 .resume-png-container {
-  position: relative;
-  margin-left: auto;
-  right: 50px;
-  width: 300px;
-  overflow: hidden;
-  height: 365px;
-  box-shadow: 0 8px 6px -6px;
+  display: flex;
+  
+}
+
+.project-description {
+  font-weight: 600;
 }
 
 .resume-png-container img {
-  width: 100%;
+  width: 60%;
+  margin: auto;
+  box-shadow: 0 8px 6px -6px;
+
 }
 
 .resume-link {
-  right: 0;
-  top: 0;
-  position: absolute;
-  width: 300px;
+  display: none;
+  
 }
 
 section#header-section {
   position: relative;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   padding: 0 50px;
 }
 section#header-section h1 {
+  text-align: center;
   font-size: 8vw;
 }
 section#header-section h4 {
@@ -181,6 +237,34 @@ footer a {
     flex-direction: column-reverse;
   }
 
+  ul {
+    margin-left: auto;
+    
+  }
+
+  .resume-link {
+    display: block;
+    right: 0;
+    top: 0;
+    position: absolute;
+    width: 300px;
+  }
+
+  .resume-png-container {
+    display: block;
+    position: relative;
+    margin-left: auto;
+    width: 300px;
+    overflow: hidden;
+    height: 365px;
+    box-shadow: 0 8px 6px -6px;
+  }
+
+  .resume-png-container img {
+    box-shadow: unset;
+    width: 100%;
+  }
+
   footer {
     grid-template-columns: 1fr 1fr 1fr;
     text-align: left;
@@ -191,6 +275,7 @@ footer a {
     justify-content: flex-start;
   }
   section#header-section {
+    padding-top: 20px;
     display: block;
   }
   section#header-section .full-name {
@@ -205,6 +290,7 @@ footer a {
   section#portfolio-showcase {
     grid-template-columns: repeat(3, 1fr);
     max-width: 900px;
+    grid-gap: 40px;
   }
 }
 

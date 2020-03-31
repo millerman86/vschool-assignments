@@ -36,11 +36,13 @@ ul li:first-child {
 }
 
 .resume-png-container {
-  position: absolute;
+  position: relative;
+  margin-left: auto;
   right: 50px;
   width: 300px;
-  height: 300px;
-  overflow-y: scroll;
+  overflow: hidden;
+  height: 365px;
+  box-shadow: 0 8px 6px -6px;
 }
 
 .resume-png-container img {
@@ -48,17 +50,17 @@ ul li:first-child {
 }
 
 .resume-link {
-  right: 30px;
-  top: 70px;
+  right: 0;
+  top: 0;
   position: absolute;
   width: 300px;
 }
 
 section#header-section {
   position: relative;
-  height: 300px;
   display: flex;
   justify-content: center;
+  padding: 0 50px;
 }
 section#header-section h1 {
   font-size: 8vw;

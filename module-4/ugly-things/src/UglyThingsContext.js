@@ -2,12 +2,10 @@ import React from 'react'
 import { v4 as uuidv4 } from 'uuid';
 
 
+const {Provider, Consumer} = React.createContext();
 
 
-const {Consumer, Provider} = React.createContext()
-
-
-class UglyThingsProvider extends React.Component {
+class MyContext extends React.Component {
     state = {
         uglyThings: [
             {
@@ -34,7 +32,6 @@ class UglyThingsProvider extends React.Component {
                 url: "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2013/9/12/1378996028268/Eye-eye-A-baby-aye-aye-an-008.jpg?width=700&quality=85&auto=format&fit=max&s=2f14edeaf22f01a292182f12e3cf1ddf", 
                 uuid: uuidv4()
             }, 
-            
         ]
     }
 
@@ -51,8 +48,6 @@ class UglyThingsProvider extends React.Component {
                                 uglyThings: [...previousState.uglyThings.filter((item) => item.uuid !== uglyThingID)]
                             }
                         })
-
-
                     }, 
                     saySomethingAboutAnUglyThing: (comment, idOfUglyThing) => {
 
@@ -65,4 +60,4 @@ class UglyThingsProvider extends React.Component {
 }
 
 
-export {UglyThingsProvider, Consumer as UglyThingsConsumer}
+export {MyContext, Consumer as MyConsumer}

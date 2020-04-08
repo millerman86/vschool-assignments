@@ -1,51 +1,12 @@
 import React from 'react';
 import './App.css';
-import {UglyThingsContext} from './contextproviders'
 import { v4 as uuidv4 } from 'uuid';
-// import { faCoffee } from 'react-icons/fa'
+import {MyConsumer} from './UglyThingsContext';
 
-
-// import { Button } from 'semantic-ui-react'
-// const ButtonExampleButton = () => <Button>Click Here</Button>
-
-
-import { Button, Icon, Label } from 'semantic-ui-react'
-
-const ButtonExampleLabeledBasic = () => (
-  <div>
-    <Button as='div' labelPosition='right'>
-      <Button color='red'>
-        <Icon name='heart' />
-        Like
-      </Button>
-      <Label as='a' basic color='red' pointing='left'>
-        2,048
-      </Label>
-    </Button>
-    <Button as='div' labelPosition='right'>
-      <Button basic color='blue'>
-        <Icon name='fork' />
-        Fork
-      </Button>
-      <Label as='a' basic color='blue' pointing='left'>
-        2,048
-      </Label>
-    </Button>
-  </div>
-)
-
-
-
-
-
-
-// const element = <FontAwesomeIcon icon={faComment} />
 
 function UglyThing(props) {
   return (
     <div key={props.item['uuid']}>
-      <ButtonExampleLabeledBasic />
-      {/* {faCoffee} */}
     <div>{props.item['title']}</div>
     <div>{props.item['description']}</div>
     
@@ -70,16 +31,12 @@ function UglyThing(props) {
 }
 
 
-
-
 class App extends React.Component {
-
   state = {
     RenderedPosts: [], 
     deleteActivated: false, 
     itemsToDelete: []
   }
-
 
   handleSubmit = (e, context) => {
     e.preventDefault()
@@ -89,6 +46,7 @@ class App extends React.Component {
     const url = document['new-ugly'].url.value
     const title = document['new-ugly'].title.value 
     const description = document['new-ugly'].describetheugly.value
+
 
     context.addUglyThing({
       url, 
@@ -100,60 +58,56 @@ class App extends React.Component {
 
 
   render() {
-
+  
     return (
-      <UglyThingsContext.UglyThingsConsumer>
-        {context => {
-          const RenderedPosts = context.uglyThings.map((item, index) => {
-            let deleteCircle;
-            if (!this.state.deleteActivated) deleteCircle = ""
-            if (this.state.deleteActivated) deleteCircle = "delete-circle"
-            
-            
-            return (
-              <UglyThing item={item} deleteCircle={deleteCircle} removeUglyThing={context.removeUglyThing} />
-            )
-          })
-          return (
-            <div className="page-background">
-              <form 
-                  name="new-ugly"
-                  onSubmit={(e) => {
-                    this.handleSubmit(e, context)
-                  }}>
-
-                <input name="url" placeholder="Image Url" />
-                <br />
-                <input name="title" placeholder="Choose Title" />
-                <br />
-               
-        
+      <MyConsumer>
+      {context => {
+            const RenderedPosts = context.uglyThings.map((item, index) => {
+              let deleteCircle;
+              if (!this.state.deleteActivated) deleteCircle = ""
+              if (this.state.deleteActivated) deleteCircle = "delete-circle"
               
-                <input type="submit" onClick={context.removeUglyThing}/>
-              </form>
-        
-              <div id="ugly-list">
-                {RenderedPosts}
+              
+              return (
+                <UglyThing key={index} item={item} deleteCircle={deleteCircle} removeUglyThing={context.removeUglyThing} />
+              )
+            })
+            return (
+              <div className="page-background">
+                <form 
+                    name="new-ugly"
+                    onSubmit={(e) => {
+                      this.handleSubmit(e, context)
+                    }}>
+  
+                  <input name="url" placeholder="Image Url" />
+                  <br />
+                  <input name="title" placeholder="Choose Title" />
+                  <br />
+                 
+      
+                
+                  <input type="submit" onClick={context.removeUglyThing}/>
+                </form>
+          
+                <div id="ugly-list">
+                  {RenderedPosts}
+                </div>
+  
+                <select className="ui dropdown">
+                  <option value="">Gender</option>
+                  <option value="1">Male</option>
+                  <option value="0">Female</option>
+                </select>
               </div>
+            )
+          }}
 
-
-              <select className="ui dropdown">
-  <option value="">Gender</option>
-  <option value="1">Male</option>
-  <option value="0">Female</option>
-</select>
-            </div>
-          )
-        }}
         
-      </UglyThingsContext.UglyThingsConsumer>
+      </MyConsumer>
     );
   }
 }
 
 
 export default App;
-
-
-
-

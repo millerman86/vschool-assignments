@@ -1,27 +1,68 @@
-# Ugly Things
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-You are going to build an React app that allows a user to post things that they think are ugly. The data of ugly things should be managed by React Context.
+## Available Scripts
 
-### Requirements
-* Must have 3 input fields: <input type="checkbox" checked />
-* Img url field (A url to an image of an ugly thing) <input type="checkbox" checked />
-* Title field (The title of the image that the user wants to give) <input type="checkbox" checked />
-* Description field (why the user thinks it is ugly) <input type="checkbox" checked />
-* Must have Submit button that submits the data <input type="checkbox" checked />
-* Must display a list of posted images with their associated titles and descriptions <input type="checkbox" checked />
-* Must store the array of ugly thing objects in the Context store <input type="checkbox" checked />
-* Must be able to delete an ugly thing 
-* Must be able to edit an ugly thing
+In the project directory, you can run:
 
+### `npm start`
 
-### Optional
-* Have 3 images horizontally on each row
-* Allow each image to have one or more user-submitted comments
-* Allow the ability to delete specific comments
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Approach
-This assignment is for practicing context. In the real world, if you wanted to build this, you probably would not use context. For that reason, it may feel a bit contrived.
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 
-Think of your component tree. You need to have a form for submission, and a list of ugly things. These two components would probably be siblings. Usually, it would be easy enough to lift state to their parent, so that the form can add to an array of ugly things in the state of the parent, and the parent can pass that array down as props to a component to display that list. For this project, we'll have our context provider manage the state of our array.
+### `npm test`
 
-Context is tough, so be prepared to spend some time on this project.
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+
+### Analyzing the Bundle Size
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+
+### Making a Progressive Web App
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+
+### Advanced Configuration
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+
+### Deployment
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+
+### `npm run build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

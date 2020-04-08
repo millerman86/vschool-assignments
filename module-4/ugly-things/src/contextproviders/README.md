@@ -1,1 +1,0 @@
-All of the context providers are exported from index

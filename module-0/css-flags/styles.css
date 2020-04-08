@@ -1,0 +1,21 @@
+.blue, .red, .white {
+	display: inline-block;
+	height: 100px;
+	width: 30%;
+}
+
+.blue {
+	background-color: blue;
+}
+
+.red {
+	background-color: red;
+}
+
+.white {
+	background-color: white;
+}
+
+.france {
+	margin: auto;
+}

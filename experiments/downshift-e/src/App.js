@@ -11,6 +11,8 @@ const items = starWarsNames.map(name => ({
   id: name.toLowerCase()
 }))
 
+const itemToString = (item) => item ? item.name : ''
+
 
 class App extends React.Component {
   render() {
@@ -18,15 +20,15 @@ class App extends React.Component {
       <div>
         <h1>Autocomplete rocks!</h1>
         <div>
-          <Downshift>
-            {({getInputProps, getLabelProps}) => (
+          <Downshift itemToString={itemToString}>
+            {({getInputProps, getLabelProps, getMenuProps, isOpen, selectItem}) => (
               <div>
                 <label {...getLabelProps()}>Select a Star Wars Character</label>
                 <input {...getInputProps()}/>
-                <ul>
-                  {items.map(item => (
-                    <li key={item.id}>{item.name}</li>
-                  ))}
+                <ul {...getMenuProps()}>
+                  {isOpen ? items.map(item => (
+                    <li key={item.id} onClick={() => selectItem(item)}>{item.name}</li>
+                  )) : null}
                 </ul>
               </div>
             )}

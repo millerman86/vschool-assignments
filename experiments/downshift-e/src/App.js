@@ -6,7 +6,7 @@ import {all as starWarsNames} from 'starwars-names';
 
 console.log(starWarsNames);
 
-
+console.log('this is a test')
 
 const items = starWarsNames.map(name => ({
   name, 

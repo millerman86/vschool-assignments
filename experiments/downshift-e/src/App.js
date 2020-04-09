@@ -6,6 +6,8 @@ import {all as starWarsNames} from 'starwars-names';
 
 console.log(starWarsNames);
 
+
+
 const items = starWarsNames.map(name => ({
   name, 
   id: name.toLowerCase()

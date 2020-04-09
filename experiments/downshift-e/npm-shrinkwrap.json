@@ -8288,6 +8288,15 @@
                 "object-visit": "^1.0.0"
             }
         },
+        "match-sorter": {
+            "version": "4.1.0",
+            "resolved": "https://registry.npmjs.org/match-sorter/-/match-sorter-4.1.0.tgz",
+            "integrity": "sha512-DCzT9JVO2FWVOTfsKqIqVhu/skFa3bK0lQom70j6Co9yKX9bPn2gRtn9BFD9ykkM8F/USjTQeId+nlFfTVvz+w==",
+            "requires": {
+                "@babel/runtime": "^7.9.2",
+                "remove-accents": "0.4.2"
+            }
+        },
         "md5.js": {
             "version": "1.3.5",
             "resolved": "https://registry.npmjs.org/md5.js/-/md5.js-1.3.5.tgz",
@@ -10398,6 +10407,12 @@
             "resolved": "https://registry.npmjs.org/prepend-http/-/prepend-http-1.0.4.tgz",
             "integrity": "sha1-1PRWKwzjaW5BrFLQ4ALlemNdxtw="
         },
+        "prettier": {
+            "version": "2.0.4",
+            "resolved": "https://registry.npmjs.org/prettier/-/prettier-2.0.4.tgz",
+            "integrity": "sha512-SVJIQ51spzFDvh4fIbCLvciiDMCrRhlN3mbZvv/+ycjvmF5E73bKdGfU8QDLNmjYJf+lsGnDBC4UUnvTe5OO0w==",
+            "dev": true
+        },
         "pretty-bytes": {
             "version": "5.3.0",
             "resolved": "https://registry.npmjs.org/pretty-bytes/-/pretty-bytes-5.3.0.tgz",
@@ -11155,6 +11170,11 @@
             "version": "0.2.7",
             "resolved": "https://registry.npmjs.org/relateurl/-/relateurl-0.2.7.tgz",
             "integrity": "sha1-VNvzd+UUQKypCkzSdGANP/LYiKk="
+        },
+        "remove-accents": {
+            "version": "0.4.2",
+            "resolved": "https://registry.npmjs.org/remove-accents/-/remove-accents-0.4.2.tgz",
+            "integrity": "sha1-CkPTqq4egNuRngeuJUsoXZ4ce7U="
         },
         "remove-trailing-separator": {
             "version": "1.1.0",

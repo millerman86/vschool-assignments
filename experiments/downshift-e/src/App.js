@@ -1,20 +1,28 @@
-import React from 'react';
-import './App.css';
-import Downshift from 'downshift';
-import {all as starWarsNames} from 'starwars-names';
+import React from "react";
+import "./App.css";
+import Downshift from "downshift";
+import { all as starWarsNames } from "starwars-names";
+import matchSorter from "match-sorter";
 
+const items = starWarsNames.map((name) => ({
+  name,
+  id: name.toLowerCase(),
+}));
 
-console.log(starWarsNames);
+const itemToString = (item) => (item ? item.name : "");
 
-console.log('this is a test')
+const getItems = (value) => {
+  return value ? matchSorter(items, value, { keys: ["value"] }) : items;
+};
 
-const items = starWarsNames.map(name => ({
-  name, 
-  id: name.toLowerCase()
-}))
+const stateReducer = (state, changes) => {
+  if (changes.type === Downshift.stateChangeTypes.blurButton) {
+    return { ...changes, isOpen: true };
+  }
+  return changes;
+};
 
-const itemToString = (item) => item ? item.name : ''
-
+console.log(Downshift.stateChangeTypes);
 
 class App extends React.Component {
   render() {
@@ -22,24 +30,58 @@ class App extends React.Component {
       <div>
         <h1>Autocomplete rocks!</h1>
         <div>
-          <Downshift itemToString={itemToString}>
-            {({getInputProps, getLabelProps, getMenuProps, isOpen, selectItem}) => (
+          <Downshift stateReducer={stateReducer} itemToString={itemToString}>
+            {({
+              getInputProps,
+              getLabelProps,
+              getMenuProps,
+              getItemProps,
+              getToggleButtonProps,
+              isOpen,
+              highlightedIndex,
+              clearSelection,
+              selectItem,
+              inputValue,
+            }) => (
               <div>
                 <label {...getLabelProps()}>Select a Star Wars Character</label>
-                <input {...getInputProps()}/>
-                <ul {...getMenuProps()}>
-                  {isOpen ? items.map(item => (
-                    <li key={item.id} onClick={() => selectItem(item)}>{item.name}</li>
-                  )) : null}
+                <input {...getInputProps()} />
+                <button {...getToggleButtonProps()}>
+                  {isOpen ? "close" : "open"}
+                </button>
+                {selectItem ? (
+                  <button onClick={clearSelection}>x</button>
+                ) : null}
+                <ul
+                  {...getMenuProps({
+                    style: { height: 200, overflowY: "scroll" },
+                  })}
+                >
+                  {isOpen
+                    ? getItems(inputValue).map((item, index) => (
+                        <li
+                          key={item.id}
+                          {...getItemProps({
+                            item,
+                            key: item.id,
+                            style: {
+                              backgroundColor:
+                                index === highlightedIndex ? "gray" : null,
+                            },
+                          })}
+                        >
+                          {item.name}
+                        </li>
+                      ))
+                    : null}
                 </ul>
               </div>
             )}
           </Downshift>
         </div>
       </div>
-    )
+    );
   }
 }
-
 
 export default App;

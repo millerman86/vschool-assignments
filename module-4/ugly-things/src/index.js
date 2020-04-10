@@ -1,15 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import {MyContext} from './UglyThingsContext'
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+import { MyContextProvider } from "./UglyThingsContext";
 
 ReactDOM.render(
-  <MyContext>
+  <MyContextProvider>
     <App />
-  </MyContext>, 
-  document.getElementById('root')
+  </MyContextProvider>,
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change

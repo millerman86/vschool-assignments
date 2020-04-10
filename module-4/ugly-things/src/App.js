@@ -41,8 +41,6 @@ function UglyThing(props) {
   );
 }
 
-App.contextType = UglyThingsContext;
-
 class App extends React.Component {
   state = {
     RenderedPosts: [],
@@ -66,54 +64,50 @@ class App extends React.Component {
   };
 
   render() {
+    const RenderedPosts = this.context.uglyThings.map((item, index) => {
+      let deleteCircle;
+      if (!this.state.deleteActivated) deleteCircle = "";
+      if (this.state.deleteActivated) deleteCircle = "delete-circle";
+
+      return (
+        <UglyThing
+          key={index}
+          item={item}
+          deleteCircle={deleteCircle}
+          removeUglyThing={this.context.removeUglyThing}
+        />
+      );
+    });
     return (
-      <UglyThingsContext>
-        {(context) => {
-          const RenderedPosts = this.props.UglyThingsContext.uglyThings.map(
-            (item, index) => {
-              let deleteCircle;
-              if (!this.state.deleteActivated) deleteCircle = "";
-              if (this.state.deleteActivated) deleteCircle = "delete-circle";
+      <div>
+        <div className="page-background">
+          <form
+            name="new-ugly"
+            onSubmit={(e) => {
+              this.handleSubmit(e, this.context);
+            }}
+          >
+            <input name="url" placeholder="Image Url" />
+            <br />
+            <input name="title" placeholder="Choose Title" />
+            <br />
 
-              return (
-                <UglyThing
-                  key={index}
-                  item={item}
-                  deleteCircle={deleteCircle}
-                  removeUglyThing={context.removeUglyThing}
-                />
-              );
-            }
-          );
-          return (
-            <div className="page-background">
-              <form
-                name="new-ugly"
-                onSubmit={(e) => {
-                  this.handleSubmit(e, context);
-                }}
-              >
-                <input name="url" placeholder="Image Url" />
-                <br />
-                <input name="title" placeholder="Choose Title" />
-                <br />
+            <input type="submit" onClick={this.context.removeUglyThing} />
+          </form>
 
-                <input type="submit" onClick={context.removeUglyThing} />
-              </form>
+          <div id="ugly-list">{RenderedPosts}</div>
 
-              <div id="ugly-list">{RenderedPosts}</div>
-
-              <select className="ui dropdown">
-                <option value="">Gender</option>
-                <option value="1">Male</option>
-                <option value="0">Female</option>
-              </select>
-            </div>
-          );
-        }}
-      </UglyThingsContext>
+          <select className="ui dropdown">
+            <option value="">Gender</option>
+            <option value="1">Male</option>
+            <option value="0">Female</option>
+          </select>
+        </div>
+      </div>
     );
   }
 }
+
+App.contextType = UglyThingsContext;
 
 export default App;

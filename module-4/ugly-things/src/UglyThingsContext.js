@@ -63,4 +63,4 @@ class MyContextProvider extends React.Component {
   }
 }
 
-export default { UglyThingsContext, MyContextProvider };
+export { UglyThingsContext, MyContextProvider };

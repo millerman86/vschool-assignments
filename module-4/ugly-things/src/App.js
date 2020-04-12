@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import { UglyThingsContext } from "./UglyThingsContext";
 
 function UglyThing(props) {
+  console.log(props);
   return (
     <div key={props.item["uuid"]}>
       <div>{props.item["title"]}</div>
@@ -36,6 +37,8 @@ function UglyThing(props) {
         </div>
 
         <input name="describetheugly" placeholder="Why is it ugly?" />
+        <br />
+        <input name="name-change" placeholder="Change my name!" />
       </div>
     </div>
   );
@@ -91,7 +94,11 @@ class App extends React.Component {
             <br />
             <input name="title" placeholder="Choose Title" />
             <br />
-
+            <input
+              name="description"
+              placeholder="Describe why you think it's ugly"
+            />
+            <br />
             <input type="submit" onClick={this.context.removeUglyThing} />
           </form>
 

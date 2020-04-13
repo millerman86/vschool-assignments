@@ -41,8 +41,20 @@ class MyContextProvider extends React.Component {
     return (
       <UglyThingsContext.Provider
         value={{
+          removeUglyThings: (uglyThingsToDelete) => {
+            this.setState((prev) => {
+              return {
+                ...prev,
+              };
+            });
+          },
           uglyThings: this.state.uglyThings,
-          addUglyThing: (uglyThing) => {},
+          addUglyThing: (uglyThing) => {
+            console.log(uglyThing);
+            this.setState((prev) => {
+              return { uglyThings: [...prev.uglyThings, uglyThing] };
+            });
+          },
           removeUglyThing: (uglyThingID) => {
             this.setState((previousState) => {
               return {

@@ -20,24 +20,16 @@
   position: absolute;
   top: 10px;
   right: 10px;
-}
-
-.delete-child {
-  width: inherit;
-  height: inherit;
-}
-
-/* .svg-container {
-  border: 1px solid white;
-} */
-
-.svg-container {
-  height: 100%;
-  width: 100%;
   border-radius: 50%;
   box-sizing: border-box;
-  fill: rgba(255, 255, 255, 0.7);
+  fill: rgba(228, 5, 5, 0.7);
   transition: fill 0.2s ease-in;
+}
+
+.svg-container {
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
 }
 
 .svg-container svg {

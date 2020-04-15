@@ -82,7 +82,7 @@ export default function App(props) {
                   removeUglyThings(itemsToDelete);
                 }}
               >
-                Delete
+                Delete Ugly Things
               </button>
             </div>
           </div>

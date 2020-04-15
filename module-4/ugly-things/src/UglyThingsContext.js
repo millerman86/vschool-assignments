@@ -41,9 +41,8 @@ class MyContextProvider extends React.Component {
     return (
       <UglyThingsContext.Provider
         value={{
-          removeUglyThings: (uglyThingsToDelete) => {
+          removeUglyThings: (uglyThingsToDelete = ["1234", "6789"]) => {
             this.setState((prev) => {
-              console.log("deleteitems", uglyThingsToDelete);
               let uglyThings = prev.uglyThings;
 
               uglyThingsToDelete.forEach((uglyThing) => {

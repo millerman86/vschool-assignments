@@ -27,12 +27,15 @@
   height: inherit;
 }
 
+/* .svg-container {
+  border: 1px solid white;
+} */
+
 .svg-container {
   height: 100%;
   width: 100%;
   border-radius: 50%;
   box-sizing: border-box;
-  border: 1px solid white;
   fill: rgba(255, 255, 255, 0.7);
   transition: fill 0.2s ease-in;
 }

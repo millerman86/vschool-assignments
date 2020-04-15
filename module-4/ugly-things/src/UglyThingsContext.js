@@ -43,8 +43,16 @@ class MyContextProvider extends React.Component {
         value={{
           removeUglyThings: (uglyThingsToDelete) => {
             this.setState((prev) => {
+              console.log("deleteitems", uglyThingsToDelete);
+              let uglyThings = prev.uglyThings;
+
+              uglyThingsToDelete.forEach((uglyThing) => {
+                uglyThings = uglyThings.filter(function (item) {
+                  return !uglyThingsToDelete.includes(item.uuid);
+                });
+              });
               return {
-                ...prev,
+                uglyThings: uglyThings,
               };
             });
           },

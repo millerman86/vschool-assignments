@@ -7,20 +7,33 @@ import { v4 as uuidv4 } from "uuid";
 export default function App(props) {
   const [itemsToDelete, setDeleteItems] = useState([]);
 
-  const increment = (uuid) => {
-    setDeleteItems((prev) => {
-      return Array.from(new Set([...prev, uuid]));
-    });
-  };
+  const pushUUIDFunction = (uuid) => {
+    if (!itemsToDelete.includes(uuid)) {
+      setDeleteItems((prev) => {
+        return Array.from(new Set([...prev, uuid]));
+      });
+    }
+    if (itemsToDelete.includes(uuid)) {
+      setDeleteItems((prev) => {
+        return itemsToDelete.filter((i) => i !== uuid);
+      });
+    }
 
-  const deleteAllItems = () => {};
+    console.log(itemsToDelete);
+  };
 
   return (
     <UglyThingsContext.Consumer>
-      {({ uglyThings, addUglyThing }) => {
-        console.log(uglyThings);
+      {({ uglyThings, addUglyThing, removeUglyThings }) => {
         const RenderedPosts = uglyThings.map((item, index) => {
-          return <UglyThing key={index} item={item} increment={increment} />;
+          return (
+            <UglyThing
+              key={index}
+              item={item}
+              pushUUIDFunction={pushUUIDFunction}
+              itemsToDelete={itemsToDelete}
+            />
+          );
         });
         return (
           <div>
@@ -63,69 +76,18 @@ export default function App(props) {
                 <option value="0">Female</option>
               </select>
             </div>
+            <div>
+              <button
+                onClick={() => {
+                  removeUglyThings(itemsToDelete);
+                }}
+              >
+                Delete
+              </button>
+            </div>
           </div>
         );
       }}
     </UglyThingsContext.Consumer>
   );
 }
-
-// class App extends React.Component {
-//   state = {
-//     RenderedPosts: [],
-//     deleteActivated: false,
-//     itemsToDelete: [],
-//   };
-
-//   render() {
-//     const RenderedPosts = this.context.uglyThings.map((item, index) => {
-//       let deleteCircle;
-//       if (!this.state.deleteActivated) deleteCircle = "";
-//       if (this.state.deleteActivated) deleteCircle = "delete-circle";
-
-//       return (
-//         <UglyThing
-//           key={index}
-//           item={item}
-//           deleteCircle={deleteCircle}
-//           removeUglyThing={this.context.removeUglyThing}
-//         />
-//       );
-//     });
-//     return (
-//       <div>
-//         <div className="page-background">
-//           <form
-//             name="new-ugly"
-//             onSubmit={(e) => {
-//               this.handleSubmit(e, this.context);
-//             }}
-//           >
-//             <input name="url" placeholder="Image Url" />
-//             <br />
-//             <input name="title" placeholder="Choose Title" />
-//             <br />
-//             <input
-//               name="description"
-//               placeholder="Describe why you think it's ugly"
-//             />
-//             <br />
-//             <input type="submit" onClick={this.context.removeUglyThing} />
-//           </form>
-
-//           <div id="ugly-list">{RenderedPosts}</div>
-
-//           <select className="ui dropdown">
-//             <option value="">Gender</option>
-//             <option value="1">Male</option>
-//             <option value="0">Female</option>
-//           </select>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
-
-// App.contextType = UglyThingsContext;
-
-// export default App;

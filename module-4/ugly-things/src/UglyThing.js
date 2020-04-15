@@ -5,8 +5,7 @@ export default function UglyThing(props) {
     <div
       key={props.item["uuid"]}
       onClick={() => {
-        console.log("the prop is", props.item.uuid);
-        props.increment(props.item.uuid);
+        props.pushUUIDFunction(props.item.uuid);
       }}
     >
       <div>{props.item["title"]}</div>
@@ -16,14 +15,25 @@ export default function UglyThing(props) {
         <img src={props.item.url} alt="" className="ugly-thing-image" />
 
         <div className="delete-box-container">
-          <div
-            className="delete-child"
-            onClick={() => {
-              props.removeUglyThing(props.item["uuid"]);
-            }}
-          >
-            <div className="svg-container">
-              <svg focusable="false" viewBox="0 0 24 24" role="presentation">
+          <div className="delete-child">
+            <div
+              className="svg-container"
+              style={{
+                border: props.itemsToDelete.includes(props.item.uuid)
+                  ? "none"
+                  : "1px solid white",
+              }}
+            >
+              <svg
+                focusable="false"
+                viewBox="0 0 24 24"
+                role="presentation"
+                style={{
+                  display: props.itemsToDelete.includes(props.item.uuid)
+                    ? "block"
+                    : "none",
+                }}
+              >
                 <path
                   color="currentColor"
                   d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"

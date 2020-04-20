@@ -6,14 +6,16 @@ const url = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_APIKEY}&`;
 function Search() {
   const [tvShowOrMovie, settvShowOrMovie] = useState("");
   const [searchType, setSearchType] = useState("");
+  const [plotLength, setPlotLength] = useState("");
 
   const submitSearch = (e) => {
     e.preventDefault();
 
     const encodedSearchValue = encodeURIComponent(searchType).toLowerCase();
     const encodedtvShowOrMovie = encodeURIComponent(tvShowOrMovie).toLowerCase();
+    const encodedPlotLength = encodeURIComponent(plotLength).toLowerCase();
 
-    const sendUrl = `${url}t=${encodedtvShowOrMovie}&type=${encodedSearchValue}`
+    const sendUrl = `${url}t=${encodedtvShowOrMovie}&type=${encodedSearchValue}&plot=${encodedPlotLength}`
 
     axios.get(sendUrl).then((data) => console.log(data))
   };
@@ -30,6 +32,7 @@ function Search() {
   }
 
   const searchOptions = ["", "Movie", "Series", "Episode"];
+  const plotOptions = ["", "short", "full"];
   return (
     <form onSubmit={submitSearch}>
 
@@ -69,6 +72,22 @@ function Search() {
             disabled={searchOption === "" ? true : null}
           >
             {searchOption}
+          </option>
+        ))}
+      </select>
+      <select
+        defaultValue=""
+        name=""
+        id="shortorfull"
+        onChange={(e) => setPlotLength(e.target.value)}
+      >
+        {plotOptions.map((plotOption, index) => (
+          <option
+            key={index}
+            value={plotOption}
+            disabled={plotOption === "" ? true : null}
+          >
+            {plotOption}
           </option>
         ))}
       </select>

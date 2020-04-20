@@ -1,5 +1,7 @@
 import React, { useState, useRef } from "react";
-import axios from 'axios'
+import DataFetcher from '../datacomponents/DataFetcher';
+
+
 
 const url = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_APIKEY}&`;
 
@@ -7,6 +9,7 @@ function Search() {
   const [tvShowOrMovie, settvShowOrMovie] = useState("");
   const [searchType, setSearchType] = useState("");
   const [plotLength, setPlotLength] = useState("");
+  const [sendUrl, setSendUrl] = useState("");
 
   const submitSearch = (e) => {
     e.preventDefault();
@@ -15,9 +18,10 @@ function Search() {
     const encodedtvShowOrMovie = encodeURIComponent(tvShowOrMovie).toLowerCase();
     const encodedPlotLength = encodeURIComponent(plotLength).toLowerCase();
 
-    const sendUrl = `${url}t=${encodedtvShowOrMovie}&type=${encodedSearchValue}&plot=${encodedPlotLength}`
+    const sendUrl = `${url}t=${encodedtvShowOrMovie}&type=${encodedSearchValue}&plot=${encodedPlotLength ? encodedPlotLength : "short"}`;
 
-    axios.get(sendUrl).then((data) => console.log(data))
+    setSendUrl(sendUrl)
+
   };
 
   const input1 = useRef(null)
@@ -34,7 +38,7 @@ function Search() {
   const searchOptions = ["", "Movie", "Series", "Episode"];
   const plotOptions = ["", "short", "full"];
   return (
-    <form onSubmit={submitSearch}>
+    <form id="search-form" onSubmit={submitSearch}>
 
       <h3>Please enter the title of the movie, series, or episode that you would
       like to search</h3>
@@ -92,11 +96,70 @@ function Search() {
         ))}
       </select>
       <button type="submit">Submit</button>
+
+      <div>
+        {sendUrl && (
+          <DataFetcher url={sendUrl}>
+            {(data, loading) => {
+              return (
+                loading ?
+                  (<h1>Loading...</h1>) :
+                  (<p>{JSON.stringify(data)}</p>)
+              )
+            }}
+          </DataFetcher>)}
+      </div>
     </form>
   );
 }
 
-export default Search;
+export default Search
+
+
+
+
+
+
+// function App() {    url
+//   return (
+//       <div>
+//           <DataFetcher url="https://swapi.co/api/people/1">
+//               {(data, loading) => (
+//                   loading ? 
+//                   <h1>Loading...</h1> :
+//                   <p>{JSON.stringify(data)}</p>
+//               )}
+//           </DataFetcher>
+//       </div>
+//   )
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // axiosGet = () => {
 //   axios
 //     .get(

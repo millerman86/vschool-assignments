@@ -3,16 +3,12 @@ const bountyRouter = express.Router()
 const uuid = require('uuid')
 
 
-// bountyRouter.use('/bounties/:id', function (req, res, next) {
-//     console.log('Request Id:', req.params.id);
-//     next();
-// });
-
-
 const bounties = [
-    {firstName: "amren", lastName: "miller", living: false, bountyAmount: 0, type: "", _id: uuid.v4()}
+    {firstName: "amren", lastName: "miller", living: false, bountyAmount: 0, type: "", _id: '1788d37d-2f44-4f98-be82-3a7a6f3fca6b'}
 ]
-console.log(bounties[0])
+
+console.log(bounties[0]._id)
+
 bountyRouter.route('/')
     .get((req, res) => {
         res.send(bounties)
@@ -25,6 +21,22 @@ bountyRouter.route('/')
     })
 
 
+const findBounty = (id, newValues = {test: 'test'}) => {
+    if (typeof newValues !== 'object') return 
+    let foundBounty;
+    bounties.find((item, index) => {
+        let found;
+        if (item._id === id) found = index
+        if (found === undefined) return 
+        bounties[found] = {...bounties[found], ...newValues}
+        console.log('bounty', bounties[found])
+        foundBounty = bounties[found]
+
+    })
+    return foundBounty
+}
+
+
 bountyRouter.route('/:id')
     .get((req, res) => {
         const bountyId = req.params.id 
@@ -32,14 +44,17 @@ bountyRouter.route('/:id')
         res.send(foundBounty)
     })
     .delete((req, res) => {
-        console.log(req.params.id)
-        res.send('blah')
-        console.log('delete bounty')
+        bounties.forEach((bounty, i) => {
+            console.log(bounties)
+            if (bounty._id === req.params.id) {
+                bounties.splice(i, 1)
+            }
+        })
+        res.send(bounties)
     })
     .put((req, res) => {
-        console.log(req.params.id)
-        res.send('blah2')
-        console.log('put bounties')
+        let foundBounty = findBounty(req.params.id, req.body)
+        res.send(foundBounty)
     })
 
 module.exports = bountyRouter

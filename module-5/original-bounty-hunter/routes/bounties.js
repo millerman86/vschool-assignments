@@ -7,14 +7,12 @@ const bounties = [
     {firstName: "amren", lastName: "miller", living: false, bountyAmount: 0, type: "", _id: '1788d37d-2f44-4f98-be82-3a7a6f3fca6b'}
 ]
 
-console.log(bounties[0]._id)
-
 bountyRouter.route('/')
     .get((req, res) => {
         res.send(bounties)
     })
     .post((req, res) => {
-        const newBounty = req.body 
+        const newBounty = req.body
         newBounty._id = uuid.v4()
         bounties.push(newBounty)
         res.send(`Successfully added ${newBounty.firstName} to the database!`)
@@ -29,7 +27,6 @@ const findBounty = (id, newValues = {test: 'test'}) => {
         if (item._id === id) found = index
         if (found === undefined) return 
         bounties[found] = {...bounties[found], ...newValues}
-        console.log('bounty', bounties[found])
         foundBounty = bounties[found]
 
     })
@@ -45,7 +42,6 @@ bountyRouter.route('/:id')
     })
     .delete((req, res) => {
         bounties.forEach((bounty, i) => {
-            console.log(bounties)
             if (bounty._id === req.params.id) {
                 bounties.splice(i, 1)
             }
@@ -58,10 +54,3 @@ bountyRouter.route('/:id')
     })
 
 module.exports = bountyRouter
-    
-    
-    
-    
-    
-
-// http://localhost:9000/bounties/

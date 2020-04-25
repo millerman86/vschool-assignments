@@ -8,7 +8,6 @@ app.use("/fruit", fruitRouter);
 app.use("/vegetable", veggieRouter);
 
 
-// Run the server
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
-});
+}); 

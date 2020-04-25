@@ -19,6 +19,7 @@ export default function App(props) {
       });
     }
 
+
     console.log(itemsToDelete);
   };
 
@@ -50,7 +51,7 @@ export default function App(props) {
 
                   addUglyThing({
                     url,
-                    title,
+                    title, uuid
                     description,
                     uuid,
                   });

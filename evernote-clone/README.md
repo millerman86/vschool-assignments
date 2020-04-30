@@ -1,2 +1,3 @@
-This project uses material-ui
-Also uses React-quill
+Technology List: 
+- https://material-ui.com/styles/basics/
+-  

@@ -8,7 +8,7 @@ require('firebase/firestore');
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBJ8YeLksb5FS6Kd88QgzdTQY3_OpB1cUI",
+  apiKey: process.env.REACT_APP_GOOGLE_API_KEY,
   authDomain: "evernote-clone-84a2a.firebaseapp.com",
   databaseURL: "https://evernote-clone-84a2a.firebaseio.com",
   projectId: "evernote-clone-84a2a",

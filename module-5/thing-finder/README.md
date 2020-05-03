@@ -3,7 +3,7 @@
 Choose a thing/noun of any kind, then write an express server with a GET route that sends back an array of that thing. <input type="checkbox" checked>
 My noun is= notebook, just like in Evernote
 
-Your GET endpoint should be able to check for any query parameters that may have been passed into the url of the request and filter the results based on those query parameters. (Such as id, )
+Your GET endpoint should be able to check for any query parameters that may have been passed into the url of the request and filter the results based on those query parameters. (Such as id, name)
 
 For example, let's say I chose "fruit" as my noun. A GET request to http://localhost:8000/fruit would return an array with all fruits on my server (use an array to store the fruits, and you may want to hard code a few in there so you have some data to work with when the server restarts itself.).
 

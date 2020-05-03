@@ -1,51 +1,43 @@
 const express = require("express");
 const notebookRouter = express.Router();
-const { v4: uuid } = require('uuid')
+const { v4: uuid } = require("uuid");
 
+// Right now, it will suffice to have these be object literals, but later I will have to change to constructor functions
+const note = {
+  title: "",
+  guid: uuid(),
+  id: uuid(),
+  text: "",
+};
 
 // As per the database relational diagram from the evernote API docs
 const notebook = {
   id: uuid(),
   guid: uuid(),
   name: "test",
-  // Notes should ideally be a separate object, but we'll ignore that for now
-  notes: []
+  notes: [{ ...note }],
 };
 
-const notebookCollection = [
-  {...notebook} // This shall be my first default notebook
-]
-
-
-
-
-
-// It should be noted that the entire content part is stored in one giant string, and parsed using quill
-// const note = {
-//   id: "",
-//   title: "",
-//   // Content could also be called body
-//   content: "",
-//   active: false,
-// };
-
-
-
-
-
-
-
-// As per the assignment, I will only be putting the notebooks in this file for now
-// const notes = [{ title: "", count: 0, id: "", text: "" }];
+const notebookCollection = [{ ...notebook }];
 
 notebookRouter.route("/").get((req, res) => {
-  res.send(notebookCollection)
+  console.log(req.query);
+  let foundNotebook;
+  if (Object.keys(req.query).length > 1) {
+    foundNotebook = notebookCollection.find(notebook => {
+      return notebook['name'] === req.query.name
+    })
+    res.send(foundNotebook)
+  } else {
+    res.send(notebookCollection);
+  }
 });
 
-notebookRouter.route("/:id")
-  .get((req, res) => {
-    const foundNotebook = notebookCollection.find(notebook => notebook.id === req.params.id)
-    res.send(foundNotebook)
-  })
+notebookRouter.route("/:notebookId").get((req, res) => {
+  const foundNotebook = notebookCollection.find(
+    (notebook) => notebook.notebookId === req.params.notebookId
+  );
+  res.send(foundNotebook);
+});
 
 module.exports = notebookRouter;

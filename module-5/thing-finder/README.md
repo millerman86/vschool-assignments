@@ -1,3 +1,14 @@
+# ATTENTION!! 
+
+This is an assignment that I did on my own. I came up with the answers by myself and 
+did not copy any videos. If you are a recruiter and looking at this, this demonstrates 
+more of my skills than other pages in this module
+
+
+
+
+
+
 # Thing Finder
 
 Choose a thing/noun of any kind, then write an express server with a GET route that sends back an array of that thing. <input type="checkbox" checked>
@@ -76,6 +87,7 @@ There's a lot of blanks there, fill them in with AT LEAST educated guesses, and 
 const filteredItems = inventoryItems.filter(___ => {
     ______ item.type === req.query.type
 })
+
 
 * I can use a filter to find text inside of the content string 
 

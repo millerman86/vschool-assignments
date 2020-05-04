@@ -37,7 +37,7 @@ movieRouter.delete('/:movieId', (req, res) => {
 movieRouter.put('/:movieId', (req, res) => {
     const movieId = req.params.movieId
     const updateObject = req.body
-    const movieIndex = moveies.findIndex(movie => movie_id === movieId)
+    const movieIndex = movies.findIndex(movie => movie._id === movieId)
     const updatedMovie = Object.assign(movies[movieIndex], updateObject)
     res.send(updatedMovie)
 })

@@ -5,7 +5,10 @@ const { v4: uuid } = require('uuid')
 
 const bounties = [{firstName: '', lastName: '', living: null, bountyAmount: 0, type: '', id: uuid()}]
 
-function Bounty(firstName = '', lastName = '', living = false, bountyAmount = 0, type = '') {
+
+function Bounty(bounty) {
+    const {firstName, lastName, living, bountyAmount, type} = bounty
+
     this.firstName = firstName
     this.lastName = lastName
     this.living = living
@@ -20,7 +23,8 @@ bountyRouter.route('/')
         res.send(bounties)
     })
     .post((req, res) => {
-        const newBounty = new Bounty('blah', 'blah', true, 100, 'sith')
+        const bounty = req.body
+        const newBounty = new Bounty(bounty)
         bounties.push(newBounty)
         res.send(bounties)
     })

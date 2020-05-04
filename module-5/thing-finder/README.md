@@ -3,13 +3,13 @@
 Choose a thing/noun of any kind, then write an express server with a GET route that sends back an array of that thing. <input type="checkbox" checked>
 My noun is= notebook, just like in Evernote
 
-Your GET endpoint should be able to check for any query parameters that may have been passed into the url of the request and filter the results based on those query parameters. (Such as id, name)
+Your GET endpoint should be able to check for any query parameters that may have been passed into the url of the request and filter the results based on those query parameters. (Such as name)
 
-For example, let's say I chose "fruit" as my noun. A GET request to http://localhost:8000/fruit would return an array with all fruits on my server (use an array to store the fruits, and you may want to hard code a few in there so you have some data to work with when the server restarts itself.).
+For example, let's say I chose "fruit" as my noun. A GET request to http://localhost:8000/fruit would return an array with all fruits on my server (use an array to store the fruits, and you may want to hard code a few in there so you have some data to work with when the server restarts itself.). <input type="checkbox" checked>
 
-However, a GET request to http://localhost:8000/fruit?type=banana should filter out any fruits in the array that don't have a type of banana and return an array to me (in Postman, Angular, or whatever front end I'm using) with only the objects with a type of banana.
+However, a GET request to http://localhost:8000/fruit?type=banana should filter out any fruits in the array that don't have a type of banana and return an array to me (in Postman, Angular, or whatever front end I'm using) with only the objects with a type of banana. <input type="checkbox" checked>
 
-For the purposes of this exercise, you can write your server code with the assumption that there is only one query parameter option available. So in the above example, I can write my server's GET route to only filter if req.query.type isn't undefined.
+For the purposes of this exercise, you can write your server code with the assumption that there is only one query parameter option available. So in the above example, I can write my server's GET route to only filter if req.query.type isn't undefined. <input type="checkbox" checked>
 
 Feel free to use the inventory array below.
 
@@ -47,7 +47,7 @@ const inventoryItems = [
 
 EXTRA CREDIT:
 
-Write another route where an API user can filter by a maxium price AND a minium price. You can make the maxium default to 1000000 and the minimum defualt to 0
+Write another route where an API user can filter by a maxium price AND a minium price. You can make the maxium default to 1000000 and the minimum default to 0
 
 Consolidate the two end points you've already written.
 
@@ -76,6 +76,10 @@ There's a lot of blanks there, fill them in with AT LEAST educated guesses, and 
 const filteredItems = inventoryItems.filter(___ => {
     ______ item.type === req.query.type
 })
+
+* I can use a filter to find text inside of the content string 
+
+
 If this is challenging to you, you may want to consider redoing the array iterator methods .map(), .find(), .filter(), .some(), .every(), and any others.
 
 These methods have a lot in common. If you're getting better at one, you're getting better at them all.

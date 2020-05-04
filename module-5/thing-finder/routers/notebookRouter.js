@@ -2,32 +2,51 @@ const express = require("express");
 const notebookRouter = express.Router();
 const { v4: uuid } = require("uuid");
 
-// Right now, it will suffice to have these be object literals, but later I will have to change to constructor functions
-const note = {
-  title: "",
-  guid: uuid(),
-  id: uuid(),
-  text: "",
-};
 
-// As per the database relational diagram from the evernote API docs
-const notebook = {
-  id: uuid(),
-  guid: uuid(),
-  name: "test",
-  notes: [{ ...note }],
-};
 
-const notebookCollection = [{ ...notebook }];
+function noteFunction(title = '', content) {
+  const newObject = {};
+  newObject.guid = uuid();
+  newObject.id = uuid();
+  newObject.title = title;
+  newObject.content = content || "";
+
+  return newObject;
+}
+
+function notebookFunction(name = '') {
+  return {
+    id: uuid(), // The execution will be deferred
+    guid: uuid(),
+    name, 
+    notes: [noteFunction(), noteFunction()]
+  };
+}
+
+const notebookCollection = [
+  notebookFunction(), 
+  notebookFunction(), 
+  notebookFunction(), 
+  notebookFunction(), 
+  notebookFunction(), 
+  notebookFunction(), 
+  notebookFunction(), 
+  notebookFunction(), 
+  notebookFunction(), 
+  notebookFunction(), 
+];
+
+console.log(notebookCollection);
+console.log(notebookCollection[0].notes);
 
 notebookRouter.route("/").get((req, res) => {
   console.log(req.query);
   let foundNotebook;
-  if (Object.keys(req.query).length > 1) {
-    foundNotebook = notebookCollection.find(notebook => {
-      return notebook['name'] === req.query.name
-    })
-    res.send(foundNotebook)
+  if (req.query.name !== undefined) {
+    foundNotebook = notebookCollection.find((notebook) => {
+      return notebook["name"] === req.query.name;
+    });
+    res.send(foundNotebook);
   } else {
     res.send(notebookCollection);
   }

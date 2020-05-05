@@ -3,11 +3,21 @@
 The work highlights in this module are these: 
 
 In the assignments folder: 
-- colossal-adventure
+### COLOSSAL-ADVENTURE
 
 ![](readmeimages/colossal-adventure-image.png)
 
-- responsive-color-grid
+### RESPONSIVE-COLOR-GRID
+
+#### Mobile-Breakpoint
+
+![](readmeimages/responsive-image.png)
+
+#### Desktop-Breakpoint
+
+![](readmeimages/responsive-image2.png)
+
+
 
 In the exercises folder:
 - moms-shopping-list-start

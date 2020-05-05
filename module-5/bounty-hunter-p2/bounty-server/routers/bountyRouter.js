@@ -3,12 +3,14 @@ const bountyRouter = express.Router()
 const { v4: uuid } = require('uuid')
 
 
-const bounties = [{firstName: '', lastName: '', living: null, bountyAmount: 0, type: '', id: uuid()}]
+const bounties = [
+    {firstName: 'amren', lastName: 'miller', living: true, bountyAmount: 0, type: 'human', id: uuid()}, 
+    {firstName: 'sith', lastName: 'lord', living: true, bountyAmount: 0, type: 'human', id: uuid()},
+    {firstName: 'bob', lastName: 'the builder', living: true, bountyAmount: 0, type: 'human', id: uuid()},
+]
 
 
-function Bounty(bounty) {
-    const {firstName, lastName, living, bountyAmount, type} = bounty
-
+function Bounty({firstName, lastName, living, bountyAmount, type}) {
     this.firstName = firstName
     this.lastName = lastName
     this.living = living
@@ -49,7 +51,7 @@ bountyRouter.route('/:id')
             bounties.splice(bountyIndex, 1)
         }
         
-        res.send('Delete successful!!!')
+        res.send(bounties)
     })
 
 module.exports = bountyRouter

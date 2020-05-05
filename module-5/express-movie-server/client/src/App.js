@@ -29,16 +29,24 @@ function App() {
       .catch(err => console.log(err))
   }
 
+  function editMovie(updates, movieId) {
+    axios.put(`/movies/${movieId}`, updates)
+      .then(res => {
+        setMovies(prevMovies => prevMovies.map(movie => movie._id !== movieId ? movie : res.data))
+      })
+      .catch(err => console.log(err))
+  }
+
   useEffect(() => {
     getMovies()
   }, []) // will only refire if data is loaded in as an argument and it sees a change
 
   return (
     <div className="movie-container">
-      <AddMovieForm 
-        addMovie={addMovie}
-      />
-      {movies.map(movie => <Movie {...movie} key={movie.title} deleteMovie={deleteMovie} />)}
+      
+      <AddMovieForm submit={addMovie} btnText="Add Movie" />
+
+      {movies.map(movie => <Movie {...movie} key={movie.title} deleteMovie={deleteMovie} editMovie={editMovie} />)}
     </div>
   );
 }

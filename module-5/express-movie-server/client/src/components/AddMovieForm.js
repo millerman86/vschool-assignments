@@ -1,38 +1,38 @@
 import React, { useState } from "react";
 
 export default function AddMovieForm(props) {
-  const initInputs = { title: "", genre: "" };
-  const { inputs, setInputs } = useState(initInputs);
+  const initInputs = { title: props.title || "", genre: props.genre || "" };
+  const [ inputs, setInputs ] = useState(initInputs);
 
   function handleChange(e) {
     const { name, value } = e.target
-    setInputs((prevInputs) => ({ ...prevInputs, [name]: value }));
+    console.log('name', name, 'value', value);
+    setInputs(prevInputs => ({ ...prevInputs, [name]: value }));
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    props.addMovie(inputs)
+    props.submit(inputs, props._id)
     setInputs(initInputs);
   }
-
 
   return (
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        name=""
+        name="title"
         value={inputs.title}
         onChange={handleChange}
         placeholder="Title"
       />
       <input
         type="text"
-        name=""
+        name="genre"
         value={inputs.genre}
         onChange={handleChange}
         placeholder="Genre"
       />
-      <button>Add Movie</button>
+      <button>{props.btnText}</button>
     </form>
   );
 }

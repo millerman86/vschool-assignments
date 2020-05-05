@@ -15,5 +15,3 @@ In the exercises folder:
 
 ### Enjoy!!!
 
-
-![](readmeimages/module-5-spreadsheet.png)

@@ -1,0 +1,19 @@
+form {
+    border: 1px solid #333;
+    padding: 10px;
+    margin: 5px;
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    margin: 5px;
+}
+
+button {
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 16px;
+}

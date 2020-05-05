@@ -18,7 +18,7 @@ movieRouter.route('/')
         const newMovie = req.body
         newMovie._id = uuid()
         movies.push(newMovie)
-        res.send(`The movie, ${newMovie.title} has been successfully added to the database`)
+        res.send(newMovie)
     })
 
 movieRouter.get('/:movieId', (req, res) => {

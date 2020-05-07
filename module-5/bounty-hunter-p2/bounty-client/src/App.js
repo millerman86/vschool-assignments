@@ -4,6 +4,8 @@ import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import styled from "styled-components";
+import BountyForm from './BountyForm'
+
 
 const useStyles = makeStyles({});
 
@@ -12,8 +14,8 @@ const MyButton = styled(Button)({});
 const StyledExample = styled.div``;
 
 const BountyUl = styled.ul`
-padding: 0;
-margin: 0;
+  padding: 0;
+  margin: 0;
   li {
     list-style-type: none;
     padding: 0;
@@ -56,7 +58,7 @@ function App() {
   const deleteBounty = (bountyId) => {
     axios.delete(`/bounties/${bountyId}`).then((response) => {
       console.log(response);
-      setBounties(response.data)
+      setBounties(response.data);
     });
   };
 
@@ -81,55 +83,31 @@ function App() {
   };
 
   return (
-    <div>
-      <form onSubmit={formSubmit}>
-        <input
-          type="text"
-          name="firstName"
-          value={form.firstName}
-          onChange={updateForm}
-        />
-        <input
-          type="text"
-          name="lastName"
-          value={form.lastName}
-          onChange={updateForm}
-        />
-        <input
-          type="text"
-          name="living"
-          value={form.living}
-          onChange={updateForm}
-        />
-        <input
-          type="text"
-          name="bountyAmount"
-          value={form.bountyAmount}
-          onChange={updateForm}
-        />
-        <input
-          type="text"
-          name="type"
-          value={form.type}
-          onChange={updateForm}
-        />
-        <input type="text" name="id" value={form.id} />
+    <div className="bounty-stand">
+      <div className="top">
+        <div className="board"></div>
+        <div className="board"></div>
+        <div className="board"></div>
+        <div className="board"></div>
+        <div className="board"></div>
+        <div className="board"></div>
+       
+        <BountyForm updateForm={updateForm} form={form} formSubmit={formSubmit} />
+        
 
-        <button onClick={formSubmit}>Submit new bounty</button>
-      </form>
-
-      
-      <BountyUl>
-        {bounties.map((bounty, i) => {
-          return (
-            <li key={i} className={classes.bountyItem}>
-              {bounty.firstName + " " + bounty.lastName}
-              <button onClick={() => deleteBounty(bounty.id)}>Delete</button>
-              <button onClick={() => putBounty(bounty.id)}>Put</button>
-            </li>
-          );
-        })}
-      </BountyUl>
+        <BountyUl>
+          {bounties.map((bounty, i) => {
+            return (
+              <li key={i} className={classes.bountyItem}>
+                {bounty.firstName + " " + bounty.lastName}
+                <button onClick={() => deleteBounty(bounty.id)}>Delete</button>
+                <button onClick={() => putBounty(bounty.id)}>Put</button>
+              </li>
+            );
+          })}
+        </BountyUl>
+      </div>
+      <div className="bottom"><img src="https://vignette.wikia.nocookie.net/onepiece/images/8/85/Straw_Hat_Pirates_Current_Bounties.png/revision/latest/scale-to-width-down/340?cb=20161204145101" alt=""/></div>
     </div>
   );
 }

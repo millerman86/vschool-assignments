@@ -1,0 +1,56 @@
+.bounty-stand {
+    height: 100vh;
+    display: grid; 
+    grid-template-rows: 1fr 2fr;
+}
+
+.top {
+    background: #9b5f1e;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 1fr;
+    position: relative;
+} 
+
+.top > .board {
+    right: 50%;
+    position: relative;
+    border: 1px solid black;
+}
+
+.board:nth-child(6) {
+    border-right: 2px solid black;
+}
+
+.bottom {
+    background: navajowhite;
+}
+
+.bounty-stand form {
+    position: absolute;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+
+.bounty-stand form input {
+    background-color: transparent;
+    outline: none;  
+    border: none;
+    border-bottom: 2px solid black;
+}
+
+.column1 > p {
+    margin: 0;
+    padding: 0;
+}
+
+.column2 {
+    flex-direction: column;
+    display: flex;
+}
+
+.column1, .column2 {
+    flex: 1 1 100%;
+}

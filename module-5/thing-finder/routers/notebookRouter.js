@@ -36,7 +36,6 @@ const notebookCollection = [
   notebookFunction(), 
 ];
 
-
 notebookRouter.route("/").get((req, res) => {
   console.log(req.query);
   let foundNotebook;

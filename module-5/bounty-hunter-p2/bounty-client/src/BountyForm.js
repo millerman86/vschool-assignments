@@ -9,6 +9,7 @@ export default function BountyForm(props) {
       useRef(null), 
       useRef(null), 
   ]
+  
   return (
     <form onSubmit={props.formSubmit} className="">
       <div className="column1">

@@ -23,5 +23,12 @@ In the exercises folder:
 - moms-shopping-list-start
 - manipulation-olympics
 
+
+And here is a list of all the assignments
+
+![](readmeimages/module-1-spreadsheet)
+
+
+
 ### Enjoy!!!
 

@@ -13,7 +13,7 @@ app.use('/tvshows', require('./routes/tvshowRouter'))
 
 // Error handler
 app.use((err, req, res, next) => {
-    return res.status(500).send({errMsg: err.message}); // You must send this to trigger the catch in the client page
+    return res.send({errMsg: err.message}); // You must send this to trigger the catch in the client page
 })
 
 app.listen(9000, () => {

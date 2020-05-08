@@ -18,7 +18,7 @@ movieRouter.get('/search/genre', (req, res, next) => {
         return next(error)
     }
     const filteredMovies = movies.filter(movie => movie.genre === genre)
-    res.send(filteredMovies)
+    res.status(200).send(filteredMovies)
 })
 
 
@@ -26,26 +26,27 @@ movieRouter.route('/')
     .get((req, res, next) => {
         if (movies.length === 0) {
             const error = new Error('There are no movies in the database')
+            res.status(500)
             return next(error)
         }
-        res.send(movies)
+        res.status(500)
     })
     .post((req, res) => {
         const newMovie = req.body
         newMovie._id = uuid()
         movies.push(newMovie)
-        res.send(newMovie)
+        res.status(201).send(newMovie)
     })
 
 movieRouter.get('/:movieId', (req, res, next) => {
     const movieId = req.params.movieId
     const foundMovie = movies.find(movie => movie._id === movieId) // This line will return undefined
     if (!foundMovie) {
-        const error = new Error('The item was not found!')
+        const error = new Error(`The item with id ${movieId} was not found!!`)
+        res.status(500)
         next(error) // Call the next middlware in line (of middlewares) and will skip the first ones
-        // res.send(error)
     }
-    res.send(foundMovie)
+    res.status(200).send(foundMovie)
 })
 
 movieRouter.delete('/:movieId', (req, res) => {

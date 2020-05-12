@@ -1,12 +1,23 @@
 const express = require('express')
 const app = express()
+const mongoose = require('mongoose')
 
-// const uuid = require('uuid/v4')
-const { v4: uuid } = require('uuid');
 const morgan = require('morgan')
 
 app.use(express.json())
 app.use(morgan('dev'))
+
+
+mongoose.connect('mongodb://localhost:27017/moviesdb', 
+    {
+        useNewUrlParser: true, 
+        useUnifiedTopology: true, 
+        useCreateIndex: true, 
+        useFindAndModify: false
+    }, 
+    () => console.log('Connected to the DB')
+)
+
 
 app.use('/movies', require('./routes/movieRouter'))
 app.use('/tvshows', require('./routes/tvshowRouter'))

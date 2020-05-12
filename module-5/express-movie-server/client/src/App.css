@@ -39,3 +39,7 @@ button {
     flex-direction: column;
     margin: 0 32px;
 }
+
+.filter-form {
+    width: 200px;
+}

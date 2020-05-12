@@ -19,6 +19,7 @@ function App() {
   }
 
   function addMovie(newMovie) {
+    console.log(newMovie);
     axios.post('/movies', newMovie)
       .then(res => {
         setMovies(prevMovies => [...prevMovies, res.data])
@@ -42,6 +43,16 @@ function App() {
       .catch(err => console.log(err))
   }
 
+  const handleFilter = (e) => {
+    if (e.target.value === 'reset') {
+      return getMovies()
+       
+    }
+    axios.get(`/movies/search/genre?genre=${e.target.value}`)
+      .then(res => setMovies(res.data))
+      .catch(err => console.log(err))
+  }
+
   useEffect(() => {
     getMovies()
   }, []) // will only refire if data is loaded in as an argument and it sees a change
@@ -51,7 +62,15 @@ function App() {
       
       <AddMovieForm submit={addMovie} btnText="Add Movie" />
 
-      {movies.map(movie => <Movie {...movie} key={movie.title} deleteMovie={deleteMovie} editMovie={editMovie} />)}
+      <h4>Filter by Genre</h4>
+      <select onChange={handleFilter} className="filter-form" id="">
+        <option value="reset">Select a Genre</option>
+        <option value="action">Action</option>
+        <option value="fantasy">Fantasy</option>
+        <option value="horror">Horror</option>
+      </select>
+
+      {movies.map((movie, i) => <Movie {...movie} key={i} deleteMovie={deleteMovie} editMovie={editMovie} />)}
     </div>
   );
 }

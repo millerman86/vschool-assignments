@@ -100,8 +100,8 @@ function App() {
             return (
               <li key={i} className={classes.bountyItem}>
                 {bounty.firstName + " " + bounty.lastName}
-                <button onClick={() => deleteBounty(bounty.id)}>Delete</button>
-                <button onClick={() => putBounty(bounty.id)}>Put</button>
+                {/* <button onClick={() => deleteBounty(bounty.id)}>Delete</button>
+                <button onClick={() => putBounty(bounty.id)}>Put</button> */}
               </li>
             );
           })}

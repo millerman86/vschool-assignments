@@ -16,6 +16,11 @@ const todoSchema = new Schema({
   imgUrl: {
     type: String,
     required: true
+  }, 
+  user: {
+    type: Schema.Types.ObjectId, // one to many relationship
+    ref: "User", 
+    required: true // We don't want any todos floating around in our database without a user
   }
 })
 

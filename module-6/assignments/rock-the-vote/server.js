@@ -4,7 +4,6 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const expressjwt = require('express-jwt')
 
-
 app.use(express.json())
 app.use(morgan('dev'))
 
@@ -21,7 +20,8 @@ mongoose.connect(
 
 app.use('/auth', require('./routes/authRouter')) // for signup and login
 app.use('/api', expressjwt({secret: process.env.SECRET}))
-// app.use('/api/', require('./routes/Router'))
+app.use('/api/issue', require('./routes/issueRouter'))
+
 
 app.use((err, req, res, next) => {
     console.log(err)

@@ -20,7 +20,7 @@ Requirements:
 - Use React for the front-end
 - Use Node/Express for the back-end
 - Use MongoDB and Mongoose for your database and models
-- Use dotenv, jsonwebtoken & expressJwt to manage user authentication.
+- Use dotenv, jsonwebtoken & expressJwt to manage user authentication. <input type="checkbox" checked>
 - Clearly you will need the ability to GET, POST, PUT, and DELETE.
 
 You will want to approach this project in 3 parts while following the Module 6 vidoes and associated git repository. After implementing the user authentication code with the videos using the git repository provided, replicate that code again for this project.

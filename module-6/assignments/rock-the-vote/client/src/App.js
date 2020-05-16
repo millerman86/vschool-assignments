@@ -1,29 +1,47 @@
-import React, {useState, useEffect} from 'react';
-import './App.css';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Home from './pages/Home'
-import axios from 'axios'
-import authService from './services/authService'
+import React from "react";
+import "./App.css";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
+import Home from "./pages/Home";
+import authService from "./services/authService";
+import Login from "./components/Login";
+import PoliticalIssuesPage from "./pages/PoliticalIssuesPage";
 
-
-
+const PrivateRoute = ({ component: Component, authorized, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        authorized === true ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{ pathname: "/login", state: { from: props.location } }}
+          />
+        )
+      }
+    />
+  );
+};
 
 function App() {
-  const [authorized, authorize] = useState(false)
-  
-  useEffect(() => {
-    authService.authenticate()
-      .then(() => authorize(true))
-      .catch(() => console.log('rejected'))
-  })
-
   return (
     <Router>
-          {authorized ? (<h1>Header</h1>) : null}
+      <h1>Header</h1> 
       <Switch>
-        <Route exact path="/" component={Home} />
-        {/* <Route path="/search" component={Search} /> */}
-        {/* <Route path="/stats" component={Stats} /> */}
+        
+        <Route path="/login" component={Login} />
+        <Route path="/" component={Login} />
+        <PrivateRoute
+          exact
+          path="/politicalissues"
+          authorized={loggedIn}
+          component={PoliticalIssuesPage}
+        />
       </Switch>
     </Router>
   );

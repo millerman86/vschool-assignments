@@ -3,6 +3,6 @@ import React from 'react'
 
 export default function Home() {
     return (
-        <div>amren</div>
+        <div>HOME</div>
     )
 }

@@ -51,7 +51,7 @@ export default function App(props) {
 
                   addUglyThing({
                     url,
-                    title, uuid
+                    title, 
                     description,
                     uuid,
                   });

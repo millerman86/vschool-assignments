@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default function AuthForm(props){
+export default function AuthForm(props) {
   const {
     handleChange, 
     handleSubmit, 
-    btnText, 
+    btnText,    
     inputs: {
       username, 
       password

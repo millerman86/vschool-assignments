@@ -3,12 +3,14 @@ import axios from "axios";
 
 export const UserContext = React.createContext();
 
+
+
 export default function UserProvider(props) {
   const initState = {
     user: JSON.parse(localStorage.getItem("user")) || "",
     token: localStorage.getItem("token") || "",
     issues: [],
-  };
+  }
 
   const [userState, setUserState] = useState(initState);
 

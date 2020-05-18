@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const userAxios = axios.create()
+const userAxios = axios.create() // creates another version of Axios that we can then configure for specific reasons
 
 export const UserContext = React.createContext();
 
 userAxios.interceptors.request.use(config => {
-  const token = localStorage.getITem('token')
+  const token = localStorage.getItem('token')
   config.headers.Authorization = `Bearer ${token}`
   return config
 })
@@ -43,6 +43,7 @@ export default function UserProvider(props) {
         const { user, token } = res.data
         localStorage.setItem('token', token)
         localStorage.setItem('user', JSON.stringify(user))
+        getUserTodos()
         setUserState(prevUserState => ({
           ...prevUserState, 
           user, 
@@ -53,7 +54,6 @@ export default function UserProvider(props) {
   }
 
   function logout() {
-    console.log('hello');
     localStorage.removeItem('token')
     localStorage.removeItem('user')
     setUserState({
@@ -65,12 +65,33 @@ export default function UserProvider(props) {
   }
 
   function addTodo(newTodo) {
-    axios
+    console.log('This is the add todo function')
+    userAxios
       .post('/api/todo', newTodo)
-      .then(res => console.log(res))
-      .catch(err => console.log(err.response.data.errMsg))
-      
+      .then(res => {
+        setUserState(prevState => ({
+          ...prevState, 
+          todos: [...prevState.todos, res.data]
+        }))
+      })
+      .catch(err => console.log(err))
   }
+
+  function getUserTodos() {
+    userAxios.get('/api/todo/user')
+      .then(res => {
+        console.log(res);
+        setUserState(prevState => ({
+          ...prevState, 
+          todos: [...res.data]
+        }))
+      })
+      .catch(err => console.log(err.response.data.errMsg))
+  }
+
+  useEffect(() => {
+    getUserTodos()
+  }, [])
 
   return (
     <UserContext.Provider

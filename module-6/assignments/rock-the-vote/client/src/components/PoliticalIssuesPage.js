@@ -1,5 +1,5 @@
 import React from 'react'
-import Issue from '../components/Issue'
+import Issue from './Issue'
 import authService from '../services/authService'
 
 const issuesEndpoint = "http://localhost:9000/api/issues"

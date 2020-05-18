@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export const UserContext = React.createContext();
 
+const userAxios = axios.create()
 
+userAxios.interceptors.request.use(config => {
+  const token = localStorage.getItem('token')
+  config.headers.Authorization = `Bearer ${token}`
+  return config
+})
 
 export default function UserProvider(props) {
   const initState = {
@@ -52,9 +58,36 @@ export default function UserProvider(props) {
       setUserState({
           user: {}, 
           token: '', 
-          todos: []
+          issues: []
       })
   }
+
+  function addIssue(newIssue) {
+    userAxios
+      .post('/api/issue', newIssue)
+      .then(res => {
+        setUserState(prevState => ({
+          ...prevState, 
+          issues: [...prevState.issues, res.data]
+        }))
+      })
+      .catch(err => console.log(err))
+  }
+
+  function getUserIssues() {
+    userAxios.get('/api/issue/user')
+      .then(res => {
+        setUserState(prevState => ({
+          ...prevState, 
+          issues: [...res.data]
+        }))
+      })
+      .catch(err => console.log(err.response.data.errMsg))
+  }
+
+  useEffect(() => {
+    getUserIssues()
+  }, [])
 
   return (
     <UserContext.Provider
@@ -62,7 +95,8 @@ export default function UserProvider(props) {
         ...userState,
         signup,
         login,
-        logout
+        logout, 
+        addIssue
       }}
     >
       {props.children}

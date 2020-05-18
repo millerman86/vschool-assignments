@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import TodoForm from "./TodoForm.js";
 import TodoList from "./TodoList.js";
-import Todo from "./Todo.js";
 import { UserContext } from "../context/UserProvider";
 
 export default function Profile() {

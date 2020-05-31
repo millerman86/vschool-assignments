@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Issue() {
+export default function Issue(props) {
     // title 
     // description
     // upvote or downvote (once per issue per person only)

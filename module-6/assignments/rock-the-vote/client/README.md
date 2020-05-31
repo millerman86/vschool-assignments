@@ -1,68 +1,42 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Rock The Vote - Module 6
 
-## Available Scripts
+![](readme-images/rockthevoteimage.jpeg)
 
-In the project directory, you can run:
+You are going to create a full stack application with user authentication created with Node, React, Express, Mongoose & Mongodb that allows users to post and upvote or downvote political issues.
 
-### `npm start`
+Requirements:
+- A login/signup page that is required to visit any part of the application. <input type="checkbox" checked>
+- Web page that shows a list of political issues.
+    - Each item will have a title
+    - Each item will have a description
+    - Each item can be upvoted or downvoted.
+        - User's should only be able to upvote/downvote once per issue.
+    - Items will be ordered by upvotes (the most being at the top).
+    - Each item should show the total number of votes
+- Include a page that will allow logged in users to add new posts.
+- Include a page that will allow logged in users to view all posts they personally made.
+- Users can comment on posts (unlimited number of comments per post)
+- You will create a back end with the needed 'models' and 'routes' so that all topics, comments, and votes are persistent.
+- Use React for the front-end
+- Use Node/Express for the back-end
+- Use MongoDB and Mongoose for your database and models
+- Use dotenv, jsonwebtoken & expressJwt to manage user authentication. <input type="checkbox" checked>
+- Clearly you will need the ability to GET, POST, PUT, and DELETE.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+You will want to approach this project in 3 parts while following the Module 6 vidoes and associated git repository. After implementing the user authentication code with the videos using the git repository provided, replicate that code again for this project.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+After Part 3 of the video series you should have user authentication and basic routing set up so that you can continue to develop the rest of this application.
 
-### `npm test`
+### Suggestions
+- Consider making the following models:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    - User.js
+    - Issue.js ( related to the user that created it )
+    - Comment.js ( related to the issue it was commented on, and related to the user that created the comment )
+    - Due to the amount of functionality, consider using 2 context providers. One that manages the authentication/user functionality of the app, and another that manages the issues and comments.
 
-### `npm run build`
+- Due to the amount of state and state update operations you made need, consider using useReducer to manage context state. Using useState will work as well.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- You will need to manage one to many & many to many database relationships. The one to many relationships will be relating the user to issues, and relating the comments to users and to issues. The many to many relationships will be part of the upvote/downvote process as issues can be upvoted/downvoted by many users, and many users can upvote/downvote many issues. This will be needed to make sure that a "issue" can only be upvoted/downvoted once per user.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This is a fully functional front-end and back-end application including a persistent database and user authentication. It will push you to create a fully responsive user driven application and help you brainstorm what you may want to make for your personal full stack application final project.

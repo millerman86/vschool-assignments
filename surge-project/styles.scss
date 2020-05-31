@@ -27,6 +27,8 @@ p, span {
 .masthead {
     background: rgba(0, 0, 0, 0.8);
     padding: 0 10pt;
+    padding-top: 5pt;
+    padding-bottom: 5px;
     display: flex;
     justify-content: center;
 }
@@ -87,7 +89,7 @@ p, span {
     text-align: center;
     margin: 0; 
     padding: 30px 0;
-    background-image: linear-gradient(to bottom, transparent, rgb(221, 221, 221))
+    // background-image: linear-gradient(to bottom, transparent, rgb(221, 221, 221))
 }
 
 .href-resume-wrapper {
@@ -105,7 +107,7 @@ ul.menu {
     & li {
         display: flex;
         align-items: center;
-        margin: 4px;
+        padding: 4px;
         margin-left: 10px;
     }
 
@@ -115,13 +117,48 @@ ul.menu {
         text-decoration: none;
     }
     
-    & li:first-child {
+    & li.home {
         padding: 10px;
     }
 
     & li a:first-child {
         padding-left: unset;
     }
+}
+
+ul.menu li {
+    position: relative;
+}
+
+ul.menu ul {
+    display: none;
+    position: absolute;
+    border: 1px solid black;
+    border-radius: 3px;
+    z-index: 100;
+    margin: 0;
+    padding: 0;
+    border-top: none;
+}
+
+ul.portfolio li a {
+    font-size: 16px;
+    padding: 10px;
+    text-align: left;
+}
+
+ul.portfolio {
+    background: white;
+    top: 100%;
+    right: 0;
+}
+
+ul.menu ul a {
+    color: black;
+}
+
+ul.menu li:hover ul {
+    display: block;
 }
 
 .project-grid-item {

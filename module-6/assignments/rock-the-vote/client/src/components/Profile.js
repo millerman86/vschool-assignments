@@ -11,10 +11,10 @@ export default function Profile() {
     return (
         <div className="profile">
             <h1>Welcome {username}!</h1>
-            <h3>Add A Todo</h3>
+            <h3>Add an Issue</h3>
             {/* The add issue function comes from context, because the issues are stored and updated in context */}
             <IssueForm addIssue={addIssue} /> 
-            <h3>Your Todos</h3>
+            <h3>Your Political Issues</h3>
             {/* Issues comes from context  */}
             <IssueList issues={issues} />
         </div>

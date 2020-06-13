@@ -65,7 +65,7 @@ export default function UserProvider(props) {
       })
   }
 
-  function addIssue(newIssue = {issue: 'hello'}) {
+  function addIssue(newIssue) {
     userAxios
       // Since we're hitting the api endpoint, it's going to require that we have a token
       .post('/api/issue', newIssue)

@@ -2,3 +2,8 @@
     command = "npm run build"
     base = "module-6/assignments/rock-the-vote/client"
     publish = "build"
+
+[build]
+    command = "npm run build"
+    base = "module-6/assignments/todo-app/client"
+    publish = "build"

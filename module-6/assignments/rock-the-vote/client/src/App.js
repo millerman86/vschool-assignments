@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import "./App.css";
 import {
-  BrowserRouter as Router,
   Route,
   Switch,
   Redirect,
@@ -18,14 +17,19 @@ import Navbar from './components/Navbar'
 function App() {
   const { token, logout } = useContext(UserContext);
   return (
-    <Router>
+    <div>
       {token ? (<Navbar logout={logout} />) : null}
+      {/* {!token ? (<GuestNavbar logout={logout} />) : null} */}
       <Switch>
 
         <Route
           exact path="/" 
           component={Auth} 
           render={() => (token ? <Redirect to="/profile" /> : <Auth />)}
+        />
+        <Route 
+          path='/politicalissues'
+          component={PoliticalIssues}
         />
         <ProtectedRoute 
           path='/profile'
@@ -39,6 +43,7 @@ function App() {
           redirectTo="/"
           token={token}
         />
+        {/* I will leave the political issues protected, since a user would want to interface with the voting system directly */}
         <ProtectedRoute 
           path='/politicalissues'
           component={PoliticalIssues}
@@ -47,7 +52,7 @@ function App() {
         />
         
       </Switch>
-    </Router>
+    </div>
   );
 }
 

@@ -1,4 +1,5 @@
-import React from "react";
+import React  from "react"
+import {BrowserRouter} from 'react-router-dom'
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
@@ -7,9 +8,11 @@ import UserProvider from './context/UserProvider'
 
 
 ReactDOM.render(
-    <UserProvider>
-        <App />
-    </UserProvider>
+    <BrowserRouter>
+        <UserProvider>
+            <App />
+        </UserProvider>
+    </BrowserRouter>
 , document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change

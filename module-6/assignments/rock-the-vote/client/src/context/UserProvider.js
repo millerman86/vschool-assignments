@@ -62,8 +62,10 @@ export default function UserProvider(props) {
       })
   }
 
-  function addIssue(newIssue) {
+  function addIssue(newIssue = {issue: 'hello'}) {
+    console.log('hello');
     userAxios
+      // Since we're hitting the api endpoint, it's going to require that we have a token
       .post('/api/issue', newIssue)
       .then(res => {
         setUserState(prevState => ({
@@ -77,6 +79,7 @@ export default function UserProvider(props) {
   function getUserIssues() {
     userAxios.get('/api/issue/user')
       .then(res => {
+        console.log(res);
         setUserState(prevState => ({
           ...prevState, 
           issues: [...res.data]
@@ -87,6 +90,7 @@ export default function UserProvider(props) {
 
   useEffect(() => {
     getUserIssues()
+    addIssue()
   }, [])
 
   return (

@@ -28,6 +28,11 @@ const AuthContainer = styled.div`
   p {
     text-align: center;
   }
+
+  .member-no-member {
+    text-align: center;
+    padding: 20px 0;
+  }
 `
 
 
@@ -68,7 +73,9 @@ export default () => {
               inputs={inputs}
               btnText="Sign up"
             />
-            <p onClick={() => setToggle(prev => !prev)}>Already a member?</p>
+            <div className="member-no-member">
+              <span onClick={() => setToggle(prev => !prev)}>Already a member?</span>
+            </div>
           </>
           : 
             <> 
@@ -78,7 +85,9 @@ export default () => {
                 inputs={inputs}
                 btnText="Login"
               />
-              <p onClick={() => setToggle(prev => !prev)}>Not a member?</p>
+              <div className="member-no-member">
+                <span onClick={() => setToggle(prev => !prev)}>Not a member?</span>
+              </div>
             </>
         }
       </div>

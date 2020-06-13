@@ -1,4 +1,0 @@
-{
-  "plugins": ["transform-decorators-legacy", "babel-plugin-transform-es2015-modules-commonjs"],
-  "presets": ["react-app"]
-}

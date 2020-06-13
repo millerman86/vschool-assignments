@@ -53,6 +53,7 @@ export default () => {
 
   function handleSignup(e) {
       e.preventDefault()
+      // I need to redirect after signup to profile
       signup(inputs)
   }
 

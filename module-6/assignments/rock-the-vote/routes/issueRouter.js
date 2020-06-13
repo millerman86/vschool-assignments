@@ -4,8 +4,8 @@ const issueRouter = express.Router()
 
 
 
-// First, we want to get all the issues that belong to the user using the application
-// // Then, we want to get all the political issues
+// First, we want to be able to get all the political issues
+// This is correct
 issueRouter.get('/', (req, res) => {
     Issue.find((err, issues) => {
         if (err) {
@@ -16,8 +16,12 @@ issueRouter.get('/', (req, res) => {
     })
 })
 
-issueRouter.get('/user', (req, res) => {
-    Issue.find((err, issues) => {
+// Then, we want to be able to get all the issues that belong to the user using the application
+// Get issue by user id 
+// Since we have already authorized the user by hitting the /api/issue endpoint, we 
+issueRouter.get('/user', (req, res, next) => {
+    // The user id is sent in the header
+    Issue.find({user: req.user._id}, (err, issues) => {
         if (err) {
             res.status(500)
             return next(err)
@@ -26,9 +30,7 @@ issueRouter.get('/user', (req, res) => {
     })
 })
 
-
-
-issueRouter.post('/', (req, res) => {
+issueRouter.post('/', (req, res, next) => {
     req.body.user = req.user._id
     const newIssue = new Issue(req.body)
     newIssue.save((err, savedIssue) => {

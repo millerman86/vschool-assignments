@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import Issue from './Issue'
 import authService from '../services/authService'
 import axios from 'axios'
+import { Redirect } from 'react-router-dom'
 
 const issuesEndpoint = "http://localhost:9000/api/issues"
 

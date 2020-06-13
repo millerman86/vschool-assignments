@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 export const UserContext = React.createContext();
 
@@ -21,6 +22,7 @@ export default function UserProvider(props) {
   const [userState, setUserState] = useState(initState);
 
   function signup(credentials) {
+    console.log('credentials', credentials);
     axios
       .post("/auth/signup", credentials)
       .then((res) => {
@@ -32,6 +34,7 @@ export default function UserProvider(props) {
           user,
           token,
         }));
+        window.location = '/profile'
       })
       .catch((err) => console.log(err));
   }
@@ -63,7 +66,6 @@ export default function UserProvider(props) {
   }
 
   function addIssue(newIssue = {issue: 'hello'}) {
-    console.log('hello');
     userAxios
       // Since we're hitting the api endpoint, it's going to require that we have a token
       .post('/api/issue', newIssue)
@@ -76,6 +78,7 @@ export default function UserProvider(props) {
       .catch(err => console.log(err))
   }
 
+  // Get an individual user's issues
   function getUserIssues() {
     userAxios.get('/api/issue/user')
       .then(res => {

@@ -3,7 +3,6 @@ import IssueForm from './IssueForm'
 import IssueList from './IssueList'
 import { UserContext } from '../context/UserProvider'
 
-
 export default function Profile() {
     const {
         user: { username }, addIssue, issues

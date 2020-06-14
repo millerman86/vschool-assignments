@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 
 const initInputs = {
-    title: "", 
+    issue: "", 
     description: "", 
     imgUrl: ""
 }
 
 export default function IssueForm(props) {
     const [inputs, setInputs] = useState(initInputs)
-    const { title, description, imgUrl } = inputs
+    const { issue, description, imgUrl } = inputs
     const { addIssue } = props 
 
     
@@ -30,8 +30,8 @@ export default function IssueForm(props) {
         <form onSubmit={handleSubmit}>
             <input 
                 type="text"
-                name="title"
-                value={title}
+                name="issue"
+                value={issue}
                 onChange={handleChange}
                 placeholder="Title Your Issue"
             />

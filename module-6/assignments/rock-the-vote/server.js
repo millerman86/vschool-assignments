@@ -2,6 +2,9 @@ const express = require('express')
 const app = express()
 const morgan = require('morgan')
 const mongoose = require('mongoose')
+/* Error handling for jwt
+The default behavior is to throw an error when the token is
+invalid, so you can add your custom logic to manage unauthorized access as follows: */
 const expressjwt = require('express-jwt')
 const cors = require('cors')
 
@@ -22,7 +25,7 @@ mongoose.connect(
 )
 
 app.use('/auth', require('./routes/authRouter')) // for signup and login
-app.use('/api', expressjwt({secret: process.env.SECRET}))
+app.use('/api', expressjwt({secret: process.env.SECRET})) // Remember: The token is in the header
 app.use('/api/issue', require('./routes/issueRouter'))
 
 
@@ -37,3 +40,16 @@ app.use((err, req, res, next) => {
 app.listen(9000, () => {
     console.log('Server is running on local port 9000')
 })
+
+
+
+// BASIC USAGE FOR JWT
+// Basic usage using an HS256 secret:
+// var jwt = require('express-jwt');
+ 
+// app.get('/protected',
+//   jwt({ secret: 'shhhhhhared-secret' }),
+//   function(req, res) {
+//     if (!req.user.admin) return res.sendStatus(401);
+//     res.sendStatus(200);
+// });

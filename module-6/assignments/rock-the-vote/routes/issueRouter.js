@@ -21,6 +21,8 @@ issueRouter.get('/', (req, res) => {
 // Since we have already authorized the user by hitting the /api/issue endpoint, we 
 issueRouter.get('/user', (req, res, next) => {
     // The user id is sent in the header
+    // Remember that all properties that were used when signing are available after the 
+    // token gets parsed
     Issue.find({user: req.user._id}, (err, issues) => {
         if (err) {
             res.status(500)
@@ -32,6 +34,7 @@ issueRouter.get('/user', (req, res, next) => {
 
 issueRouter.post('/', (req, res, next) => {
     req.body.user = req.user._id
+    console.log(req.body);
     const newIssue = new Issue(req.body)
     newIssue.save((err, savedIssue) => {
         if (err) {

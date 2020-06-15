@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { FaMicrophone } from 'react-icons/fa'
+import styled from 'styled-components'
 
 
 const initInputs = {
@@ -6,6 +8,28 @@ const initInputs = {
     description: "", 
     imgUrl: ""
 }
+
+
+const StyledDiv = styled.div`
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    width: 40%;
+    padding: 5px 0;
+
+    div {
+        padding: 0 5px;
+    }
+
+    input {
+
+    }
+`
+const IssuesContainer = styled.div`
+   
+`
+
+
 
 export default function IssueForm(props) {
     const [inputs, setInputs] = useState(initInputs)
@@ -29,7 +53,29 @@ export default function IssueForm(props) {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input 
+            <StyledDiv>
+
+            <div>
+                <FaMicrophone />
+            </div>
+            <input type="text" placeholder="Create New Issue"/>
+            </StyledDiv>
+            {/* <div>
+                <textarea 
+                    type="text"
+                    name="issue"
+                    value={issue}
+                    onChange={handleChange}
+                    placeholder="Title Your Issue"
+                    >
+
+                </textarea>
+
+            </div> */}
+
+
+
+            {/* <input 
                 type="text"
                 name="issue"
                 value={issue}
@@ -50,7 +96,7 @@ export default function IssueForm(props) {
                 onChange={handleChange}
                 placeholder="Image Url"
             />
-            <button>Add Todo</button>
+            <button>Add Todo</button> */}
         </form>
     )
 }

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
 import userAxios from '../config/requestinterceptor'
 
 export const UserContext = React.createContext();
@@ -19,6 +18,8 @@ export default function UserProvider(props) {
     axios
       .post("/auth/signup", credentials)
       .then((res) => {
+        window.location = '/profile'
+
         const { user, token } = res.data;
         localStorage.setItem("token", token);
         localStorage.setItem("user", JSON.stringify(user));
@@ -27,7 +28,6 @@ export default function UserProvider(props) {
           user,
           token,
         }));
-        window.location = '/profile'
       })
       .catch((err) => console.log(err));
   }
@@ -36,6 +36,8 @@ export default function UserProvider(props) {
     axios
       .post("/auth/login", credentials)
       .then((res) => {
+        window.location = '/profile'
+
         const { user, token } = res.data;
         localStorage.setItem("token", token);
         localStorage.setItem("user", JSON.stringify(user));
@@ -44,9 +46,8 @@ export default function UserProvider(props) {
           user,
           token,
         }));
-        window.location = '/profile'
       })
-      .catch((err) => console.log(err.response.data.errMsg));
+      .catch((err) => console.log(err.response));
   }
 
   function logout() {
@@ -74,15 +75,20 @@ export default function UserProvider(props) {
 
   // Get an individual user's issues
   function getUserIssues() {
+    if (!localStorage.getItem('token')) return
     userAxios.get('/api/issue/user')
       .then(res => {
         console.log(res);
+        console.log('hello');
         setUserState(prevState => ({
           ...prevState, 
           issues: [...res.data]
         }))
       })
-      .catch(err => console.log(err.response.data.errMsg))
+      .catch(err => {
+        console.log(err.response.data.errMsg)
+        console.log('ERROR');
+      })
   }
 
   useEffect(() => {

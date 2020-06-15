@@ -44,6 +44,7 @@ export default function UserProvider(props) {
           user,
           token,
         }));
+        window.location = '/profile'
       })
       .catch((err) => console.log(err.response.data.errMsg));
   }

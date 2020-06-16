@@ -4,50 +4,13 @@ import IssueList from './IssueList'
 import { UserContext } from '../context/UserProvider'
 import { FaMicrophone } from 'react-icons/fa'
 import styled from 'styled-components'
-
-const StyledDiv = styled.div`
-    border: 1px solid #DCDCDC;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 5px 0;
-    background: white;
-
-    div {
-        padding: 0 5px;
-        
-    }
-
-    input {
-        
-    }
-`
-
-const SortingDiv = styled.div`
-    border: 1px solid lightgray;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    background: white;
-
-    p { 
-        margin: 0;
-    }
-
-    input {
-        
-    }
-`
+import {Redirect} from 'react-router-dom'
 
 const IssuesLayout = styled.div`
-    padding: 0 15px;
     display: flex;
+    padding: 0 15px;
     justify-content: center;
-    background: #DCDCDC;
-
-    h1 {
-        margin: 0;
-    }
+    background: #DAE0E6;
 
     .layout-container {
         display: grid;
@@ -82,6 +45,39 @@ const IssuesLayout = styled.div`
     }
 `
 
+const CreateNewIssueDiv = styled.div`
+    border: 1px solid #DCDCDC;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 5px 0;
+    background: white;
+
+    div {
+        padding: 0 5px;
+    }
+
+    input {
+        
+    }
+`
+
+const SortingDiv = styled.div`
+    border: 1px solid lightgray;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: white;
+
+    p { 
+        margin: 0;
+    }
+
+    input {
+        
+    }
+`
+
 export default function Profile() {
     const [toggle, setToggle] = useState(false)
 
@@ -89,67 +85,57 @@ export default function Profile() {
         user: { username }, addIssue, issues
     } = useContext(UserContext)
     return (
-        <div className="profile">
-            
-            <IssuesLayout>
-                <div className="layout-container">
-                    <div className="first-column">
-                        {!toggle? 
-                        (
+        <IssuesLayout>
+            <div className="layout-container">
+                <div className="first-column">
+                    {!toggle? 
+                    (
+                    <div>
+                        <CreateNewIssueDiv>
+
                             <div>
-                            <StyledDiv>
-
-                                <div>
-                                    <FaMicrophone />
-                                </div>
-                                <input type="text" placeholder="Create New Issue" onClick={() => setToggle(true)}/>
-                            </StyledDiv>
-                            <SortingDiv>
-                                <p>Change how your issues are displayed:</p>
-                                <hr/>
-
-                           
-                            </SortingDiv>
-                            <IssueList issues={issues} />
-                        </div>
-                        ) 
-                        :
-                        (<div>
-                            <h3>Add an Issue</h3>
-                            <IssueForm addIssue={addIssue} /> 
-                            <h3>Your Political Issues</h3>
-                        </div>)
-                        }
-                    </div>
-                    <div className="second-column">
-                        <div>
-                            <p>Today's top issues</p>
-                            <ol>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                            </ol>
-                            <div className="button-container">
-                                <button>View All</button>
-
+                                <FaMicrophone />
                             </div>
+                            <input type="text" placeholder="Create New Issue" onClick={() => setToggle(true)}/>
+                        </CreateNewIssueDiv>
+                        <SortingDiv>
+                            <p>Change how your issues are displayed:</p>
+                            <hr/>
+
+                        
+                        </SortingDiv>
+                        <IssueList issues={issues} />
+                    </div>
+                    ) 
+                    : <Redirect push to="/submit" />
+                  
+                    }
+                </div>
+                <div className="second-column">
+                    <div>
+                        <p>Today's top issues</p>
+                        <ol>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ol>
+                        <div className="button-container">
+                            <button>View All</button>
+
                         </div>
-                        <div>
-                            <p>blahblah</p>
-                            <ol>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                            </ol>
-                        </div>
+                    </div>
+                    <div>
+                        <p>Rules Posting to Rock The Vote</p>
+                        <ol>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ol>
                     </div>
                 </div>
+            </div>
 
-            
-
-            </IssuesLayout>
-
-
-        </div>
+    
+        </IssuesLayout>
     )
 }

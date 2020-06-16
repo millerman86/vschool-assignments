@@ -13,6 +13,8 @@ import Profile from './components/Profile'
 import Public from './components/Public'
 import PoliticalIssues from './components/PoliticalIssues'
 import Navbar from './components/Navbar'
+import Submit from './components/Submit'
+
 
 function App() {
   const { token, logout } = useContext(UserContext);
@@ -34,6 +36,12 @@ function App() {
         <ProtectedRoute 
           path='/profile'
           component={Profile}
+          redirectTo="/"
+          token={token}
+        />
+        <ProtectedRoute 
+          path='/submit'
+          component={Submit}
           redirectTo="/"
           token={token}
         />

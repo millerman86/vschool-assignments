@@ -58,40 +58,6 @@ body {
 
 
 
-IssueForm.modules = {
-    toolbar: [
-      [{ 'header': '1'}, {'header': '2'}, { 'font': [] }],
-      [{size: []}],
-      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-      [{'list': 'ordered'}, {'list': 'bullet'}, 
-       {'indent': '-1'}, {'indent': '+1'}],
-      ['link', 'image', 'video'],
-      ['clean']
-    ],
-    clipboard: {
-      // toggle to add extra line breaks when pasting HTML:
-      matchVisual: false,
-    }
-  }
-  /* 
-   * Quill editor formats
-   * See https://quilljs.com/docs/formats/
-   */
-  IssueForm.formats = [
-    'header', 'font', 'size',
-    'bold', 'italic', 'underline', 'strike', 'blockquote',
-    'list', 'bullet', 'indent',
-    'link', 'image', 'video'
-  ]
-
-
-const initInputs = {
-    issue: "", 
-    description: "", 
-    imgUrl: ""
-}
-
-
 const StyledForm = styled.form`
     background: white;
 
@@ -157,10 +123,16 @@ const StyledForm = styled.form`
     .input-title {
         margin-bottom: 10px;
     }
-
-    
    
 `
+
+
+const initInputs = {
+    issue: "", 
+    description: "", 
+    imgUrl: ""
+}
+
 
 export default function IssueForm(props) {
     const [inputs, setInputs] = useState(initInputs)
@@ -237,3 +209,30 @@ export default function IssueForm(props) {
         </StyledForm>
     )
 }
+
+
+IssueForm.modules = {
+    toolbar: [
+      [{ 'header': '1'}, {'header': '2'}, { 'font': [] }],
+      [{size: []}],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      [{'list': 'ordered'}, {'list': 'bullet'}, 
+       {'indent': '-1'}, {'indent': '+1'}],
+      ['link', 'image', 'video'],
+      ['clean']
+    ],
+    clipboard: {
+      // toggle to add extra line breaks when pasting HTML:
+      matchVisual: false,
+    }
+  }
+  /* 
+   * Quill editor formats
+   * See https://quilljs.com/docs/formats/
+   */
+  IssueForm.formats = [
+    'header', 'font', 'size',
+    'bold', 'italic', 'underline', 'strike', 'blockquote',
+    'list', 'bullet', 'indent',
+    'link', 'image', 'video'
+  ]

@@ -5,6 +5,8 @@ import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import './quillstyles.css'
 
+let border = 'lightgray'
+
 const Styled = styled.div`
 body {
     background: #DAE0E6; 
@@ -49,11 +51,22 @@ body {
 
 .ql-snow {
     background: #eaecec;
+    border: none;
 }
 
 .ql-editor {
     background: white;
 }
+
+.quill {
+    border: 1px solid lightgray;
+}
+
+.quill:selected {
+    border: 1px solid blue;
+}
+
+
 `
 
 
@@ -138,7 +151,6 @@ export default function IssueForm(props) {
     const [inputs, setInputs] = useState(initInputs)
     const { issue, description, imgUrl } = inputs
     const { addIssue } = props 
-
     
     function handleChange(e) {
         const {name, value} = e.target 
@@ -150,8 +162,24 @@ export default function IssueForm(props) {
 
     function handleSubmit(e) {
         e.preventDefault()
+        console.log(inputs);
         addIssue(inputs)
         setInputs(initInputs)
+    }
+
+    function removeBorder() {
+        document.querySelector('.quill').style.border = '1px solid lightgray'
+    } 
+
+    function addBorder() {
+        document.querySelector('.quill').style.border = '1px solid black'
+    }
+
+    function handleQuillChange(html) {
+        setInputs(prevInputs => ({
+            ...prevInputs, 
+            description: html
+        }))
     }
 
     return (
@@ -173,13 +201,19 @@ export default function IssueForm(props) {
                 
             <div className="inputs">
                 <input 
+                    name="issue"
                     className="input-title"
                     type="text"
                     placeholder="Title Your Issue"
+                    onChange={handleChange}
                     />
 
                 <Styled>
                     <ReactQuill 
+                        onFocus={addBorder}
+                        onBlur={removeBorder}
+                        onChange={handleQuillChange}
+                        value={inputs['description']}
                         theme="snow" 
                         bounds={'.app'} 
                         modules={IssueForm.modules}
@@ -188,7 +222,7 @@ export default function IssueForm(props) {
                 </Styled>
 
 
-                <input 
+                {/* <input 
                     className="input"
                     type="text"
                     name="description"
@@ -203,7 +237,7 @@ export default function IssueForm(props) {
                     value={imgUrl}
                     onChange={handleChange}
                     placeholder="Image Url"
-                    />
+                    /> */}
                 <button>Add Todo</button>
             </div>
         </StyledForm>
@@ -236,3 +270,22 @@ IssueForm.modules = {
     'list', 'bullet', 'indent',
     'link', 'image', 'video'
   ]
+
+
+
+
+
+//   .test {
+//     position: relative
+//   }
+  
+//   .test:after {
+//     position: absolute;
+//     left: 0;
+//     right: 0;
+//     bottom: -1px;
+//     background: blue;
+//     height: 2px;
+//     box-sizing: border-box;
+//     content: "";
+//   }

@@ -65,6 +65,7 @@ export default function UserProvider(props) {
       // Since we're hitting the api endpoint, it's going to require that we have a token
       .post('/api/issue', newIssue)
       .then(res => {
+        console.log('res', res);
         setUserState(prevState => ({
           ...prevState, 
           issues: [...prevState.issues, res.data]

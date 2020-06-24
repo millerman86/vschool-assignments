@@ -2,28 +2,38 @@ import React, { useContext, useState } from 'react'
 import IssueForm from './IssueForm'
 import IssueList from './IssueList'
 import { UserContext } from '../context/UserProvider'
-import { FaMicrophone } from 'react-icons/fa'
+import { FaMicrophone, FaFileImage, FaLink } from 'react-icons/fa'
 import styled from 'styled-components'
 import {Redirect} from 'react-router-dom'
+
+
 
 const IssuesLayout = styled.div`
     display: flex;
     padding: 0 15px;
     justify-content: center;
     background: #DAE0E6;
+    min-height: 100vh;
+
+    h1 {
+        margin: 0;
+    }
+
+    .fa-padding {
+        padding: 0 10px;
+    }
 
     .layout-container {
         display: grid;
         width: 100%;
-        max-width: 1028px;
+        max-width: 815px;
+        min-width: 500px;
         grid-template-columns: 2fr 1fr;
         grid-gap: 25px;
     }
 
-    .first-column {
-        div {
-            margin-top: 15px;
-        }
+    .create-new-issue-container {
+        margin-top: 15px;
     }
 
     .second-column {
@@ -52,13 +62,19 @@ const CreateNewIssueDiv = styled.div`
     width: 100%;
     padding: 5px 0;
     background: white;
+    margin-bottom: 20px;
+
 
     div {
         padding: 0 5px;
     }
 
     input {
-        
+        flex: 1;
+        margin-right: 10px;
+        font-size: 1.2em;
+        line-height: 1.5em;
+        padding-left: 10px;
     }
 `
 
@@ -90,13 +106,17 @@ export default function Profile() {
                 <div className="first-column">
                     {!toggle? 
                     (
-                    <div>
+                    <div className="create-new-issue-container">
                         <CreateNewIssueDiv>
 
-                            <div>
-                                <FaMicrophone />
-                            </div>
-                            <input type="text" placeholder="Create New Issue" onClick={() => setToggle(true)}/>
+                            <FaMicrophone className="fa-padding" />
+
+                                <input type="text" placeholder="Create New Issue" onClick={() => setToggle(true)}/>
+
+                            <FaFileImage className="fa-padding" />
+
+                            <FaLink className="fa-padding" />
+
                         </CreateNewIssueDiv>
                         <SortingDiv>
                             <p>Change how your issues are displayed:</p>

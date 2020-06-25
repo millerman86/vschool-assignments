@@ -5,10 +5,10 @@
 You are going to create a full stack application with user authentication created with Node, React, Express, Mongoose & Mongodb that allows users to post and upvote or downvote political issues.
 
 Requirements:
-- A login/signup page that is required to visit any part of the application.
-- Web page that shows a list of political issues.
-    - Each item will have a title
-    - Each item will have a description
+- A login/signup page that is required to visit ANY part of the application, (which means you need to have a token) <input type="checkbox" checked>
+- Web page that shows a list of political issues. (Will be found on the public page). 
+    - Each item will have a title <input type="checkbox" checked>
+    - Each item will have a description <input type="checkbox" checked>
     - Each item can be upvoted or downvoted.
         - User's should only be able to upvote/downvote once per issue.
     - Items will be ordered by upvotes (the most being at the top).

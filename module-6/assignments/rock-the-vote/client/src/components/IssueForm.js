@@ -4,6 +4,10 @@ import styled from 'styled-components'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import './quillstyles.css'
+import { useParams } from 'react-router-dom'
+import { FaFileImage, FaLink } from 'react-icons/fa'
+import isUrl from 'is-url'
+
 
 let border = 'lightgray'
 
@@ -74,9 +78,7 @@ body {
 const StyledForm = styled.form`
     background: white;
 
-    padding-top: 10px;
     padding-bottom: 10px;
-
 
     input, 
     textarea {
@@ -102,6 +104,7 @@ const StyledForm = styled.form`
     .type-of-submission {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
+        padding-bottom: 10px;
     }
 
     .type-of-submission .type {
@@ -137,33 +140,115 @@ const StyledForm = styled.form`
         margin-bottom: 10px;
     }
    
+    .selected {
+        position: relative;
+    }
+
+    .selected:after {
+        content: " ";
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: blue;
+        position: absolute;
+    }
+
+    .type-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .type-container span {
+        margin-left: 5px;
+    }
 `
 
 
 const initInputs = {
     issue: "", 
     description: "", 
-    imgUrl: ""
+    imgUrl: "", 
+    link: "", 
 }
 
+
+const initErrorInputs = {
+    issue: "", 
+    description: "", 
+    imgUrl: false, 
+    link: false, 
+}
 
 export default function IssueForm(props) {
     const [inputs, setInputs] = useState(initInputs)
     const { issue, description, imgUrl } = inputs
     const { addIssue } = props 
-    
+    const params = useParams()
+
+    const [errors, setErrors] = useState(initErrorInputs)
+
+    let type;
+    if (params.extension) {
+        type = params.extension
+    } else {
+        type = "post"
+    }
+
+    let [postType, setPostType] = useState(type)
+
     function handleChange(e) {
         const {name, value} = e.target 
         setInputs(prevInputs => ({
             ...prevInputs, 
             [name]: value
         }))
+
+        if (name === 'imgUrl') {
+            if (isUrl(value)) {
+                setErrors(prevInputs => {
+                    return {[name]: true}
+                })
+            } else {
+                setErrors(prevInputs => {
+                    return {[name]: false}
+                })
+            }
+        }
+
+        if (name === 'link') {
+            if (isUrl(value)) {
+                setErrors(prevInputs => {
+                    return {
+                        ...prevInputs,
+                        [name]: true
+                    }
+                })
+            } else {
+                setErrors(prevInputs => {
+                    return {
+                        ...prevInputs,
+                        [name]: false
+                    }
+                })
+            }
+            console.log(errors)
+        }
+
     }
 
     function handleSubmit(e) {
         e.preventDefault()
+        if (type === 'image' && errors.image === false) return 
+        if (type === 'link' && errors.link === false) return 
+        if (!inputs.issue.length) return 
+        let h1 = `<h1>${inputs.issue}</h1>`
+        
         console.log(inputs);
-        addIssue(inputs)
+        addIssue({
+            ...inputs, 
+            issue: h1
+        })
         setInputs(initInputs)
     }
 
@@ -182,22 +267,29 @@ export default function IssueForm(props) {
         }))
     }
 
+
     return (
         <StyledForm onSubmit={handleSubmit}>
-            {/* <div className="type-of-submission">
-                <div className="type">
+            <div className="type-of-submission">
+                <div className={`type ${postType === 'post' ? "selected" : ""}`} onClick={() => window.location.replace('/submit/post')}>
                     <div>Post</div>
                 </div>
-                <div className="type">
-                    <div>Image and Video</div>  
+                <div className={`type ${postType === 'image' ? "selected" : ""}`} onClick={() => window.location.replace('/submit/image')}>
+                    <div className="type-container">
+                        <FaFileImage />
+                        <span>Image</span>
+                    </div>  
                 </div>
-                <div className="type">
-                    <div>Link</div>  
+                <div className={`type ${postType === 'link' ? "selected" : ""}`} onClick={() => window.location.replace('/submit/link')}>
+                    <div className="type-container">
+                        <FaLink />
+                        <span>Link</span>
+                    </div>  
                 </div>
-                <div className="type">
+                <div className={`type ${postType === 'poll' ? "selected" : ""}`} onClick={() => window.location.replace('/submit/poll')}>
                     <div>Poll</div>
                 </div>
-            </div> */}
+            </div>
                 
             <div className="inputs">
                 <input 
@@ -206,8 +298,10 @@ export default function IssueForm(props) {
                     type="text"
                     placeholder="Title Your Issue"
                     onChange={handleChange}
-                    />
+                    value={inputs.issue}
+                />
 
+                {postType === 'post' ? 
                 <Styled>
                     <ReactQuill 
                         onFocus={addBorder}
@@ -219,26 +313,18 @@ export default function IssueForm(props) {
                         modules={IssueForm.modules}
                         formats={IssueForm.formats}
                     />
-                </Styled>
+                </Styled> : null}
+                {postType === 'image' ? 
+                    <input name="imgUrl" value={inputs.imgUrl} type="text" placeholder="Image URL" onChange={handleChange} />
+                    : null
+                }
 
+                {postType === 'link' ? 
+                    <input name="link" value={inputs.link} type="text" placeholder="URL" onChange={handleChange} />
+                    : null
+                }
 
-                {/* <input 
-                    className="input"
-                    type="text"
-                    name="description"
-                    value={description}
-                    onChange={handleChange}
-                    placeholder="Description"
-                    />
-                <input
-                    className="input" 
-                    type="text"
-                    name="imgUrl"
-                    value={imgUrl}
-                    onChange={handleChange}
-                    placeholder="Image Url"
-                    /> */}
-                <button>Add Todo</button>
+                <button>Add Issue</button>
             </div>
         </StyledForm>
     )
@@ -273,19 +359,3 @@ IssueForm.modules = {
 
 
 
-
-
-//   .test {
-//     position: relative
-//   }
-  
-//   .test:after {
-//     position: absolute;
-//     left: 0;
-//     right: 0;
-//     bottom: -1px;
-//     background: blue;
-//     height: 2px;
-//     box-sizing: border-box;
-//     content: "";
-//   }

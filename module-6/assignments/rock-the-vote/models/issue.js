@@ -9,12 +9,20 @@ const issueSchema = new Schema({
     }, 
     description: {
         type: String, 
-        required: true
+        required: false
     },
     user: {
         type: String, 
         required: true
     }, 
+    link: {
+        type: String, 
+        required: false
+    }, 
+    imgUrl: {
+        type: String, 
+        required: false
+    }
     
 })
 

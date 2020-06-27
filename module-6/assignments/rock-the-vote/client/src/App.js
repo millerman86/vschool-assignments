@@ -21,7 +21,6 @@ function App() {
   return (
     <div>
       {token ? (<Navbar logout={logout} />) : null}
-      {/* {!token ? (<GuestNavbar logout={logout} />) : null} */}
       <Switch>
 
         <Route
@@ -40,7 +39,13 @@ function App() {
           token={token}
         />
         <ProtectedRoute 
-          path='/submit'
+          exact path='/submit'
+          component={Submit}
+          redirectTo="/"
+          token={token}
+        />
+        <ProtectedRoute 
+          path='/submit/:extension'
           component={Submit}
           redirectTo="/"
           token={token}

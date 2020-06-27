@@ -4,7 +4,6 @@ import { UserContext } from '../context/UserProvider'
 import styled from 'styled-components'
 
 
-
 const IssuesLayout = styled.div`
     display: flex;
     padding: 0 15px;

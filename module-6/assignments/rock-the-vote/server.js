@@ -1,5 +1,5 @@
 const express = require('express')
-const app = express()
+const app = express() 
 const morgan = require('morgan')
 const mongoose = require('mongoose')
 /* Error handling for jwt

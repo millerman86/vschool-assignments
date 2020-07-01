@@ -22,8 +22,12 @@ const issueSchema = new Schema({
     imgUrl: {
         type: String, 
         required: false
+    }, 
+    commentCount: {
+        type: Number, 
+        required: false,
+        default: 0
     }
-    
 })
 
 module.exports = mongoose.model('Issue', issueSchema)

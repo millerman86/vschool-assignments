@@ -1,7 +1,7 @@
 import React from 'react'
 import parse from 'html-react-parser'
 import styled from 'styled-components'
-import { FaArrowDown } from 'react-icons/fa'
+import { FaArrowDown, FaCommentAlt } from 'react-icons/fa'
 
 
 
@@ -19,7 +19,7 @@ const StyledIssue = styled.div`
         opacity: 1;
     }
 
-    .content span {
+    .content span.vote-count {
         font-size: 26px;
         font-weight: 800;
     }
@@ -36,7 +36,17 @@ const StyledIssue = styled.div`
         width: 40px;
     }
 
+    .tool-bar > * {
+        padding: 5px;
+    }
+
+    .tool-bar { 
+        display: flex;
+        align-items: center;
+    }
+
     .voting-container {
+
     }
 
     .flipped, 
@@ -67,18 +77,25 @@ const StyledIssue = styled.div`
 
 export default function Issue(props) {
     
-    const { issue, description, imgUrl, _id } = props
-    console.log(issue)
+    const { issue, description, imgUrl, _id, commentCount, } = props
+    console.log('issue', issue);
     return (
         <StyledIssue>
             <div className="voting-column">
                 <FaArrowDown className="flipped" />
-                <span>34</span>
+                <span className="vote-count">{voteCount}</span>
                 <FaArrowDown className="fa-arrow" />
             </div>
             <div className="content">
                 {parse(issue)}
                 {parse(description)}
+                <div className="tool-bar">
+                    <FaCommentAlt />
+
+                    <span>
+                        {commentCount}
+                    </span>
+                </div>
             </div>
         </StyledIssue>
     )

@@ -14,7 +14,7 @@ import Public from './components/Public'
 import PoliticalIssues from './components/PoliticalIssues'
 import Navbar from './components/Navbar'
 import Submit from './components/Submit'
-
+import Comment from './components/Comment/CommentLayout'
 
 function App() {
   const { token, logout } = useContext(UserContext);
@@ -50,6 +50,22 @@ function App() {
           redirectTo="/"
           token={token}
         />
+
+
+        <ProtectedRoute 
+          exact path='/comment'
+          component={Comment}
+          redirectTo="/"
+          token={token}
+        />
+        <ProtectedRoute 
+          path='/comment/:issueId'
+          component={Comment}
+          redirectTo="/"
+          token={token}
+        />
+
+
         <ProtectedRoute 
           path='/public'
           component={Public}

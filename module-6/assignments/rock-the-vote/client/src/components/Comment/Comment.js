@@ -74,7 +74,7 @@ const StyledIssue = styled.div`
 `
 
 
-export default function Issue(props) {
+export default function IssueAndComments(props) {
     
     const history = useHistory()
 
@@ -88,16 +88,15 @@ export default function Issue(props) {
                 <FaArrowDown className="fa-arrow" />
             </div>
             <div className="content">
-                {parse(issue)}
-                {parse(description)}
+            
+                {/* {parse(issue)}
+                {parse(description)} */}
                 <div className="tool-bar">
                     <FaCommentAlt />
 
                     <span onClick={() => {
                             console.log('here is your id', _id);
-                            // I will only need the issue id to grab both the comments and the issue in question
-                            let issueId = _id
-                            history.push(`/comment/${issueId}`)
+                            history.push(`/comment/${_id}`)
                             }}>
                         {commentCount > 1 ? commentCount + " comments" : ""} 
                     </span>

@@ -27,7 +27,7 @@ mongoose.connect(
 app.use('/auth', require('./routes/authRouter')) // for signup and login
 app.use('/api', expressjwt({secret: process.env.SECRET})) // Remember: The token is in the header
 app.use('/api/issue', require('./routes/issueRouter'))
-
+app.use('/api/comment', require('./routes/commentRouter'))
 
 app.use((err, req, res, next) => {
     console.log(err)

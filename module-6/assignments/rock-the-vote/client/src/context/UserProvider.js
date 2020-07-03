@@ -87,7 +87,7 @@ export default function UserProvider(props) {
         }))
       })
       .catch(err => {
-        console.log(err.response.data.errMsg)
+        console.log(err)
         console.log('ERROR');
       })
   }

@@ -8,6 +8,12 @@ import axios from 'axios'
 import userAxios from '../../config/requestinterceptor'
 import CommentList from '../Comment/CommentList'
 import parse from 'html-react-parser'
+import isUrl from 'is-url'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+import '../quillstyles.css'
+
+
 
 const IssuesLayout = styled.div`
     padding: 0 15px;
@@ -110,11 +116,74 @@ const SortingDiv = styled.div`
 `
 
 
+const Styled = styled.div`
+body {
+    background: #DAE0E6; 
+}
 
-export default function Profile() {
+.app {
+    margin: 1rem 4rem;
+    background: blue;
+}
+
+
+.app .ql-container {
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+}
+
+.app .ql-snow.ql-toolbar {
+    display: block;
+    background: #eaecec;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+}
+
+.app .ql-bubble .ql-editor {
+    border: 1px solid #ccc;
+    border-radius: 0.5em;
+}
+
+.app .ql-editor {
+    min-height: 18em;   
+}
+
+.themeSwitcher {
+    margin-top: 0.5em;
+    font-size: small;
+}
+
+
+.ql-blank {
+    background: white;
+}
+
+.ql-snow {
+    background: #eaecec;
+    border: none;
+}
+
+.ql-editor {
+    background: white;
+}
+
+.quill {
+    border: 1px solid lightgray;
+}
+
+.quill:selected {
+    border: 1px solid blue;
+}
+
+
+`
+
+export default function CommentLayout() {
     const [toggle, setToggle] = useState(false)
     const history = useHistory()
     const [issue, setIssue] = useState('')
+    const initInputs = {description: ""}
+    const [inputs, setInputs] = useState(initInputs)
     
     const {
         issues
@@ -126,12 +195,28 @@ export default function Profile() {
           .get(`/api/issue/user/${issueId}`)
           .then(res => {
               setIssue(res.data.issue)
-        })
+        }).catch(e => console.log(e))
     }
 
     useEffect(() => {
         getComments(issueId)
     }, [])
+
+    function removeBorder() {
+        document.querySelector('.quill').style.border = '1px solid lightgray'
+    } 
+
+    function addBorder() {
+        document.querySelector('.quill').style.border = '1px solid black'
+    }
+
+    function handleQuillChange(html) {
+        setInputs(prevInputs => ({
+            ...prevInputs, 
+            description: html
+        }))
+    }
+
 
     return (
         <IssuesLayout>
@@ -139,6 +224,20 @@ export default function Profile() {
                 <div className="first-column">
                     <div className="comment">issue</div>
                     <div>this is the add comment box</div>
+
+                    <Styled>
+                        <ReactQuill 
+                            onFocus={addBorder}
+                            onBlur={removeBorder}
+                            onChange={handleQuillChange}
+                            value={inputs['description']}
+                            theme="snow" 
+                            bounds={'.app'} 
+                            modules={CommentLayout.modules}
+                            formats={CommentLayout.formats}
+                        />
+                    </Styled> 
+
                     <span>{parse(issue)}</span>
                 </div>
                 <div className="second-column">
@@ -167,3 +266,30 @@ export default function Profile() {
         </IssuesLayout>
     )
 }
+
+
+
+CommentLayout.modules = {
+    toolbar: [
+      [{size: []}],
+      [{'list': 'ordered'}, {'list': 'bullet'}, 
+       {'indent': '-1'}, {'indent': '+1'}],
+    //   ['link', 'image', 'video'],
+      ['clean']
+    ],
+    clipboard: {
+      // toggle to add extra line breaks when pasting HTML:
+      matchVisual: false,
+    }
+  }
+  /* 
+   * Quill editor formats
+   * See https://quilljs.com/docs/formats/
+   */
+  CommentLayout.formats = [
+    'header', 'font', 'size',
+    'bold', 'italic', 'underline', 'strike', 'blockquote',
+    'list', 'bullet', 'indent',
+    'link', 'image', 'video'
+  ]
+

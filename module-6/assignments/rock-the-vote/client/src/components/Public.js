@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import IssueForm from './IssueForm'
 import IssueList from './IssueList'
 import { UserContext } from '../context/UserProvider'
@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import {Redirect} from 'react-router-dom'
 import Background from './rockthevoteimage.jpeg'
 import { useHistory } from 'react-router-dom'
-
+import userAxios from '../config/requestinterceptor'
 
 
 
@@ -107,18 +107,25 @@ const SortingDiv = styled.div`
 `
 
 
-export default function Profile() {
+export default function Public() {
     const [toggle, setToggle] = useState(false)
+    const [issues, setIssues] = useState([])
 
-    const {
-        issues
-    } = useContext(UserContext)
 
     const history = useHistory()
 
     function redirect(extension) {
         history.push(`/submit/${extension}`)
     }
+
+    useEffect(() => {
+        userAxios.get('/api/issue')
+            .then(res => {
+                console.log('res', res);
+                setIssues(res.data)
+            })
+    }, [])
+
     return (
         <IssuesLayout>
             <div className="grid-parent">
@@ -137,11 +144,7 @@ export default function Profile() {
                             <FaLink className="fa-icon" onClick={() => redirect('link')}/>
 
                         </CreateNewIssueDiv>
-                        <SortingDiv>
-                            <p>Change how your issues are displayed:</p>
-                            <hr/>
-                        
-                        </SortingDiv>
+                       
                         <IssueList issues={issues} />
                     </div>
                     ) 

@@ -2,58 +2,70 @@ import React, { useContext, useState } from 'react'
 import IssueForm from './IssueForm'
 import IssueList from './IssueList'
 import { UserContext } from '../context/UserProvider'
-import { FaMicrophone, FaFileImage, FaLink } from 'react-icons/fa'
+import { FaMicrophone, FaFileImage, FaLink, FaArrowDown } from 'react-icons/fa'
 import styled from 'styled-components'
 import {Redirect} from 'react-router-dom'
+import Background from './rockthevoteimage.jpeg'
+import { useHistory } from 'react-router-dom'
+
 
 
 
 const IssuesLayout = styled.div`
-    display: flex;
     padding: 0 15px;
-    justify-content: center;
     background: #DAE0E6;
     min-height: 100vh;
+    background-image: url("${Background}");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 
-    h1 {
+    p {
         margin: 0;
     }
 
-    .fa-padding {
-        padding: 0 10px;
+    .second-column {
+        margin: 20px 0;
     }
-
-    .layout-container {
-        display: grid;
-        width: 100%;
-        max-width: 815px;
-        min-width: 500px;
-        grid-template-columns: 2fr 1fr;
-        grid-gap: 25px;
-    }
-
-    .create-new-issue-container {
-        margin-top: 15px;
+    .second-column div {
+        background: white;
     }
 
     .second-column {
-        div {
-            background: white;
-        }
-
-        .button-container {
-            width: 95%;
-            display: flex;
-            margin: auto;
-        }
-
-        button {
-            width: 100%;
-            text-align: center;
-            margin: auto;
-        }
+        display: none;
     }
+
+    .fa-icon {
+        margin: 0 5px;
+    }
+
+    .create-new-issue-container {
+        margin: 20px 0;
+    }
+
+    @media only screen and (min-width: 768px) {
+        .grid-parent {
+            width: 100%;
+            align-self: center;
+            max-width: 915px;
+    
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-gap: 20px;
+        }
+
+        .second-column {
+            display: block;
+        }
+
+    }
+
 `
+
 
 const CreateNewIssueDiv = styled.div`
     border: 1px solid #DCDCDC;
@@ -78,11 +90,11 @@ const CreateNewIssueDiv = styled.div`
     }
 `
 
+
 const SortingDiv = styled.div`
     border: 1px solid lightgray;
     display: flex;
     align-items: center;
-    width: 100%;
     background: white;
 
     p { 
@@ -94,42 +106,44 @@ const SortingDiv = styled.div`
     }
 `
 
-export default function Profile() {
+
+export default function Public() {
     const [toggle, setToggle] = useState(false)
 
     const {
-        user: { username }, addIssue, issues
+        issues
     } = useContext(UserContext)
+
+    const history = useHistory()
+
+    function redirect(extension) {
+        history.push(`/submit/${extension}`)
+    }
     return (
         <IssuesLayout>
-            <div className="layout-container">
+            <div className="grid-parent">
                 <div className="first-column">
-                    {!toggle? 
+                {!toggle? 
                     (
-                    <div className="create-new-issue-container">
+                        <div className="create-new-issue-container">
                         <CreateNewIssueDiv>
 
-                            <FaMicrophone className="fa-padding" />
+                            <FaMicrophone className="fa-icon" />
 
                                 <input type="text" placeholder="Create New Issue" onClick={() => setToggle(true)}/>
 
-                            <FaFileImage className="fa-padding" />
+                            <FaFileImage className="fa-icon" onClick={() => redirect('image')} />
 
-                            <FaLink className="fa-padding" />
+                            <FaLink className="fa-icon" onClick={() => redirect('link')}/>
 
                         </CreateNewIssueDiv>
-                        <SortingDiv>
-                            <p>Change how your issues are displayed:</p>
-                            <hr/>
-
-                        
-                        </SortingDiv>
+                       
                         <IssueList issues={issues} />
                     </div>
                     ) 
                     : <Redirect push to="/submit" />
-                  
-                    }
+                    
+                }
                 </div>
                 <div className="second-column">
                     <div>
@@ -154,8 +168,6 @@ export default function Profile() {
                     </div>
                 </div>
             </div>
-
-    
         </IssuesLayout>
     )
 }

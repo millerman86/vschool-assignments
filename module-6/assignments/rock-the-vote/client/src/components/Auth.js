@@ -2,14 +2,24 @@ import React, { useState, useContext } from "react";
 import { UserContext } from "../context/UserProvider";
 import AuthForm from './AuthForm'
 import styled from 'styled-components'
-
+import Background from './rockthevoteimage.jpeg'
 const initInputs = {username: "", password: ""}
 
 
 
 
 const AuthContainer = styled.div`
-  background: blue;
+  background: #DAE0E6;
+  min-height: 100vh;
+  background-image: url("${Background}");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
   height: 100vh;
   display: flex;
   flex-direction: column;

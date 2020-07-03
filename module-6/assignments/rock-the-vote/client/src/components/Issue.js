@@ -17,6 +17,8 @@ const StyledIssue = styled.div`
         background: white;
         margin-left: 40px;
         opacity: 1;
+        position: relative;
+        padding-bottom: 30px;
     }
 
     .content span.vote-count {
@@ -43,6 +45,8 @@ const StyledIssue = styled.div`
     .tool-bar { 
         display: flex;
         align-items: center;
+        position: absolute;
+        bottom: 0;
     }
 
     .voting-container {
@@ -68,8 +72,14 @@ const StyledIssue = styled.div`
         transition: .2s ease-in-out;
     }
 
-    h1 {
-        display: inline-block;
+
+    .issue {
+        margin: 0;
+        text-align: center;
+    }
+
+    .comments {
+        cursor: pointer;
     }
 `
 
@@ -79,7 +89,6 @@ export default function Issue(props) {
     const history = useHistory()
 
     const { issue, description, imgUrl, _id, commentCount, } = props
-    console.log(_id);
     return (
         <StyledIssue>
             <div className="voting-column">
@@ -88,18 +97,23 @@ export default function Issue(props) {
                 <FaArrowDown className="fa-arrow" />
             </div>
             <div className="content">
+                <h1 className="issue">Issue</h1>
+                <hr />
                 {parse(issue)}
+                <h2>Description</h2>
+                <hr />
                 {parse(description)}
+
                 <div className="tool-bar">
                     <FaCommentAlt />
 
-                    <span onClick={() => {
+                    <span className="comments" onClick={() => {
                             console.log('here is your id', _id);
                             // I will only need the issue id to grab both the comments and the issue in question
                             let issueId = _id
                             history.push(`/comment/${issueId}`)
                             }}>
-                        {commentCount > 1 ? commentCount + " comments" : ""} 
+                        {commentCount > 1 ? commentCount + " comments" : "0" + " comments"} 
                     </span>
                 </div>
             </div>

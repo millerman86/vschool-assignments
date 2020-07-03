@@ -20,6 +20,10 @@ const commentSchema = new Schema({
         type: String, 
         required: true
     }, 
+    issueId: {
+        type: String, 
+        required: true
+    }
 })
 
 module.exports = mongoose.model("Comment", commentSchema)

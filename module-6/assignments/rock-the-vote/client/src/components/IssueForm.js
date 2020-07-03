@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
-import { FaMicrophone } from 'react-icons/fa'
 import styled from 'styled-components'
-import ReactQuill from 'react-quill'
-import 'react-quill/dist/quill.snow.css'
-import './quillstyles.css'
 import { useParams } from 'react-router-dom'
 import { FaFileImage, FaLink } from 'react-icons/fa'
 import isUrl from 'is-url'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+import './quillstyles.css'
 
-
-let border = 'lightgray'
 
 const Styled = styled.div`
 body {
@@ -356,6 +353,5 @@ IssueForm.modules = {
     'list', 'bullet', 'indent',
     'link', 'image', 'video'
   ]
-
 
 

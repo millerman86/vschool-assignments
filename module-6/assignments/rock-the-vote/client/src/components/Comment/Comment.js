@@ -79,7 +79,6 @@ export default function IssueAndComments(props) {
     const history = useHistory()
 
     const { issue, description, imgUrl, _id, commentCount, } = props
-    console.log(_id);
     return (
         <StyledIssue>
             <div className="voting-column">
@@ -95,7 +94,6 @@ export default function IssueAndComments(props) {
                     <FaCommentAlt />
 
                     <span onClick={() => {
-                            console.log('here is your id', _id);
                             history.push(`/comment/${_id}`)
                             }}>
                         {commentCount > 1 ? commentCount + " comments" : ""} 

@@ -5,7 +5,6 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-import authService from "./services/authService";
 import Auth from "./components/Auth";
 import { UserContext } from "./context/UserProvider";
 import ProtectedRoute from './components/ProtectedRoute';
@@ -50,8 +49,6 @@ function App() {
           redirectTo="/"
           token={token}
         />
-
-
         <ProtectedRoute 
           exact path='/comment'
           component={Comment}
@@ -64,8 +61,6 @@ function App() {
           redirectTo="/"
           token={token}
         />
-
-
         <ProtectedRoute 
           path='/public'
           component={Public}

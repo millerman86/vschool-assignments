@@ -179,15 +179,11 @@ body {
 `
 
 export default function CommentLayout() {
-    const [toggle, setToggle] = useState(false)
     const history = useHistory()
     const [issue, setIssue] = useState('')
     const initInputs = {description: ""}
     const [inputs, setInputs] = useState(initInputs)
     
-    const {
-        issues
-    } = useContext(UserContext)
     
     const { issueId } = useParams()
     function getComments(issueId) {
@@ -238,7 +234,6 @@ export default function CommentLayout() {
                         />
                     </Styled> 
 
-                    <span>{parse(issue)}</span>
                 </div>
                 <div className="second-column">
                     <div>

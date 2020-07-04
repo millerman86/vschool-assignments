@@ -179,7 +179,6 @@ const initErrorInputs = {
 
 export default function IssueForm(props) {
     const [inputs, setInputs] = useState(initInputs)
-    const { issue, description, imgUrl } = inputs
     const { addIssue } = props 
     const params = useParams()
 

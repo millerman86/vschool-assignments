@@ -121,7 +121,6 @@ export default function Public() {
     useEffect(() => {
         userAxios.get('/api/issue')
             .then(res => {
-                console.log('res', res);
                 setIssues(res.data)
             })
     }, [])

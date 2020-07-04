@@ -65,7 +65,6 @@ export default function UserProvider(props) {
       // Since we're hitting the api endpoint, it's going to require that we have a token
       .post('/api/issue', newIssue)
       .then(res => {
-        console.log('res', res);
         setUserState(prevState => ({
           ...prevState, 
           issues: [...prevState.issues, res.data]
@@ -79,16 +78,13 @@ export default function UserProvider(props) {
     if (!localStorage.getItem('token')) return
     userAxios.get('/api/issue/user')
       .then(res => {
-        console.log(res);
-        console.log('hello');
         setUserState(prevState => ({
           ...prevState, 
           issues: [...res.data]
         }))
       })
       .catch(err => {
-        console.log(err)
-        console.log('ERROR');
+        console.log('ERROR', err);
       })
   }
 

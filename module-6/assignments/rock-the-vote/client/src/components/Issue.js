@@ -113,7 +113,6 @@ export default function Issue(props) {
                     <FaCommentAlt />
 
                     <span className="comments" onClick={() => {
-                            console.log('here is your id', _id);
                             // I will only need the issue id to grab both the comments and the issue in question
                             let issueId = _id
                             history.push(`/comment/${issueId}`)

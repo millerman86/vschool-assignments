@@ -49,7 +49,9 @@ export default function UserProvider(props) {
           token,
         }));
       })
-      .catch((err) => console.log(err.response));
+      .catch((err) => {
+        console.log(err.response)
+      });
   }
 
   function logout() {
@@ -93,7 +95,6 @@ export default function UserProvider(props) {
   function upVoteIssue(id) {
     userAxios.get(`/api/issue/user/upvote/${id}`)
       .then(res => {
-        console.log('this is your response', res);
         setUserState(prev => {
           return {
             ...prev, 
@@ -107,7 +108,6 @@ export default function UserProvider(props) {
   function downVoteIssue(id) {
     userAxios.get(`/api/issue/user/downvote/${id}`)
       .then(res => {
-        console.log('this is your response', res.data);
         setUserState(prev => {
           return {
             ...prev, 

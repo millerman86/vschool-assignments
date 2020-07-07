@@ -179,7 +179,6 @@ body {
 `
 
 export default function CommentLayout() {
-    const history = useHistory()
     const [issue, setIssue] = useState('')
     const initInputs = {description: ""}
     const [inputs, setInputs] = useState(initInputs)
@@ -191,7 +190,9 @@ export default function CommentLayout() {
           .get(`/api/issue/user/${issueId}`)
           .then(res => {
               setIssue(res.data.issue)
-        }).catch(e => console.log(e))
+        }).catch(e => {
+            console.log(e)
+        })
     }
 
     useEffect(() => {

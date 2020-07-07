@@ -228,7 +228,6 @@ export default function IssueForm(props) {
                     }
                 })
             }
-            console.log(errors)
         }
 
     }
@@ -240,7 +239,6 @@ export default function IssueForm(props) {
         if (!inputs.issue.length) return 
         let h1 = `<h1>${inputs.issue}</h1>`
         
-        console.log(inputs);
         addIssue({
             ...inputs, 
             issue: h1

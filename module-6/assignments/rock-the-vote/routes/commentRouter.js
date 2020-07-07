@@ -14,7 +14,6 @@ commentRouter.get('/', (req, res) => {
             res.status(500)
             return next(err)
         }
-        console.log(comments);
         return res.status(200).send(comments)
     })
 })

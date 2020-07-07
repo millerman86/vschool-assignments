@@ -27,6 +27,11 @@ const issueSchema = new Schema({
         type: Number, 
         required: false,
         default: 0
+    }, 
+    voteCount: {
+        type: Number, 
+        required: false, 
+        default: 0
     }
 })
 

@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import parse from 'html-react-parser'
 import styled from 'styled-components'
 import { FaArrowDown, FaCommentAlt } from 'react-icons/fa'
 import { useHistory } from 'react-router-dom'
-
+import { UserContext } from '../context/UserProvider'
 
 
 const StyledIssue = styled.div`
@@ -53,16 +53,16 @@ const StyledIssue = styled.div`
 
     }
 
-    .flipped, 
+    .flipped-up, 
     .fa-arrow {
         cursor: pointer;
     }
 
-    .flipped {
+    .flipped-up {
         transform: rotate(180deg);
     }
 
-    .flipped:hover {
+    .flipped-up:hover {
         transform: rotate(180deg) scale(1.4);
         transition: .2s ease-in-out;
     }
@@ -88,13 +88,18 @@ export default function Issue(props) {
     
     const history = useHistory()
 
-    const { issue, description, imgUrl, _id, commentCount, } = props
+    const { issue, description, imgUrl, _id, commentCount, voteCount, upvotedIssues, downVotedIssues } = props
+    const { upVoteIssue, downVoteIssue } = useContext(UserContext)
     return (
         <StyledIssue>
             <div className="voting-column">
-                <FaArrowDown className="flipped" />
-                <span className="vote-count">{}</span>
-                <FaArrowDown className="fa-arrow" />
+                <FaArrowDown className="flipped-up" onClick={() => {
+                    upVoteIssue(_id)
+                    }} />
+                <span className="vote-count">{voteCount}</span>
+                <FaArrowDown className="fa-arrow" onClick={() => {
+                    downVoteIssue(_id)
+                }} />
             </div>
             <div className="content">
                 <h1 className="issue">Issue</h1>

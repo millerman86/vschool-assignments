@@ -2,7 +2,7 @@ const express = require('express')
 const Issue = require('../models/issue')
 const Comment = require('../models/comment')
 const issueRouter = express.Router()
-
+const User = require('../models/user')
 
 
 
@@ -99,6 +99,65 @@ issueRouter.post('/', (req, res, next) => {
 })
 
 
+
+
+// '/api/issue/upvote'
+issueRouter.get('/user/upvote/:id', (req, res) => {
+    const { id } = req.params
+    User.findOneAndUpdate({_id: req.user._id}, {'$set': {upVotedIssues: [id]}}, {'$pull': {downVotedIssues: [id]}}, (err, user) => {
+        if (err) {
+            res.status(500)
+            return next(err)
+        }
+
+        Issue.findByIdAndUpdate({_id: id}, {'$inc': {voteCount: 1}}, (err, issue) => {
+            if (err) {
+                res.status(500)
+                return next(err)
+            }
+
+        })
+    })
+
+    User.findOne({_id: req.user._id}, (err, user) => {
+        if (err) {
+            res.status(500)
+            return next(err)
+        }
+        
+        Issue.findOne({_id: id}, (err, issue) => {
+            return res.send({user: user.withoutPassword(), issue})
+        })
+    })
+})
+
+// '/api/issue/downvote'
+issueRouter.get('/user/downvote/:id', (req, res, next) => {
+    const { id } = req.params
+
+    User.findOneAndUpdate({_id: req.user._id}, {'$set': {downVotedIssues: [id]}}, {'$pull': {upVotedIssues: [id]}}, (err, user) => {
+        if (err) {
+            res.status(500)
+            return next(err)
+        }
+    })
+
+    Issue.findByIdAndUpdate({_id: id}, {'$inc': {voteCount: -1}}, (err, issue) => {
+        if (err) {
+            res.status(500)
+            return next(err)
+        }
+    })
+
+    User.findOne({_id: req.user._id}, (err, user) => {
+
+        Issue.findOne({_id: id}, (err, issue) => {
+            return res.send({user: user, issue})
+        })
+    })
+})
+
+
 module.exports = issueRouter
 
 
@@ -110,19 +169,3 @@ module.exports = issueRouter
 
 
 
-
-
-
-
-// issueRouter.get('/user/:issueId', (req, res) => {
-//     console.log('you are in the wrong function');
-//     let {issueId} = req.params
-//     Issue.findOne({_id: req.params.issueId}, (err, issue) => {
-//         if (err) {
-//             res.status(500)
-//             return next(err)
-//         }
-
-//         return res.status(200).send(issue)
-//     })
-// })

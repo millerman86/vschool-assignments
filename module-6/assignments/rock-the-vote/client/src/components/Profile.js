@@ -4,7 +4,7 @@ import IssueList from './IssueList'
 import { UserContext } from '../context/UserProvider'
 import { FaMicrophone, FaFileImage, FaLink, FaArrowDown } from 'react-icons/fa'
 import styled from 'styled-components'
-import {Redirect} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import Background from './rockthevoteimage.jpeg'
 import { useHistory } from 'react-router-dom'
 
@@ -40,6 +40,7 @@ const IssuesLayout = styled.div`
     }
 
     .fa-icon {
+        cursor: pointer;
         margin: 0 5px;
     }
 
@@ -111,7 +112,8 @@ export default function Public() {
     const [toggle, setToggle] = useState(false)
 
     const {
-        issues
+        issues, 
+
     } = useContext(UserContext)
 
     const history = useHistory()
@@ -128,7 +130,7 @@ export default function Public() {
                         <div className="create-new-issue-container">
                         <CreateNewIssueDiv>
 
-                            <FaMicrophone className="fa-icon" />
+                            <FaMicrophone className="fa-icon" onClick={() => redirect('submit')}/>
 
                                 <input type="text" placeholder="Create New Issue" onClick={() => setToggle(true)}/>
 

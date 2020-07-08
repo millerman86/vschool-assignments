@@ -9,6 +9,7 @@ const IssuesLayout = styled.div`
     padding: 0 15px;
     justify-content: center;
     background: #DAE0E6;
+    min-height: 100vh;
 
     .rules-for-posting {
         margin-top: 40px;

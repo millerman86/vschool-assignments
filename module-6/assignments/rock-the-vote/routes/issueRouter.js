@@ -55,12 +55,10 @@ issueRouter.get('/user', (req, res, next) => {
         Issue.find({user: req.user._id}),
       ]).then( ([ issues ]) => {
           issues.forEach((issue, i) => {
-            console.log('id', issue._id);
             let promise = new Promise((resolve, reject) => {
                 Comment.find({'issueId': issue._id}, (err, comments) => {
                    
                 }).countDocuments().then(data => { 
-                    console.log('data', data);
                     resolve(data)
                 })
             })
@@ -79,8 +77,11 @@ issueRouter.get('/user', (req, res, next) => {
                 issues.forEach((issue, i) => {
                     issue['commentCount'] = values[i]
                 })
-            }).then(() => {
-                res.status(201).send(issues)
+
+                console.log(issues);
+                return res.send(issues)
+            }).catch(err => {
+                console.log(err);
             })
         })
     })
@@ -104,7 +105,8 @@ issueRouter.post('/', (req, res, next) => {
 // '/api/issue/upvote'
 issueRouter.get('/user/upvote/:id', (req, res) => {
     const { id } = req.params
-    User.findOneAndUpdate({_id: req.user._id}, {'$set': {upVotedIssues: [id]}}, {'$pull': {downVotedIssues: [id]}}, (err, user) => {
+    // { $pull: { fruits: { $in: [ "apples", "oranges" ] }, vegetables: "carrots" } },
+    User.findOneAndUpdate({_id: req.user._id}, {'$set': {upVotedIssues: [id]}}, {'$pop': {downVotedIssues: [id]}}, (err, user) => {
         if (err) {
             res.status(500)
             return next(err)
@@ -115,7 +117,6 @@ issueRouter.get('/user/upvote/:id', (req, res) => {
                 res.status(500)
                 return next(err)
             }
-
         })
     })
 
@@ -125,8 +126,9 @@ issueRouter.get('/user/upvote/:id', (req, res) => {
             return next(err)
         }
         
-        Issue.findOne({_id: id}, (err, issue) => {
-            return res.send({user: user.withoutPassword(), issue})
+        Issue.find((err, issues) => {
+            console.log(issues);
+            return res.send({user: user.withoutPassword(), issues})
         })
     })
 })
@@ -150,22 +152,10 @@ issueRouter.get('/user/downvote/:id', (req, res, next) => {
     })
 
     User.findOne({_id: req.user._id}, (err, user) => {
-
         Issue.findOne({_id: id}, (err, issue) => {
             return res.send({user: user, issue})
         })
     })
 })
 
-
 module.exports = issueRouter
-
-
-
-
-
-
-
-
-
-

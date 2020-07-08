@@ -159,6 +159,10 @@ const StyledForm = styled.form`
     .type-container span {
         margin-left: 5px;
     }
+
+    .add-issue {
+        margin: 10px 0;
+    }
 `
 
 
@@ -229,18 +233,17 @@ export default function IssueForm(props) {
                 })
             }
         }
-
     }
 
     function handleSubmit(e) {
         e.preventDefault()
         if (type === 'image' && errors.image === false) return 
-        if (type === 'link' && errors.link === false) return 
+        // if (type === 'link' && errors.link === false) return 
         if (!inputs.issue.length) return 
         let h1 = `<h1>${inputs.issue}</h1>`
-        
         addIssue({
             ...inputs, 
+            type: postType,
             issue: h1
         })
         setInputs(initInputs)
@@ -290,6 +293,7 @@ export default function IssueForm(props) {
                     name="issue"
                     className="input-title"
                     type="text"
+                    autoComplete="off"
                     placeholder="Title Your Issue"
                     onChange={handleChange}
                     value={inputs.issue}
@@ -309,16 +313,16 @@ export default function IssueForm(props) {
                     />
                 </Styled> : null}
                 {postType === 'image' ? 
-                    <input name="imgUrl" value={inputs.imgUrl} type="text" placeholder="Image URL" onChange={handleChange} />
+                    <input name="imgUrl" autoComplete="off" value={inputs.imgUrl} type="text" placeholder="Image URL" onChange={handleChange} />
                     : null
                 }
 
                 {postType === 'link' ? 
-                    <input name="link" value={inputs.link} type="text" placeholder="URL" onChange={handleChange} />
+                    <input name="link" autoComplete="off" value={inputs.link} type="text" placeholder="URL" onChange={handleChange} />
                     : null
                 }
 
-                <button>Add Issue</button>
+                <button className="add-issue">Add Issue</button>
             </div>
         </StyledForm>
     )

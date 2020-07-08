@@ -13,7 +13,7 @@ authRouter.post('/signup', (req, res, next) => {
         if (user) {
             res.status(403)
             return next(new Error('That username is already taken'))
-        }
+        } 
         const newUser = new User(req.body)
         newUser.save((err, savedUser) => {
             if (err) {
@@ -21,7 +21,7 @@ authRouter.post('/signup', (req, res, next) => {
                 return next(err)
             }
             const token = jwt.sign(savedUser.withoutPassword(), process.env.SECRET)
-            // The reason that we send information about the user separately is that
+            // The reason that we send information aboutthe user separately is that
             return res.status(201).send({token, user: savedUser.withoutPassword()})
         })
     })
@@ -48,15 +48,8 @@ authRouter.post('/login', (req, res, next) => {
                 return next(new Error('Username or Password are incorrect'))
             }
             const token = jwt.sign(user.withoutPassword(), process.env.SECRET)
-            return res.status(200).send({token, user: user.withoutPassword()})
+            return res.send({token, user: user.withoutPassword()})
         })
-
-
-        // // Is the password that they submitted not equal to the one they have saved in the database?
-        // if (req.body.password !== user.password) {
-        //     res.status(403) 
-        //     return next(new Error('Username or Password are incorrect'))
-        // }
     })
 })
 

@@ -1,7 +1,7 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import parse from 'html-react-parser'
 import styled from 'styled-components'
-import { FaArrowDown, FaCommentAlt } from 'react-icons/fa'
+import { FaArrowDown, FaCommentAlt, FaRulerVertical } from 'react-icons/fa'
 import { useHistory } from 'react-router-dom'
 import { UserContext } from '../context/UserProvider'
 
@@ -11,7 +11,7 @@ const StyledIssue = styled.div`
     background: lightgray;
     margin: 20px 0;
     background: rgba(255, 255, 255, 0.8);
-    
+
     .content {
         min-height: 100px;
         background: white;
@@ -81,24 +81,43 @@ const StyledIssue = styled.div`
     .comments {
         cursor: pointer;
     }
+
+    .description-container {
+        margin: 20px 0;
+    }
 `
 
 
 export default function Issue(props) {
-    
     const history = useHistory()
+    
+    const { issue, description, imgUrl, _id, commentCount, voteCount, upVotedIssues, downVotedIssues, indexOfIssue } = props
+    let [voteCountState, setVoteCountState] = useState(voteCount)
+    const { upVoteIssue, downVoteIssue, issues } = useContext(UserContext)
+    console.log(issues);
+    useEffect(() => {
+        // find the issue by _id and then grab its voteCount value
+        // const findIndex = (issue) => {
+        //     return issue._id === _id
+        // }
+        // // just pass in the f-ing variable
+        // setVoteCountState(2)
 
-    const { issue, description, imgUrl, _id, commentCount, voteCount, upvotedIssues, downVotedIssues } = props
-    const { upVoteIssue, downVoteIssue } = useContext(UserContext)
+    }, [issues])
+
     return (
         <StyledIssue>
             <div className="voting-column">
                 <FaArrowDown className="flipped-up" onClick={() => {
-                    upVoteIssue(_id)
+                    if (window.location.pathname !== '/profile') {
+                        upVoteIssue(_id)
+                    }
                     }} />
-                <span className="vote-count">{voteCount}</span>
-                <FaArrowDown className="fa-arrow" onClick={() => {
-                    downVoteIssue(_id)
+                <span className="vote-count">{voteCountState}</span>
+                <FaArrowDown className="fa-arrow" onClick={() => {   
+                    if (window.location.pathname !== '/profile') {
+                        downVoteIssue(_id)
+                    }
                 }} />
             </div>
             <div className="content">
@@ -107,7 +126,9 @@ export default function Issue(props) {
                 {parse(issue)}
                 <h2>Description</h2>
                 <hr />
+                <div className="description-container">
                 {parse(description)}
+                </div>
 
                 <div className="tool-bar">
                     <FaCommentAlt />

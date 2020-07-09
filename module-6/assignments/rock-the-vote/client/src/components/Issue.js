@@ -93,13 +93,14 @@ export default function Issue(props) {
     const history = useHistory()
     
     const { issue, description, imgUrl, _id, commentCount, voteCount, upVotedIssues, downVotedIssues, indexOfIssue } = props
+
+    console.log('here is vote count', voteCount);
     let [voteCountState, setVoteCountState] = useState(voteCount)
     const { upVoteIssue, downVoteIssue, issues } = useContext(UserContext)
     useEffect(() => {
         // find the issue by id
         userAxios.get(`/api/issue/${_id}`)
             .then(res => {
-                console.log('res', res.data);
                 setVoteCountState(res.data.voteCount)
             })
     }, [issues])

@@ -78,7 +78,7 @@ issueRouter.get('/user', (req, res, next) => {
                     issue['commentCount'] = values[i]
                 })
 
-                console.log(issues);
+                console.log('here are your issues', issues);
                 return res.send(issues)
             }).catch(err => {
                 console.log(err);
@@ -102,15 +102,12 @@ issueRouter.post('/', (req, res, next) => {
 issueRouter.get('/:id', (req, res, next) => {
     req.body.user = req.user._id
 
-
     Issue.findOne({_id: req.params.id}, (err, issue) => {
         if (err) {
             res.status(500)
             return next(err)
         }
-        console.log(issue._id);
         const voteCount = issue.voteCount
-        console.log('votes', voteCount);
         return res.send({voteCount: voteCount})
 
     })
@@ -127,7 +124,6 @@ issueRouter.get('/user/upvote/:id', (req, res, next) => {
             return next(err)
         }
 
-        console.log('this is your user', user.upVotedIssues);
 
         // Only updates if it hasn't updated before
         if (!user.upVotedIssues.includes(id)) {
@@ -148,6 +144,7 @@ issueRouter.get('/user/upvote/:id', (req, res, next) => {
         
         Issue.find((err, issues) => {
             console.log(issues);
+
             return res.send({user: user.withoutPassword(), issues})
         })
     })
@@ -173,8 +170,15 @@ issueRouter.get('/user/downvote/:id', (req, res, next) => {
     })
 
     User.findOne({_id: req.user._id}, (err, user) => {
-        Issue.findOne({_id: id}, (err, issue) => {
-            return res.send({user: user, issue})
+        if (err) {
+            res.status(500)
+            return next(err)
+        }
+        
+        
+        Issue.find((err, issues) => {
+            console.log(issues);
+            return res.send({user: user.withoutPassword(), issues})
         })
     })
 })

@@ -99,25 +99,45 @@ issueRouter.post('/', (req, res, next) => {
     })
 })
 
+issueRouter.get('/:id', (req, res, next) => {
+    req.body.user = req.user._id
 
+
+    Issue.findOne({_id: req.params.id}, (err, issue) => {
+        if (err) {
+            res.status(500)
+            return next(err)
+        }
+        console.log(issue._id);
+        const voteCount = issue.voteCount
+        console.log('votes', voteCount);
+        return res.send({voteCount: voteCount})
+
+    })
+
+})
 
 
 // '/api/issue/upvote'
-issueRouter.get('/user/upvote/:id', (req, res) => {
+issueRouter.get('/user/upvote/:id', (req, res, next) => {
     const { id } = req.params
-    // { $pull: { fruits: { $in: [ "apples", "oranges" ] }, vegetables: "carrots" } },
-    User.findOneAndUpdate({_id: req.user._id}, {'$set': {upVotedIssues: [id]}}, {'$pop': {downVotedIssues: [id]}}, (err, user) => {
+    User.findOneAndUpdate({_id: req.user._id}, {'$set': {upVotedIssues: [id]}, '$pull': {downVotedIssues: id}}, (err, user) => {
         if (err) {
             res.status(500)
             return next(err)
         }
 
-        Issue.findByIdAndUpdate({_id: id}, {'$inc': {voteCount: 1}}, (err, issue) => {
-            if (err) {
-                res.status(500)
-                return next(err)
-            }
-        })
+        console.log('this is your user', user.upVotedIssues);
+
+        // Only updates if it hasn't updated before
+        if (!user.upVotedIssues.includes(id)) {
+            Issue.findByIdAndUpdate({_id: id}, {'$inc': {voteCount: 1}}, (err, issue) => {
+                if (err) {
+                    res.status(500)
+                    return next(err)
+                }
+            })
+        }
     })
 
     User.findOne({_id: req.user._id}, (err, user) => {
@@ -136,18 +156,19 @@ issueRouter.get('/user/upvote/:id', (req, res) => {
 // '/api/issue/downvote'
 issueRouter.get('/user/downvote/:id', (req, res, next) => {
     const { id } = req.params
-
-    User.findOneAndUpdate({_id: req.user._id}, {'$set': {downVotedIssues: [id]}}, {'$pull': {upVotedIssues: [id]}}, (err, user) => {
+    User.findOneAndUpdate({_id: req.user._id}, {'$set': {downVotedIssues: [id]}, '$pull': {upVotedIssues: id}}, (err, user) => {
         if (err) {
             res.status(500)
             return next(err)
         }
-    })
 
-    Issue.findByIdAndUpdate({_id: id}, {'$inc': {voteCount: -1}}, (err, issue) => {
-        if (err) {
-            res.status(500)
-            return next(err)
+        if (!user.downVotedIssues.includes(id)) {
+            Issue.findByIdAndUpdate({_id: id}, {'$inc': {voteCount: -1}}, (err, issue) => {
+                if (err) {
+                    res.status(500)
+                    return next(err)
+                }
+            })
         }
     })
 

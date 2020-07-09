@@ -4,7 +4,8 @@ import styled from 'styled-components'
 import { FaArrowDown, FaCommentAlt, FaRulerVertical } from 'react-icons/fa'
 import { useHistory } from 'react-router-dom'
 import { UserContext } from '../context/UserProvider'
-
+import axios from 'axios'
+import userAxios from '../config/requestinterceptor'
 
 const StyledIssue = styled.div`
     position: relative;
@@ -94,15 +95,13 @@ export default function Issue(props) {
     const { issue, description, imgUrl, _id, commentCount, voteCount, upVotedIssues, downVotedIssues, indexOfIssue } = props
     let [voteCountState, setVoteCountState] = useState(voteCount)
     const { upVoteIssue, downVoteIssue, issues } = useContext(UserContext)
-    console.log(issues);
     useEffect(() => {
-        // find the issue by _id and then grab its voteCount value
-        // const findIndex = (issue) => {
-        //     return issue._id === _id
-        // }
-        // // just pass in the f-ing variable
-        // setVoteCountState(2)
-
+        // find the issue by id
+        userAxios.get(`/api/issue/${_id}`)
+            .then(res => {
+                console.log('res', res.data);
+                setVoteCountState(res.data.voteCount)
+            })
     }, [issues])
 
     return (
@@ -110,7 +109,7 @@ export default function Issue(props) {
             <div className="voting-column">
                 <FaArrowDown className="flipped-up" onClick={() => {
                     if (window.location.pathname !== '/profile') {
-                        upVoteIssue(_id)
+                        upVoteIssue(_id)    
                     }
                     }} />
                 <span className="vote-count">{voteCountState}</span>

@@ -67,7 +67,6 @@ function App() {
           redirectTo="/"
           token={token}
         />
-        {/* I will leave the political issues protected, since a user would want to interface with the voting system directly */}
         <ProtectedRoute 
           path='/politicalissues'
           component={PoliticalIssues}

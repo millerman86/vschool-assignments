@@ -1,11 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
-import parse from 'html-react-parser'
-import styled from 'styled-components'
-import { FaArrowDown, FaCommentAlt, FaRulerVertical } from 'react-icons/fa'
 import { useHistory } from 'react-router-dom'
 import { UserContext } from '../context/UserProvider'
-import axios from 'axios'
 import userAxios from '../config/requestinterceptor'
+import parse from 'html-react-parser'
+import styled from 'styled-components'
+import { FaArrowDown, FaCommentAlt } from 'react-icons/fa'
 
 const StyledIssue = styled.div`
     position: relative;

@@ -1,14 +1,9 @@
-import React, { useContext, useState, useEffect } from 'react'
-import { UserContext } from '../../context/UserProvider'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { useParams} from 'react-router-dom'
 import Background from '../rockthevoteimage.jpeg'
-import { useHistory } from 'react-router-dom'
-import axios from 'axios'
 import userAxios from '../../config/requestinterceptor'
-import CommentList from '../Comment/CommentList'
 import parse from 'html-react-parser'
-import isUrl from 'is-url'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import '../quillstyles.css'
@@ -192,12 +187,8 @@ export default function CommentLayout() {
     const [issue, setIssue] = useState({})
     const initInputs = {description: ""}
     const [inputs, setInputs] = useState(initInputs)
-    
-    
+        
     const { issueId } = useParams()
-    console.log('id', issueId);
-   
-   
 
     function removeBorder() {
         document.querySelector('.quill').style.border = '1px solid lightgray'
@@ -242,15 +233,12 @@ export default function CommentLayout() {
     const issueString = issue.issue ? issue.issue : ""
     const type = issue.type ? issue.type : ""
 
-    console.log(issue);
-
     return (
         <IssuesLayout>
             <div className="grid-parent">
                 <div className="first-column">
                     <div className="comment">issue</div>
                     <div>this is the add comment box</div>
-
 
                     {type === 'post' ? (<div className="post-type">
                         <h1 className="issue-header">Issue</h1>
@@ -273,7 +261,6 @@ export default function CommentLayout() {
                     {type === 'poll' ? (<div>
 
                     </div>) : null}
-
 
                     <div className="comment-box">
                         <Styled>
@@ -305,7 +292,6 @@ export default function CommentLayout() {
                         </ol>
                         <div className="button-container">
                             <button>View All</button>
-
                         </div>
                     </div>
                     <div>
@@ -321,7 +307,6 @@ export default function CommentLayout() {
         </IssuesLayout>
     )
 }
-
 
 
 CommentLayout.modules = {

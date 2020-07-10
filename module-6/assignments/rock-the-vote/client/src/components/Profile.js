@@ -113,7 +113,6 @@ export default function Public() {
 
     const {
         issues, 
-
     } = useContext(UserContext)
 
     const history = useHistory()

@@ -12,6 +12,7 @@ const StyledIssue = styled.div`
     background: lightgray;
     margin: 20px 0;
     background: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
 
     .content {
         min-height: 100px;
@@ -20,6 +21,7 @@ const StyledIssue = styled.div`
         opacity: 1;
         position: relative;
         padding-bottom: 30px;
+        border-radius: 5px;
     }
 
     .content span.vote-count {

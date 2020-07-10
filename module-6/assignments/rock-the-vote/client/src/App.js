@@ -13,7 +13,7 @@ import Public from './components/Public'
 import PoliticalIssues from './components/PoliticalIssues'
 import Navbar from './components/Navbar'
 import Submit from './components/Submit'
-import Comment from './components/Comment/CommentLayout'
+import CommentLayout from './components/Comment/CommentLayout'
 
 function App() {
   const { token, logout } = useContext(UserContext);
@@ -51,13 +51,13 @@ function App() {
         />
         <ProtectedRoute 
           exact path='/comment'
-          component={Comment}
+          component={CommentLayout}
           redirectTo="/"
           token={token}
         />
         <ProtectedRoute 
           path='/comment/:issueId'
-          component={Comment}
+          component={CommentLayout}
           redirectTo="/"
           token={token}
         />
@@ -81,7 +81,3 @@ function App() {
 }
 
 export default App;
-
-// profile = show your own issues and your stats and add more issues
-// public =
-// 

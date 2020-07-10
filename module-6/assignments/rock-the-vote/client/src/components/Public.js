@@ -40,6 +40,7 @@ const IssuesLayout = styled.div`
     }
 
     .fa-icon {
+        cursor: pointer;
         margin: 0 5px;
     }
 
@@ -61,9 +62,7 @@ const IssuesLayout = styled.div`
         .second-column {
             display: block;
         }
-
     }
-
 `
 
 
@@ -75,7 +74,7 @@ const CreateNewIssueDiv = styled.div`
     padding: 5px 0;
     background: white;
     margin-bottom: 20px;
-
+    border-radius: 5px;
 
     div {
         padding: 0 5px;

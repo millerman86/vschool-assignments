@@ -20,6 +20,7 @@ issueRouter.get('/', (req, res) => {
                 })
             })
 
+
             let createdArray = []
             for (let i = 0; i < issues.length; i++) {
                 createdArray.push(i)
@@ -101,17 +102,15 @@ issueRouter.post('/', (req, res, next) => {
 
 issueRouter.get('/:id', (req, res, next) => {
     req.body.user = req.user._id
-
     Issue.findOne({_id: req.params.id}, (err, issue) => {
         if (err) {
             res.status(500)
             return next(err)
         }
         const voteCount = issue.voteCount
-        return res.send({voteCount: voteCount})
+        return res.send({issue})
 
     })
-
 })
 
 

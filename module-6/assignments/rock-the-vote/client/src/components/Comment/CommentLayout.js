@@ -14,7 +14,6 @@ import 'react-quill/dist/quill.snow.css'
 import '../quillstyles.css'
 
 
-
 const IssuesLayout = styled.div`
     padding: 0 15px;
     background: #DAE0E6;
@@ -28,12 +27,29 @@ const IssuesLayout = styled.div`
     flex-direction: column;
     overflow: hidden;
 
+    .image-container img {
+        width: 100%;
+        height: auto;
+    }
+
+    .button-box {
+        padding: 7px;
+        border-radius: 0 0 5px 5px;
+        background: #eaecec;
+        display: flex;
+    }
+
+    .button-box button {
+        margin-left: auto;
+    }
+
     p {
         margin: 0;
     }
 
     .first-column {
         margin: 20px 0;
+        padding: 0 20px;
         background: white;
     }
 
@@ -56,6 +72,10 @@ const IssuesLayout = styled.div`
         margin: 20px 0;
     }
 
+    .issue-header {
+        text-align: center;
+    }
+
     @media only screen and (min-width: 768px) {
         .grid-parent {
             width: 100%;
@@ -70,7 +90,6 @@ const IssuesLayout = styled.div`
         .second-column {
             display: block;
         }
-
     }
 
 `
@@ -84,7 +103,6 @@ const CreateNewIssueDiv = styled.div`
     padding: 5px 0;
     background: white;
     margin-bottom: 20px;
-
 
     div {
         padding: 0 5px;
@@ -109,10 +127,6 @@ const SortingDiv = styled.div`
     p { 
         margin: 0;
     }
-
-    input {
-        
-    }
 `
 
 
@@ -125,7 +139,6 @@ body {
     margin: 1rem 4rem;
     background: blue;
 }
-
 
 .app .ql-container {
     border-bottom-left-radius: 0.5em;
@@ -153,7 +166,6 @@ body {
     font-size: small;
 }
 
-
 .ql-blank {
     background: white;
 }
@@ -174,37 +186,34 @@ body {
 .quill:selected {
     border: 1px solid blue;
 }
-
-
 `
 
 export default function CommentLayout() {
-    const [issue, setIssue] = useState('')
+    const [issue, setIssue] = useState({})
     const initInputs = {description: ""}
     const [inputs, setInputs] = useState(initInputs)
     
     
     const { issueId } = useParams()
-    function getComments(issueId) {
-        userAxios
-          .get(`/api/issue/user/${issueId}`)
-          .then(res => {
-              setIssue(res.data.issue)
-        }).catch(e => {
-            console.log(e)
-        })
-    }
-
-    useEffect(() => {
-        getComments(issueId)
-    }, [])
+    console.log('id', issueId);
+   
+   
 
     function removeBorder() {
         document.querySelector('.quill').style.border = '1px solid lightgray'
+        document.querySelector('.button-box').style.borderBottom = '1px solid lightgray'
+        document.querySelector('.button-box').style.borderLeft = '1px solid lightgray'
+        document.querySelector('.button-box').style.borderRight = '1px solid lightgray'
     } 
 
     function addBorder() {
-        document.querySelector('.quill').style.border = '1px solid black'
+        document.querySelector('.quill').style.borderTop = '1px solid black'
+        document.querySelector('.quill').style.borderRight = '1px solid black'
+        document.querySelector('.quill').style.borderLeft = '1px solid black'
+
+        document.querySelector('.button-box').style.borderBottom = '1px solid black'
+        document.querySelector('.button-box').style.borderRight = '1px solid black'
+        document.querySelector('.button-box').style.borderLeft = '1px solid black'
     }
 
     function handleQuillChange(html) {
@@ -214,6 +223,26 @@ export default function CommentLayout() {
         }))
     }
 
+    function comment() {
+        console.log('you are commenting');
+    }
+
+    useEffect(() => {
+        userAxios.get(`/api/issue/${issueId}`)
+            .then(res => {
+                setIssue(res.data.issue)
+            })
+    }, [])
+
+    useEffect(() => {
+        // getComments(issueId)
+    }, [])
+
+    const description = issue.description ? issue.description : ""
+    const issueString = issue.issue ? issue.issue : ""
+    const type = issue.type ? issue.type : ""
+
+    console.log(issue);
 
     return (
         <IssuesLayout>
@@ -222,18 +251,48 @@ export default function CommentLayout() {
                     <div className="comment">issue</div>
                     <div>this is the add comment box</div>
 
-                    <Styled>
-                        <ReactQuill 
-                            onFocus={addBorder}
-                            onBlur={removeBorder}
-                            onChange={handleQuillChange}
-                            value={inputs['description']}
-                            theme="snow" 
-                            bounds={'.app'} 
-                            modules={CommentLayout.modules}
-                            formats={CommentLayout.formats}
-                        />
-                    </Styled> 
+
+                    {type === 'post' ? (<div className="post-type">
+                        <h1 className="issue-header">Issue</h1>
+                        <hr />
+                        {parse(issueString)}
+                        <h2>Description</h2>
+                        <hr />
+                        {parse(description)}
+                    </div>) : null}
+
+                    {type === 'image' ? (<div className="image-container">
+                        <a></a>
+                        <img src="https://www.vhv.rs/file/max/33/330507_dogs-png.png" />
+                    </div>) : null}
+
+                    {type === 'link' ? (<div>
+
+                    </div>) : null} 
+
+                    {type === 'poll' ? (<div>
+
+                    </div>) : null}
+
+
+                    <div className="comment-box">
+                        <Styled>
+                            <ReactQuill 
+                                onFocus={addBorder}
+                                onBlur={removeBorder}
+                                onChange={handleQuillChange}
+                                placeholder="Speak your mind..."
+                                value={inputs['description']}
+                                theme="snow" 
+                                bounds={'.app'} 
+                                modules={CommentLayout.modules}
+                                formats={CommentLayout.formats}
+                                />
+                        </Styled> 
+                        <div className="button-box">
+                            <button onClick={comment}>Comment</button>
+                        </div>
+                    </div>
 
                 </div>
                 <div className="second-column">

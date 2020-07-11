@@ -15,11 +15,6 @@ const commentSchema = new Schema({
         type: String, 
         default: Date.now
     }, 
-    issue: {
-        // The string will be an id, of course
-        type: String, 
-        required: true
-    }, 
     issueId: {
         type: String, 
         required: true

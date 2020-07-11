@@ -22,6 +22,10 @@ const IssuesLayout = styled.div`
     flex-direction: column;
     overflow: hidden;
 
+    .comment-box {
+        margin: 20px;
+    }
+
     .image-container img {
         width: 100%;
         height: auto;
@@ -185,8 +189,8 @@ body {
 
 export default function CommentLayout() {
     const [issue, setIssue] = useState({})
-    const initInputs = {description: ""}
-    const [inputs, setInputs] = useState(initInputs)
+    const [comment, setComment] = useState('')
+    const [comments, setComments] = useState([])
         
     const { issueId } = useParams()
 
@@ -208,30 +212,56 @@ export default function CommentLayout() {
     }
 
     function handleQuillChange(html) {
-        setInputs(prevInputs => ({
-            ...prevInputs, 
-            description: html
-        }))
+        setComment(html)
     }
 
-    function comment() {
-        console.log('you are commenting');
-    }
+    function makeComment() {
+        const user = JSON.parse(localStorage.getItem('user'))
 
+        const newComment = {
+            comment,
+            user: user._id, 
+            issueId: issueId
+        }
+
+        userAxios.post(`/api/comment`, newComment)
+            .then(res => {
+                setComments(prev => {
+                    return [...prev, newComment]
+                })
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+    
+    function getComments(id) {
+        userAxios.get(`/api/issue/getcomments/${id}`)
+            .then(res => {
+                setComments(res.data.comments)
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+    
     useEffect(() => {
+        getComments(issueId)
+        
+        // Get issue by id
         userAxios.get(`/api/issue/${issueId}`)
             .then(res => {
                 setIssue(res.data.issue)
             })
     }, [])
 
-    useEffect(() => {
-        // getComments(issueId)
-    }, [])
-
     const description = issue.description ? issue.description : ""
     const issueString = issue.issue ? issue.issue : ""
     const type = issue.type ? issue.type : ""
+
+    const renderedComments = comments.map((comment, i) => {
+        return (<div key={i}>{parse(comment.comment)}</div>)
+    })
 
     return (
         <IssuesLayout>
@@ -269,7 +299,7 @@ export default function CommentLayout() {
                                 onBlur={removeBorder}
                                 onChange={handleQuillChange}
                                 placeholder="Speak your mind..."
-                                value={inputs['description']}
+                                value={comment}
                                 theme="snow" 
                                 bounds={'.app'} 
                                 modules={CommentLayout.modules}
@@ -277,10 +307,12 @@ export default function CommentLayout() {
                                 />
                         </Styled> 
                         <div className="button-box">
-                            <button onClick={comment}>Comment</button>
+                            <button onClick={makeComment}>Comment</button>
                         </div>
-                    </div>
 
+                        
+                    </div>
+                    {renderedComments}
                 </div>
                 <div className="second-column">
                     <div>

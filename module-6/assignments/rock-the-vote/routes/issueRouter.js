@@ -182,4 +182,17 @@ issueRouter.get('/user/downvote/:id', (req, res, next) => {
     })
 })
 
+issueRouter.get('/getcomments/:id', (req, res, next) => {
+    req.body.user = req.user._id
+    Comment.find({issue: req.params.id}, (err, comments) => {
+        if (err) {
+            res.status(500)
+            return next(err)
+        }
+        return res.send({comments: comments})
+
+    })
+})
+
+
 module.exports = issueRouter

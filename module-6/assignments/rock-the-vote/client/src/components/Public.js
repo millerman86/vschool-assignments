@@ -118,8 +118,10 @@ export default function Public() {
     }
 
     useEffect(() => {
+        // Get issues, but for ALL issues, since I'm on the public page
         userAxios.get('/api/issue')
             .then(res => {
+                console.log('response data', res.data);
                 setIssues(res.data)
             })
     }, [])

@@ -10,8 +10,6 @@ export default function UserProvider(props) {
     user: JSON.parse(localStorage.getItem("user")) || "",
     token: localStorage.getItem("token") || "",
     issues: [],
-    upvotedIssues: [],
-    downVotedIssues: []
   }
 
   const [userState, setUserState] = useState(initState);
@@ -92,35 +90,7 @@ export default function UserProvider(props) {
       })
   }
 
-  function upVoteIssue(id) {
-    userAxios.get(`/api/issue/user/upvote/${id}`)
-      .then(res => {
-        setUserState(prev => {
-          
-          return {
-            ...prev, 
-            // Put the new issue here
-            issues: res.data.issues,
-            upvotedIssues: res.data.upVotedIssues, 
-            downVotedIssues: res.data.downVotedIssues
-          }
-        })
-      })
-  }
-
-  function downVoteIssue(id) {
-    userAxios.get(`/api/issue/user/downvote/${id}`)
-      .then(res => {
-        setUserState(prev => {
-          return {
-            ...prev, 
-            issues: res.data.issues,
-            upvotedIssues: res.data.upVotedIssues, 
-            downVotedIssues: res.data.downVotedIssues
-          }
-        })
-      })
-  }
+  
 
   useEffect(() => {
     getUserIssues()
@@ -134,8 +104,6 @@ export default function UserProvider(props) {
         login,
         logout, 
         addIssue, 
-        upVoteIssue, 
-        downVoteIssue
       }}
     >
       {props.children}

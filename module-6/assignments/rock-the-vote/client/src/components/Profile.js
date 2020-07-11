@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import IssueForm from './IssueForm'
 import IssueList from './IssueList'
 import { UserContext } from '../context/UserProvider'
@@ -120,6 +120,8 @@ export default function Public() {
     function redirect(extension) {
         history.push(`/submit/${extension}`)
     }
+
+    console.log(issues);
     return (
         <IssuesLayout>
             <div className="grid-parent">

@@ -93,19 +93,29 @@ const StyledIssue = styled.div`
 export default function Issue(props) {
     const history = useHistory()
     
-    const { issue, description, imgUrl, _id, commentCount, voteCount, upVotedIssues, downVotedIssues, indexOfIssue } = props
+    const { issue, description, _id, commentCount, voteCount } = props
+
+    let [voteCountState, setVoteCountState] = useState(voteCount)
+    const { issues } = useContext(UserContext)
 
     console.log('here is vote count', voteCount);
-    let [voteCountState, setVoteCountState] = useState(voteCount)
-    const { upVoteIssue, downVoteIssue, issues } = useContext(UserContext)
-    useEffect(() => {
-        // find the issue by id
-        userAxios.get(`/api/issue/${_id}`)
-            .then(res => {
-                setVoteCountState(res.data.voteCount)
-            })
-    }, [issues])
 
+    function upVoteIssue(id) {
+        userAxios.get(`/api/issue/user/upvote/${id}`)
+          .then(res => {
+            console.log('here is response', res);
+            setVoteCountState(res.data.issue.voteCount)
+      })
+    }
+    
+    function downVoteIssue(id) {
+        userAxios.get(`/api/issue/user/downvote/${id}`)
+          .then(res => {
+            console.log('here is response', res);
+            setVoteCountState(res.data.issue.voteCount)
+      })
+    }
+    
     return (
         <StyledIssue>
             <div className="voting-column">

@@ -107,7 +107,6 @@ issueRouter.get('/:id', (req, res, next) => {
             res.status(500)
             return next(err)
         }
-        const voteCount = issue.voteCount
         return res.send({issue})
 
     })
@@ -141,10 +140,14 @@ issueRouter.get('/user/upvote/:id', (req, res, next) => {
             return next(err)
         }
         
-        Issue.find((err, issues) => {
-            console.log(issues);
+        Issue.findById({_id: id}, (err, issue) => {
+            if (err) {
+                res.status(500)
+                return next(err)
+            }
 
-            return res.send({user: user.withoutPassword(), issues})
+            console.log(issue);
+            return res.send({user: user.withoutPassword(), issue})
         })
     })
 })
@@ -175,9 +178,13 @@ issueRouter.get('/user/downvote/:id', (req, res, next) => {
         }
         
         
-        Issue.find((err, issues) => {
-            console.log(issues);
-            return res.send({user: user.withoutPassword(), issues})
+        Issue.findById({_id: id}, (err, issue) => {
+            if (err) {
+                res.status(500)
+                return next(err)
+            }
+
+            return res.send({user: user.withoutPassword(), issue})
         })
     })
 })

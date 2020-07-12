@@ -8,13 +8,15 @@ const commentSchema = new Schema({
         required: true
     }, 
     user: {
-        type: String, 
+        type: Object, 
         required: true 
     }, 
+    
     posted: {
         type: String, 
         default: Date.now
     }, 
+    
     issueId: {
         type: String, 
         required: true

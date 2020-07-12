@@ -51,10 +51,6 @@ const StyledIssue = styled.div`
         bottom: 0;
     }
 
-    .voting-container {
-
-    }
-
     .flipped-up, 
     .fa-arrow {
         cursor: pointer;
@@ -96,14 +92,10 @@ export default function Issue(props) {
     const { issue, description, _id, commentCount, voteCount } = props
 
     let [voteCountState, setVoteCountState] = useState(voteCount)
-    const { issues } = useContext(UserContext)
-
-    console.log('here is vote count', voteCount);
 
     function upVoteIssue(id) {
         userAxios.get(`/api/issue/user/upvote/${id}`)
           .then(res => {
-            console.log('here is response', res);
             setVoteCountState(res.data.issue.voteCount)
       })
     }
@@ -111,7 +103,6 @@ export default function Issue(props) {
     function downVoteIssue(id) {
         userAxios.get(`/api/issue/user/downvote/${id}`)
           .then(res => {
-            console.log('here is response', res);
             setVoteCountState(res.data.issue.voteCount)
       })
     }

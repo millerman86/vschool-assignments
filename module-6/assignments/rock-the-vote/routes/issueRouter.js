@@ -79,7 +79,6 @@ issueRouter.get('/user', (req, res, next) => {
                     issue['commentCount'] = values[i]
                 })
 
-                console.log('here are your issues', issues);
                 return res.send(issues)
             }).catch(err => {
                 console.log(err);
@@ -146,7 +145,6 @@ issueRouter.get('/user/upvote/:id', (req, res, next) => {
                 return next(err)
             }
 
-            console.log(issue);
             return res.send({user: user.withoutPassword(), issue})
         })
     })
@@ -191,11 +189,12 @@ issueRouter.get('/user/downvote/:id', (req, res, next) => {
 
 issueRouter.get('/getcomments/:id', (req, res, next) => {
     req.body.user = req.user._id
-    Comment.find({issue: req.params.id}, (err, comments) => {
+    Comment.find({issueId: req.params.id}, (err, comments) => {
         if (err) {
             res.status(500)
             return next(err)
         }
+        console.log('ehre are your comments', comments);
         return res.send({comments: comments})
 
     })

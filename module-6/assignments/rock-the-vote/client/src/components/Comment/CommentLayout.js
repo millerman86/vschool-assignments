@@ -22,6 +22,15 @@ const IssuesLayout = styled.div`
     flex-direction: column;
     overflow: hidden;
 
+
+    .comment-container {
+        margin: 20px 0;
+    }
+
+    .comment-container .username {
+        font-weight: 700;
+    }
+
     .comment-box {
         margin: 20px;
     }
@@ -91,41 +100,6 @@ const IssuesLayout = styled.div`
         }
     }
 
-`
-
-
-const CreateNewIssueDiv = styled.div`
-    border: 1px solid #DCDCDC;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 5px 0;
-    background: white;
-    margin-bottom: 20px;
-
-    div {
-        padding: 0 5px;
-    }
-
-    input {
-        flex: 1;
-        margin-right: 10px;
-        font-size: 1.2em;
-        line-height: 1.5em;
-        padding-left: 10px;
-    }
-`
-
-
-const SortingDiv = styled.div`
-    border: 1px solid lightgray;
-    display: flex;
-    align-items: center;
-    background: white;
-
-    p { 
-        margin: 0;
-    }
 `
 
 
@@ -220,7 +194,10 @@ export default function CommentLayout() {
 
         const newComment = {
             comment,
-            user: user._id, 
+            user: {
+                id: user._id, 
+                userName: user.username
+            }, 
             issueId: issueId
         }
 
@@ -260,7 +237,10 @@ export default function CommentLayout() {
     const type = issue.type ? issue.type : ""
 
     const renderedComments = comments.map((comment, i) => {
-        return (<div key={i}>{parse(comment.comment)}</div>)
+        return (<div key={i} className="comment-container">
+                <div><span className="username">{comment.user.userName}</span></div>
+                {parse(comment.comment)}
+            </div>)
     })
 
     return (

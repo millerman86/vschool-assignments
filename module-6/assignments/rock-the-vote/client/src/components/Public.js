@@ -100,7 +100,6 @@ export default function Public() {
     const [toggle, setToggle] = useState(false)
     const [issues, setIssues] = useState([])
 
-
     const history = useHistory()
 
     function redirect(extension) {
@@ -110,7 +109,6 @@ export default function Public() {
     useEffect(() => {
         userAxios.get('/api/issue')
             .then(res => {
-                console.log(res.data);
                 setIssues(res.data)
             }).catch(err => {
                 console.log(err);

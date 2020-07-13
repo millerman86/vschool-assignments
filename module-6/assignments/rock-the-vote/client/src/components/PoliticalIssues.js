@@ -1,8 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Issue from './Issue'
-import authService from '../services/authService'
-import axios from 'axios'
-import { Redirect } from 'react-router-dom'
 import IssueList from '../components/IssueList'
 import userAxios from '../config/requestinterceptor'
 

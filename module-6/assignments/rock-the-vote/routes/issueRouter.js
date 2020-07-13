@@ -6,9 +6,6 @@ const User = require('../models/user')
 
 
 
-
-
-
 issueRouter.get('/', (req, res, next) => {
     Issue.find((err, issues) => {
         if (err) {
@@ -46,7 +43,6 @@ issueRouter.get('/', (req, res, next) => {
                 return res.status(201).send(issues)
             })
             .catch(err => {
-                console.log(err);
                 return res.sendStatus(404)
             })
     })
@@ -90,8 +86,8 @@ issueRouter.get('/user', (req, res, next) => {
 
                 return res.status(201).send(issues)
             })
-            .catch(err => {
-                console.log(err);
+            .catch(() => {
+                res.sendStatus(500)
             })
         })
 })
@@ -154,7 +150,7 @@ issueRouter.get('/user/upvote/:id', (req, res, next) => {
                 return next(err)
             }
 
-            return res.send({user: user.withoutPassword(), issue})
+            return res.status(201).send({user: user.withoutPassword(), issue})
         })
     })
 })
@@ -191,7 +187,7 @@ issueRouter.get('/user/downvote/:id', (req, res, next) => {
                 return next(err)
             }
 
-            return res.send({user: user.withoutPassword(), issue})
+            return res.status(201).send({user: user.withoutPassword(), issue})
         })
     })
 })
@@ -203,7 +199,6 @@ issueRouter.get('/getcomments/:id', (req, res, next) => {
             res.status(500)
             return next(err)
         }
-        console.log('ehre are your comments', comments);
         return res.send({comments: comments})
 
     })

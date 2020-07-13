@@ -195,8 +195,6 @@ export default function IssueForm(props) {
         type = "post"
     }
 
-    let [postType, setPostType] = useState(type)
-
     function handleChange(e) {
         const {name, value} = e.target 
         setInputs(prevInputs => ({
@@ -243,7 +241,7 @@ export default function IssueForm(props) {
         let h1 = `<h1>${inputs.issue}</h1>`
         addIssue({
             ...inputs, 
-            type: postType,
+            type: type,
             issue: h1
         })
         setInputs(initInputs)
@@ -268,16 +266,16 @@ export default function IssueForm(props) {
     return (
         <StyledForm onSubmit={handleSubmit}>
             <div className="type-of-submission">
-                <div className={`type ${postType === 'post' ? "selected" : ""}`} onClick={() => window.location.replace('/submit/post')}>
+                <div className={`type ${type === 'post' ? "selected" : ""}`} onClick={() => window.location.replace('/submit/post')}>
                     <div>Post</div>
                 </div>
-                <div className={`type ${postType === 'image' ? "selected" : ""}`} onClick={() => window.location.replace('/submit/image')}>
+                <div className={`type ${type === 'image' ? "selected" : ""}`} onClick={() => window.location.replace('/submit/image')}>
                     <div className="type-container">
                         <FaFileImage />
                         <span>Image</span>
                     </div>  
                 </div>
-                <div className={`type ${postType === 'link' ? "selected" : ""}`} onClick={() => window.location.replace('/submit/link')}>
+                <div className={`type ${type === 'link' ? "selected" : ""}`} onClick={() => window.location.replace('/submit/link')}>
                     <div className="type-container">
                         <FaLink />
                         <span>Link</span>
@@ -296,7 +294,7 @@ export default function IssueForm(props) {
                     value={inputs.issue}
                 />
 
-                {postType === 'post' ? 
+                {type === 'post' ? 
                 <Styled>
                     <ReactQuill 
                         onFocus={addBorder}
@@ -309,12 +307,12 @@ export default function IssueForm(props) {
                         formats={IssueForm.formats}
                     />
                 </Styled> : null}
-                {postType === 'image' ? 
+                {type === 'image' ? 
                     <input name="imgUrl" autoComplete="off" value={inputs.imgUrl} type="text" placeholder="Image URL" onChange={handleChange} />
                     : null
                 }
 
-                {postType === 'link' ? 
+                {type === 'link' ? 
                     <input name="link" autoComplete="off" value={inputs.link} type="text" placeholder="URL" onChange={handleChange} />
                     : null
                 }

@@ -1,12 +1,10 @@
-import React, { useContext, useState, useEffect } from 'react'
-import IssueForm from './IssueForm'
-import IssueList from './IssueList'
+import React, { useContext, useState, } from 'react'
+import { useHistory, Redirect } from 'react-router-dom'
 import { UserContext } from '../context/UserProvider'
-import { FaMicrophone, FaFileImage, FaLink, FaArrowDown } from 'react-icons/fa'
+import { FaMicrophone, FaFileImage, FaLink } from 'react-icons/fa'
+import IssueList from './IssueList'
 import styled from 'styled-components'
-import { Redirect } from 'react-router-dom'
 import Background from './rockthevoteimage.jpeg'
-import { useHistory } from 'react-router-dom'
 
 
 
@@ -88,22 +86,6 @@ const CreateNewIssueDiv = styled.div`
         font-size: 1.2em;
         line-height: 1.5em;
         padding-left: 10px;
-    }
-`
-
-
-const SortingDiv = styled.div`
-    border: 1px solid lightgray;
-    display: flex;
-    align-items: center;
-    background: white;
-
-    p { 
-        margin: 0;
-    }
-
-    input {
-        
     }
 `
 

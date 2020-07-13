@@ -47,7 +47,7 @@ export default function Navbar(props) {
             <div className="menu-container">
                 <ul>
                     <li onClick={logout}>
-                        <a href="#">logout</a>
+                        <a href="/logout">logout</a>
                     </li>
                     <li>
                         <a href="#">Other</a>

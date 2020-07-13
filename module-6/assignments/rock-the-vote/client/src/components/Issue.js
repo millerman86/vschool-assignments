@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { UserContext } from '../context/UserProvider'
 import userAxios from '../config/requestinterceptor'
 import parse from 'html-react-parser'
 import styled from 'styled-components'
@@ -140,7 +139,7 @@ export default function Issue(props) {
                             let issueId = _id
                             history.push(`/comment/${issueId}`)
                             }}>
-                        {commentCount > 1 ? commentCount + " comments" : "0" + " comments"} 
+                        {commentCount > 1 ? commentCount + " comments" : "0 comments"} 
                     </span>
                 </div>
             </div>

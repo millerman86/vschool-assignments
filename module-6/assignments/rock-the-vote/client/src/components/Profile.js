@@ -121,7 +121,6 @@ export default function Public() {
         history.push(`/submit/${extension}`)
     }
 
-    console.log(issues);
     return (
         <IssuesLayout>
             <div className="grid-parent">

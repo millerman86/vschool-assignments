@@ -1,8 +1,6 @@
-import React, { useContext, useState, useEffect } from 'react'
-import IssueForm from './IssueForm'
+import React, { useState, useEffect } from 'react'
 import IssueList from './IssueList'
-import { UserContext } from '../context/UserProvider'
-import { FaMicrophone, FaFileImage, FaLink, FaArrowDown } from 'react-icons/fa'
+import { FaMicrophone, FaFileImage, FaLink } from 'react-icons/fa'
 import styled from 'styled-components'
 import {Redirect} from 'react-router-dom'
 import Background from './rockthevoteimage.jpeg'
@@ -62,6 +60,14 @@ const IssuesLayout = styled.div`
         .second-column {
             display: block;
         }
+
+        .about-rockthevote ol {
+            padding: 0 25px;
+        }
+
+        .site-info ol {
+            padding: 0 25px;
+        }
     }
 `
 
@@ -90,18 +96,6 @@ const CreateNewIssueDiv = styled.div`
 `
 
 
-const SortingDiv = styled.div`
-    border: 1px solid lightgray;
-    display: flex;
-    align-items: center;
-    background: white;
-
-    p { 
-        margin: 0;
-    }
-`
-
-
 export default function Public() {
     const [toggle, setToggle] = useState(false)
     const [issues, setIssues] = useState([])
@@ -114,7 +108,6 @@ export default function Public() {
     }
 
     useEffect(() => {
-        // Get issues, but for ALL issues, since I'm on the public page
         userAxios.get('/api/issue')
             .then(res => {
                 setIssues(res.data)
@@ -148,25 +141,25 @@ export default function Public() {
                 }
                 </div>
                 <div className="second-column">
-                    <div>
-                        <p>Today's top issues</p>
+                    <div className="about-rockthevote">
+                        <p>About Rock the Vote</p>
                         <ol>
                             <li></li>
                             <li></li>
                             <li></li>
                         </ol>
-                        <div className="button-container">
-                            <button>View All</button>
-
-                        </div>
                     </div>
-                    <div>
-                        <p>Rules Posting to Rock The Vote</p>
+                    <div className="site-info">
+                        <p>Site Rules for Rock the Vote</p>
                         <ol>
                             <li></li>
                             <li></li>
                             <li></li>
                         </ol>
+                    </div>
+                    <div className="various-links">
+                       various links
+
                     </div>
                 </div>
             </div>

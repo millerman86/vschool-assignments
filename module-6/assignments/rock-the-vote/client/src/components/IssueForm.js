@@ -100,7 +100,7 @@ const StyledForm = styled.form`
 
     .type-of-submission {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
         padding-bottom: 10px;
     }
 
@@ -282,9 +282,6 @@ export default function IssueForm(props) {
                         <FaLink />
                         <span>Link</span>
                     </div>  
-                </div>
-                <div className={`type ${postType === 'poll' ? "selected" : ""}`} onClick={() => window.location.replace('/submit/poll')}>
-                    <div>Poll</div>
                 </div>
             </div>
                 

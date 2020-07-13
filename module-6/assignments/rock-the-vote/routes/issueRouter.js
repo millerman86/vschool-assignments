@@ -7,61 +7,69 @@ const User = require('../models/user')
 
 
 
-issueRouter.get('/', (req, res) => {
-    Promise.all([
-        Issue.find(),
-      ]).then( ([ issues ]) => {
-          issues.forEach((issue, i) => {
-            let promise = new Promise((resolve, reject) => {
-                Comment.find({'issueId': issue._id}, (err, comments) => {
-                   
-                }).countDocuments().then(data => { 
-                    resolve(data)
-                })
-            })
 
+
+issueRouter.get('/', (req, res, next) => {
+    Issue.find((err, issues) => {
+        if (err) {
+            res.status(500)
+            return next(err)
+        }
+
+        let promiseArray = []
+        issues.forEach((issue, i) => {
+            let promise = new Promise((resolve, reject) => {
+                Comment.find({'issueId': issue._id}, (err, commentCount) => {
+                    if (err) {
+                        reject(err)
+                    }
+                    resolve(commentCount)
+                   
+                }).countDocuments()
+            })
 
             let createdArray = []
             for (let i = 0; i < issues.length; i++) {
                 createdArray.push(i)
             }
 
-            let array = []
             createdArray.forEach(() => {
-                array.push(promise)
+                promiseArray.push(promise)
             })
 
-            Promise.all(array).then((values) => {
+        })
+        Promise.all(promiseArray)
+            .then((values) => {
                 issues.forEach((issue, i) => {
                     issue['commentCount'] = values[i]
                 })
-            }).then(() => {
-                res.status(201).send(issues)
+                return res.status(201).send(issues)
             })
-        })
+            .catch(err => {
+                console.log(err);
+                return res.sendStatus(404)
+            })
     })
 })
 
 
-
-
-
 // We want to be able to get all the issues that belong to the user using the application
 issueRouter.get('/user', (req, res, next) => {
-    // The user id is sent in the header
-    // Remember that all properties that were used when signing are available after the 
-    // token gets parsed
-    
-    Promise.all([
-        Issue.find({user: req.user._id}),
-      ]).then( ([ issues ]) => {
-          issues.forEach((issue, i) => {
+    Issue.find({user: req.user._id}, (err, issues) => {
+        if (err) {
+            res.status(500)
+            return next(err)
+        }
+
+        let promiseArray = []
+        issues.forEach((issue, i) => {
             let promise = new Promise((resolve, reject) => {
-                Comment.find({'issueId': issue._id}, (err, comments) => {
-                   
-                }).countDocuments().then(data => { 
-                    resolve(data)
-                })
+                Comment.find({'issueId': issue._id}, (err, commentCount) => {
+                   if (err) {
+                       reject(err)
+                   }
+                   resolve(commentCount)
+                }).countDocuments()
             })
 
             let createdArray = []
@@ -69,22 +77,23 @@ issueRouter.get('/user', (req, res, next) => {
                 createdArray.push(i)
             }
 
-            let array = []
             createdArray.forEach(() => {
-                array.push(promise)
+                promiseArray.push(promise)
             })
+        })
 
-            Promise.all(array).then((values) => {
+        Promise.all(promiseArray)
+            .then((values) => {
                 issues.forEach((issue, i) => {
                     issue['commentCount'] = values[i]
                 })
 
-                return res.send(issues)
-            }).catch(err => {
+                return res.status(201).send(issues)
+            })
+            .catch(err => {
                 console.log(err);
             })
         })
-    })
 })
 
 issueRouter.post('/', (req, res, next) => {

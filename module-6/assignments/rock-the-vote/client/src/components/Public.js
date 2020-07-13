@@ -110,7 +110,10 @@ export default function Public() {
     useEffect(() => {
         userAxios.get('/api/issue')
             .then(res => {
+                console.log(res.data);
                 setIssues(res.data)
+            }).catch(err => {
+                console.log(err);
             })
     }, [])
 
@@ -142,7 +145,7 @@ export default function Public() {
                 </div>
                 <div className="second-column">
                     <div className="about-rockthevote">
-                        <p>About Rock the Vote</p>
+                        <div>About Rock the Vote</div>
                         <ol>
                             <li></li>
                             <li></li>
@@ -150,7 +153,7 @@ export default function Public() {
                         </ol>
                     </div>
                     <div className="site-info">
-                        <p>Site Rules for Rock the Vote</p>
+                        <div>Site Rules for Rock the Vote</div>
                         <ol>
                             <li></li>
                             <li></li>

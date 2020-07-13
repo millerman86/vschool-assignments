@@ -15,6 +15,10 @@ const IssuesLayout = styled.div`
         margin-top: 40px;
     }
 
+    .rules-for-posting ol {
+        padding: 0 25px;
+    }
+
     .layout-container {
         display: grid;
         width: 100%;

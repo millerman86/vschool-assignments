@@ -34,6 +34,10 @@ const Nav = styled.nav`
         margin-left: 0;
     }
     
+    .site-title {
+        font-size: 50px;
+        font-weight: 700;
+    }
 `
 
 export default function Navbar(props) {
@@ -41,22 +45,19 @@ export default function Navbar(props) {
     return (
         <Nav>
             <div className="banner">
-                <span>Rock the Vote</span>
+                <span className="site-title">Rock the Vote</span>
             </div>
             <hr />
             <div className="menu-container">
                 <ul>
+                    <li>
+                        <a href="/public">Home</a>
+                    </li>
+                    <li>
+                        <a href="/profile">Profile</a>
+                    </li>
                     <li onClick={logout}>
-                        <a href="/logout">logout</a>
-                    </li>
-                    <li>
-                        <a href="#">Other</a>
-                    </li>
-                    <li>
-                        <a href="#">Pages</a>
-                    </li>
-                    <li>
-                        <a href="#">Profile</a>
+                        <a href="#">logout</a>
                     </li>
                 </ul>
             </div>

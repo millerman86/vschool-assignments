@@ -33,6 +33,9 @@ const AuthContainer = styled.div`
 
   .form-container {
     background: white;
+    width: 90%;
+    margin: auto;
+    padding: 80px 0;
   }
   
   p {

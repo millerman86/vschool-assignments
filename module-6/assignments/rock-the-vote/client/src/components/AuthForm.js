@@ -14,12 +14,15 @@ const StyledAuthForm = styled.form`
   input {
     width: 100%;
     margin: 10px 0;
-    border: 1px solid black;
+    border: 2px solid black;
     outline: none;
+    font-size: 16px;
+    line-height: 1.3em;
+    padding-left: 5px;
   }
 
   input:focus {
-    border: 1px solid black;
+    border: 2px solid black;
   }
 `
 
@@ -35,6 +38,7 @@ export default function AuthForm(props) {
     <StyledAuthForm onSubmit={handleSubmit}>
       <div>
         <input
+          autocomplete="off"
           type="text"
           value={username}
           name="username"
@@ -42,6 +46,7 @@ export default function AuthForm(props) {
           placeholder="Username"
         />
         <input
+          autocomplete="off"
           type="text"
           value={password}
           name="password"

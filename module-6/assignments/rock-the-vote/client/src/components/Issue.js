@@ -122,7 +122,7 @@ export default function Issue(props) {
                 }} />
             </div>
             <div className="content">
-                <h1 className="issue">Issue</h1>
+                <h1 className="issue">Title</h1>
                 <hr />
                 {parse(issue)}
                 <h2>Description</h2>

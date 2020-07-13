@@ -8,22 +8,22 @@ You are going to create a full stack application with user authentication create
 
 Requirements:
 - A login/signup page that is required to visit any part of the application. <input type="checkbox" checked>
-- Web page that shows a list of political issues.
-    - Each item will have a title
-    - Each item will have a description
-    - Each item can be upvoted or downvoted.
-        - User's should only be able to upvote/downvote once per issue.
-    - Items will be ordered by upvotes (the most being at the top).
-    - Each item should show the total number of votes
-- Include a page that will allow logged in users to add new posts.
-- Include a page that will allow logged in users to view all posts they personally made.
-- Users can comment on posts (unlimited number of comments per post)
-- You will create a back end with the needed 'models' and 'routes' so that all topics, comments, and votes are persistent.
-- Use React for the front-end
-- Use Node/Express for the back-end
-- Use MongoDB and Mongoose for your database and models
+- Web page that shows a list of political issues. <input type="checkbox" checked>
+    - Each item will have a title <input type="checkbox" checked>
+    - Each item will have a description <input type="checkbox" checked>
+    - Each item can be upvoted or downvoted. <input type="checkbox" checked>
+        - User's should only be able to upvote/downvote once per issue. <input type="checkbox" checked>
+    - Items will be ordered by upvotes (the most being at the top). <input type="checkbox" checked>
+    - Each item should show the total number of votes <input type="checkbox" checked>
+- Include a page that will allow logged in users to add new posts. <input type="checkbox" checked>
+- Include a page that will allow logged in users to view all posts they personally made. <input type="checkbox" checked>
+- Users can comment on posts (unlimited number of comments per post) <input type="checkbox" checked>
+- You will create a back end with the needed 'models' and 'routes' so that all topics, comments, and votes are persistent. <input type="checkbox" checked>
+- Use React for the front-end <input type="checkbox" checked>
+- Use Node/Express for the back-end <input type="checkbox" checked>
+- Use MongoDB and Mongoose for your database and models <input type="checkbox" checked>
 - Use dotenv, jsonwebtoken & expressJwt to manage user authentication. <input type="checkbox" checked>
-- Clearly you will need the ability to GET, POST, PUT, and DELETE.
+- Clearly you will need the ability to GET, POST, PUT, and DELETE. <input type="checkbox" checked>
 
 You will want to approach this project in 3 parts while following the Module 6 vidoes and associated git repository. After implementing the user authentication code with the videos using the git repository provided, replicate that code again for this project.
 

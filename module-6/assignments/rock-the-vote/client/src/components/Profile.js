@@ -29,9 +29,6 @@ const IssuesLayout = styled.div`
     .second-column {
         margin: 20px 0;
     }
-    .second-column div {
-        background: white;
-    }
 
     .second-column {
         display: none;
@@ -61,8 +58,31 @@ const IssuesLayout = styled.div`
             display: block;
         }
 
-    }
 
+        .profile-container {
+            border-radius: 5px;
+        }
+
+        .profile-background {
+            background: #33a8ff;
+            border-radius: 5px 5px 0 0;
+            height: 85px;
+        }
+
+        .profile-information-container {
+            background: white;
+            border-radius: 0 0 5px 5px;
+            padding: 8px;
+        }
+
+        .profile-picture {
+            height: 70px; 
+            width: 70px;
+            background: grey;
+            margin-top: -60px;
+            border-radius: 50%;
+        }
+    }
 `
 
 
@@ -74,7 +94,7 @@ const CreateNewIssueDiv = styled.div`
     padding: 5px 0;
     background: white;
     margin-bottom: 20px;
-
+    border-radius: 5px;
 
     div {
         padding: 0 5px;
@@ -103,6 +123,11 @@ export default function Public() {
         history.push(`/submit/${extension}`)
     }
 
+
+    const sortedIssues = issues.sort((a, b) => {
+        return b.voteCount - a.voteCount
+    })
+
     return (
         <IssuesLayout>
             <div className="grid-parent">
@@ -122,7 +147,7 @@ export default function Public() {
 
                         </CreateNewIssueDiv>
                        
-                        <IssueList issues={issues} />
+                        <IssueList issues={sortedIssues} />
                     </div>
                     ) 
                     : <Redirect push to="/submit" />
@@ -130,26 +155,14 @@ export default function Public() {
                 }
                 </div>
                 <div className="second-column">
-                    <div>
-                        <p>Today's top issues</p>
-                        <ol>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ol>
-                        <div className="button-container">
-                            <button>View All</button>
-
+                    <div className="profile-container">
+                        <div className="profile-background">
                         </div>
-                    </div>
-                    <div>
-                        <p>Rules Posting to Rock The Vote</p>
-                        <ol>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ol>
-                    </div>
+                        <div className="profile-information-container">
+                            <div className="profile-picture" ></div>
+                            profile information
+                        </div>
+                    </div>                       
                 </div>
             </div>
         </IssuesLayout>

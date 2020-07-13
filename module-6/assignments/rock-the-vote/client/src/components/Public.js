@@ -29,9 +29,6 @@ const IssuesLayout = styled.div`
     .second-column {
         margin: 20px 0;
     }
-    .second-column div {
-        background: white;
-    }
 
     .second-column {
         display: none;
@@ -67,6 +64,21 @@ const IssuesLayout = styled.div`
 
         .site-info ol {
             padding: 0 25px;
+        }
+        
+        .about-rockthevote, 
+        .site-info, 
+        .various-links {
+            border-radius: 5px;
+            margin-bottom: 20px;
+            background: white;
+            overflow: hidden;
+        }
+
+        .about-title, 
+        .site-info-title {
+            padding: 5px;
+            background: #E0E0E0;
         }
     }
 `
@@ -115,6 +127,10 @@ export default function Public() {
             })
     }, [])
 
+    const sortedIssues = issues.sort((a, b) => {
+        return b.voteCount - a.voteCount
+    })
+
     return (
         <IssuesLayout>
             <div className="grid-parent">
@@ -134,7 +150,7 @@ export default function Public() {
 
                         </CreateNewIssueDiv>
                        
-                        <IssueList issues={issues} />
+                        <IssueList issues={sortedIssues} />
                     </div>
                     ) 
                     : <Redirect push to="/submit" />
@@ -143,7 +159,7 @@ export default function Public() {
                 </div>
                 <div className="second-column">
                     <div className="about-rockthevote">
-                        <div>About Rock the Vote</div>
+                        <div className="about-title">About Rock the Vote</div>
                         <ol>
                             <li></li>
                             <li></li>
@@ -151,7 +167,7 @@ export default function Public() {
                         </ol>
                     </div>
                     <div className="site-info">
-                        <div>Site Rules for Rock the Vote</div>
+                        <div className="site-info-title">Site Rules for Rock the Vote</div>
                         <ol>
                             <li></li>
                             <li></li>

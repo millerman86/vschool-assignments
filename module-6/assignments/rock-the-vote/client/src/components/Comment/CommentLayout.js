@@ -31,6 +31,10 @@ const IssuesLayout = styled.div`
         font-weight: 700;
     }
 
+    .username-container {
+        margin-bottom: 10px;
+    }
+
     .comment-box {
         margin: 20px;
     }
@@ -206,6 +210,7 @@ export default function CommentLayout() {
                 setComments(prev => {
                     return [...prev, newComment]
                 })
+                setComment('')
             })
             .catch(err => {
                 console.log(err);
@@ -238,7 +243,7 @@ export default function CommentLayout() {
 
     const renderedComments = comments.map((comment, i) => {
         return (<div key={i} className="comment-container">
-                <div><span className="username">{comment.user.userName}</span></div>
+                    <div className="username-container"><span className="username">{comment.user.userName}</span></div>
                 {parse(comment.comment)}
             </div>)
     })
@@ -247,11 +252,8 @@ export default function CommentLayout() {
         <IssuesLayout>
             <div className="grid-parent">
                 <div className="first-column">
-                    <div className="comment">issue</div>
-                    <div>this is the add comment box</div>
-
                     {type === 'post' ? (<div className="post-type">
-                        <h1 className="issue-header">Issue</h1>
+                        <h1 className="issue-header">Title</h1>
                         <hr />
                         {parse(issueString)}
                         <h2>Description</h2>

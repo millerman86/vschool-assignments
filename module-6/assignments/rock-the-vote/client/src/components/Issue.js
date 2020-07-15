@@ -20,6 +20,7 @@ const StyledIssue = styled.div`
         position: relative;
         padding-bottom: 30px;
         border-radius: 5px;
+        padding: 20px;
     }
 
     .content span.vote-count {
@@ -81,6 +82,15 @@ const StyledIssue = styled.div`
 
     .description-container {
         margin: 20px 0;
+        padding: 0 10px;
+    }
+
+    .description {
+        margin: 0 10px;
+    }
+
+    .issue-text {
+        padding: 0 10px;
     }
 `
 
@@ -88,7 +98,7 @@ const StyledIssue = styled.div`
 export default function Issue(props) {
     const history = useHistory()
     
-    const { issue, description, _id, commentCount, voteCount } = props
+    const { issue, description, _id, commentCount, voteCount, imgUrl } = props
 
     let [voteCountState, setVoteCountState] = useState(voteCount)
 
@@ -122,13 +132,14 @@ export default function Issue(props) {
                 }} />
             </div>
             <div className="content">
-                <h1 className="issue">Title</h1>
-                <hr />
-                {parse(issue)}
-                <h2>Description</h2>
+               
+                <div className="issue-text">
+                    {parse(issue)}
+                </div>
+                <h2 className="description">Description</h2>
                 <hr />
                 <div className="description-container">
-                {parse(description)}
+                    {parse(description)}
                 </div>
 
                 <div className="tool-bar">
@@ -146,3 +157,23 @@ export default function Issue(props) {
         </StyledIssue>
     )
 }
+
+
+
+// {type === 'image' ? (<div className="image-container">
+// <a></a>
+// <div>
+//     <img src={issue.imgUrl} alt="issue-image" />
+// </div>
+// <div>
+//     {parse(description)}
+// </div>
+// </div>) : null}
+
+// {type === 'link' ? (<div>
+
+// </div>) : null} 
+
+// {type === 'poll' ? (<div>
+
+// </div>) : null}

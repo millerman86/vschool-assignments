@@ -6,7 +6,6 @@ import userAxios from '../../config/requestinterceptor'
 import parse from 'html-react-parser'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
-import '../quillstyles.css'
 
 
 const IssuesLayout = styled.div`
@@ -37,6 +36,10 @@ const IssuesLayout = styled.div`
 
     .comment-box {
         margin: 20px;
+    }
+
+    .image-container {
+        padding-top: 20px;
     }
 
     .image-container img {
@@ -86,6 +89,18 @@ const IssuesLayout = styled.div`
 
     .issue-header {
         text-align: center;
+    }
+
+    .issue-text {
+        padding: 0 10px;
+    }
+
+    .description {
+        padding: 0 10px;
+    }
+
+    .description-text {
+        padding: 0 10px;
     }
 
     @media only screen and (min-width: 768px) {
@@ -243,7 +258,9 @@ export default function CommentLayout() {
 
     const renderedComments = comments.map((comment, i) => {
         return (<div key={i} className="comment-container">
-                    <div className="username-container"><span className="username">{comment.user.userName}</span></div>
+                    <div className="username-container">
+                        <span className="username">{comment.user.userName}</span>
+                    </div>
                 {parse(comment.comment)}
             </div>)
     })
@@ -255,15 +272,25 @@ export default function CommentLayout() {
                     {type === 'post' ? (<div className="post-type">
                         <h1 className="issue-header">Title</h1>
                         <hr />
-                        {parse(issueString)}
-                        <h2>Description</h2>
+                        <div className="issue-text">
+                            {parse(issueString)}
+                        </div>
+                        <h2 className="description">Description</h2>
                         <hr />
-                        {parse(description)}
+                        <div className="description-text">
+                            {parse(description)}
+                        </div>
+                        
                     </div>) : null}
 
                     {type === 'image' ? (<div className="image-container">
                         <a></a>
-                        <img src="https://www.vhv.rs/file/max/33/330507_dogs-png.png" />
+                        <div>
+                            <img src={issue.imgUrl} alt="issue-image" />
+                        </div>
+                        <div>
+                            {parse(description)}
+                        </div>
                     </div>) : null}
 
                     {type === 'link' ? (<div>

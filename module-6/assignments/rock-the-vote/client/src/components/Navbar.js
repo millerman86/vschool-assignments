@@ -57,7 +57,7 @@ export default function Navbar(props) {
                         <a href="/profile">Profile</a>
                     </li>
                     <li onClick={logout}>
-                        <a href="#">logout</a>
+                        <a href="#">Logout</a>
                     </li>
                 </ul>
             </div>

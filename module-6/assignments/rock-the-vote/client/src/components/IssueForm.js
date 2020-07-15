@@ -5,7 +5,6 @@ import { FaFileImage, FaLink } from 'react-icons/fa'
 import isUrl from 'is-url'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
-import './quillstyles.css'
 
 
 const Styled = styled.div`

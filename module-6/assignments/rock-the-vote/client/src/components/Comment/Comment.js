@@ -1,5 +1,4 @@
 import React from 'react'
-import parse from 'html-react-parser'
 import styled from 'styled-components'
 import { FaArrowDown, FaCommentAlt } from 'react-icons/fa'
 import { useHistory } from 'react-router-dom'

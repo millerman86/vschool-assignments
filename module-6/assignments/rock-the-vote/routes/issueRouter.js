@@ -127,9 +127,17 @@ issueRouter.get('/user/upvote/:id', (req, res, next) => {
         }
 
 
+        console.log(user);
         // Only updates if it hasn't updated before
-        if (!user.upVotedIssues.includes(id)) {
+        if (!user.upVotedIssues.includes(id) && !user.downVotedIssues.includes(id)) {
             Issue.findByIdAndUpdate({_id: id}, {'$inc': {voteCount: 1}}, (err, issue) => {
+                if (err) {
+                    res.status(500)
+                    return next(err)
+                }
+            })
+        } else if (user.downVotedIssues.includes(id)) {
+            Issue.findByIdAndUpdate({_id: id}, {'$inc': {voteCount: 2}}, (err, issue) => {
                 if (err) {
                     res.status(500)
                     return next(err)
@@ -155,6 +163,8 @@ issueRouter.get('/user/upvote/:id', (req, res, next) => {
     })
 })
 
+
+
 // '/api/issue/downvote'
 issueRouter.get('/user/downvote/:id', (req, res, next) => {
     const { id } = req.params
@@ -163,9 +173,16 @@ issueRouter.get('/user/downvote/:id', (req, res, next) => {
             res.status(500)
             return next(err)
         }
-
-        if (!user.downVotedIssues.includes(id)) {
+        
+        if (!user.downVotedIssues.includes(id) && !user.upVotedIssues.includes(id)) {
             Issue.findByIdAndUpdate({_id: id}, {'$inc': {voteCount: -1}}, (err, issue) => {
+                if (err) {
+                    res.status(500)
+                    return next(err)
+                }
+            })
+        } else if (user.upVotedIssues.includes(id)) {
+            Issue.findByIdAndUpdate({_id: id}, {'$inc': {voteCount: -2}}, (err, issue) => {
                 if (err) {
                     res.status(500)
                     return next(err)
@@ -173,7 +190,7 @@ issueRouter.get('/user/downvote/:id', (req, res, next) => {
             })
         }
     })
-
+    
     User.findOne({_id: req.user._id}, (err, user) => {
         if (err) {
             res.status(500)
@@ -186,7 +203,7 @@ issueRouter.get('/user/downvote/:id', (req, res, next) => {
                 res.status(500)
                 return next(err)
             }
-
+            
             return res.status(201).send({user: user.withoutPassword(), issue})
         })
     })
@@ -200,7 +217,7 @@ issueRouter.get('/getcomments/:id', (req, res, next) => {
             return next(err)
         }
         return res.send({comments: comments})
-
+        
     })
 })
 

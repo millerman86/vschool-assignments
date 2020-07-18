@@ -1,7 +1,7 @@
 const express = require('express')
+const issueRouter = express.Router()
 const Issue = require('../models/issue')
 const Comment = require('../models/comment')
-const issueRouter = express.Router()
 const User = require('../models/user')
 
 
@@ -33,8 +33,8 @@ issueRouter.get('/', (req, res, next) => {
             createdArray.forEach(() => {
                 promiseArray.push(promise)
             })
-
         })
+        
         Promise.all(promiseArray)
             .then((values) => {
                 issues.forEach((issue, i) => {
@@ -126,8 +126,6 @@ issueRouter.get('/user/upvote/:id', (req, res, next) => {
             return next(err)
         }
 
-
-        console.log(user);
         // Only updates if it hasn't updated before
         if (!user.upVotedIssues.includes(id) && !user.downVotedIssues.includes(id)) {
             Issue.findByIdAndUpdate({_id: id}, {'$inc': {voteCount: 1}}, (err, issue) => {

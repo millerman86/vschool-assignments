@@ -270,12 +270,10 @@ export default function CommentLayout() {
             <div className="grid-parent">
                 <div className="first-column">
                     {type === 'post' ? (<div className="post-type">
-                        <h1 className="issue-header">Title</h1>
-                        <hr />
                         <div className="issue-text">
                             {parse(issueString)}
                         </div>
-                        <h2 className="description">Description</h2>
+                        <h2 className="description">Issue Description</h2>
                         <hr />
                         <div className="description-text">
                             {parse(description)}

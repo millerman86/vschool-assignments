@@ -5,7 +5,7 @@ import { FaMicrophone, FaFileImage, FaLink } from 'react-icons/fa'
 import IssueList from './IssueList'
 import styled from 'styled-components'
 import Background from './rockthevoteimage.jpeg'
-
+import amren from './amren.jpeg'
 
 
 
@@ -73,6 +73,7 @@ const IssuesLayout = styled.div`
             background: white;
             border-radius: 0 0 5px 5px;
             padding: 8px;
+            line-height: 1.5;
         }
 
         .profile-picture {
@@ -81,6 +82,12 @@ const IssuesLayout = styled.div`
             background: grey;
             margin-top: -60px;
             border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .profile-picture img {
+            width: 100%;
+            height: auto;
         }
     }
 `
@@ -159,8 +166,11 @@ export default function Public() {
                         <div className="profile-background">
                         </div>
                         <div className="profile-information-container">
-                            <div className="profile-picture" ></div>
-                            profile information
+                            <div className="profile-picture" >
+                                <img src={amren} />
+                            </div>
+                            My name is Amren Miller and this is one of my projects from Vschool. Feel free to post an issue on this 
+                            website or make a comment on someone else's issue. Your voice matters!
                         </div>
                     </div>                       
                 </div>

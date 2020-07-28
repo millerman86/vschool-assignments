@@ -162,6 +162,26 @@ const StyledForm = styled.form`
     .add-issue {
         margin: 10px 0;
     }
+
+    .link-inputs, 
+    .imgurl-inputs {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .link-inputs input {
+        margin-bottom: 10px;
+    }
+
+    .imgurl-inputs input {
+        margin-bottom: 10px;
+    }
+
+    .link-error, 
+    .imgurl-error {
+        color: red;
+        text-align: center;
+    }
 `
 
 
@@ -174,10 +194,10 @@ const initInputs = {
 
 
 const initErrorInputs = {
-    issue: "", 
-    description: "", 
-    imgUrl: false, 
-    link: false, 
+    issue: '', 
+    description: '', 
+    imgUrl: '', 
+    link: '', 
 }
 
 export default function IssueForm(props) {
@@ -201,40 +221,72 @@ export default function IssueForm(props) {
             [name]: value
         }))
 
-        if (name === 'imgUrl') {
-            if (isUrl(value)) {
-                setErrors(prevInputs => {
-                    return {[name]: true}
-                })
-            } else {
-                setErrors(prevInputs => {
-                    return {[name]: false}
-                })
-            }
-        }
+        setErrors(prevInputs => {
+            return {
+                initErrorInputs, 
 
-        if (name === 'link') {
-            if (isUrl(value)) {
-                setErrors(prevInputs => {
-                    return {
-                        ...prevInputs,
-                        [name]: true
-                    }
-                })
-            } else {
-                setErrors(prevInputs => {
-                    return {
-                        ...prevInputs,
-                        [name]: false
-                    }
-                })
             }
-        }
+        })
     }
 
     function handleSubmit(e) {
         e.preventDefault()
         if (type === 'image' && errors.image === false) return 
+
+        if (type === 'link' && inputs.link.length === 0) {
+            setErrors(prevInputs => {
+                return {
+                    ...prevInputs, 
+                    link: 'Field cannot be left blank'
+                }
+            })
+            return 
+        }
+
+        if (type === 'link' && !isUrl(inputs.link)) {
+            setErrors(prevInputs => {
+                return {
+                    ...prevInputs, 
+                    link: 'The value must be a valid URL'
+                }
+            })
+            return 
+        }
+
+        if (type === 'link' && isUrl(inputs.link) && inputs.link.length) {
+            setErrors(prevInputs => {
+                return {
+                    ...prevInputs, 
+                    link: ''
+                }
+            })
+        }
+
+        if (type === 'image' && inputs.imgUrl.length === 0) {
+            setErrors(prevInputs => {
+                return {
+                    ...prevInputs, 
+                    imgUrl: 'Field cannot be left blank'
+                }
+            })
+            return 
+        }
+        
+
+        if (type === 'image' && !isUrl(inputs.imgUrl)) {
+            setErrors(prevInputs => {
+                return {
+                    ...prevInputs, 
+                    imgUrl: 'The value must be a valid URL'
+                }
+            })
+            return 
+        }
+
+
+
+
+
         // if (type === 'link' && errors.link === false) return 
         if (!inputs.issue.length) return 
         let h1 = `<h1>${inputs.issue}</h1>`
@@ -307,12 +359,18 @@ export default function IssueForm(props) {
                     />
                 </Styled> : null}
                 {type === 'image' ? 
+                <div className="imgurl-inputs">
                     <input name="imgUrl" autoComplete="off" value={inputs.imgUrl} type="text" placeholder="Image URL" onChange={handleChange} />
+                    <div className="imgurl-error">{errors.imgUrl}</div>
+                </div>
                     : null
                 }
 
                 {type === 'link' ? 
+                (<div className="link-inputs">
                     <input name="link" autoComplete="off" value={inputs.link} type="text" placeholder="URL" onChange={handleChange} />
+                    <div className="link-error">{errors.link}</div>
+                </div>)
                     : null
                 }
 

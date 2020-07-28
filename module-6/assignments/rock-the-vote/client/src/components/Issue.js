@@ -92,13 +92,28 @@ const StyledIssue = styled.div`
     .issue-text {
         padding: 0 10px;
     }
+
+    .image-from-url {
+        width: 100%;
+        height: auto;
+    }
+
+    .link-url {
+        color: blue;
+    }
+
+    .link-url-container {
+        margin-bottom: 10px;
+    }
 `
 
 
 export default function Issue(props) {
     const history = useHistory()
     
-    const { issue, description, _id, commentCount, voteCount, imgUrl } = props
+    const { issue, description, _id, commentCount, voteCount, imgUrl, link, type } = props
+
+    console.log('here are your props', props);
 
     let [voteCountState, setVoteCountState] = useState(voteCount)
 
@@ -131,8 +146,7 @@ export default function Issue(props) {
                     }
                 }} />
             </div>
-            <div className="content">
-               
+            {type === 'post' ? (<div className="content">
                 <div className="issue-text">
                     {parse(issue)}
                 </div>
@@ -153,27 +167,49 @@ export default function Issue(props) {
                         {commentCount > 1 ? commentCount + " comments" : "0 comments"} 
                     </span>
                 </div>
-            </div>
+            </div>) : null}
+
+
+            {type === 'image' ? (<div className="content">
+                <div className="issue-text">
+                    {parse(issue)}
+                </div>
+                <img className="image-from-url" src={imgUrl} />
+                <div className="tool-bar">
+                    <FaCommentAlt />
+
+                    <span className="comments" onClick={() => {
+                            // I will only need the issue id to grab both the comments and the issue in question
+                            let issueId = _id
+                            history.push(`/comment/${issueId}`)
+                            }}>
+                        {commentCount > 1 ? commentCount + " comments" : "0 comments"} 
+                    </span>
+                </div>
+            </div>) : null}
+
+
+            {type === 'link' ? (<div className="content">
+                <div className="issue-text">
+                    {parse(issue)}
+                </div>
+                <div className="link-url-container">
+                    <span className="link-url">{link}</span>
+                </div>
+
+                <div className="tool-bar">
+                    <FaCommentAlt />
+
+                    <span className="comments" onClick={() => {
+                            // I will only need the issue id to grab both the comments and the issue in question
+                            let issueId = _id
+                            history.push(`/comment/${issueId}`)
+                            }}>
+                        {commentCount > 1 ? commentCount + " comments" : "0 comments"} 
+                    </span>
+                </div>
+            </div>) : null}
         </StyledIssue>
     )
 }
 
-
-
-// {type === 'image' ? (<div className="image-container">
-// <a></a>
-// <div>
-//     <img src={issue.imgUrl} alt="issue-image" />
-// </div>
-// <div>
-//     {parse(description)}
-// </div>
-// </div>) : null}
-
-// {type === 'link' ? (<div>
-
-// </div>) : null} 
-
-// {type === 'poll' ? (<div>
-
-// </div>) : null}

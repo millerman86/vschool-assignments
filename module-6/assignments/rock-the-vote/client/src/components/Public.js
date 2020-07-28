@@ -43,6 +43,22 @@ const IssuesLayout = styled.div`
         margin: 20px 0;
     }
 
+    .about-body {
+        line-height: 1.3;
+        padding-left: 5px;
+    }
+
+    .create-post-button {
+        cursor: pointer;
+        width: 90%;
+    }
+
+    .create-post-button-container {
+        display: flex;
+        justify-content: center;
+        margin: 10px;
+    }
+
     @media only screen and (min-width: 768px) {
         .grid-parent {
             width: 100%;
@@ -160,23 +176,20 @@ export default function Public() {
                 <div className="second-column">
                     <div className="about-rockthevote">
                         <div className="about-title">About Rock the Vote</div>
-                        <ol>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ol>
+                        <div className="about-body">
+                            This site was created for you to raise issues that matter in your country.
+                        </div>
+                        <div className="create-post-button-container">
+                            <button className="create-post-button" onClick={() => history.push('/submit')}>CREATE POST</button>
+                        </div>
                     </div>
                     <div className="site-info">
                         <div className="site-info-title">Site Rules for Rock the Vote</div>
                         <ol>
-                            <li></li>
-                            <li></li>
-                            <li></li>
+                            <li>No Profanity</li>
+                            <li>Be nice</li>
+                            <li>Speak your mind</li>
                         </ol>
-                    </div>
-                    <div className="various-links">
-                       various links
-
                     </div>
                 </div>
             </div>

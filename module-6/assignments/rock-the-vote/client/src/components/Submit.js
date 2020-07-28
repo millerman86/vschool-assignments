@@ -68,9 +68,9 @@ export default function Submit() {
                     <div className="rules-for-posting">
                     <p>Rules Posting to Rock The Vote</p>
                         <ol>
-                            <li></li>
-                            <li></li>
-                            <li></li>
+                        <li>No Profanity</li>
+                            <li>Be nice</li>
+                            <li>Speak your mind</li>
                         </ol>
                     </div>
                 </div>

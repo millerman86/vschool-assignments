@@ -143,9 +143,9 @@ export default function Public() {
             })
     }, [])
 
-    const sortedIssues = issues.sort((a, b) => {
-        return b.voteCount - a.voteCount
-    })
+    // const sortedIssues = issues.sort((a, b) => {
+    //     return b.voteCount - a.voteCount
+    // })
 
     return (
         <IssuesLayout>
@@ -166,7 +166,7 @@ export default function Public() {
 
                         </CreateNewIssueDiv>
                        
-                        <IssueList issues={sortedIssues} />
+                        <IssueList issues={issues} />
                     </div>
                     ) 
                     : <Redirect push to="/submit" />

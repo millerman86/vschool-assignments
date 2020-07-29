@@ -41,6 +41,24 @@ app.listen(9000, () => {
     console.log('Server is running on local port 9000')
 })
 
+//////
+
+// // ... other imports 
+// const path = require("path")
+
+// // ... other app.use middleware 
+// app.use(express.static(path.join(__dirname, "client", "build")))
+
+// // ...
+// // Right before your app.listen(), add this:
+// app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+// });
+
+
+//////
+
+
 
 
 // BASIC USAGE FOR JWT

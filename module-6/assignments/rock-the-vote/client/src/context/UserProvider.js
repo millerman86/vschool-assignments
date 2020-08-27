@@ -80,6 +80,7 @@ export default function UserProvider(props) {
     if (!localStorage.getItem('token')) return
     userAxios.get('/api/issue/user')
       .then(res => {
+        console.log('here is init', res.data);
         setUserState(prevState => ({
           ...prevState, 
           issues: [...res.data]
@@ -94,6 +95,7 @@ export default function UserProvider(props) {
 
   useEffect(() => {
     getUserIssues()
+    console.log(userState.issues.length, 'issueslength');
   }, [])
 
   return (

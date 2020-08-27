@@ -143,9 +143,9 @@ export default function Public() {
             })
     }, [])
 
-    // const sortedIssues = issues.sort((a, b) => {
-    //     return b.voteCount - a.voteCount
-    // })
+    const sortedIssues = issues.sort((a, b) => {
+        return b.voteCount - a.voteCount
+    })
 
     return (
         <IssuesLayout>

@@ -55,11 +55,16 @@ Requirements for MVP - Demo User Logins (4), Admin, Project Manager, Developer, 
 ![](readmeimages/demo-user-logins.png)
 ![](readmeimages/dashboard-splash.png)
 ![](readmeimages/manage-user-roles.png)
+![](readmeimages/create-new-project.png)
+![](readmeimages/project-details.png)
+![](readmeimages/ticket-details.png)
+![](readmeimages/ticket-history-and-attachment.png)
+![](readmeimages/edit-ticket.png)
++Showing [number] out of [number] files
+Submit for new roles
 
+Search for Users
 
 Roles - Admin
 
 Bug Tracker Ideas - Project, (Collection of Tickets, tickets are the issues, or defects, or feature requests inside the project)
-
-
-

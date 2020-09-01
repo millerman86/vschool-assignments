@@ -1,3 +1,5 @@
+# First Full-Stack Application
+
 ![](readmeimages/Learn-Javascript-1.jpg)
 
 This is the last self-directed, larger-scale, full-stack application that you'll build in this course. Up to this point you've learned and practiced everything you need to know in order to build beautiful, data-driven web applications that can provide a real benefit to users. This will be a chance for you to continue to refine your skills, and possibly build something you could turn into a helpful tool for your friends and family, or possibly even a profitable business!
@@ -45,12 +47,13 @@ Successful completion of this project passes off the following milestones of the
 * HTTP/APIs - Level 4,
 * Databases - Levels 3 & 4
 
-
 Bug Tracker - I am building this project for myself and for others. It will be used to track my progress and also be able to 
 
 MVP - 
 
 Requirements for MVP - Demo User Logins (4), Admin, Project Manager, Developer, Submitter, (with Have an Account? Sign in) below
+
+Suggested Routes: login, dashboard, manageuserroles, newproject, projectdetails, ticketdetails, tickethistory
 
 ![](readmeimages/demo-user-logins.png)
 ![](readmeimages/dashboard-splash.png)
@@ -59,8 +62,12 @@ Requirements for MVP - Demo User Logins (4), Admin, Project Manager, Developer, 
 ![](readmeimages/project-details.png)
 ![](readmeimages/ticket-details.png)
 ![](readmeimages/ticket-history-and-attachment.png)
-![](readmeimages/edit-ticket.png)
 +Showing [number] out of [number] files
+![](readmeimages/edit-ticket.png)j
+![](readmeimages/your-tickets.png)
++Showing [number] to [number] of entries (filtered from 10 total entries)
+Show all tickets in system if you are an admin. If you are a developer, you would see the tickets just assigned to yourself. If you are a project manager, you are shown all the tickets on a project that you are assigned to.
+Ticket Status - New / Open / Resolved / Additional Info Required
 Submit for new roles
 
 Search for Users

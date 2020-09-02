@@ -63,7 +63,7 @@ Suggested Routes: login, dashboard, manageuserroles, newproject, projectdetails,
 ![](readmeimages/ticket-details.png)
 ![](readmeimages/ticket-history-and-attachment.png)
 +Showing [number] out of [number] files
-![](readmeimages/edit-ticket.png)j
+![](readmeimages/edit-ticket.png)
 ![](readmeimages/your-tickets.png)
 +Showing [number] to [number] of entries (filtered from 10 total entries)
 Show all tickets in system if you are an admin. If you are a developer, you would see the tickets just assigned to yourself. If you are a project manager, you are shown all the tickets on a project that you are assigned to.

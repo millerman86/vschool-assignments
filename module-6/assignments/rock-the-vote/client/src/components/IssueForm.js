@@ -284,9 +284,6 @@ export default function IssueForm(props) {
         }
 
 
-
-
-
         // if (type === 'link' && errors.link === false) return 
         if (!inputs.issue.length) return 
         let h1 = `<h1>${inputs.issue}</h1>`
@@ -294,11 +291,24 @@ export default function IssueForm(props) {
             ...inputs, 
             type: type,
             issue: h1
+            return {
+                ...prevInputs, 
+                imgUrl: 'Field cannot be left blank'
+            }
         })
-        setInputs(initInputs)
+        return 
     }
+    
 
-    function removeBorder() {
+    if (type === 'image' && !isUrl(inputs.imgUrl)) {
+        setErrors(prevInputs => {
+            return {
+                ...prevInputs, 
+                imgUrl: 'The value must be a valid URL'
+            }
+        })
+        return 
+    }
         document.querySelector('.quill').style.border = '1px solid lightgray'
     } 
 

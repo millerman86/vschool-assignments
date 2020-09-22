@@ -67,18 +67,12 @@ const AuthContainer = styled.div`
     padding: 0 20px;
   }
 
-  .grid2x2 > div {
-    display: flex; 
-    flex-basis: calc(50%);  
-    justify-content: center;
-    flex-direction: column;
-    border: 1px solid white;
+  .grid2x2 .user-container {
+    flex-basis: 50%;  
     box-sizing: border-box;
-  }
-
-  .user-container {
-      display: flex;
-      align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .fa-user {

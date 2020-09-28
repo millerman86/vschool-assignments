@@ -41,6 +41,9 @@ app.listen(9000, () => {
     console.log('Server is running on local port 9000')
 })
 
+
+
+
 //////
 
 // // ... other imports 
@@ -57,9 +60,6 @@ app.listen(9000, () => {
 
 
 //////
-
-
-
 
 // BASIC USAGE FOR JWT
 // Basic usage using an HS256 secret:

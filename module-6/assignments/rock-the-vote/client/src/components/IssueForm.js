@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
+import { FaMicrophone } from 'react-icons/fa'
 import styled from 'styled-components'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+import './quillstyles.css'
 import { useParams } from 'react-router-dom'
 import { FaFileImage, FaLink } from 'react-icons/fa'
 import isUrl from 'is-url'
-import ReactQuill from 'react-quill'
-import 'react-quill/dist/quill.snow.css'
 
+
+let border = 'lightgray'
 
 const Styled = styled.div`
 body {
@@ -99,7 +103,7 @@ const StyledForm = styled.form`
 
     .type-of-submission {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
         padding-bottom: 10px;
     }
 
@@ -158,30 +162,6 @@ const StyledForm = styled.form`
     .type-container span {
         margin-left: 5px;
     }
-
-    .add-issue {
-        margin: 10px 0;
-    }
-
-    .link-inputs, 
-    .imgurl-inputs {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .link-inputs input {
-        margin-bottom: 10px;
-    }
-
-    .imgurl-inputs input {
-        margin-bottom: 10px;
-    }
-
-    .link-error, 
-    .imgurl-error {
-        color: red;
-        text-align: center;
-    }
 `
 
 
@@ -194,14 +174,15 @@ const initInputs = {
 
 
 const initErrorInputs = {
-    issue: '', 
-    description: '', 
-    imgUrl: '', 
-    link: '', 
+    issue: "", 
+    description: "", 
+    imgUrl: false, 
+    link: false, 
 }
 
 export default function IssueForm(props) {
     const [inputs, setInputs] = useState(initInputs)
+    const { issue, description, imgUrl } = inputs
     const { addIssue } = props 
     const params = useParams()
 
@@ -214,6 +195,8 @@ export default function IssueForm(props) {
         type = "post"
     }
 
+    let [postType, setPostType] = useState(type)
+
     function handleChange(e) {
         const {name, value} = e.target 
         setInputs(prevInputs => ({
@@ -221,94 +204,55 @@ export default function IssueForm(props) {
             [name]: value
         }))
 
-        setErrors(prevInputs => {
-            return {
-                initErrorInputs, 
-
+        if (name === 'imgUrl') {
+            if (isUrl(value)) {
+                setErrors(prevInputs => {
+                    return {[name]: true}
+                })
+            } else {
+                setErrors(prevInputs => {
+                    return {[name]: false}
+                })
             }
-        })
+        }
+
+        if (name === 'link') {
+            if (isUrl(value)) {
+                setErrors(prevInputs => {
+                    return {
+                        ...prevInputs,
+                        [name]: true
+                    }
+                })
+            } else {
+                setErrors(prevInputs => {
+                    return {
+                        ...prevInputs,
+                        [name]: false
+                    }
+                })
+            }
+            console.log(errors)
+        }
+
     }
 
     function handleSubmit(e) {
         e.preventDefault()
         if (type === 'image' && errors.image === false) return 
-
-        if (type === 'link' && inputs.link.length === 0) {
-            setErrors(prevInputs => {
-                return {
-                    ...prevInputs, 
-                    link: 'Field cannot be left blank'
-                }
-            })
-            return 
-        }
-
-        if (type === 'link' && !isUrl(inputs.link)) {
-            setErrors(prevInputs => {
-                return {
-                    ...prevInputs, 
-                    link: 'The value must be a valid URL'
-                }
-            })
-            return 
-        }
-
-        if (type === 'link' && isUrl(inputs.link) && inputs.link.length) {
-            setErrors(prevInputs => {
-                return {
-                    ...prevInputs, 
-                    link: ''
-                }
-            })
-        }
-
-        if (type === 'image' && inputs.imgUrl.length === 0) {
-            setErrors(prevInputs => {
-                return {
-                    ...prevInputs, 
-                    imgUrl: 'Field cannot be left blank'
-                }
-            })
-            return 
-        }
-        
-
-        if (type === 'image' && !isUrl(inputs.imgUrl)) {
-            setErrors(prevInputs => {
-                return {
-                    ...prevInputs, 
-                    imgUrl: 'The value must be a valid URL'
-                }
-            })
-            return 
-        }
-
-
-        // if (type === 'link' && errors.link === false) return 
+        if (type === 'link' && errors.link === false) return 
         if (!inputs.issue.length) return 
         let h1 = `<h1>${inputs.issue}</h1>`
+        
+        console.log(inputs);
         addIssue({
             ...inputs, 
-            type: type,
             issue: h1
-            return {
-                ...prevInputs, 
-                imgUrl: 'Field cannot be left blank'
-            }
         })
-        return 
+        setInputs(initInputs)
     }
-    
 
-    if (type === 'image' && !isUrl(inputs.imgUrl)) {
-        setErrors(prevInputs => {
-            return {
-                ...prevInputs, 
-                imgUrl: 'The value must be a valid URL'
-            }
-        })
-        return 
-    }
+    function removeBorder() {
         document.querySelector('.quill').style.border = '1px solid lightgray'
     } 
 
@@ -327,20 +271,23 @@ export default function IssueForm(props) {
     return (
         <StyledForm onSubmit={handleSubmit}>
             <div className="type-of-submission">
-                <div className={`type ${type === 'post' ? "selected" : ""}`} onClick={() => window.location.replace('/submit/post')}>
+                <div className={`type ${postType === 'post' ? "selected" : ""}`} onClick={() => window.location.replace('/submit/post')}>
                     <div>Post</div>
                 </div>
-                <div className={`type ${type === 'image' ? "selected" : ""}`} onClick={() => window.location.replace('/submit/image')}>
+                <div className={`type ${postType === 'image' ? "selected" : ""}`} onClick={() => window.location.replace('/submit/image')}>
                     <div className="type-container">
                         <FaFileImage />
                         <span>Image</span>
                     </div>  
                 </div>
-                <div className={`type ${type === 'link' ? "selected" : ""}`} onClick={() => window.location.replace('/submit/link')}>
+                <div className={`type ${postType === 'link' ? "selected" : ""}`} onClick={() => window.location.replace('/submit/link')}>
                     <div className="type-container">
                         <FaLink />
                         <span>Link</span>
                     </div>  
+                </div>
+                <div className={`type ${postType === 'poll' ? "selected" : ""}`} onClick={() => window.location.replace('/submit/poll')}>
+                    <div>Poll</div>
                 </div>
             </div>
                 
@@ -349,13 +296,12 @@ export default function IssueForm(props) {
                     name="issue"
                     className="input-title"
                     type="text"
-                    autoComplete="off"
                     placeholder="Title Your Issue"
                     onChange={handleChange}
                     value={inputs.issue}
                 />
 
-                {type === 'post' ? 
+                {postType === 'post' ? 
                 <Styled>
                     <ReactQuill 
                         onFocus={addBorder}
@@ -368,23 +314,17 @@ export default function IssueForm(props) {
                         formats={IssueForm.formats}
                     />
                 </Styled> : null}
-                {type === 'image' ? 
-                <div className="imgurl-inputs">
-                    <input name="imgUrl" autoComplete="off" value={inputs.imgUrl} type="text" placeholder="Image URL" onChange={handleChange} />
-                    <div className="imgurl-error">{errors.imgUrl}</div>
-                </div>
+                {postType === 'image' ? 
+                    <input name="imgUrl" value={inputs.imgUrl} type="text" placeholder="Image URL" onChange={handleChange} />
                     : null
                 }
 
-                {type === 'link' ? 
-                (<div className="link-inputs">
-                    <input name="link" autoComplete="off" value={inputs.link} type="text" placeholder="URL" onChange={handleChange} />
-                    <div className="link-error">{errors.link}</div>
-                </div>)
+                {postType === 'link' ? 
+                    <input name="link" value={inputs.link} type="text" placeholder="URL" onChange={handleChange} />
                     : null
                 }
 
-                <button className="add-issue">Add Issue</button>
+                <button>Add Issue</button>
             </div>
         </StyledForm>
     )
@@ -416,5 +356,6 @@ IssueForm.modules = {
     'list', 'bullet', 'indent',
     'link', 'image', 'video'
   ]
+
 
 

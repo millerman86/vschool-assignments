@@ -1,0 +1,32 @@
+@use 'sass:color';
+@use 'partial';
+@import 'globalcss', 'global2css';
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+:root {}
+
+body {}
+
+html {}
+
+.App {}
+
+.button {
+    $primary-color: #6b717f;
+    color: $primary-color;
+    border: 1px solid color.scale($primary-color, $lightness: 20%);
+}
+
+ul, ol {
+    text-align: left;
+    color: $-test;
+    background: $another-test;
+
+    &, & {
+        
+    }
+}
+// https://sass-lang.com/documentation/modules

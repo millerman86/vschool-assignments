@@ -1,0 +1,20 @@
+.blah {
+  color: green;
+  background: yellow;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.App {
+  background-color: blue;
+}
+
+.button {
+  color: #6b717f;
+  background: purple;
+  border: 1px solid #878d9a;
+}
+
+/*# sourceMappingURL=stylesoutput.css.map */

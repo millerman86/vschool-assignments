@@ -1,23 +1,11 @@
-import React, { useContext } from 'react';
-import { UserContext } from "./context/UserProvider";
+import React from 'react'
 import './App.css';
-import {
-  Route, Switch, Redirect
-} from 'react-router-dom'
-import Auth from './components/Auth'
+import axios from 'axios'
 
 function App() {
-  const {token, logout} = useContext(UserContext)
-
   return (
     <div>
-      <Switch>
-        <Route 
-          exact path="/" 
-          component={Auth} 
-          render={() => (token ? <Redirect to="/profiledashboard" /> : <Auth />)}
-        />
-      </Switch>
+      Hello World!
     </div>
   );
 }

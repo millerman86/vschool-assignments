@@ -18,6 +18,11 @@ function determineIfDisplayNoItems() {
     if (document.getElementById('list').querySelectorAll('li').length === 0) {
         document.querySelector('#list-header').innerHTML = 'You have no items'
     }
+
+    if (document.getElementById('list').querySelectorAll('li').length > 0) {
+        document.querySelector('#list-header').innerHTML = 'You have things to do.'
+
+    }
 }
 
 function submitNewListItem(event) {
@@ -32,6 +37,7 @@ function submitNewListItem(event) {
     </li>`);
 
     listIndexingFunction();
+    determineIfDisplayNoItems()
 }
 
 

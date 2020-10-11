@@ -2,14 +2,24 @@ import React, { useState, useContext } from "react";
 import { UserContext } from "../context/UserProvider";
 import AuthForm from './AuthForm'
 import styled from 'styled-components'
-
+import Background from './rockthevoteimage.jpeg'
 const initInputs = {username: "", password: ""}
 
 
 
 
 const AuthContainer = styled.div`
-  background: blue;
+  background: #DAE0E6;
+  min-height: 100vh;
+  background-image: url("${Background}");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -23,10 +33,18 @@ const AuthContainer = styled.div`
 
   .form-container {
     background: white;
+    width: 90%;
+    margin: auto;
+    padding: 80px 0;
   }
   
   p {
     text-align: center;
+  }
+
+  .member-no-member {
+    text-align: center;
+    padding: 20px 0;
   }
 `
 
@@ -68,7 +86,9 @@ export default () => {
               inputs={inputs}
               btnText="Sign up"
             />
-            <p onClick={() => setToggle(prev => !prev)}>Already a member?</p>
+            <div className="member-no-member">
+              <span onClick={() => setToggle(prev => !prev)}>Already a member?</span>
+            </div>
           </>
           : 
             <> 
@@ -78,7 +98,9 @@ export default () => {
                 inputs={inputs}
                 btnText="Login"
               />
-              <p onClick={() => setToggle(prev => !prev)}>Not a member?</p>
+              <div className="member-no-member">
+                <span onClick={() => setToggle(prev => !prev)}>Not a member?</span>
+              </div>
             </>
         }
       </div>

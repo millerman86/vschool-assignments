@@ -2,26 +2,21 @@ body {
   padding: 0;
   margin: 0;
   font-size: 14pt;
-  font-family: sans-serif;
-}
+  font-family: sans-serif; }
 
 h1, h2, h3, h4, h5, h6, p {
   margin: 0;
-  padding: 0;
-}
+  padding: 0; }
 
 a {
   color: inherit;
-  text-decoration: none;
-}
+  text-decoration: none; }
 
 p, span {
-  line-height: 1.2em;
-}
+  line-height: 1.2em; }
 
 .container {
-  padding: 20px;
-}
+  padding: 20px; }
 
 .masthead {
   background: rgba(0, 0, 0, 0.8);
@@ -29,50 +24,40 @@ p, span {
   padding-top: 5pt;
   padding-bottom: 5px;
   display: flex;
-  justify-content: center;
-}
+  justify-content: center; }
 
 .masthead .home {
   border: 1px solid white;
   margin-left: none;
   border: 1px solid white;
-  border-radius: 2px;
-}
+  border-radius: 2px; }
 
 .masthead a {
-  color: white;
-}
+  color: white; }
 
 .full-name {
-  margin-top: 20px;
-}
+  margin-top: 20px; }
 
 .full-name a {
-  color: #3d7e9a;
-}
+  color: #3d7e9a; }
 
 .project-description {
-  font-weight: 600;
-}
+  font-weight: 600; }
 
 .resume-png-container {
-  display: flex;
-}
+  display: flex; }
 
 .resume-png-container img {
   width: 60%;
   margin: auto;
-  box-shadow: 0 8px 6px -6px;
-}
+  box-shadow: 0 8px 6px -6px; }
 
 .resume-link {
   display: none;
-  color: #3d7e9a;
-}
+  color: #3d7e9a; }
 
 .personal-highlights {
-  padding: 15px;
-}
+  padding: 15px; }
 
 .read-more {
   position: absolute;
@@ -83,12 +68,10 @@ p, span {
   width: 100%;
   text-align: center;
   margin: 0;
-  padding: 30px 0;
-}
+  padding: 30px 0; }
 
 .href-resume-wrapper {
-  text-align: center;
-}
+  text-align: center; }
 
 ul.menu {
   flex-wrap: wrap;
@@ -96,29 +79,23 @@ ul.menu {
   display: flex;
   padding: 0;
   list-style-type: none;
-  margin: 0 10px;
-}
-ul.menu li {
-  display: flex;
-  align-items: center;
-  padding: 4px;
-  margin-left: 10px;
-}
-ul.menu li a {
-  padding-left: 12px;
-  color: white;
-  text-decoration: none;
-}
-ul.menu li.home {
-  padding: 10px;
-}
-ul.menu li a:first-child {
-  padding-left: unset;
-}
+  margin: 0 10px; }
+  ul.menu li {
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    margin-left: 10px; }
+  ul.menu li a {
+    padding-left: 12px;
+    color: white;
+    text-decoration: none; }
+  ul.menu li.home {
+    padding: 10px; }
+  ul.menu li a:first-child {
+    padding-left: unset; }
 
 ul.menu li {
-  position: relative;
-}
+  position: relative; }
 
 ul.menu ul {
   display: none;
@@ -128,145 +105,121 @@ ul.menu ul {
   z-index: 100;
   margin: 0;
   padding: 0;
-  border-top: none;
-}
+  border-top: none; }
 
 ul.portfolio li a {
   font-size: 20px;
   padding: 10px;
-  text-align: left;
-}
+  text-align: left; }
 
 ul.portfolio {
   background: white;
   top: 100%;
-  right: 0;
-}
+  right: 0; }
 
 ul.menu ul a {
-  color: black;
-}
+  color: black; }
 
 ul.menu li:hover ul {
-  display: block;
-}
+  display: block; }
 
 .project-grid-item {
   display: flex;
-  align-items: center;
-}
+  align-items: center; }
 
 .project-grid-item div {
   width: 100%;
-  flex: 1;
-}
+  flex: 1; }
 
 .project-info-container {
   display: flex;
   flex-direction: column;
-  padding-right: 20px;
-}
+  padding-right: 20px; }
 
 .project-info-container h3 {
   font-size: 24px;
   font-weight: 500;
-  line-height: 32px;
-}
+  line-height: 32px; }
 
 .project-info-container a,
 .project-info-container h3 {
-  margin-bottom: 4px;
-}
+  margin-bottom: 4px; }
 
 .showcase-header {
-  font-weight: 800;
-}
+  font-weight: 800; }
 
 .showcase-wrapper {
   display: flex;
-  justify-content: center;
-}
+  justify-content: center; }
 
 .portfolio-main {
-  display: flex;
-}
+  display: flex; }
 
 .portfolio-main .first-column {
   position: relative;
   flex: 1;
-  padding: 15px;
-}
+  padding: 15px; }
 
 .portfolio-main .second-column {
   position: relative;
   flex: 2;
   background: url(nuskin_building_netcoo.jpg);
   background-size: contain;
-  background-repeat: no-repeat;
-}
+  background-repeat: no-repeat; }
 
 .first-column .download-nuskin-example {
   position: absolute;
-  bottom: 0;
-}
+  bottom: 0; }
 
 #portfolio-body .left-hand-column {
-  grid-column: 1/span 3;
-  grid-row: 1/-1;
+  grid-column: 1 / span 3;
+  grid-row: 1 / -1;
   overflow: hidden;
-  position: relative;
-}
+  position: relative; }
 
 .flex {
-  display: flex;
-}
+  display: flex; }
 
 .project-image-container {
   display: flex;
-  justify-content: center;
-}
+  justify-content: center; }
 
 .project-image-container .project-image {
   max-width: 100%;
-  height: auto;
-}
+  height: auto; }
 
 section#header-section {
   position: relative;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 0 50px;
-}
+  padding: 0 50px; }
 section#header-section h1 {
   text-align: center;
-  font-size: 8vw;
-}
+  font-size: 8vw; }
 section#header-section h4 {
   display: flex;
-  justify-content: center;
-}
+  justify-content: center; }
 section#header-section a {
-  text-decoration: none;
-}
+  text-decoration: none; }
 section#portfolio-body {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 200px 200px 200px;
-}
+  grid-template-rows: 200px 200px 200px; }
 section#portfolio-body .portfolio-main {
-  grid-row: 1/3;
-  grid-column: 4/13;
-}
+  grid-row: 1 / 3;
+  grid-column: 4 / 13; }
 section#portfolio-showcase {
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 10px;
-}
+  grid-gap: 10px; }
 section#footer-section {
   background: #000000;
-  padding: 0 20px;
-}
+  padding: 0 20px; }
+section#nuskin img {
+  width: 100%;
+  height: auto;
+  opacity: .7; }
 
 footer {
   position: fixed;
@@ -278,27 +231,21 @@ footer {
   background: #2c292f;
   color: #fff;
   align-items: center;
-  text-align: center;
-}
+  text-align: center; }
 
 footer a {
   color: inherit;
-  text-decoration: none;
-}
+  text-decoration: none; }
 
 main {
-  padding-bottom: 300px;
-}
+  padding-bottom: 300px; }
 
 @media only screen and (max-height: 800px) {
   footer {
-    position: static;
-  }
+    position: static; }
 
   main {
-    padding-bottom: 0;
-  }
-}
+    padding-bottom: 0; } }
 @media only screen and (min-width: 768px) {
   .resume-link {
     display: block;
@@ -306,8 +253,7 @@ main {
     top: 0;
     position: absolute;
     width: 300px;
-    color: #3d7e9a;
-  }
+    color: #3d7e9a; }
 
   .resume-png-container {
     display: block;
@@ -316,21 +262,17 @@ main {
     width: 300px;
     overflow: hidden;
     height: 365px;
-    box-shadow: 0 8px 6px -6px;
-  }
+    box-shadow: 0 8px 6px -6px; }
 
   .resume-png-container img {
     box-shadow: unset;
-    width: 100%;
-  }
+    width: 100%; }
 
   ul.menu {
-    margin-left: auto;
-  }
+    margin-left: auto; }
 
   .project-grid-item {
-    flex-direction: column-reverse;
-  }
+    flex-direction: column-reverse; }
 
   footer {
     left: 0;
@@ -339,31 +281,24 @@ main {
     grid-template-columns: 1fr 1fr 1fr;
     text-align: left;
     padding-left: 100px;
-    padding-right: 100px;
-  }
+    padding-right: 100px; }
 
   section#header-section h4 {
     display: flex;
-    justify-content: flex-start;
-  }
+    justify-content: flex-start; }
   section#header-section {
     padding-top: 20px;
-    display: block;
-  }
+    display: block; }
   section#header-section .full-name {
     position: absolute;
     display: inline;
     transform: translateY(-50%);
-    top: 50%;
-  }
+    top: 50%; }
   section#header-section h1, section#header-section h2 {
-    font-size: 5.9vw;
-  }
+    font-size: 5.9vw; }
   section#portfolio-showcase {
     grid-template-columns: repeat(3, 1fr);
     max-width: 900px;
-    grid-gap: 40px;
-  }
-}
+    grid-gap: 40px; } }
 
 /*# sourceMappingURL=styles.css.map */

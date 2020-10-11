@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  /* background-image: linear-gradient(120deg, #e6b924, #a13416); */
+  background-color: black;
+  color: white;
+  min-height: 100vh;
+}
+
+header {
+  font-size: 1.2rem;
+}
+header,
+form {
+  min-height: 10vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form input,
+form button {
+  padding: 0.5rem;
+  font-size: 2rem;
+  border: none;
+  background: white;
+}
+
+form button {
+  color: #a13416;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+form button:hover {
+  background: #a13416;
+  color: white;
+  outline: none;
+}
+
+.todo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* ul */
+#todo-list {
+  list-style: none;
+  min-width: 30%;
+}
+/* todo */
+.todo {
+  margin: 0.5rem;
+  background: white;
+  color: black;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+/* align 2 buttons next to each other */
+.todo li {
+  flex: 1;
+}
+
+.todo-item {
+  padding: 0rem 0.5rem;
+}
+
+/* delete, complete, edit, save buttons*/
+.delete-btn,
+.completed-btn,
+.edit-btn,
+.save-btn {
+  background: brown;
+  color: white;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.completed-btn {
+  background: green;
+}
+.edit-btn {
+  background: white;
+  color: black;
+}
+.save-btn {
+  background: white;
+  color: black;
+}
+
+/* now clicking on fa icons wont effect me*/
+.fa-trash,
+.fa-check,
+.fa-edit .fa-save {
+  pointer-events: none;
+}
+
+/* COMPLETED EFFECTS AND STYLING */
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+/* fall animation */
+.fall {
+  transform: translateY(8rem) rotateZ(20deg);
+  opacity: 0;
+}

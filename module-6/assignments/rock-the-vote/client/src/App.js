@@ -1,12 +1,10 @@
 import React, { useContext } from "react";
 import "./App.css";
 import {
-  BrowserRouter as Router,
   Route,
   Switch,
   Redirect,
 } from "react-router-dom";
-import authService from "./services/authService";
 import Auth from "./components/Auth";
 import { UserContext } from "./context/UserProvider";
 import ProtectedRoute from './components/ProtectedRoute';
@@ -14,11 +12,13 @@ import Profile from './components/Profile'
 import Public from './components/Public'
 import PoliticalIssues from './components/PoliticalIssues'
 import Navbar from './components/Navbar'
+import Submit from './components/Submit'
+import CommentLayout from './components/Comment/CommentLayout'
 
 function App() {
   const { token, logout } = useContext(UserContext);
   return (
-    <Router>
+    <div>
       {token ? (<Navbar logout={logout} />) : null}
       <Switch>
 
@@ -27,9 +27,37 @@ function App() {
           component={Auth} 
           render={() => (token ? <Redirect to="/profile" /> : <Auth />)}
         />
+        <Route 
+          path='/politicalissues'
+          component={PoliticalIssues}
+        />
         <ProtectedRoute 
           path='/profile'
           component={Profile}
+          redirectTo="/"
+          token={token}
+        />
+        <ProtectedRoute 
+          exact path='/submit'
+          component={Submit}
+          redirectTo="/"
+          token={token}
+        />
+        <ProtectedRoute 
+          path='/submit/:extension'
+          component={Submit}
+          redirectTo="/"
+          token={token}
+        />
+        <ProtectedRoute 
+          exact path='/comment'
+          component={CommentLayout}
+          redirectTo="/"
+          token={token}
+        />
+        <ProtectedRoute 
+          path='/comment/:issueId'
+          component={CommentLayout}
           redirectTo="/"
           token={token}
         />
@@ -47,12 +75,8 @@ function App() {
         />
         
       </Switch>
-    </Router>
+    </div>
   );
 }
 
 export default App;
-
-// profile = show your own issues and your stats and add more issues
-// public =
-// 

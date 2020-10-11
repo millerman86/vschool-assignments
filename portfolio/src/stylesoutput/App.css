@@ -1,0 +1,20 @@
+.App {
+  background: grey;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.button {
+  color: #6b717f;
+  border: 1px solid #878d9a;
+}
+
+ul, ol {
+  text-align: left;
+  color: yellow;
+  background: blue;
+}
+
+/*# sourceMappingURL=App.css.map */

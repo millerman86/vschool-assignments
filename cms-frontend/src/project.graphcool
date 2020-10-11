@@ -1,0 +1,50 @@
+# project: blitz
+# version: 19
+
+type Address implements Node {
+  city: String
+  country: String
+  createdAt: DateTime!
+  id: ID! @isUnique
+  stateProvince: String
+  updatedAt: DateTime!
+}
+
+type Communication implements Node {
+  content: String
+  createdAt: DateTime!
+  id: ID! @isUnique
+  toAddress: String
+  type: String
+  updatedAt: DateTime!
+}
+
+type Customer implements Node {
+  createdAt: DateTime!
+  email: String
+  fax: String
+  groups: [String!]
+  id: ID! @isUnique
+  imageUrl: String
+  name: String
+  schedules: [Json!]
+  sentInvoices: [Json!]
+  updatedAt: DateTime!
+}
+
+type File implements Node {
+  contentType: String!
+  createdAt: DateTime!
+  id: ID! @isUnique
+  name: String!
+  secret: String! @isUnique
+  size: Int!
+  updatedAt: DateTime!
+  url: String! @isUnique
+}
+
+type User implements Node {
+  createdAt: DateTime!
+  id: ID! @isUnique
+  updatedAt: DateTime!
+}

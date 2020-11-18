@@ -8,7 +8,7 @@ invalid, so you can add your custom logic to manage unauthorized access as follo
 const expressjwt = require('express-jwt')
 const cors = require('cors')
 
-
+let amren = 'amren'
 app.use(cors())
 app.use(express.json())
 app.use(morgan('dev'))
@@ -41,6 +41,7 @@ app.listen(9000, () => {
     console.log('Server is running on local port 9000')
 })
 
+console.log(amren);
 
 
 

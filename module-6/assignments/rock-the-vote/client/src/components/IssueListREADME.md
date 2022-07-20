@@ -1,1 +1,0 @@
-- The IssuesList will display issues, regardless of whether they come from a user or from the entire issues collection

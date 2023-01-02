@@ -10,7 +10,7 @@
     "match-sorter": "^4.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
+    "react-scripts": "5.0.1",
     "starwars-names": "^1.6.0"
   },
   "scripts": {
